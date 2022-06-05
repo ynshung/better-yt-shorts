@@ -17,10 +17,11 @@ document.addEventListener("keydown", (data) => {
   }
 });
 
-const getCurrentId = () =>
-  document
-    .querySelector("#shorts-player > div.html5-video-container > video")
-    .closest("ytd-reel-video-renderer").id;
+const getCurrentId = () =>{
+    const videoEle = document.querySelector("#shorts-player > div.html5-video-container > video");
+    if (videoEle) return videoEle.closest("ytd-reel-video-renderer").id;
+    return null;
+}
 
 const getActionElement = (id) =>
   document.querySelector(
@@ -49,7 +50,10 @@ const timer = setInterval(() => {
   } else {
     if (actionList) {
       const ytTimer = document.createElement("div");
-      ytTimer.innerHTML = `<p id="ytTimer${currentId}" class="ytTimer"></>`;
+      const para = document.createElement("p");
+      para.classList.add("ytTimer");
+      para.id = `ytTimer${currentId}`;
+      ytTimer.appendChild(para);
 
       actionList.insertBefore(ytTimer, actionList.children[1]);
       injectedTimer.add(currentId);

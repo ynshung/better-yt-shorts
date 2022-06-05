@@ -1,7 +1,7 @@
 {
     "name": "Better YouTube Shorts",
     "description": "Playback controls (with J and L) and timestamp on YouTube Shorts.",
-    "version": "1.0",
+    "version": "1.0.1",
     "manifest_version": 3,
     "content_scripts": [
         {
