@@ -57,7 +57,3 @@ const timer = setInterval(() => {
     }
   }
 }, 100);
-
-// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-//   console.log(request.url); // new url is now in content scripts!
-// });

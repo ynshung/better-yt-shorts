@@ -3,10 +3,6 @@
     "description": "Playback controls (with J and L) and timestamp on YouTube Shorts.",
     "version": "1.0",
     "manifest_version": 3,
-    "permissions": [
-        "tabs",
-        "activeTab"
-    ],
     "content_scripts": [
         {
             "matches": ["https://*.youtube.com/shorts/*"],
