@@ -4,8 +4,8 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 
 ## Download
 
-* Chrome Extension: *Pending review*
-* Firefox Add-on: *Pending review* (https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts/)
+* Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp?hl=en-GB&authuser=0
+* Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts/
 
 ## Features
 * Seeking 5 seconds forward and backward with J and L respectively
