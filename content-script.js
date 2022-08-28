@@ -12,9 +12,22 @@ document.addEventListener("keydown", (data) => {
       ytShorts().currentTime += 5;
       break;
 
+    case "u":
+      if (ytShorts().playbackRate > 0.25) ytShorts().playbackRate -= 0.25;
+      break;
+
+    case "i":
+      ytShorts().playbackRate = 1;
+      break;
+
+    case "o":
+      if (ytShorts().playbackRate < 16) ytShorts().playbackRate += 0.25;
+      break;
+
     default:
       break;
   }
+  setSpeed = ytShorts().playbackRate;
 });
 
 const getCurrentId = () =>{
@@ -34,30 +47,59 @@ const setTimer = (currTime, duration) => {
   ).innerText = `${currTime}/${duration}s`;
 };
 
-var injectedTimer = new Set();
-var lastTime = 0;
+const setPlaybackRate = (currSpeed) => {
+  document.getElementById(
+    `ytPlayback${getCurrentId()}`
+  ).innerText = `${currSpeed}x`;
+};
+
+var injectedItem = new Set();
+var lastTime = -1;
+var lastSpeed = 0;
+var setSpeed = 1;
 
 const timer = setInterval(() => {
   var currentId = getCurrentId();
   var actionList = getActionElement(currentId);
 
-  if (injectedTimer.has(currentId)) {
+  if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts().currentTime);
+    var currSpeed = ytShorts().playbackRate;
+
     if (currTime !== lastTime) {
-      setTimer(currTime, Math.round(ytShorts().duration));
+      setTimer(currTime, Math.round(ytShorts().duration || 0));
       lastTime = currTime;
     }
+    if (currSpeed != lastSpeed) {
+      setPlaybackRate(currSpeed);
+      lastSpeed = currSpeed;
+    }
+
   } else {
+    lastTime = -1;
+    lastSpeed = 0;
+
     if (actionList) {
+      // Timer
       const ytTimer = document.createElement("div");
-      const para = document.createElement("p");
-      para.classList.add("ytTimer");
-      para.id = `ytTimer${currentId}`;
-      ytTimer.appendChild(para);
+      var para0 = document.createElement("p");
+      para0.classList.add("betterYT");
+      para0.id = `ytTimer${currentId}`;
+      ytTimer.appendChild(para0);
+
+      // Playback Rate
+      const ytPlayback = document.createElement("div");
+      var para1 = document.createElement("p");
+      para1.classList.add("betterYT");
+      para1.id = `ytPlayback${currentId}`;
+      ytPlayback.appendChild(para1);
 
       actionList.insertBefore(ytTimer, actionList.children[1]);
-      injectedTimer.add(currentId);
-      lastTime = 0;
+      actionList.insertBefore(ytPlayback, actionList.children[1]);
+      injectedItem.add(currentId);
     }
   }
+  ytShorts().playbackRate = setSpeed;
+  setPlaybackRate(setSpeed);
+  setTimer(currTime || 0, Math.round(ytShorts().duration || 0));
 }, 100);
