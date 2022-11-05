@@ -1,33 +1,54 @@
-const ytShorts = () =>
-  document.querySelector("#shorts-player > div.html5-video-container > video");
+var muted = false;
+var volumeState = 0;
 
 document.addEventListener("keydown", (data) => {
+  const ytShorts = document.querySelector("#shorts-player > div.html5-video-container > video");
   const key = data.key.toLowerCase();
   switch (key) {
     case "j":
-      ytShorts().currentTime -= 5;
+      ytShorts.currentTime -= 5;
       break;
 
     case "l":
-      ytShorts().currentTime += 5;
+      ytShorts.currentTime += 5;
       break;
 
     case "u":
-      if (ytShorts().playbackRate > 0.25) ytShorts().playbackRate -= 0.25;
+      if (ytShorts.playbackRate > 0.25) ytShorts.playbackRate -= 0.25;
       break;
 
     case "i":
-      ytShorts().playbackRate = 1;
+      ytShorts.playbackRate = 1;
       break;
 
     case "o":
-      if (ytShorts().playbackRate < 16) ytShorts().playbackRate += 0.25;
+      if (ytShorts.playbackRate < 16) ytShorts.playbackRate += 0.25;
       break;
 
-    default:
+    case "+":
+      if (ytShorts.volume <= 0.975) {
+        ytShorts.volume = ytShorts.volume + 0.025;
+      }
+      break;
+
+    case "-":
+      if (ytShorts.volume >= 0.025) {
+        ytShorts.volume = ytShorts.volume - 0.025;
+      }
+      break;
+
+    case "m":
+      if (!muted) {
+        muted = true;
+        volumeState = ytShorts.volume;
+        ytShorts.volume = 0;
+      } else {
+        muted = false;
+        ytShorts.volume = volumeState;
+      }
       break;
   }
-  setSpeed = ytShorts().playbackRate;
+  setSpeed = ytShorts.playbackRate;
 });
 
 const getCurrentId = () =>{
@@ -59,15 +80,16 @@ var lastSpeed = 0;
 var setSpeed = 1;
 
 const timer = setInterval(() => {
+  const ytShorts = document.querySelector("#shorts-player > div.html5-video-container > video");
   var currentId = getCurrentId();
   var actionList = getActionElement(currentId);
 
   if (injectedItem.has(currentId)) {
-    var currTime = Math.round(ytShorts().currentTime);
-    var currSpeed = ytShorts().playbackRate;
+    var currTime = Math.round(ytShorts.currentTime);
+    var currSpeed = ytShorts.playbackRate;
 
     if (currTime !== lastTime) {
-      setTimer(currTime, Math.round(ytShorts().duration || 0));
+      setTimer(currTime, Math.round(ytShorts.duration || 0));
       lastTime = currTime;
     }
     if (currSpeed != lastSpeed) {
@@ -99,7 +121,7 @@ const timer = setInterval(() => {
       injectedItem.add(currentId);
     }
   }
-  ytShorts().playbackRate = setSpeed;
+  ytShorts.playbackRate = setSpeed;
   setPlaybackRate(setSpeed);
-  setTimer(currTime || 0, Math.round(ytShorts().duration || 0));
+  setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
 }, 100);
