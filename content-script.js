@@ -2,7 +2,10 @@ var muted = false;
 var volumeState = 0;
 
 document.addEventListener("keydown", (data) => {
-  const ytShorts = document.querySelector("#shorts-player > div.html5-video-container > video");
+  if (document.activeElement !== document.body) return;
+  const ytShorts = document.querySelector(
+    "#shorts-player > div.html5-video-container > video"
+  );
   const key = data.key.toLowerCase();
   switch (key) {
     case "j":
@@ -51,11 +54,13 @@ document.addEventListener("keydown", (data) => {
   setSpeed = ytShorts.playbackRate;
 });
 
-const getCurrentId = () =>{
-    const videoEle = document.querySelector("#shorts-player > div.html5-video-container > video");
-    if (videoEle) return videoEle.closest("ytd-reel-video-renderer").id;
-    return null;
-}
+const getCurrentId = () => {
+  const videoEle = document.querySelector(
+    "#shorts-player > div.html5-video-container > video"
+  );
+  if (videoEle) return videoEle.closest("ytd-reel-video-renderer").id;
+  return null;
+};
 
 const getActionElement = (id) =>
   document.querySelector(
@@ -80,7 +85,9 @@ var lastSpeed = 0;
 var setSpeed = 1;
 
 const timer = setInterval(() => {
-  const ytShorts = document.querySelector("#shorts-player > div.html5-video-container > video");
+  const ytShorts = document.querySelector(
+    "#shorts-player > div.html5-video-container > video"
+  );
   var currentId = getCurrentId();
   var actionList = getActionElement(currentId);
 
@@ -96,7 +103,6 @@ const timer = setInterval(() => {
       setPlaybackRate(currSpeed);
       lastSpeed = currSpeed;
     }
-
   } else {
     lastTime = -1;
     lastSpeed = 0;
