@@ -1,7 +1,7 @@
 {
     "name": "Better YouTube Shorts",
     "description": "Playback and volume controls (with J, L, M, - and +) and timestamp on YouTube Shorts.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "manifest_version": 3,
     "content_scripts": [
         {
