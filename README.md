@@ -10,7 +10,7 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 ## Features
 * Seeking 5 seconds backward and forward with J and L respectively
 * Decrease and increase playback with U and O respectively, change in speed carry over to next/previous videos
-* Revert to normal speed with I
+* Revert to normal speed with I or by clicking the button
 * Increase and decrease volume with + and -, mute audio with M
 * Mini timestamp and speed above the like button
 

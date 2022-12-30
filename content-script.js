@@ -108,6 +108,9 @@ const timer = setInterval(() => {
     lastSpeed = 0;
 
     if (actionList) {
+      //Container div
+      const timerContainer = document.createElement("div");
+      timerContainer.classList.add("betterYT-container");
       // Timer
       const ytTimer = document.createElement("div");
       var para0 = document.createElement("p");
@@ -119,15 +122,23 @@ const timer = setInterval(() => {
       const ytPlayback = document.createElement("div");
       var para1 = document.createElement("p");
       para1.classList.add("betterYT");
+      para1.classList.add("playBack");
       para1.id = `ytPlayback${currentId}`;
       ytPlayback.appendChild(para1);
 
-      actionList.insertBefore(ytTimer, actionList.children[1]);
-      actionList.insertBefore(ytPlayback, actionList.children[1]);
+      timerContainer.appendChild(ytPlayback);
+      actionList.insertBefore(timerContainer, actionList.children[1]);
+      actionList.insertBefore(ytTimer, actionList.children[2]);
       injectedItem.add(currentId);
+
+      ytShorts.playbackRate = setSpeed;
+      setPlaybackRate(setSpeed);
+      setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
+
+      timerContainer.addEventListener("click",(data) => {
+          ytShorts.playbackRate = 1;
+          setSpeed = ytShorts.playbackRate;
+      });
     }
   }
-  ytShorts.playbackRate = setSpeed;
-  setPlaybackRate(setSpeed);
-  setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
 }, 100);
