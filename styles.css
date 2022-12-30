@@ -36,3 +36,10 @@
     font-weight: bold;
     margin: 0;
 }
+
+.volumeSlider{
+    -webkit-appearance: slider-vertical;
+    position: absolute;
+    right: -40px;
+    top: 40px;
+}

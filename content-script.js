@@ -1,8 +1,9 @@
 var muted = false;
 var volumeState = 0;
-
+var volumeCounter = 1;
+var actualVolume = 0;
 document.addEventListener("keydown", (data) => {
-  if (document.activeElement !== document.body) return;
+  if (document.activeElement === document.querySelector(`input`)) return; // Avoids using keys while the user interacts with any input, like search.
   const ytShorts = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
@@ -30,13 +31,13 @@ document.addEventListener("keydown", (data) => {
 
     case "+":
       if (ytShorts.volume <= 0.975) {
-        ytShorts.volume = ytShorts.volume + 0.025;
+        setVolume(ytShorts.volume + 0.025);
       }
       break;
 
     case "-":
       if (ytShorts.volume >= 0.025) {
-        ytShorts.volume = ytShorts.volume - 0.025;
+        setVolume(ytShorts.volume - 0.025);
       }
       break;
 
@@ -71,6 +72,59 @@ const setTimer = (currTime, duration) => {
   document.getElementById(
     `ytTimer${getCurrentId()}`
   ).innerText = `${currTime}/${duration}s`;
+};
+
+const setVolumeSlider = () => {
+  let index = parseFloat(getCurrentId()) + volumeCounter;
+  const volumeContainer = document.querySelectorAll(`yt-icon-button.style-scope.ytd-shorts-player-controls`)[index].parentNode;
+  const slider = document.createElement('input');
+  if(!actualVolume){
+    actualVolume = 0.5;
+  }
+  checkVolume();
+  slider.id = "volumeSliderController";
+  slider.classList.add("volumeSlider");
+  slider.type = 'range';
+  slider.min = 0;
+  slider.max = 1;
+  slider.step = 0.01;
+  volumeContainer.appendChild(slider);
+  slider.value = actualVolume;
+
+  slider.addEventListener("input", (data) => {
+    data.stopPropagation();
+    data.preventDefault();
+    data.stopImmediatePropagation();
+
+    setVolume(data.target.value);
+  });
+  volumeCounter++;
+};
+
+const setVolume = (volume) => {
+  const volumeContainer = document.querySelectorAll(`yt-icon-button.style-scope.ytd-shorts-player-controls`)[parseFloat(getCurrentId())+(volumeCounter-1)].parentNode;
+  const volumeSliderController = volumeContainer.children.volumeSliderController;
+  volumeSliderController.value = volume;
+
+  const ytShorts = document.querySelector(
+      "#shorts-player > div.html5-video-container > video"
+  );
+  ytShorts.volume = volume;
+  localStorage.setItem("yt-player-volume",`{
+      "data": {\"volume\":`+volume+`,\"muted\":`+muted+`}
+    }`)
+}
+
+const checkVolume = () => {
+  let ytShorts = document.querySelector(
+      "#shorts-player > div.html5-video-container > video"
+  );
+  if(JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]){
+    actualVolume = JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"];
+    ytShorts.volume = actualVolume;
+  }else{
+    actualVolume = ytShorts.volume;
+  }
 };
 
 const setPlaybackRate = (currSpeed) => {
@@ -140,5 +194,7 @@ const timer = setInterval(() => {
           setSpeed = ytShorts.playbackRate;
       });
     }
+    setVolumeSlider();
   }
+  checkVolume();
 }, 100);
