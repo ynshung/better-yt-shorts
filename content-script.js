@@ -3,7 +3,10 @@ var volumeState = 0;
 var volumeCounter = 1;
 var actualVolume = 0;
 document.addEventListener("keydown", (data) => {
-  if (document.activeElement === document.querySelector(`input`)) return; // Avoids using keys while the user interacts with any input, like search.
+  if (
+    document.activeElement === document.querySelector(`input`) ||
+    document.activeElement === document.querySelector('#contenteditable-root')
+    ) return; // Avoids using keys while the user interacts with any input, like search and comment.
   const ytShorts = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
@@ -168,7 +171,7 @@ const timer = setInterval(() => {
       // Timer
       const ytTimer = document.createElement("div");
       var para0 = document.createElement("p");
-      para0.classList.add("betterYT");
+      para0.classList.add("betterYT", "yt-spec-button-shape-with-label__label");
       para0.id = `ytTimer${currentId}`;
       ytTimer.appendChild(para0);
 
