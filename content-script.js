@@ -142,6 +142,7 @@ var lastSpeed = 0;
 var setSpeed = 1;
 
 const timer = setInterval(() => {
+  if (!window.location.toString().indexOf("youtube.com/shorts/")) return;
   const ytShorts = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
