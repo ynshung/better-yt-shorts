@@ -16,8 +16,6 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 
 ## Future Implementation
 This is a very new extension so feel free to make suggestions. I might not have the time to develop the extension extensively so PR are welcomed!
-* Bug: Typing in search bar also triggers seeking
-* Feature: Slider bar
 
 ## License
 
