@@ -5,7 +5,7 @@
     "manifest_version": 3,
     "content_scripts": [
         {
-            "matches": ["https://*.youtube.com/*"],
+            "matches": ["https://*.youtube.com/shorts/*"],
             "js": ["content-script.js"],
             "css": ["styles.css"]
         }
