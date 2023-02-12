@@ -168,8 +168,7 @@ const timer = setInterval(() => {
       // Timer
       const ytTimer = document.createElement("div");
       var para0 = document.createElement("p");
-      para0.classList.add("betterYT");
-      para0.classList.add("yt-spec-button-shape-with-label__label");
+      para0.classList.add("betterYT", "yt-spec-button-shape-with-label__label");
       para0.id = `ytTimer${currentId}`;
       ytTimer.appendChild(para0);
 
