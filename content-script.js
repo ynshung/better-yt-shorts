@@ -136,6 +136,22 @@ const setPlaybackRate = (currSpeed) => {
   ).innerText = `${currSpeed}x`;
 };
 
+function video() { return document.getElementsByTagName("video")[0]; }
+
+//WheelProgram
+function wheel(Element, codeA, codeB) {
+    Element.addEventListener("mousewheel", (event) => {
+        if (event.wheelDelta > 0) {
+            codeA();
+        } else {
+            codeB();
+        }
+        event.preventDefault();
+    },
+        { passive: false }
+    );
+}
+
 var injectedItem = new Set();
 var lastTime = -1;
 var lastSpeed = 0;
@@ -197,6 +213,22 @@ const timer = setInterval(() => {
           ytShorts.playbackRate = 1;
           setSpeed = ytShorts.playbackRate;
       });
+
+      wheel(timerContainer, speedup, speeddown);
+      function speedup() {
+        video().playbackRate += 0.25;
+      }
+      function speeddown() {
+        video().playbackRate -= 0.25;
+      }
+      wheel(ytTimer, forward, backward);
+      function forward() {
+        video().currentTime += 1;
+      }
+      function backward() {
+        video().currentTime -= 1;
+      }
+
     }
     setVolumeSlider();
   }
