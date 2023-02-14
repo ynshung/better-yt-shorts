@@ -43,3 +43,29 @@
     right: -40px;
     top: 40px;
 }
+
+.betterYT-progress-bar{
+    bottom: 0;
+    pointer-events: auto !important;
+}
+
+.betterYT-progress-bar-hover-overlay{
+    height: 5px !important;
+}
+
+.betterYT-progress-bar-hover{
+    height: 10px !important;
+    cursor: pointer;
+}
+
+.betterYT-timestamp-tooltip{
+    position: absolute;
+    display: none;
+    background-color: #272727;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 10px;
+    color: white;
+    z-index: 9999;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
+}
