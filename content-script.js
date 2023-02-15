@@ -168,19 +168,19 @@ const timer = setInterval(() => {
       // Container div
       const betterYTContainer = document.createElement("div");
       betterYTContainer.id = "betterYT-container";
-      betterYTContainer.setAttribute('class', 'button-container style-scope ytd-reel-player-overlay-renderer');
+      betterYTContainer.setAttribute("class", "button-container style-scope ytd-reel-player-overlay-renderer");
 
       const ytdButtonRenderer = document.createElement("div");
-      ytdButtonRenderer.setAttribute('class', 'betterYT-renderer style-scope ytd-reel-player-overlay-renderer');
+      ytdButtonRenderer.setAttribute("class", "betterYT-renderer style-scope ytd-reel-player-overlay-renderer");
 
       const ytButtonShape = document.createElement("div");
-      ytButtonShape.setAttribute('class', 'betterYT-button-shape');
+      ytButtonShape.setAttribute("class", "betterYT-button-shape");
 
       const ytLabel = document.createElement("label");
-      ytLabel.setAttribute('class', 'yt-spec-button-shape-with-label');
+      ytLabel.setAttribute("class", "yt-spec-button-shape-with-label");
 
       const ytButton = document.createElement("button");      
-      ytButton.setAttribute('class', 'yt-spec-button-shape-next yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-l yt-spec-button-shape-next--icon-button ');
+      ytButton.setAttribute("class", "yt-spec-button-shape-next yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-l yt-spec-button-shape-next--icon-button ");
       // Playback Rate
       var para0 = document.createElement("p");
       para0.classList.add("betterYT");
@@ -190,7 +190,7 @@ const timer = setInterval(() => {
       const ytTimer = document.createElement("div");
       ytTimer.classList.add("yt-spec-button-shape-with-label__label");
       var span1 = document.createElement("span");
-      span1.setAttribute('class', 'yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center yt-core-attributed-string--word-wrapping');
+      span1.setAttribute("class", "yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center yt-core-attributed-string--word-wrapping");
       span1.id = `ytTimer${currentId}`;
       span1.setAttribute("role", "text");
       ytTimer.appendChild(span1);
