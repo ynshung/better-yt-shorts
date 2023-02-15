@@ -185,8 +185,29 @@ const timer = setInterval(() => {
       ytPlayback.appendChild(para1);
 
       timerContainer.appendChild(ytPlayback);
+
+      // Lazymode Switch
+      const switchContainer = document.createElement("div");
+      // switchContainer.classList.add("betterYT-container");
+      const lazySwitch = document.createElement("label");
+      lazySwitch.classList.add("lazymode-switch");
+      var checkBox = document.createElement("input");
+      checkBox.type = "checkbox";
+      var lazySpan = document.createElement("span");
+      lazySpan.classList.add("lazymode-slider");
+      lazySwitch.append(checkBox, lazySpan);
+      switchContainer.appendChild(lazySwitch);
+      
+      const lazymodeTitle = document.createElement("div");
+      var lazyPara = document.createElement("p");
+      lazyPara.classList.add("betterYT", "yt-spec-button-shape-with-label__label");
+      lazyPara.textContent = "Lazy";
+      lazymodeTitle.appendChild(lazyPara);
+
       actionList.insertBefore(timerContainer, actionList.children[1]);
       actionList.insertBefore(ytTimer, actionList.children[2]);
+      actionList.insertBefore(switchContainer, actionList.children[1]);
+      actionList.insertBefore(lazymodeTitle, actionList.children[2]);
       injectedItem.add(currentId);
 
       ytShorts.playbackRate = setSpeed;
