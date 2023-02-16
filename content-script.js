@@ -183,7 +183,7 @@ const timer = setInterval(() => {
   } else {
     lastTime = -1;
     lastSpeed = 0;
-    if (autoplayEnabled) ytShorts.loop = false;
+    if (autoplayEnabled && ytShorts) ytShorts.loop = false;
 
     if (actionList) {
       // Container div
