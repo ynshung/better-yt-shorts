@@ -71,6 +71,9 @@ const getActionElement = (id) =>
     `[id='${id}']  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #actions`
   );
 
+const getNextButton = () =>
+  document.querySelector('button.yt-spec-button-shape-next[aria-label="Next video"]');
+
 const setTimer = (currTime, duration) => {
   document.getElementById(
     `ytTimer${getCurrentId()}`
@@ -147,10 +150,16 @@ const timer = setInterval(() => {
   );
   var currentId = getCurrentId();
   var actionList = getActionElement(currentId);
+  var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
 
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
     var currSpeed = ytShorts.playbackRate;
+
+    if (autoplayEnabled && ytShorts && ytShorts.currentTime >= ytShorts.duration - 0.11) {
+      var nextButton = getNextButton();
+      nextButton.click();
+    }
 
     if (currTime !== lastTime) {
       setTimer(currTime, Math.round(ytShorts.duration || 0));
@@ -160,6 +169,7 @@ const timer = setInterval(() => {
       setPlaybackRate(currSpeed);
       lastSpeed = currSpeed;
     }
+
   } else {
     lastTime = -1;
     lastSpeed = 0;
@@ -203,37 +213,47 @@ const timer = setInterval(() => {
       ytdButtonRenderer.appendChild(ytButtonShape);
       betterYTContainer.appendChild(ytdButtonRenderer);
 
-
-      // Lazymode Switch
+      // Autoplay Switch
       const switchContainer = document.createElement("div");
-      // switchContainer.classList.add("betterYT-container");
-      const lazySwitch = document.createElement("label");
-      lazySwitch.classList.add("lazymode-switch");
+      const autoplaySwitch = document.createElement("label");
+      autoplaySwitch.classList.add("autoplay-switch");
       var checkBox = document.createElement("input");
       checkBox.type = "checkbox";
-      var lazySpan = document.createElement("span");
-      lazySpan.classList.add("lazymode-slider");
-      lazySwitch.append(checkBox, lazySpan);
-      switchContainer.appendChild(lazySwitch);
+      checkBox.id = `autoplay-checkbox${currentId}`;
+      checkBox.checked = autoplayEnabled;
+      var autoplaySpan = document.createElement("span");
+      autoplaySpan.classList.add("autoplay-slider");
+      autoplaySwitch.append(checkBox, autoplaySpan);
+      switchContainer.appendChild(autoplaySwitch);
       
-      const lazymodeTitle = document.createElement("div");
-      var lazyPara = document.createElement("p");
-      lazyPara.classList.add("betterYT", "yt-spec-button-shape-with-label__label");
-      lazyPara.textContent = "Lazy";
-      lazymodeTitle.appendChild(lazyPara);
-
+      const autoplayTitle = document.createElement("div");
+      autoplayTitle.classList.add("yt-spec-button-shape-with-label__label");
+      var span2 = document.createElement("span");
+      span2.setAttribute("class", "betterYT-auto yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center");
+      span2.setAttribute("role", "text");
+      span2.textContent = "Autoplay";
+      autoplayTitle.appendChild(span2);
+      
       actionList.insertBefore(betterYTContainer, actionList.children[1]);
       actionList.insertBefore(switchContainer, actionList.children[1]);
-      actionList.insertBefore(lazymodeTitle, actionList.children[2]);
+      actionList.insertBefore(autoplayTitle, actionList.children[2]);
       injectedItem.add(currentId);
 
       ytShorts.playbackRate = setSpeed;
       setPlaybackRate(setSpeed);
       setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
 
-      betterYTContainer.addEventListener("click",(data) => {
+      betterYTContainer.addEventListener("click",() => {
         ytShorts.playbackRate = 1;
         setSpeed = ytShorts.playbackRate;
+      });
+
+      checkBox.addEventListener('change', () => {
+        if (checkBox.checked) {
+          localStorage.setItem("yt-autoplay", "true");
+        } else {
+          localStorage.setItem("yt-autoplay", "false");
+        }
       });
     }
     if (currentId !== null && ytShorts) setVolumeSlider(ytShorts);

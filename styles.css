@@ -1,16 +1,3 @@
-.betterYT {
-    font-size: 14px;
-    font-family: "Roboto", "Noto", sans-serif;
-    font-weight: 500;
-    color: white;
-    margin-top: 4px;
-    text-align: center;
-}
-
-.volumeSlider {
-    
-}
-
 .betterYT-renderer {
     display: inline-block;
 }
@@ -24,9 +11,14 @@
     position: absolute;
     right: -40px;
     top: 40px;
+    opacity: 0.4;
 }
 
-.lazymode-switch {
+.volumeSlider:hover{
+    opacity: 1;
+}
+
+.autoplay-switch {
     position: relative;
     display: inline-block;
     width: 48px;
@@ -34,13 +26,13 @@
 }
 
 /* Hide default HTML checkbox */
-.lazymode-switch input {
+.autoplay-switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-.lazymode-slider {
+.autoplay-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -53,11 +45,11 @@
     border-radius: 27px;
 }
 
-.lazymode-slider:hover {
+.autoplay-slider:hover {
     background-color: #3f3f3f;
 }
 
-.lazymode-slider:before {
+.autoplay-slider:before {
     position: absolute;
     content: "";
     height: 20px;
@@ -70,26 +62,29 @@
     border-radius: 50%;
 }
 
-input:checked + .lazymode-slider {
-    background-color: #3ea6ff;
+input:checked + .autoplay-slider {
+    background-color: #3f3f3f;
 }
 
-input:focus + .lazymode-slider {
-    box-shadow: 0 0 1px #3ea6ff;
-}
-
-input:checked + .lazymode-slider:before {
+input:checked + .autoplay-slider:before {
     -webkit-transform: translateX(21px);
     -ms-transform: translateX(21px);
     transform: translateX(21px);
 }
   
-
-
 @media screen and (max-width: 599px) {
     .volumeSlider {
       -webkit-appearance: slider-horizontal;
       right: 44px;
       top: 18px;
+    }
+    .autoplay-slider {
+        background-color: #FFFFFF1A;
+    }
+    input:checked + .autoplay-slider {
+        background-color: #FFFFFF2A;
+    }
+    .betterYT-auto {
+        padding-bottom: 16px;
     }
 }
