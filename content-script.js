@@ -262,8 +262,10 @@ const timer = setInterval(() => {
       checkBox.addEventListener('change', () => {
         if (checkBox.checked) {
           localStorage.setItem("yt-autoplay", "true");
+          ytShorts.loop = false;
         } else {
           localStorage.setItem("yt-autoplay", "false");
+          ytShorts.loop = true;
         }
       });
     }
