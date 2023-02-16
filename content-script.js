@@ -158,8 +158,9 @@ const timer = setInterval(() => {
   );
   var currentId = getCurrentId();
   var actionList = getActionElement(currentId);
-  var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   var overlayList = getOverlayElement(currentId);
+  var autoplayEnabled = false;
+  autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
 
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
@@ -182,6 +183,7 @@ const timer = setInterval(() => {
   } else {
     lastTime = -1;
     lastSpeed = 0;
+    if (autoplayEnabled) ytShorts.loop = false;
 
     if (actionList) {
       // Container div
