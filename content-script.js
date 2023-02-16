@@ -5,7 +5,7 @@ var actualVolume = 0;
 document.addEventListener("keydown", (data) => {
   if (
     document.activeElement === document.querySelector(`input`) ||
-    document.activeElement === document.querySelector('#contenteditable-root')
+    document.activeElement === document.querySelector("#contenteditable-root")
     ) return; // Avoids using keys while the user interacts with any input, like search and comment.
   const ytShorts = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
@@ -77,17 +77,17 @@ const setTimer = (currTime, duration) => {
   ).innerText = `${currTime}/${duration}s`;
 };
 
-const setVolumeSlider = () => {
+const setVolumeSlider = (ytShorts) => {
   let index = parseFloat(getCurrentId()) + volumeCounter;
   const volumeContainer = document.querySelectorAll(`yt-icon-button.style-scope.ytd-shorts-player-controls`)[index].parentNode;
-  const slider = document.createElement('input');
+  const slider = document.createElement("input");
   if(!actualVolume){
     actualVolume = 0.5;
   }
-  checkVolume();
+  checkVolume(ytShorts);
   slider.id = "volumeSliderController";
   slider.classList.add("volumeSlider");
-  slider.type = 'range';
+  slider.type = "range";
   slider.min = 0;
   slider.max = 1;
   slider.step = 0.01;
@@ -95,12 +95,14 @@ const setVolumeSlider = () => {
   slider.value = actualVolume;
 
   slider.addEventListener("input", (data) => {
-    data.stopPropagation();
-    data.preventDefault();
-    data.stopImmediatePropagation();
-
     setVolume(data.target.value);
   });
+
+  // Prevent video from pausing/playing on click
+  slider.addEventListener("click", (data) => {
+    data.stopPropagation();
+  });
+
   volumeCounter++;
 };
 
@@ -118,10 +120,7 @@ const setVolume = (volume) => {
     }`)
 }
 
-const checkVolume = () => {
-  let ytShorts = document.querySelector(
-      "#shorts-player > div.html5-video-container > video"
-  );
+const checkVolume = (ytShorts) => {
   if(JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]){
     actualVolume = JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"];
     ytShorts.volume = actualVolume;
@@ -166,25 +165,44 @@ const timer = setInterval(() => {
     lastSpeed = 0;
 
     if (actionList) {
-      //Container div
-      const timerContainer = document.createElement("div");
-      timerContainer.classList.add("betterYT-container");
+      // Container div
+      const betterYTContainer = document.createElement("div");
+      betterYTContainer.id = "betterYT-container";
+      betterYTContainer.setAttribute("class", "button-container style-scope ytd-reel-player-overlay-renderer");
+
+      const ytdButtonRenderer = document.createElement("div");
+      ytdButtonRenderer.setAttribute("class", "betterYT-renderer style-scope ytd-reel-player-overlay-renderer");
+
+      const ytButtonShape = document.createElement("div");
+      ytButtonShape.setAttribute("class", "betterYT-button-shape");
+
+      const ytLabel = document.createElement("label");
+      ytLabel.setAttribute("class", "yt-spec-button-shape-with-label");
+
+      const ytButton = document.createElement("button");      
+      ytButton.setAttribute("class", "yt-spec-button-shape-next yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-l yt-spec-button-shape-next--icon-button ");
+      // Playback Rate
+      var para0 = document.createElement("p");
+      para0.classList.add("betterYT");
+      para0.id = `ytPlayback${currentId}`;
+
       // Timer
       const ytTimer = document.createElement("div");
-      var para0 = document.createElement("p");
-      para0.classList.add("betterYT", "yt-spec-button-shape-with-label__label");
-      para0.id = `ytTimer${currentId}`;
-      ytTimer.appendChild(para0);
+      ytTimer.classList.add("yt-spec-button-shape-with-label__label");
+      var span1 = document.createElement("span");
+      span1.setAttribute("class", "yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center yt-core-attributed-string--word-wrapping");
+      span1.id = `ytTimer${currentId}`;
+      span1.setAttribute("role", "text");
+      ytTimer.appendChild(span1);
 
-      // Playback Rate
-      const ytPlayback = document.createElement("div");
-      var para1 = document.createElement("p");
-      para1.classList.add("betterYT");
-      para1.classList.add("playBack");
-      para1.id = `ytPlayback${currentId}`;
-      ytPlayback.appendChild(para1);
+      // Match YT's HTML structure
+      ytButton.appendChild(para0);
+      ytLabel.appendChild(ytButton);
+      ytLabel.appendChild(ytTimer);
+      ytButtonShape.appendChild(ytLabel);
+      ytdButtonRenderer.appendChild(ytButtonShape);
+      betterYTContainer.appendChild(ytdButtonRenderer);
 
-      timerContainer.appendChild(ytPlayback);
 
       // Lazymode Switch
       const switchContainer = document.createElement("div");
@@ -204,8 +222,7 @@ const timer = setInterval(() => {
       lazyPara.textContent = "Lazy";
       lazymodeTitle.appendChild(lazyPara);
 
-      actionList.insertBefore(timerContainer, actionList.children[1]);
-      actionList.insertBefore(ytTimer, actionList.children[2]);
+      actionList.insertBefore(betterYTContainer, actionList.children[1]);
       actionList.insertBefore(switchContainer, actionList.children[1]);
       actionList.insertBefore(lazymodeTitle, actionList.children[2]);
       injectedItem.add(currentId);
@@ -214,12 +231,12 @@ const timer = setInterval(() => {
       setPlaybackRate(setSpeed);
       setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
 
-      timerContainer.addEventListener("click",(data) => {
-          ytShorts.playbackRate = 1;
-          setSpeed = ytShorts.playbackRate;
+      betterYTContainer.addEventListener("click",(data) => {
+        ytShorts.playbackRate = 1;
+        setSpeed = ytShorts.playbackRate;
       });
     }
-    setVolumeSlider();
+    if (currentId !== null && ytShorts) setVolumeSlider(ytShorts);
   }
-  checkVolume();
+  if (ytShorts) checkVolume(ytShorts);
 }, 100);

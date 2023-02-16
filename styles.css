@@ -7,34 +7,16 @@
     text-align: center;
 }
 
-.playBack{
-
+.volumeSlider {
+    
 }
 
-.betterYT-container{
-    background-color: #272727;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    position: relative;
+.betterYT-renderer {
+    display: inline-block;
+}
+
+.betterYT-button-shape {
     display: flex;
-    align-items: center;
-}
-
-.betterYT-container:hover{
-    cursor: pointer;
-    background-color: #3f3f3f;
-}
-
-.betterYT-container > div {
-    width: 100%;
-}
-
-
-.betterYT-container > div > p{
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
 }
 
 .volumeSlider{
@@ -102,3 +84,12 @@ input:checked + .lazymode-slider:before {
     transform: translateX(21px);
 }
   
+
+
+@media screen and (max-width: 599px) {
+    .volumeSlider {
+      -webkit-appearance: slider-horizontal;
+      right: 44px;
+      top: 18px;
+    }
+}
