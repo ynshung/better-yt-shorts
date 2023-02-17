@@ -9,13 +9,18 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 
 ## Features
 * Seeking 5 seconds backward and forward with J and L respectively
-* Decrease and increase playback with U and O respectively, change in speed carry over to next/previous videos
+* Seeking a precise timestamp in the progress bar
+* Decrease and increase playback rate with U and O respectively, change in speed carry over to next/previous videos
 * Revert to normal speed with I or by clicking the button
 * Increase and decrease volume with the volume slider or with + and -, mute audio with M
 * Mini timestamp and speed above the like button
+* Autoplay switch to skip to next video when current one ends
 
 ## Future Implementation
 This is a very new extension so feel free to make suggestions. I might not have the time to develop the extension extensively so PR are welcomed!
+* Custom keybinds
+* Add to playlist button
+* Auto skip short with likes below custom threshold (e.g. 100 likes)
 
 ## License
 
