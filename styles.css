@@ -100,10 +100,6 @@ input:checked + .autoplay-slider:before {
     pointer-events: auto !important;
 }
 
-.betterYT-progress-bar-hover-overlay{
-    height: 5px !important;
-}
-
 .betterYT-progress-bar-hover{
     height: 10px !important;
     cursor: pointer;
@@ -112,11 +108,10 @@ input:checked + .autoplay-slider:before {
 .betterYT-timestamp-tooltip{
     position: absolute;
     display: none;
-    background-color: #272727;
+    background-color: #27272747;
     border-radius: 5px;
-    padding: 3px;
+    padding: 3px 1px;
     font-size: 11px;
     color: white;
-    z-index: 9999;
-    box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
+    z-index: 50;
 }

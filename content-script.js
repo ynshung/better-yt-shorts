@@ -300,23 +300,14 @@ const timer = setInterval(() => {
       progBarList.appendChild(timestampTooltip);
 
       // Styling to ensure rest of bottom overlay (shorts title/sub button) stay in place
-      overlayList.children[0].style.marginBottom = "-8px";
-      progBarList.style.height = "11px";
+      overlayList.children[0].style.marginBottom = "-7px";
+      progBarList.style.height = "10px";
       progBarList.style.paddingTop = "2px"; // Slight padding to increase hover box
 
       progBarList.classList.add('betterYT-progress-bar');
       progBarBG.classList.add('betterYT-progress-bar');
       progBarPlayed.classList.add('betterYT-progress-bar');
-
-      overlayList.addEventListener("mouseover", () => {
-        progBarBG.classList.add('betterYT-progress-bar-hover-overlay');
-        progBarPlayed.classList.add('betterYT-progress-bar-hover-overlay');
-      });
-      overlayList.addEventListener("mouseout", () => {
-        progBarBG.classList.remove('betterYT-progress-bar-hover-overlay');
-        progBarPlayed.classList.remove('betterYT-progress-bar-hover-overlay');
-      });
-
+      
       progBarList.addEventListener("mouseover", () => {
         progBarBG.classList.add('betterYT-progress-bar-hover');
         progBarPlayed.classList.add('betterYT-progress-bar-hover');
