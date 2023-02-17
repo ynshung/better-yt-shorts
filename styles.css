@@ -108,9 +108,9 @@ input:checked + .autoplay-slider:before {
 .betterYT-timestamp-tooltip{
     position: absolute;
     display: none;
-    background-color: #27272747;
+    background-color: #272727c4;
     border-radius: 5px;
-    padding: 3px 1px;
+    padding: 4px;
     font-size: 11px;
     color: white;
     z-index: 50;
