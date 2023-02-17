@@ -64,7 +64,7 @@ const getCurrentId = () => {
   const videoEle = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
-  if (videoEle) return videoEle.closest("ytd-reel-video-renderer").id;
+  if (videoEle && videoEle.closest("ytd-reel-video-renderer")) return videoEle.closest("ytd-reel-video-renderer").id;
   return null;
 };
 
@@ -78,25 +78,30 @@ const getOverlayElement = (id) =>
     `[id='${id}']  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay`
   );
 
+const getVolumeContainer = (id) =>
+  document.querySelector(
+    `[id='${id}']  > #player-container > div.player-controls.style-scope.ytd-reel-video-renderer`
+  );
+
 const getNextButton = () =>
   document.querySelector('button.yt-spec-button-shape-next[aria-label="Next video"]');
   
 
 const setTimer = (currTime, duration) => {
+  const id = getCurrentId();
+  if (document.getElementById(`ytTimer${id}`) === null) return false;
   document.getElementById(
-    `ytTimer${getCurrentId()}`
+    `ytTimer${id}`
   ).innerText = `${currTime}/${duration}s`;
+  return true
 };
 
-const setVolumeSlider = (ytShorts) => {
-  let index = parseFloat(getCurrentId()) + volumeCounter;
-  const volumeContainer = document.querySelectorAll(`yt-icon-button.style-scope.ytd-shorts-player-controls`)[index].parentNode;
+const setVolumeSlider = (ytShorts, id) => {
+  const volumeContainer = getVolumeContainer(id);
   const slider = document.createElement("input");
-  if(!actualVolume){
-    actualVolume = 0.5;
-  }
+  if(!actualVolume) actualVolume = 0.5;
   checkVolume(ytShorts);
-  slider.id = "volumeSliderController";
+  slider.id = `volumeSliderController${id}`;
   slider.classList.add("volumeSlider");
   slider.type = "range";
   slider.min = 0;
@@ -118,8 +123,10 @@ const setVolumeSlider = (ytShorts) => {
 };
 
 const setVolume = (volume) => {
-  const volumeContainer = document.querySelectorAll(`yt-icon-button.style-scope.ytd-shorts-player-controls`)[parseFloat(getCurrentId())+(volumeCounter-1)].parentNode;
-  const volumeSliderController = volumeContainer.children.volumeSliderController;
+  const id = getCurrentId()
+  // const volumeContainer = document.querySelectorAll(`yt-icon-button.style-scope.ytd-shorts-player-controls`)[parseFloat(id)+(volumeCounter-1)].parentNode;
+  // const volumeSliderController = volumeContainer.children.volumeSliderController;
+  const volumeSliderController = document.getElementById(`volumeSliderController${id}`);
   volumeSliderController.value = volume;
 
   const ytShorts = document.querySelector(
@@ -141,9 +148,12 @@ const checkVolume = (ytShorts) => {
 };
 
 const setPlaybackRate = (currSpeed) => {
+  const id = getCurrentId();
+  if (document.getElementById(`ytPlayback${id}`) === null) return false;
   document.getElementById(
     `ytPlayback${getCurrentId()}`
   ).innerText = `${currSpeed}x`;
+  return true
 };
 
 var injectedItem = new Set();
@@ -152,15 +162,15 @@ var lastSpeed = 0;
 var setSpeed = 1;
 
 const timer = setInterval(() => {
-  if (!window.location.toString().indexOf("youtube.com/shorts/")) return;
+  if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return;
   const ytShorts = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
   var currentId = getCurrentId();
   var actionList = getActionElement(currentId);
   var overlayList = getOverlayElement(currentId);
-  var autoplayEnabled = false;
-  autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
+  var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
+  if (autoplayEnabled === null) autoplayEnabled = false;
 
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
@@ -172,12 +182,15 @@ const timer = setInterval(() => {
     }
 
     if (currTime !== lastTime) {
-      setTimer(currTime, Math.round(ytShorts.duration || 0));
+      // Using this as a check whether the elements actually were injected on the page
+      var injectedSuccess = setTimer(currTime, Math.round(ytShorts.duration || 0));
+      // If failed, retry injection during next interval
+      if (!injectedSuccess) injectedItem.delete(currentId);
       lastTime = currTime;
     }
     if (currSpeed != lastSpeed) {
-      setPlaybackRate(currSpeed);
-      lastSpeed = currSpeed;
+      const setRateSuccess = setPlaybackRate(currSpeed);
+      if (setRateSuccess) lastSpeed = currSpeed;
     }
 
   } else {
@@ -186,7 +199,7 @@ const timer = setInterval(() => {
     if (autoplayEnabled && ytShorts) ytShorts.loop = false;
 
     if (actionList) {
-      // Container div
+
       const betterYTContainer = document.createElement("div");
       betterYTContainer.id = "betterYT-container";
       betterYTContainer.setAttribute("class", "button-container style-scope ytd-reel-player-overlay-renderer");
@@ -224,6 +237,8 @@ const timer = setInterval(() => {
       ytdButtonRenderer.appendChild(ytButtonShape);
       betterYTContainer.appendChild(ytdButtonRenderer);
 
+      actionList.insertBefore(betterYTContainer, actionList.children[1]);
+
       // Autoplay Switch
       const switchContainer = document.createElement("div");
       const autoplaySwitch = document.createElement("label");
@@ -236,6 +251,8 @@ const timer = setInterval(() => {
       autoplaySpan.classList.add("autoplay-slider");
       autoplaySwitch.append(checkBox, autoplaySpan);
       switchContainer.appendChild(autoplaySwitch);
+
+      actionList.insertBefore(switchContainer, actionList.children[1]);
       
       const autoplayTitle = document.createElement("div");
       autoplayTitle.classList.add("yt-spec-button-shape-with-label__label");
@@ -244,15 +261,13 @@ const timer = setInterval(() => {
       span2.setAttribute("role", "text");
       span2.textContent = "Autoplay";
       autoplayTitle.appendChild(span2);
-      
-      actionList.insertBefore(betterYTContainer, actionList.children[1]);
-      actionList.insertBefore(switchContainer, actionList.children[1]);
+    
       actionList.insertBefore(autoplayTitle, actionList.children[2]);
       injectedItem.add(currentId);
 
       ytShorts.playbackRate = setSpeed;
       setPlaybackRate(setSpeed);
-      setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
+      injectedSuccess = setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
 
       betterYTContainer.addEventListener("click",() => {
         ytShorts.playbackRate = 1;
@@ -338,7 +353,7 @@ const timer = setInterval(() => {
         ytShorts.currentTime = (x / progBarList.clientWidth) * ytShorts.duration;
       });
     }
-    if (currentId !== null && ytShorts) setVolumeSlider(ytShorts);
+    if (currentId !== null) setVolumeSlider(ytShorts, currentId);
   }
   if (ytShorts) checkVolume(ytShorts);
 }, 100);
