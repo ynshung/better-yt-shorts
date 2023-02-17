@@ -123,8 +123,6 @@ const setVolumeSlider = (ytShorts, id) => {
 
 const setVolume = (volume) => {
   const id = getCurrentId()
-  // const volumeContainer = document.querySelectorAll(`yt-icon-button.style-scope.ytd-shorts-player-controls`)[parseFloat(id)+(volumeCounter-1)].parentNode;
-  // const volumeSliderController = volumeContainer.children.volumeSliderController;
   const volumeSliderController = document.getElementById(`volumeSliderController${id}`);
   volumeSliderController.value = volume;
 
@@ -290,9 +288,7 @@ const timer = setInterval(() => {
       var progBarPlayed = progBarList.children[1]; // The red part of the progress bar
 
       // Force progress bar to be visible for sub-30s shorts
-      if (ytShorts.duration < 30) {
-        progBarList.removeAttribute("hidden"); 
-      }
+      if (ytShorts.duration < 30) progBarList.removeAttribute("hidden"); 
 
       const timestampTooltip = document.createElement("div");
       timestampTooltip.classList.add("betterYT-timestamp-tooltip");
@@ -307,7 +303,7 @@ const timer = setInterval(() => {
       progBarList.classList.add('betterYT-progress-bar');
       progBarBG.classList.add('betterYT-progress-bar');
       progBarPlayed.classList.add('betterYT-progress-bar');
-      
+
       progBarList.addEventListener("mouseover", () => {
         progBarBG.classList.add('betterYT-progress-bar-hover');
         progBarPlayed.classList.add('betterYT-progress-bar-hover');
