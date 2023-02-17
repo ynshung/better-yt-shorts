@@ -80,12 +80,11 @@ const getOverlayElement = (id) =>
 
 const getVolumeContainer = (id) =>
   document.querySelector(
-    `[id='${id}']  > #player-container > div.player-controls.style-scope.ytd-reel-video-renderer`
+    `[id='${id}']  > #player-container > div.player-controls.style-scope.ytd-reel-video-renderer > ytd-shorts-player-controls.style-scope.ytd-reel-video-renderer`
   );
 
 const getNextButton = () =>
   document.querySelector('button.yt-spec-button-shape-next[aria-label="Next video"]');
-  
 
 const setTimer = (currTime, duration) => {
   const id = getCurrentId();
