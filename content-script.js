@@ -12,6 +12,7 @@ document.addEventListener("keydown", (data) => {
   const ytShorts = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
+  if (!ytShorts) return;
   const key = data.key.toLowerCase();
   switch (key) {
     case "j":
