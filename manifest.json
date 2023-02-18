@@ -3,6 +3,10 @@
     "description": "Playback and volume controls (with J, L, M, - and +) and timestamp on YouTube Shorts.",
     "version": "1.4.2",
     "manifest_version": 3,
+    "permissions": ["storage"],
+    "action": {
+        "default_popup": "popup.html"
+    },
     "content_scripts": [
         {
             "matches": ["https://*.youtube.com/*"],

@@ -8,17 +8,18 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 * Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 
 ## Features
-* Seeking 5 seconds backward and forward with J and L respectively
+* Custom keybinds
+* Seeking 5 seconds backward and forward (default: J and L)
 * Seeking a precise timestamp in the progress bar
-* Decrease and increase playback rate with U and O respectively, change in speed carry over to next/previous videos
+* Decrease and increase playback rate (default: U and O), change in speed carry over to next/previous videos
 * Revert to normal speed with I or by clicking the button
-* Increase and decrease volume with the volume slider or with + and -, mute audio with M
+* Increase and decrease volume with the volume slider or with - and +, mute audio with M
 * Mini timestamp and speed above the like button
 * Autoplay switch to skip to next video when current one ends
 
 ## Future Implementation
 This is a very new extension so feel free to make suggestions. I might not have the time to develop the extension extensively so PR are welcomed!
-* Custom keybinds
+
 * Add to playlist button
 * Auto skip short with likes below custom threshold (e.g. 100 likes)
 

@@ -1,8 +1,16 @@
 var muted = false;
 var volumeState = 0;
-var volumeCounter = 1;
 var actualVolume = 0;
 var mouseX;
+// Using localStorage as a fallback for chrome.storage.local
+var keybinds = JSON.parse(localStorage.getItem("yt-keybinds"));
+chrome.storage.local.get(["keybinds"])
+.then((result) => {
+  if (result.keybinds) {
+    if (result.keybinds !== keybinds) localStorage.setItem("yt-keybinds", JSON.stringify(result.keybinds));
+    keybinds = result.keybinds;
+  }
+});
 
 document.addEventListener("keydown", (data) => {
   if (
@@ -14,40 +22,43 @@ document.addEventListener("keydown", (data) => {
   );
   if (!ytShorts) return;
   const key = data.key.toLowerCase();
-  switch (key) {
-    case "j":
+  let command;
+  for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
+  if (!command) return;
+  switch (command) {
+    case "Seek Backward":
       ytShorts.currentTime -= 5;
       break;
 
-    case "l":
+    case "Seek Forward":
       ytShorts.currentTime += 5;
       break;
 
-    case "u":
+    case "Decrease Speed":
       if (ytShorts.playbackRate > 0.25) ytShorts.playbackRate -= 0.25;
       break;
 
-    case "i":
+    case "Reset Speed":
       ytShorts.playbackRate = 1;
       break;
 
-    case "o":
+    case "Increase Speed":
       if (ytShorts.playbackRate < 16) ytShorts.playbackRate += 0.25;
       break;
 
-    case "+":
+    case "Increase Volume":
       if (ytShorts.volume <= 0.975) {
         setVolume(ytShorts.volume + 0.025);
       }
       break;
 
-    case "-":
+    case "Decrease Volume":
       if (ytShorts.volume >= 0.025) {
         setVolume(ytShorts.volume - 0.025);
       }
       break;
 
-    case "m":
+    case "Toggle Mute":
       if (!muted) {
         muted = true;
         volumeState = ytShorts.volume;
@@ -118,8 +129,6 @@ const setVolumeSlider = (ytShorts, id) => {
   slider.addEventListener("click", (data) => {
     data.stopPropagation();
   });
-
-  volumeCounter++;
 };
 
 const setVolume = (volume) => {
