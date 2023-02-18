@@ -7,7 +7,7 @@ const editBtnList = document.querySelectorAll(".edit-btn");
 const closeBtn = document.querySelector(".close-btn");
 const keybindInput = document.getElementById("keybind-input");
 let modalTitleSpan = document.getElementById("modal-title-span");
-let invalidKeybinds = ['Backspace', 'Enter', 'Tab', ' ', 'Space', 'PageUp', 'PageDown', 'ArrowUp', 'ArrowDown', 'PrintScreen'];
+let invalidKeybinds = ['backspace', 'enter', 'escape', 'tab', ' ', 'space', 'pageUp', 'pagedown', 'arrowup', 'arrowdown', 'printscreen', 'meta'];
 
 const defaultKeybinds = {
     'Seek Backward': 'j',
@@ -50,6 +50,7 @@ for (let i = 0; i < editBtnList.length; i++) {
 
 resetBtn.onclick = () => {
     currentKeybinds = defaultKeybinds;
+    currentKeybindArray = Object.values(currentKeybinds);
     for (const [command, keybind] of Object.entries(defaultKeybinds)) {
         document.getElementById(command+'-span').textContent = keybind;
         chrome.storage.local.set({ 'keybinds' : defaultKeybinds });
@@ -66,7 +67,9 @@ window.onclick = (event) => {
 }
 
 keybindInput.addEventListener('keydown', (event) => {
-    var keybind = event.key;
+    event.preventDefault();
+    var keybind = event.key.toLowerCase();
+    console.log(keybind);
     if (invalidKeybinds.includes(keybind)) {
         if (keybind === ' ') keybind = 'space';
         keybindInput.value = "";
@@ -80,7 +83,6 @@ keybindInput.addEventListener('keydown', (event) => {
         alert("Invalid keybind: <<" + keybind + ">> is already in use.");
         return;
     }
-    keybind = keybind.toLowerCase()
     document.getElementById(keybindState+'-span').textContent = keybind;
     currentKeybinds[keybindState] = keybind;
     currentKeybindArray = Object.values(currentKeybinds);
