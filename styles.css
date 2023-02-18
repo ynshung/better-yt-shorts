@@ -12,15 +12,17 @@
     display: flex;
 }
 
-.volumeSlider{
+.volume-slider{
     -webkit-appearance: slider-vertical;
     position: absolute;
     right: -40px;
     top: 40px;
     opacity: 0.4;
+    pointer-events: all !important;
+    cursor: pointer;
 }
 
-.volumeSlider:hover{
+.volume-slider:hover{
     opacity: 1;
 }
 
