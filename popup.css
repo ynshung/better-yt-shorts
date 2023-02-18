@@ -7,8 +7,9 @@
       background: #292a2d;
       color: white;
     }
+    td {background-color: #3f3e464d;}
+    tr:hover {background-color: #5857604d;}
     th, td {border-bottom: 2px solid #292a2d;}
-    /* .close-btn:hover, .close-btn:focus {color: white !important;} */
     #keybind-input {
         background-color: #747477b2;
         caret-color: white;
@@ -18,15 +19,16 @@
 
 @media (prefers-color-scheme: light) {
     body {
-        background: #eee;
+        background: white;
         color: #1a1a1a;
     }
     .modal-content {
-        background: #eee;
+        background: white;
         color: #1a1a1a;
-      }
-    th, td {border-bottom: 2px solid #eee;}
-    /* .close-btn:hover, .close-btn:focus {color: black !important;} */
+    }
+    td {background-color: #e3e1e76b;}
+    tr:hover {background-color: #d3d2d74f;}
+    th, td {border-bottom: 2px solid white;}
     #keybind-input {
         background-color: #bebec3b2;
         caret-color: black;
@@ -112,10 +114,6 @@ td:nth-child(2), th:nth-child(2) {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
-
-td {background-color: #3f3e464d;}
-
-tr:hover {background-color: #5857604d;}
 
 .footer {
     font-size:10px;
