@@ -18,6 +18,8 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 * Custom keybinds
 
 ![image](https://user-images.githubusercontent.com/80070435/219866197-2401c0d0-2632-45ed-9152-f1024828f46f.png)
+![image](https://user-images.githubusercontent.com/80070435/219866370-d1acbd50-049b-47ef-9688-19d1dc4efe91.png)
+![image](https://user-images.githubusercontent.com/80070435/219866388-13770811-674d-4681-be32-c7d27f35c000.png)
 
 ## Future Implementation
 This is a very new extension so feel free to make suggestions. I might not have the time to develop the extension extensively so PR are welcomed!
