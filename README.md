@@ -2,7 +2,7 @@
 
 You can control your YouTube shorts with playback controls just like a normal YouTube video!
 
-![image](https://user-images.githubusercontent.com/80070435/219866071-c1f8417b-926a-4612-bb94-a1286c3b807c.png)
+![image](https://user-images.githubusercontent.com/80070435/219866197-2401c0d0-2632-45ed-9152-f1024828f46f.png)
 
 ## Download
 
