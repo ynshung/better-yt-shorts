@@ -66,7 +66,7 @@ window.onclick = (event) => {
 }
 
 keybindInput.addEventListener('keydown', (event) => {
-    var keybind = event.key.toLowerCase();
+    var keybind = event.key;
     if (invalidKeybinds.includes(keybind)) {
         if (keybind === ' ') keybind = 'space';
         keybindInput.value = "";
@@ -80,6 +80,7 @@ keybindInput.addEventListener('keydown', (event) => {
         alert("Invalid keybind: <<" + keybind + ">> is already in use.");
         return;
     }
+    keybind = keybind.toLowerCase()
     document.getElementById(keybindState+'-span').textContent = keybind;
     currentKeybinds[keybindState] = keybind;
     currentKeybindArray = Object.values(currentKeybinds);
