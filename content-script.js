@@ -307,12 +307,14 @@ const timer = setInterval(() => {
         }
       });
 
-      wheel(timerContainer, speedup, speeddown);
+      wheel(ytButton, speedup, speeddown);
       function speedup() {
-        video().playbackRate += 0.25;
+        if (ytShorts.playbackRate < 16) video().playbackRate += 0.25;
+        setSpeed = video().playbackRate;
       }
       function speeddown() {
-        video().playbackRate -= 0.25;
+        if (ytShorts.playbackRate > 0.25) video().playbackRate -= 0.25;
+        setSpeed = video().playbackRate;
       }
       wheel(ytTimer, forward, backward);
       function forward() {
