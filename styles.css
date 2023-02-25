@@ -22,6 +22,12 @@
     cursor: pointer;
 }
 
+@supports (-moz-appearance:none) {  
+    .volume-slider{
+        right: 16px;
+    }
+}
+
 .volume-slider:hover{
     opacity: 1;
 }

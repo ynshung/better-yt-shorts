@@ -118,6 +118,7 @@ const setVolumeSlider = (ytShorts, id) => {
   slider.min = 0;
   slider.max = 1;
   slider.step = 0.01;
+  slider.setAttribute("orient", "vertical");
   volumeContainer.appendChild(slider);
   slider.value = actualVolume;
 
