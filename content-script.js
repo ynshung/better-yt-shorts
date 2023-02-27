@@ -114,6 +114,7 @@ const setVolumeSlider = (ytShorts, id) => {
   checkVolume(ytShorts);
   slider.id = `volumeSliderController${id}`;
   slider.classList.add("volume-slider");
+  slider.classList.add("betterYT-volume-slider");
   slider.type = "range";
   slider.min = 0;
   slider.max = 1;

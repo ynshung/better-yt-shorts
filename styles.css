@@ -12,7 +12,7 @@
     display: flex;
 }
 
-.volume-slider{
+.betterYT-volume-slider{
     -webkit-appearance: slider-vertical;
     position: absolute;
     right: -40px;
