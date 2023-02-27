@@ -164,6 +164,22 @@ const setPlaybackRate = (currSpeed) => {
   return true
 };
 
+function video() { return document.getElementsByTagName("video")[0]; }
+
+//WheelProgram
+function wheel(Element, codeA, codeB) {
+    Element.addEventListener("mousewheel", (event) => {
+        if (event.wheelDelta > 0) {
+            codeA();
+        } else {
+            codeB();
+        }
+        event.preventDefault();
+    },
+        { passive: false }
+    );
+}
+
 var injectedItem = new Set();
 var lastTime = -1;
 var lastSpeed = 0;
@@ -291,6 +307,24 @@ const timer = setInterval(() => {
           ytShorts.loop = true;
         }
       });
+
+      wheel(ytButton, speedup, speeddown);
+      function speedup() {
+        if (ytShorts.playbackRate < 16) video().playbackRate += 0.25;
+        setSpeed = video().playbackRate;
+      }
+      function speeddown() {
+        if (ytShorts.playbackRate > 0.25) video().playbackRate -= 0.25;
+        setSpeed = video().playbackRate;
+      }
+      wheel(ytTimer, forward, backward);
+      function forward() {
+        video().currentTime += 1;
+      }
+      function backward() {
+        video().currentTime -= 1;
+      }
+
     }
     // Progress bar
     if (overlayList) {
