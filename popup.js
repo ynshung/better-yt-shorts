@@ -1,4 +1,5 @@
-const version = chrome.runtime.getManifest().version;
+const browserObj = (typeof browser === 'undefined') ? chrome : browser;
+const version = browserObj.runtime.getManifest().version;
 document.getElementById('version').textContent = version;
 
 const modal = document.getElementById("edit-modal");
@@ -7,7 +8,7 @@ const editBtnList = document.querySelectorAll(".edit-btn");
 const closeBtn = document.querySelector(".close-btn");
 const keybindInput = document.getElementById("keybind-input");
 let modalTitleSpan = document.getElementById("modal-title-span");
-let invalidKeybinds = ['backspace', 'enter', 'escape', 'tab', ' ', 'space', 'pageUp', 'pagedown', 'arrowup', 'arrowdown', 'printscreen', 'meta'];
+let invalidKeybinds = ['backspace', 'enter', 'escape', 'tab', ' ', 'space', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'printscreen', 'meta'];
 
 const defaultKeybinds = {
     'Seek Backward': 'j',
@@ -24,7 +25,7 @@ let currentKeybindArray = [];
 let keybindState = '';
 
 // Get keybinds from storage
-chrome.storage.local.get(['keybinds'])
+browserObj.storage.local.get(['keybinds'])
 .then((result) => {
     let updatedkeybinds = result['keybinds'];
     if (updatedkeybinds) {
@@ -53,7 +54,7 @@ resetBtn.onclick = () => {
     currentKeybindArray = Object.values(currentKeybinds);
     for (const [command, keybind] of Object.entries(defaultKeybinds)) {
         document.getElementById(command+'-span').textContent = keybind;
-        chrome.storage.local.set({ 'keybinds' : defaultKeybinds });
+        browserObj.storage.local.set({ 'keybinds' : defaultKeybinds });
     }
 }
 
@@ -86,7 +87,7 @@ keybindInput.addEventListener('keydown', (event) => {
     document.getElementById(keybindState+'-span').textContent = keybind;
     currentKeybinds[keybindState] = keybind;
     currentKeybindArray = Object.values(currentKeybinds);
-    chrome.storage.local.set({ 'keybinds' : currentKeybinds })
+    browserObj.storage.local.set({ 'keybinds' : currentKeybinds })
     .then(() => {
         keybindInput.value = "";
         closeBtn.click(); 
