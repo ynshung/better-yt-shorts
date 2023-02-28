@@ -87,7 +87,7 @@ keybindInput.addEventListener('keydown', (event) => {
     document.getElementById(keybindState+'-span').textContent = keybind;
     currentKeybinds[keybindState] = keybind;
     currentKeybindArray = Object.values(currentKeybinds);
-    browser.storage.local.set({ 'keybinds' : currentKeybinds })
+    storage.set({ 'keybinds' : currentKeybinds })
     .then(() => {
         keybindInput.value = "";
         closeBtn.click(); 
