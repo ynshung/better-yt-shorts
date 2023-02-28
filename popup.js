@@ -1,5 +1,5 @@
-const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
-const version = browser.runtime.getManifest().version;
+const browserObj = (typeof browser === 'undefined') ? chrome : browser;
+const version = browserObj.runtime.getManifest().version;
 document.getElementById('version').textContent = version;
 
 const modal = document.getElementById("edit-modal");
@@ -25,7 +25,7 @@ let currentKeybindArray = [];
 let keybindState = '';
 
 // Get keybinds from storage
-storage.get(['keybinds'])
+browserObj.storage.local.get(['keybinds'])
 .then((result) => {
     let updatedkeybinds = result['keybinds'];
     if (updatedkeybinds) {
@@ -54,7 +54,7 @@ resetBtn.onclick = () => {
     currentKeybindArray = Object.values(currentKeybinds);
     for (const [command, keybind] of Object.entries(defaultKeybinds)) {
         document.getElementById(command+'-span').textContent = keybind;
-        storage.set({ 'keybinds' : defaultKeybinds });
+        browserObj.storage.local.set({ 'keybinds' : defaultKeybinds });
     }
 }
 
@@ -87,7 +87,7 @@ keybindInput.addEventListener('keydown', (event) => {
     document.getElementById(keybindState+'-span').textContent = keybind;
     currentKeybinds[keybindState] = keybind;
     currentKeybindArray = Object.values(currentKeybinds);
-    storage.set({ 'keybinds' : currentKeybinds })
+    browserObj.storage.local.set({ 'keybinds' : currentKeybinds })
     .then(() => {
         keybindInput.value = "";
         closeBtn.click(); 
