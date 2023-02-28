@@ -1,10 +1,12 @@
+const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
 var actualVolume = 0;
 var mouseX;
-// Using localStorage as a fallback for chrome.storage.local
+
+// Using localStorage as a fallback for browser/chrome.storage.local
 var keybinds = JSON.parse(localStorage.getItem("yt-keybinds"));
-chrome.storage.local.get(["keybinds"])
+storage.get(["keybinds"])
 .then((result) => {
   if (result.keybinds) {
     if (result.keybinds !== keybinds) localStorage.setItem("yt-keybinds", JSON.stringify(result.keybinds));
