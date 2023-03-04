@@ -1,10 +1,11 @@
+const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
 var actualVolume = 0;
-var mouseX;
-// Using localStorage as a fallback for chrome.storage.local
+
+// Using localStorage as a fallback for browser/chrome.storage.local
 var keybinds = JSON.parse(localStorage.getItem("yt-keybinds"));
-chrome.storage.local.get(["keybinds"])
+storage.get(["keybinds"])
 .then((result) => {
   if (result.keybinds) {
     if (result.keybinds !== keybinds) localStorage.setItem("yt-keybinds", JSON.stringify(result.keybinds));
@@ -21,6 +22,7 @@ document.addEventListener("keydown", (data) => {
     "#shorts-player > div.html5-video-container > video"
   );
   if (!ytShorts) return;
+  if (!keybinds) keybinds = {'Seek Backward': 'j','Seek Forward': 'l','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm'};
   const key = data.key.toLowerCase();
   let command;
   for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
