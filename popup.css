@@ -125,13 +125,20 @@ td:nth-child(2), th:nth-child(2) {
     margin:5px 0px;
 }
 
-.reset-btn-wrapper {
+a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+}
+
+.btn-wrapper {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    gap: 8px;
 }
 
-.reset-btn {
+.btn {
     margin: 5px 0px;
     padding: 5px 10px;
     background-color: #57575721;
@@ -140,7 +147,7 @@ td:nth-child(2), th:nth-child(2) {
     cursor: pointer;
 }
 
-.reset-btn:hover {background-color: #5757574d;}
+.btn:hover {background-color: #5757574d;}
 
 .modal {
     display: none;

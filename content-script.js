@@ -167,7 +167,7 @@ const setPlaybackRate = (currSpeed) => {
   return true
 };
 
-function video() { return document.getElementsByTagName("video")[0]; }
+function video() { return document.querySelector("#shorts-player>div>video"); }
 
 //WheelProgram
 function wheel(Element, codeA, codeB) {
