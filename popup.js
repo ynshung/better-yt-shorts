@@ -11,8 +11,8 @@ let modalTitleSpan = document.getElementById("modal-title-span");
 let invalidKeybinds = ['backspace', 'enter', 'escape', 'tab', ' ', 'space', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'printscreen', 'meta'];
 
 const defaultKeybinds = {
-    'Seek Backward': 'j',
-    'Seek Forward': 'l',
+    'Seek Backward': 'arrowleft',
+    'Seek Forward': 'arrowright',
     'Decrease Speed': 'u',
     'Reset Speed': 'i',
     'Increase Speed': 'o',
