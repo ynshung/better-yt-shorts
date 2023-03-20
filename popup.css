@@ -177,7 +177,8 @@ a {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
+    margin-top: 2px;
     align-items: center;
 }
 

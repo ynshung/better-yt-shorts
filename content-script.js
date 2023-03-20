@@ -8,6 +8,10 @@ var keybinds = JSON.parse(localStorage.getItem("yt-keybinds"));
 storage.get(["keybinds"])
 .then((result) => {
   if (result.keybinds) {
+    if (Object.keys(keybinds).length < 10) {
+      result.keybinds['Frame Backward'] = ',';
+      result.keybinds['Frame Forward'] = '.';
+    }
     if (result.keybinds !== keybinds) localStorage.setItem("yt-keybinds", JSON.stringify(result.keybinds));
     keybinds = result.keybinds;
   }
@@ -22,7 +26,7 @@ document.addEventListener("keydown", (data) => {
     "#shorts-player > div.html5-video-container > video"
   );
   if (!ytShorts) return;
-  if (!keybinds) keybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm'};
+  if (!keybinds) keybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Frame Backward': ',', 'Frame Forward': '.'};
   const key = data.key.toLowerCase();
   let command;
   for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
@@ -68,6 +72,18 @@ document.addEventListener("keydown", (data) => {
       } else {
         muted = false;
         ytShorts.volume = volumeState;
+      }
+      break;
+      
+    case "Frame Backward":
+      if (ytShorts.paused) {
+        ytShorts.currentTime -= 0.04;
+      }
+      break;
+
+    case "Frame Forward":
+      if (ytShorts.paused) {
+        ytShorts.currentTime += 0.04;
       }
       break;
   }

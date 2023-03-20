@@ -18,7 +18,9 @@ const defaultKeybinds = {
     'Increase Speed': 'o',
     'Decrease Volume': '-',
     'Increase Volume': '+',
-    'Toggle Mute': 'm'
+    'Toggle Mute': 'm',
+    'Frame Backward': ',',
+    'Frame Forward': '.'
 };
 let currentKeybinds = Object.assign({}, defaultKeybinds);
 let currentKeybindArray = [];
@@ -29,6 +31,10 @@ browserObj.storage.local.get(['keybinds'])
 .then((result) => {
     let updatedkeybinds = result['keybinds'];
     if (updatedkeybinds) {
+        if (Object.keys(updatedkeybinds).length < 10) {
+            updatedkeybinds['Frame Backward'] = ',';
+            updatedkeybinds['Frame Forward'] = '.';
+        }
         for (const [command, keybind] of Object.entries(updatedkeybinds)) {
             document.getElementById(command+'-span').textContent = keybind;
         }
