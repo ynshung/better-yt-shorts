@@ -98,7 +98,7 @@ const getVolumeContainer = (id) =>
   );
 
 const getNextButton = () =>
-  document.querySelector('button.yt-spec-button-shape-next[aria-label="Next video"]');
+  document.querySelector('button.yt-spec-button-shape-next.yt-spec-button-shape-next--text.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-xl.yt-spec-button-shape-next--icon-button');
 
 const setTimer = (currTime, duration) => {
   const id = getCurrentId();
