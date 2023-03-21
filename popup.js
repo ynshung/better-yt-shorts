@@ -31,9 +31,9 @@ browserObj.storage.local.get(['keybinds'])
 .then((result) => {
     let updatedkeybinds = result['keybinds'];
     if (updatedkeybinds) {
-        if (Object.keys(updatedkeybinds).length < 10) {
-            updatedkeybinds['Frame Backward'] = ',';
-            updatedkeybinds['Frame Forward'] = '.';
+        // Set default keybinds if not exists
+        for (const [cmd, keybind] of Object.entries(defaultKeybinds)) {
+          if (!result.keybinds[cmd]) result.keybinds[cmd] = keybind;
         }
         for (const [command, keybind] of Object.entries(updatedkeybinds)) {
             document.getElementById(command+'-span').textContent = keybind;
