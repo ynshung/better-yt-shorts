@@ -1,4 +1,4 @@
-const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Frame Backward': ',', 'Frame Forward': '.'};
+const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Next Frame': ',', 'Previous Frame': '.'};
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
@@ -76,13 +76,13 @@ document.addEventListener("keydown", (data) => {
       }
       break;
       
-    case "Frame Backward":
+    case "Next Frame":
       if (ytShorts.paused) {
         ytShorts.currentTime -= 0.04;
       }
       break;
 
-    case "Frame Forward":
+    case "Previous Frame":
       if (ytShorts.paused) {
         ytShorts.currentTime += 0.04;
       }

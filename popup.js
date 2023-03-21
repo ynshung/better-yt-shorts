@@ -19,8 +19,8 @@ const defaultKeybinds = {
     'Decrease Volume': '-',
     'Increase Volume': '+',
     'Toggle Mute': 'm',
-    'Frame Backward': ',',
-    'Frame Forward': '.'
+    'Next Frame': ',',
+    'Previous Frame': '.'
 };
 let currentKeybinds = Object.assign({}, defaultKeybinds);
 let currentKeybindArray = [];
