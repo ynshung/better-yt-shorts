@@ -1,3 +1,4 @@
+const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Next Frame': ',', 'Previous Frame': '.'};
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
@@ -8,6 +9,10 @@ var keybinds = JSON.parse(localStorage.getItem("yt-keybinds"));
 storage.get(["keybinds"])
 .then((result) => {
   if (result.keybinds) {
+    // Set default keybinds if not exists
+    for (const [cmd, keybind] of Object.entries(defaultKeybinds)) {
+      if (!result.keybinds[cmd]) result.keybinds[cmd] = keybind;
+    }
     if (result.keybinds !== keybinds) localStorage.setItem("yt-keybinds", JSON.stringify(result.keybinds));
     keybinds = result.keybinds;
   }
@@ -22,7 +27,7 @@ document.addEventListener("keydown", (data) => {
     "#shorts-player > div.html5-video-container > video"
   );
   if (!ytShorts) return;
-  if (!keybinds) keybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm'};
+  if (!keybinds) keybinds = defaultKeybinds;
   const key = data.key.toLowerCase();
   let command;
   for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
@@ -68,6 +73,18 @@ document.addEventListener("keydown", (data) => {
       } else {
         muted = false;
         ytShorts.volume = volumeState;
+      }
+      break;
+      
+    case "Next Frame":
+      if (ytShorts.paused) {
+        ytShorts.currentTime -= 0.04;
+      }
+      break;
+
+    case "Previous Frame":
+      if (ytShorts.paused) {
+        ytShorts.currentTime += 0.04;
       }
       break;
   }

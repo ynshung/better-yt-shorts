@@ -14,6 +14,7 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 * Revert to normal speed with I or by clicking the button
 * Scroll on the speed and time indicator to change its speed and seek.
 * Increase and decrease volume with the volume slider or with - and +, mute audio with M
+* While the video is paused, skip to the next frame or previous frame with . and , respectively.
 * Mini timestamp and speed above the like button
 * Autoplay switch to skip to next video when current one ends
 * Custom keybinds

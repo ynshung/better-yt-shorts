@@ -18,7 +18,9 @@ const defaultKeybinds = {
     'Increase Speed': 'o',
     'Decrease Volume': '-',
     'Increase Volume': '+',
-    'Toggle Mute': 'm'
+    'Toggle Mute': 'm',
+    'Next Frame': ',',
+    'Previous Frame': '.'
 };
 let currentKeybinds = Object.assign({}, defaultKeybinds);
 let currentKeybindArray = [];
@@ -29,6 +31,10 @@ browserObj.storage.local.get(['keybinds'])
 .then((result) => {
     let updatedkeybinds = result['keybinds'];
     if (updatedkeybinds) {
+        // Set default keybinds if not exists
+        for (const [cmd, keybind] of Object.entries(defaultKeybinds)) {
+          if (!result.keybinds[cmd]) result.keybinds[cmd] = keybind;
+        }
         for (const [command, keybind] of Object.entries(updatedkeybinds)) {
             document.getElementById(command+'-span').textContent = keybind;
         }
