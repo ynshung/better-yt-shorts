@@ -112,26 +112,36 @@ svg:hover {
 	fill: var(--bg-primary-hover-color);
 }
 
-th {font-size: 12px;}
+table {
+	border-collapse: separate;
+	border-spacing: 0 2px;
+}
+
+th {
+	font-size: 12px;
+	text-align: center;
+}
 
 td {
-    font-size: 12px;
-    padding: 7px 5px;
+	font-size: 12px;
+	padding: 7px 5px;
 }
 
-td:nth-child(1) {padding-left: 6px;}
-
-td:nth-child(1), th:nth-child(1) {
-    text-align: left;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    cursor: default;
+td:first-child {
+	padding-left: 6px;
 }
 
-td:nth-child(2), th:nth-child(2) {
-    text-align: center;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+td:first-child,
+th:first-child {
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	cursor: default;
+}
+
+td:last-child,
+th:last-child {
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
 }
 
 .footer {
@@ -245,4 +255,3 @@ a {
 	outline: none !important;
 	box-shadow: 0 0 3px #00000020;
 }
-
