@@ -47,11 +47,13 @@ tr:not(:first-child):hover {
 	background-color: var(--separation-line-color);
 }
 
-svg {fill: #9d9ea1;}
+svg {
 	fill: var(--bg-primary-hover-color);
+	transition: all 0.5s ease;
+}
 
 svg:hover {
-    cursor: pointer;
+	cursor: pointer;
 	fill: var(--yt-brand-color) !important;
 }
 
