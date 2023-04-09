@@ -7,7 +7,8 @@
 	--bg-secondary-hover-color: #e6e6e6;
 	--separation-line-color: #e5e5e5;
 	--yt-brand-color: #f00;
-	--call-to-action-color: #66afe9;
+	--suggested-action-color: #378de9;
+	--call-to-action-color: #3ea6ff;
 }
 
 [data-theme='dark'] {
@@ -18,8 +19,8 @@
 	--bg-secondary-color: #272727;
 	--bg-secondary-hover-color: #3d3d3d;
 	--separation-line-color: #3f3f3f;
-	--yt-brand-color: #f00;
-	--call-to-action-color: #66afe9;
+	--suggested-action-color: #1d5fd4;
+	--call-to-action-color: #3978e6;
 }
 
 body {
@@ -166,7 +167,7 @@ a {
 .btn {
 	margin: 5px 0px;
 	padding: 5px 10px;
-	background-color: #57575721;
+	background-color: var(--suggested-action-color);
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.275);
 	cursor: pointer;
@@ -174,7 +175,7 @@ a {
 }
 
 .btn:hover {
-	background-color: #5757574d;
+	background-color: var(--call-to-action-color);
 }
 
 .modal {
