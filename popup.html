@@ -11,9 +11,9 @@
   </div>
   <div class="separation-line" style="margin-top:5px;opacity:0.9"></div>
 
-  <h3 style="text-align: center;margin:5px 0px;">Keybinds</h3>
+  <h3 class="prevent-selection" style="text-align: center;margin:5px 0px;">Keybinds</h3>
   <table style="width:100%;border-collapse: collapse;">
-    <tr>
+    <tr class="prevent-selection">
       <th>Command</th>
       <th style="width:50%">Key</th>
     </tr>
@@ -128,7 +128,7 @@
       </td>
     </tr>
   </table>
-  <div class="footer">Reload the page for changes to take effect.</div>
+  <div class="footer prevent-selection">Reload the page for changes to take effect.</div>
   <div class="btn-wrapper"><span class="btn reset-btn">Reset keybinds</span><a href="https://github.com/ynshung/better-yt-shorts" target="_blank"><span class="btn">GitHub</span></a></div>
   <div class="btn-wrapper"></div>
 
@@ -141,9 +141,9 @@
       </div>
       <div class="separation-line" style="opacity:0.5;"></div>
       <div class="input-wrapper">
-        <label for="keybind-input">Press desired key</label>
+        <label for="keybind-input" class="prevent-selection">Press desired key</label>
         <input type="text" id="keybind-input" autofocus/>
-        <div style="opacity:0.8;font-size:10px;">Doesn't support key combinations</div>
+        <div class="prevent-selection" style="opacity:0.8;font-size:10px;">Does not support key combinations</div>
       </div>
     </div>
   </div>

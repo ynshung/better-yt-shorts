@@ -226,6 +226,12 @@ a {
 	gap: 10px;
 }
 
+.prevent-selection {
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
 #keybind-input {
 	width: 30%;
 	height: 1.5rem;
