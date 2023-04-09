@@ -26,6 +26,15 @@ let currentKeybinds = Object.assign({}, defaultKeybinds);
 let currentKeybindArray = [];
 let keybindState = '';
 
+// Set user's prefers-color-scheme
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', "dark");
+}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    const newColorScheme = event.matches ? "dark" : "light";
+    document.documentElement.setAttribute('data-theme', newColorScheme);
+});
+
 // Get keybinds from storage
 browserObj.storage.local.get(['keybinds'])
 .then((result) => {
