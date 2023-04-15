@@ -1,7 +1,7 @@
 <link href="popup.css" rel="stylesheet" type="text/css" />
 <script type="module" src="popup.js"></script>
 
-<div class="container">
+<div class="container" data-theme="light">
   <div class="title-container">
     <div>
       <div class="title">Better Youtube Shorts</div>
@@ -11,20 +11,31 @@
   </div>
   <div class="separation-line" style="margin-top:5px;opacity:0.9"></div>
 
-  <h3 style="text-align: center;margin:5px 0px;">Keybinds</h3>
-  <table style="width:100%;border-collapse: collapse;">
-    <tr>
+  <h3 class="prevent-selection" style="text-align: center;margin:5px 0px;">Keybinds</h3>
+  <table style="width:100%;" data-theme="light">
+    <tr class="prevent-selection">
       <th>Command</th>
-      <th style="width:50%">Key</th>
+      <th>Key</th>
+      <th></th>
     </tr>
     <tr>
       <td>Seek backward <span style="font-style: italic;">(-5s)</span></td>
       <td>
         <div class="keybind-wrapper">
           <span id="Seek Backward-span" class="keybind-span">ArrowLeft</span>
-          <div id="Seek Backward" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+      </td>
+      <td>
+        <div id="Seek Backward" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
+        </div>
         </div>
       </td>
     </tr>
@@ -33,9 +44,19 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Seek Forward-span" class="keybind-span">ArrowRight</span>
-          <div id="Seek Forward" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Seek Forward" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
@@ -44,9 +65,19 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Decrease Speed-span" class="keybind-span">U</span>
-          <div id="Decrease Speed" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Decrease Speed" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
@@ -55,9 +86,19 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Reset Speed-span" class="keybind-span">I</span>
-          <div id="Reset Speed" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Reset Speed" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
@@ -66,9 +107,19 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Increase Speed-span" class="keybind-span">O</span>
-          <div id="Increase Speed" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Increase Speed" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
@@ -77,10 +128,20 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Decrease Volume-span" class="keybind-span">-</span>
-          <div id="Decrease Volume" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
         </div>
+        <td>
+          <div id="Decrease Volume" class="edit-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+              <g id="pencil-svg" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+                </path>
+              </g>
+            </svg>
+          </div>
+        </td>
       </td>
     </tr>
     <tr>
@@ -88,9 +149,19 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Increase Volume-span" class="keybind-span">+</span>
-          <div id="Increase Volume" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Increase Volume" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
@@ -99,9 +170,19 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Toggle Mute-span" class="keybind-span">M</span>
-          <div id="Toggle Mute" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Toggle Mute" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
@@ -110,9 +191,19 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Next Frame-span" class="keybind-span">,</span>
-          <div id="Next Frame" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Next Frame" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
@@ -121,16 +212,25 @@
       <td>
         <div class="keybind-wrapper">
           <span id="Previous Frame-span" class="keybind-span">.</span>
-          <div id="Previous Frame" class="edit-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"><g id="pencil-svg" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"></path></g></svg>
-          </div>
+        </div>
+      </td>
+      <td>
+        <div id="Previous Frame" class="edit-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+            <g id="pencil-svg" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z">
+              </path>
+            </g>
+          </svg>
         </div>
       </td>
     </tr>
   </table>
-  <div class="footer">Reload the page for changes to take effect.</div>
+  <div class="footer prevent-selection">Reload the page for changes to take effect.</div>
   <div class="btn-wrapper"><span class="btn reset-btn">Reset keybinds</span><a href="https://github.com/ynshung/better-yt-shorts" target="_blank"><span class="btn">GitHub</span></a></div>
-  <div class="btn-wrapper"></div>
 
   <!-- Modal -->
   <div id="edit-modal" class="modal">
@@ -141,9 +241,9 @@
       </div>
       <div class="separation-line" style="opacity:0.5;"></div>
       <div class="input-wrapper">
-        <label for="keybind-input">Press desired key</label>
+        <label for="keybind-input" class="prevent-selection">Press desired key</label>
         <input type="text" id="keybind-input" autofocus/>
-        <div style="opacity:0.8;font-size:10px;">Doesn't support key combinations</div>
+        <div class="prevent-selection" style="opacity:0.8;font-size:10px;">Does not support key combinations</div>
       </div>
     </div>
   </div>
