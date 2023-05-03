@@ -188,7 +188,7 @@ function video() { return document.querySelector("#shorts-player>div>video"); }
 
 //WheelProgram
 function wheel(Element, codeA, codeB) {
-    Element.addEventListener("mousewheel", (event) => {
+    Element.addEventListener("wheel", (event) => {
         if (event.wheelDelta > 0) {
             codeA();
         } else {
