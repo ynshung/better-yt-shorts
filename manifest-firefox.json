@@ -2,13 +2,13 @@
     "name": "Better YouTube Shorts",
     "description": "Take back the controls on YouTube Shorts with playback, volume, progress bar and more.",
     "version": "2.3.3",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "permissions": ["storage"],
-    "action": {
+    "browser_action": {
         "default_popup": "popup.html"
     },
     "background" : {
-        "service_worker": "background.js"
+        "scripts": ["background.js"]
     },
     "content_scripts": [
         {
