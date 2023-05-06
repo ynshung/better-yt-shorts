@@ -26,6 +26,8 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 ## Issues / Suggestion
 If you faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
 
+You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfwyALfA).
+
 * Add to playlist button
 * Auto skip short with likes below custom threshold (e.g. 100 likes)
 
