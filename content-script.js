@@ -1,4 +1,4 @@
-const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Next Frame': ',', 'Previous Frame': '.'};
+const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Next Frame': ',', 'Previous Frame': '.', 'Reaction Like':'z', 'Reaction Dislike':'x'};
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
@@ -93,6 +93,13 @@ document.addEventListener("keydown", (data) => {
         ytShorts.currentTime += 0.04;
       }
       break;
+      
+    case "Reaction Like":
+      setReaction(true);
+      break;
+    case "Reaction Dislike":
+      setReaction(false);
+      break;
   }
   setSpeed = ytShorts.playbackRate;
 });
@@ -122,6 +129,19 @@ const getVolumeContainer = (id) =>
 
 const getNextButton = () =>
   document.querySelector('#navigation-button-down > .style-scope.ytd-shorts > yt-button-shape > button.yt-spec-button-shape-next.yt-spec-button-shape-next--text.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--size-xl.yt-spec-button-shape-next--icon-button');
+
+const getReactionToggleButtons = (id) => {
+  const buttons_container = document.querySelector(`[id='${id}'] div#like-button`);
+  const [like, dislike] = buttons_container.querySelectorAll(`#like-button button, #dislike-button button`);
+  return {like, dislike};
+}
+
+const setReaction = (like = true, id = null) => {
+  id = id === null ? getCurrentId() : id;
+  const buttons = getReactionToggleButtons(id);
+  buttons[like === true ? "like" : "dislike"].click();
+  return true;
+};
 
 const setTimer = (currTime, duration) => {
   const id = getCurrentId();
