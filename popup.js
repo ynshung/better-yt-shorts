@@ -20,7 +20,9 @@ const defaultKeybinds = {
     'Increase Volume': '+',
     'Toggle Mute': 'm',
     'Next Frame': ',',
-    'Previous Frame': '.'
+    'Previous Frame': '.',
+    'Reaction Like':'z',
+    'Reaction Dislike':'x'
 };
 let currentKeybinds = Object.assign({}, defaultKeybinds);
 let currentKeybindArray = [];
