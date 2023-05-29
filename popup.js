@@ -87,7 +87,7 @@ window.onclick = (event) => {
 keybindInput.addEventListener('keydown', (event) => {
     event.preventDefault();
     var keybind = event.key.toLowerCase();
-    console.log(keybind);
+    // console.log([keybind,invalidKeybinds.includes(keybind)],invalidKeybinds);
     if (invalidKeybinds.includes(keybind)) {
         if (keybind === ' ') keybind = 'space';
         keybindInput.value = "";
