@@ -210,6 +210,7 @@ var injectedItem = new Set();
 var lastTime = -1;
 var lastSpeed = 0;
 var setSpeed = 1;
+var nextButtonClicked = false;
 
 const timer = setInterval(() => {
   if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return;
@@ -226,9 +227,13 @@ const timer = setInterval(() => {
     var currTime = Math.round(ytShorts.currentTime);
     var currSpeed = ytShorts.playbackRate;
 
-    if (autoplayEnabled && ytShorts && ytShorts.currentTime >= ytShorts.duration - 0.11) {
+    if (autoplayEnabled && ytShorts && ytShorts.currentTime >= ytShorts.duration - 0.11 && !nextButtonClicked) {
       var nextButton = getNextButton();
       nextButton.click();
+      nextButtonClicked = true;
+      setTimeout(() => {
+        nextButtonClicked = false;
+      }, 500);
     }
 
     if (currTime !== lastTime) {
