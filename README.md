@@ -8,7 +8,6 @@ You can control your YouTube shorts with playback controls just like a normal Yo
 * Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 
 ## Features
-* **YouTube Bug Fix**: Pauses video instead of scrolling to next video when pressing spacebar
 * Seeking 5 seconds backward and forward (default: Left and right arrow keys)
 * Seeking a precise timestamp in the progress bar
 * Decrease and increase playback rate (default: U and O)

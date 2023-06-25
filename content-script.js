@@ -28,11 +28,6 @@ document.addEventListener("keydown", (data) => {
   if (!keybinds) keybinds = defaultKeybinds;
   const key = data.key.toLowerCase();
 
-  // Fix for spacebar scrolling
-  if (key === " ") {
-    data.preventDefault();
-  }
-
   let command;
   for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
   if (!command) return;
