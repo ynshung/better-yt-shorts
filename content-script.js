@@ -23,9 +23,7 @@ document.addEventListener("keydown", (data) => {
     document.activeElement === document.querySelector(`input`) ||
     document.activeElement === document.querySelector("#contenteditable-root")
     ) return; // Avoids using keys while the user interacts with any input, like search and comment.
-  const ytShorts = document.querySelector(
-    "#shorts-player > div.html5-video-container > video"
-  );
+  const ytShorts = getVideo();
   if (!ytShorts) return;
   if (!keybinds) keybinds = defaultKeybinds;
   const key = data.key.toLowerCase();
@@ -190,7 +188,7 @@ const setPlaybackRate = (currSpeed) => {
   return true
 };
 
-function video() { return document.querySelector("#shorts-player>div>video"); }
+function getVideo() { return document.querySelector("#shorts-player>div>video"); }
 
 //WheelProgram
 function wheel(Element, codeA, codeB) {
@@ -213,9 +211,7 @@ var setSpeed = 1;
 
 const timer = setInterval(() => {
   if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return;
-  const ytShorts = document.querySelector(
-    "#shorts-player > div.html5-video-container > video"
-  );
+  const ytShorts = getVideo();
   var currentId = getCurrentId();
   var actionList = getActionElement(currentId);
   var overlayList = getOverlayElement(currentId);
@@ -336,19 +332,19 @@ const timer = setInterval(() => {
 
       wheel(ytButton, speedup, speeddown);
       function speedup() {
-        if (ytShorts.playbackRate < 16) video().playbackRate += 0.25;
-        setSpeed = video().playbackRate;
+        if (ytShorts.playbackRate < 16) getVideo().playbackRate += 0.25;
+        setSpeed = getVideo().playbackRate;
       }
       function speeddown() {
-        if (ytShorts.playbackRate > 0.25) video().playbackRate -= 0.25;
-        setSpeed = video().playbackRate;
+        if (ytShorts.playbackRate > 0.25) getVideo().playbackRate -= 0.25;
+        setSpeed = getVideo().playbackRate;
       }
       wheel(ytTimer, forward, backward);
       function forward() {
-        video().currentTime += 1;
+        getVideo().currentTime += 1;
       }
       function backward() {
-        video().currentTime -= 1;
+        getVideo().currentTime -= 1;
       }
 
     }
@@ -380,16 +376,16 @@ const timer = setInterval(() => {
         progBarPlayed.classList.add('betterYT-progress-bar-hover');
       });
       progBarList.addEventListener("mousemove", (event) => {
-        let x = event.clientX - progBarList.getBoundingClientRect().left;
+        let x = event.clientX - ytShorts.getBoundingClientRect().left;
         // Deal with slight inaccuracies
         if (x < 0) x = 0;
-        if (x > progBarList.clientWidth) x = progBarList.clientWidth;
+        if (x > ytShorts.clientWidth) x = ytShorts.clientWidth;
         // Get timestamp and round to nearest 0.1
-        let timestamp = ((x / progBarList.clientWidth) * ytShorts.duration).toFixed(1);
+        let timestamp = ((x / ytShorts.clientWidth) * ytShorts.duration).toFixed(1);
         timestampTooltip.textContent = `${timestamp}s`;
         // Ensure tooltip stays visible at edges of client
-        if ((x - (timestampTooltip.offsetWidth / 2)) > (progBarList.clientWidth - timestampTooltip.offsetWidth)) {
-          timestampTooltip.style.left = `${progBarList.clientWidth - timestampTooltip.offsetWidth}px`;
+        if ((x - (timestampTooltip.offsetWidth / 2)) > (ytShorts.clientWidth - timestampTooltip.offsetWidth)) {
+          timestampTooltip.style.left = `${ytShorts.clientWidth - timestampTooltip.offsetWidth}px`;
         } else if ((x - (timestampTooltip.offsetWidth / 2)) <= 0) {
           timestampTooltip.style.left = "0px";
         } else {
@@ -404,10 +400,10 @@ const timer = setInterval(() => {
         timestampTooltip.style.display = 'none';
       });
       progBarList.addEventListener("click", (event) => {
-        let x = event.clientX - progBarList.getBoundingClientRect().left;
+        let x = event.clientX - ytShorts.getBoundingClientRect().left;
         if (x < 0) x = 0;
-        if (x > progBarList.clientWidth) x = progBarList.clientWidth;
-        ytShorts.currentTime = (x / progBarList.clientWidth) * ytShorts.duration;
+        if (x > ytShorts.clientWidth) x = ytShorts.clientWidth;
+        ytShorts.currentTime = (x / ytShorts.clientWidth) * ytShorts.duration;
       });
     }
     if (currentId !== null) setVolumeSlider(ytShorts, currentId);
