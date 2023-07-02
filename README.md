@@ -1,5 +1,11 @@
 # Better YouTube Shorts
 
+![Chrome Web Store](https://img.shields.io/chrome-web-store/v/icnidlkdlledahfgejnagmhgaeijokcp?label=version)
+[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/icnidlkdlledahfgejnagmhgaeijokcp?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp)
+[![Firefox Add-on users](https://img.shields.io/amo/users/better-youtube-shorts?label=firefox)](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/icnidlkdlledahfgejnagmhgaeijokcp)
+![GitHub](https://img.shields.io/github/license/ynshung/better-yt-shorts)
+
 You can control your YouTube shorts with playback controls just like a normal YouTube video!
 
 ## Download
