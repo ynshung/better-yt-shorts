@@ -212,6 +212,9 @@ const timer = setInterval(() => {
   var overlayList = getOverlayElement(currentId);
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   if (autoplayEnabled === null) autoplayEnabled = false;
+  
+  var progBarList = overlayList.children[2].children[0].children[0];
+  progBarList.removeAttribute( "hidden" )
 
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
@@ -348,9 +351,6 @@ const timer = setInterval(() => {
       var progBarList = overlayList.children[2].children[0].children[0];
       var progBarBG = progBarList.children[0];
       var progBarPlayed = progBarList.children[1]; // The red part of the progress bar
-
-      // Force progress bar to be visible for sub-30s shorts
-      if (ytShorts.duration < 30) progBarList.removeAttribute("hidden"); 
 
       const timestampTooltip = document.createElement("div");
       timestampTooltip.classList.add("betterYT-timestamp-tooltip");
