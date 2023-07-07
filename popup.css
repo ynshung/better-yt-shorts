@@ -297,3 +297,14 @@ a {
 {
   accent-color: var(--yt-brand-color);
 }
+
+.extra_options--row input[type="number"]::-webkit-outer-spin-button,
+.extra_options--row input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.extra_options--row input[type="number"] {
+  -moz-appearance: textfield;
+}
