@@ -7,6 +7,7 @@ const resetBtn = document.querySelector(".reset-btn");
 const editBtnList = document.querySelectorAll(".edit-btn");
 const closeBtn = document.querySelector(".close-btn");
 const keybindInput = document.getElementById("keybind-input");
+
 let modalTitleSpan = document.getElementById("modal-title-span");
 let invalidKeybinds = ['backspace', 'enter', 'escape', 'tab', ' ', 'space', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'printscreen', 'meta'];
 
@@ -22,7 +23,13 @@ const defaultKeybinds = {
     'Next Frame': ',',
     'Previous Frame': '.'
 };
+const defaultExtraOptions = {
+  skip_enabled:   false,
+  skip_threshold: 500,
+}
+
 let currentKeybinds = Object.assign({}, defaultKeybinds);
+let currentExtraOpts = Object.assign({}, defaultExtraOptions);
 let currentKeybindArray = [];
 let keybindState = '';
 
@@ -53,6 +60,23 @@ browserObj.storage.local.get(['keybinds'])
     currentKeybindArray = Object.values(currentKeybinds);
 });
 
+// Get extra options from storage
+browserObj.storage.local.get(['extraopts'])
+  .then((result) => {
+      let updatedExtraOpts = result['extraopts'];
+      if ( updatedExtraOpts ) {
+        // Set default extraopts if not exists
+        for (const [ option, value ] of Object.entries( defaultExtraOptions )) {
+          if (result.extraopts[ option ]) continue
+
+          result.extraopts[ option ] = value;
+        }
+      }
+        
+    initOptions( result.extraopts )
+
+  })
+
 // Open modal
 for (let i = 0; i < editBtnList.length; i++) {
     editBtnList[i].onclick = function() {
@@ -62,6 +86,12 @@ for (let i = 0; i < editBtnList.length; i++) {
         modalTitleSpan.textContent = this.id;
         keybindState = this.id;
     }
+}
+
+document.querySelector( ".save-btn" ).onclick = () => {
+  let newOptions = getUpdatedOptions( currentExtraOpts )
+  browserObj.storage.local.set({ 'extraopts' : newOptions })
+  alert( "Saved Changes!" )
 }
 
 resetBtn.onclick = () => {
@@ -85,7 +115,6 @@ window.onclick = (event) => {
 keybindInput.addEventListener('keydown', (event) => {
     event.preventDefault();
     var keybind = event.key.toLowerCase();
-    console.log(keybind);
     if (invalidKeybinds.includes(keybind)) {
         if (keybind === ' ') keybind = 'space';
         keybindInput.value = "";
@@ -108,3 +137,26 @@ keybindInput.addEventListener('keydown', (event) => {
         closeBtn.click(); 
     });
 });
+
+function getUpdatedOptions( updatedExtraOpts )
+{
+  // save skip toggle
+  updatedExtraOpts.skip_enabled   = document.getElementById( "extra_options_skip_enabled" ).checked
+  
+  // save skip threshold
+  updatedExtraOpts.skip_threshold = document.getElementById( "extra_options_skip_threshold" ).valueAsNumber
+
+  return updatedExtraOpts
+}
+
+function initOptions( options )
+{
+  // set skip toggle
+  document.getElementById( "extra_options_skip_enabled" ).checked = options.skip_enabled
+  
+  // set skip threshold
+  document.getElementById( "extra_options_skip_threshold" ).value = options.skip_threshold
+
+  console.log( `[Better Youtube Shorts] :: Intitialised Options` )
+  
+}

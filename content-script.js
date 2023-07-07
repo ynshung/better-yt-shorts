@@ -1,8 +1,37 @@
 const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Next Frame': ',', 'Previous Frame': '.'};
+const defaultExtraOptions = {
+  skip_enabled:   false,
+  skip_threshold: 500,
+}
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
 var actualVolume = 0;
+var skippedId = null
+var topId = 0 // store the furthest id in the chain
+
+const HEIGHT_OF_PLAYER = 833
+
+function shouldSkipShort( currentId, likeCount )
+{
+  if ( extraOptions === null ) return false
+
+  if ( !extraOptions.skip_enabled )               return false
+  if ( currentId < topId )                        return false // allow user to scroll back up to see skipped video
+  if ( skippedId === currentId )                  return false // prevent skip spam
+  if ( likeCount === null || isNaN( likeCount ) ) return false // dont skip unloaded shorts
+  if ( likeCount > extraOptions.skip_threshold )  return false
+  return true
+}
+
+/**
+ * If the setting `shouldSkipUnrecommendedShorts` is true, skip shorts that have fewer than the set number of likes
+ */
+function skipShort( short )
+{
+  const scrollAmount = short.clientHeight
+  document.getElementById( "shorts-container" ).scrollTop += scrollAmount
+}
 
 // Using localStorage as a fallback for browser/chrome.storage.local
 var keybinds = JSON.parse(localStorage.getItem("yt-keybinds"));
@@ -18,6 +47,24 @@ storage.get(["keybinds"])
   }
 });
 
+var extraOptions = JSON.parse(localStorage.getItem("yt-extraopts"))
+storage.get( ["extraopts"] )
+  .then((result) => {
+    if (result.extraopts) 
+    {
+      // Set default options if not exists
+      for ( const [ option, value ] of Object.entries( defaultExtraOptions ) ) {
+        if ( result.extraopts[ option ] ) continue
+        result.extraopts[ option ] = value
+      }
+
+      if ( result.extraopts !== extraOptions ) 
+        localStorage.setItem("yt-extraopts", JSON.stringify(result.extraopts) )
+
+      extraOptions = result.extraopts
+    }
+  })
+
 document.addEventListener("keydown", (data) => {
   if (
     document.activeElement === document.querySelector(`input`) ||
@@ -27,7 +74,7 @@ document.addEventListener("keydown", (data) => {
   if (!ytShorts) return;
   if (!keybinds) keybinds = defaultKeybinds;
   const key = data.key.toLowerCase();
-
+    
   let command;
   for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
   if (!command) return;
@@ -94,9 +141,19 @@ const getCurrentId = () => {
   const videoEle = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
-  if (videoEle && videoEle.closest("ytd-reel-video-renderer")) return videoEle.closest("ytd-reel-video-renderer").id;
+  if (videoEle && videoEle.closest("ytd-reel-video-renderer")) return +videoEle.closest("ytd-reel-video-renderer").id;
   return null;
 };
+
+const getLikeCount = (id) => {
+  // there may be a more direct way of getting the actual value, but i spent 5 hours and this is the best i could find lmao
+  const likesElement = document.querySelector( 
+    `[id='${id}']  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #like-button`
+  )
+  const numberOfLikes = likesElement.firstElementChild.innerText.split( /\r?\n/ )[0]
+
+  return convertLocaleNumber( numberOfLikes )
+}
 
 const getActionElement = (id) =>
   document.querySelector(
@@ -206,13 +263,25 @@ var setSpeed = 1;
 
 const timer = setInterval(() => {
   if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return;
+  
   const ytShorts = getVideo();
   var currentId = getCurrentId();
+  var likeCount = getLikeCount(currentId); 
   var actionList = getActionElement(currentId);
   var overlayList = getOverlayElement(currentId);
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   if (autoplayEnabled === null) autoplayEnabled = false;
 
+  if ( topId < currentId ) 
+    topId = currentId
+
+  if ( shouldSkipShort( currentId, likeCount ) )
+  {
+    console.log( `[Better Youtube Shorts] :: Skipping short that had ${likeCount} likes` )
+    skippedId = currentId
+    skipShort( ytShorts )
+  }
+  
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
     var currSpeed = ytShorts.playbackRate;
@@ -405,3 +474,31 @@ const timer = setInterval(() => {
   }
   if (ytShorts) checkVolume(ytShorts);
 }, 100);
+
+
+/**
+ * Converts a formatted number to its full integer value.
+ * @param {string} string value to be converted (eg: 1.4M, 1,291 or 727) 
+ * @returns converted number
+ */
+function convertLocaleNumber( string )
+{
+  if ( typeof string !== "string" ) return
+  
+  // todo  - do different langs use different letters?
+  const multipliers = {
+    "b": 1_000_000_000,
+    "m": 1_000_000,
+    "k": 1_000,
+  }
+  const end = string.length - 1
+  const multiplier = string[ end ].toLowerCase()
+  const hasMultiplier = Object.keys( multipliers ).includes( multiplier )
+
+  let output = 0
+  
+  if ( hasMultiplier )
+    return +string.slice( 0, end ).replace( /,/g, "" ) * multipliers[ multiplier ]
+
+  return +string.slice( 0, end + 1 ).replace( /,/g, "" ) 
+}
