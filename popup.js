@@ -22,6 +22,13 @@ let invalidKeybinds = [
   'F13',             // printscreen
   'MetaLeft',        // windows/command
   'MetaRight',
+
+  'ControlLeft',
+  'ControlRight',
+  'ShiftLeft',
+  'ShiftRight',
+  'AltLeft',
+  'AltRight',
 ];
 
 const defaultKeybinds = {
