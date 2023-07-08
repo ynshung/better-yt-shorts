@@ -8,19 +8,33 @@ const editBtnList = document.querySelectorAll(".edit-btn");
 const closeBtn = document.querySelector(".close-btn");
 const keybindInput = document.getElementById("keybind-input");
 let modalTitleSpan = document.getElementById("modal-title-span");
-let invalidKeybinds = ['backspace', 'enter', 'escape', 'tab', ' ', 'space', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'printscreen', 'meta'];
+let invalidKeybinds = [
+  'Backspace',
+  'Enter',
+  'NumpadEnter',
+  'Escape',
+  'Tab',
+  'Space',
+  'PageUp',
+  'PageDown',
+  'ArrowUp',
+  'ArrowDown',
+  'F13',             // printscreen
+  'MetaLeft',        // windows/command
+  'MetaRight',
+];
 
 const defaultKeybinds = {
-    'Seek Backward': 'arrowleft',
-    'Seek Forward': 'arrowright',
-    'Decrease Speed': 'u',
-    'Reset Speed': 'i',
-    'Increase Speed': 'o',
-    'Decrease Volume': '-',
-    'Increase Volume': '+',
-    'Toggle Mute': 'm',
-    'Next Frame': ',',
-    'Previous Frame': '.'
+  'Seek Backward':   'ArrowLeft',
+  'Seek Forward':    'ArrowRight',
+  'Decrease Speed':  'KeyU',
+  'Reset Speed':     'KeyI',
+  'Increase Speed':  'KeyO',
+  'Decrease Volume': 'Minus',
+  'Increase Volume': 'Equal',
+  'Toggle Mute':     'KeyM',
+  'Next Frame':      'Comma',
+  'Previous Frame':  'Period',
 };
 let currentKeybinds = Object.assign({}, defaultKeybinds);
 let currentKeybindArray = [];
@@ -84,16 +98,17 @@ window.onclick = (event) => {
 
 keybindInput.addEventListener('keydown', (event) => {
     event.preventDefault();
-    var keybind = event.key.toLowerCase();
-    console.log(keybind);
-    if (invalidKeybinds.includes(keybind)) {
-        if (keybind === ' ') keybind = 'space';
-        keybindInput.value = "";
-        closeBtn.click();
-        alert("Invalid keybind: <<" + keybind + ">> is not allowed.");
-        return;
+    var keybind = event.code;
+
+    console.log( `[BYS] :: Attempting to set key: ${keybind}` )
+
+    if ( invalidKeybinds.includes(keybind) ) {
+      keybindInput.value = "";
+      closeBtn.click();
+      alert("Invalid keybind: <<" + keybind + ">> is not allowed.");
+      return;
     }
-    if (currentKeybindArray.includes(keybind)) {
+    if ( currentKeybindArray.includes(keybind) ) {
         keybindInput.value = "";
         closeBtn.click();
         alert("Invalid keybind: <<" + keybind + ">> is already in use.");
