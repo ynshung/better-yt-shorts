@@ -98,7 +98,8 @@ window.onclick = (event) => {
 
 keybindInput.addEventListener('keydown', (event) => {
     event.preventDefault();
-    var keybind = event.code;
+    var keybind    = event.code;
+    var keybindAlt = event.key;   // for legacy, will become obsolete
 
     console.log( `[BYS] :: Attempting to set key: ${keybind}` )
 
@@ -108,11 +109,11 @@ keybindInput.addEventListener('keydown', (event) => {
       alert("Invalid keybind: <<" + keybind + ">> is not allowed.");
       return;
     }
-    if ( currentKeybindArray.includes(keybind) ) {
-        keybindInput.value = "";
-        closeBtn.click();
-        alert("Invalid keybind: <<" + keybind + ">> is already in use.");
-        return;
+    if ( currentKeybindArray.includes( keybind ) || currentKeybindArray.includes( keybindAlt ) ) {
+      keybindInput.value = "";
+      closeBtn.click();
+      alert("Invalid keybind: <<" + keybind + ">> is already in use.");
+      return;
     }
     document.getElementById(keybindState+'-span').textContent = keybind;
     currentKeybinds[keybindState] = keybind;
