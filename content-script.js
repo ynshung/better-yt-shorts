@@ -38,7 +38,7 @@ document.addEventListener("keydown", (data) => {
   if (!ytShorts) return;
   if (!keybinds) keybinds = defaultKeybinds;
 
-  const key    = data.code.toLowerCase();
+  const key    = data.code;
   const keyAlt = data.key.toLowerCase(); // for legacy keybinds
 
   let command;
