@@ -23,6 +23,24 @@
 	--call-to-action-color: #3978e6;
 }
 
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  table,
+  tr,
+  td,
+  th,
+  p,
+  li,
+  span,
+){
+  color: var(--text-primary-color);
+}
+
 body {
 	font-family: 'Source Sans Pro', 'Roboto', 'Noto', 'Arial', sans-serif;
 	background: var(--bg-primary-color);
