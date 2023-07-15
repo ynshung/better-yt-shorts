@@ -75,7 +75,7 @@ browserObj.storage.local.get(['keybinds'])
 
 
 resetBtn.onclick = () => {
-  currentKeybinds = defaultKeybinds;
+  currentKeybinds     = Object.assign( {},  defaultKeybinds );
   currentKeybindArray = Object.values(currentKeybinds);
   
   populateKeybindsTable( defaultKeybinds )
