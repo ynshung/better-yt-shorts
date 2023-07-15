@@ -104,7 +104,7 @@ document.addEventListener("keydown", (data) => {
       goToNextShort( ytShorts )
       break;
 
-    case "Prev Short":
+    case "Previous Short":
       goToPrevShort( ytShorts )
       break;
   }
