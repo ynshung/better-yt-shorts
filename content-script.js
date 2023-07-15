@@ -1,4 +1,17 @@
-const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Next Frame': ',', 'Previous Frame': '.'};
+const defaultKeybinds = {
+  'Seek Backward': 'arrowleft',
+  'Seek Forward': 'arrowright',
+  'Decrease Speed': 'u',
+  'Reset Speed': 'i',
+  'Increase Speed': 'o',
+  'Decrease Volume': '-',
+  'Increase Volume': '+',
+  'Toggle Mute': 'm',
+  'Next Frame': ',',
+  'Previous Frame': '.',
+  'Next Short': 's', 
+  'Previous Short': 'w',
+};
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
@@ -85,6 +98,14 @@ document.addEventListener("keydown", (data) => {
       if (ytShorts.paused) {
         ytShorts.currentTime += 0.04;
       }
+      break;
+    
+    case "Next Short":
+      goToNextShort( ytShorts )
+      break;
+
+    case "Prev Short":
+      goToPrevShort( ytShorts )
       break;
   }
   setSpeed = ytShorts.playbackRate;
@@ -405,3 +426,15 @@ const timer = setInterval(() => {
   }
   if (ytShorts) checkVolume(ytShorts);
 }, 100);
+
+function goToNextShort( short )
+{
+  const scrollAmount = short.clientHeight
+  document.getElementById( "shorts-container" ).scrollTop += scrollAmount
+}
+
+function goToPrevShort( short )
+{
+  const scrollAmount = short.clientHeight
+  document.getElementById( "shorts-container" ).scrollTop -= scrollAmount
+}
