@@ -261,7 +261,7 @@ a {
 #keybind-input:focus {
 	outline: 0;
 	outline: none !important;
-	box-shadow: 0 0 3px ;
+	box-shadow: 0 0 3px #00000020;
 }
 
 /* width */
