@@ -10,11 +10,39 @@ var actualVolume = 0;
 var skippedId = null
 var topId = 0 // store the furthest id in the chain
 
-const HEIGHT_OF_PLAYER = 833
+// literally just the word "like" in other languages (to lower case)
+const LIKE_TRANSLATIONS = [
+  "like",
+  "me gusta",
+  "mag ich",
+  "j'aime",
+  "mi piace",
+]
+
+// video with no likes    => https://www.youtube.com/shorts/ZFLRydDd9Mw
+// video with 1.5M / 1,5M => https://www.youtube.com/shorts/nKZIx1bHUbQ
 
 function shouldSkipShort( currentId, likeCount )
 {
-  if ( extraOptions === null ) return false
+  // for debugging purposes
+
+  // console.dir({
+  //   "extra options check": !( extraOptions == null ),
+  //   "video playing check": !( getVideo().currentTime === 0 ),
+  //   "option enabled?": !( !extraOptions.skip_enabled ),
+  //   "current id check": !( currentId < topId ),
+  //   "skipped id check": !( skippedId === currentId ),
+  //   "likecount null check": !( likeCount === null || isNaN( likeCount ) ),
+  //   "threshold check": !( likeCount > extraOptions.skip_threshold ),
+  //   "current threshold": extraOptions.skip_threshold,
+  //   "number of likes": likeCount
+  // })
+
+  // todo  - theres an issue with adding to scroll with macbooks it seems
+  // like the mac scroll doesnt end before the skip happens, so it ignores the skip.
+
+  if ( extraOptions === null )                    return false
+  if ( getVideo().currentTime === 0 )             return false // video unstarted, likes likely not loaded
 
   if ( !extraOptions.skip_enabled )               return false
   if ( currentId < topId )                        return false // allow user to scroll back up to see skipped video
@@ -150,7 +178,13 @@ const getLikeCount = (id) => {
   const likesElement = document.querySelector( 
     `[id='${id}']  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #like-button`
   )
-  const numberOfLikes = likesElement.firstElementChild.innerText.split( /\r?\n/ )[0]
+  let numberOfLikes = likesElement.firstElementChild.innerText.split( /\r?\n/ )[0]
+
+  // todo  - fill out "like" equivalents in different langs
+  if ( LIKE_TRANSLATIONS.includes( numberOfLikes.toLowerCase() ) ) numberOfLikes = "0"
+
+  // spanish (and maybe others?) adds a space to qualifiers eg 15K => 15 K
+  numberOfLikes = numberOfLikes.replace( / /g, "" ) 
 
   return convertLocaleNumber( numberOfLikes )
 }
@@ -485,20 +519,24 @@ function convertLocaleNumber( string )
 {
   if ( typeof string !== "string" ) return
   
-  // todo  - do different langs use different letters?
+  // todo  - add formats from other langs
   const multipliers = {
-    "b": 1_000_000_000,
-    "m": 1_000_000,
-    "k": 1_000,
+    "b":   1_000_000_000,
+
+    "m":   1_000_000,
+    "mln": 1_000_000, // italian
+
+    "lakh": 100_000,  // indian english (?)
+    
+    "mil": 1_000,     // portguese
+    "k":   1_000,
   }
   const end = string.length - 1
-  const multiplier = string[ end ].toLowerCase()
+  const multiplier = string.toLowerCase().replace( /[^a-z]/g, "" )
   const hasMultiplier = Object.keys( multipliers ).includes( multiplier )
 
-  let output = 0
-  
   if ( hasMultiplier )
-    return +string.slice( 0, end ).replace( /,/g, "" ) * multipliers[ multiplier ]
+    return +string.slice( 0, end ).replace( /,\./g, "" ) * multipliers[ multiplier ]
 
-  return +string.slice( 0, end + 1 ).replace( /,/g, "" ) 
+  return +string.slice( 0, end + 1 ).replace( /,\./g, "" ) 
 }
