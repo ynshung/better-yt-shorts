@@ -536,7 +536,7 @@ function convertLocaleNumber( string )
   const hasMultiplier = Object.keys( multipliers ).includes( multiplier )
 
   if ( hasMultiplier )
-    return +string.slice( 0, end ).replace( /,\./g, "" ) * multipliers[ multiplier ]
+    return +string.slice( 0, end ).replace( /,|\./g, "" ) * multipliers[ multiplier ]
 
-  return +string.slice( 0, end + 1 ).replace( /,\./g, "" ) 
+  return +string.slice( 0, end + 1 ).replace( /,|\./g, "" ) 
 }
