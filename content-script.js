@@ -31,8 +31,6 @@ function shouldSkipShort( currentId, likeCount, commentCount )
   //   "number of likes": likeCount
   // })
 
-  // todo  - theres an issue with adding to scroll with macbooks it seems
-  // like the mac scroll doesnt end before the skip happens, so it ignores the skip.
   // made commentCount 150, as popular videos mostly have more than 150 comments, if comments are disabled it returns 0, so unlucky for them.
 
   if ( extraOptions === null )                    return false
@@ -50,10 +48,12 @@ function shouldSkipShort( currentId, likeCount, commentCount )
 /**
  * If the setting `shouldSkipUnrecommendedShorts` is true, skip shorts that have fewer than the set number of likes
  */
+ 
+ // fixed mac scroll issue
 function skipShort( short )
 {
-  const scrollAmount = short.clientHeight
-  document.getElementById( "shorts-container" ).scrollTop += scrollAmount
+  var nextButton = getNextButton();
+  nextButton.click();
 }
 
 // Using localStorage as a fallback for browser/chrome.storage.local
@@ -321,7 +321,8 @@ const timer = setInterval(() => {
     topId = currentId
 
   // video has to have been playing to skip.
-  if (ytShorts && ytShorts.currentTime >= 1) {
+  // I'm undecided whether to use 0.5 or 1, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
+  if (ytShorts && ytShorts.currentTime >= 0.5) {
 	  if (shouldSkipShort(currentId, likeCount, commentCount)) {
 		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
 		skippedId = currentId;
