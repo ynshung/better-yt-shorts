@@ -10,19 +10,12 @@ var actualVolume = 0;
 var skippedId = null
 var topId = 0 // store the furthest id in the chain
 
-// literally just the word "like" in other languages (to lower case)
-const LIKE_TRANSLATIONS = [
-  "like",
-  "me gusta",
-  "mag ich",
-  "j'aime",
-  "mi piace",
-]
-
 // video with no likes    => https://www.youtube.com/shorts/ZFLRydDd9Mw
+// video with no likes and 23k comments => https://www.youtube.com/shorts/gISsypl5xsc
+// another                => https://www.youtube.com/shorts/qe56pgRVrgE?feature=share
 // video with 1.5M / 1,5M => https://www.youtube.com/shorts/nKZIx1bHUbQ
 
-function shouldSkipShort( currentId, likeCount )
+function shouldSkipShort( currentId, likeCount, commentCount )
 {
   // for debugging purposes
 
@@ -38,8 +31,7 @@ function shouldSkipShort( currentId, likeCount )
   //   "number of likes": likeCount
   // })
 
-  // todo  - theres an issue with adding to scroll with macbooks it seems
-  // like the mac scroll doesnt end before the skip happens, so it ignores the skip.
+  // made commentCount 150, as popular videos mostly have more than 150 comments, if comments are disabled it returns 0, so unlucky for them.
 
   if ( extraOptions === null )                    return false
   if ( getVideo().currentTime === 0 )             return false // video unstarted, likes likely not loaded
@@ -49,16 +41,19 @@ function shouldSkipShort( currentId, likeCount )
   if ( skippedId === currentId )                  return false // prevent skip spam
   if ( likeCount === null || isNaN( likeCount ) ) return false // dont skip unloaded shorts
   if ( likeCount > extraOptions.skip_threshold )  return false
+  if ( commentCount > 150)                        return false
   return true
 }
 
 /**
  * If the setting `shouldSkipUnrecommendedShorts` is true, skip shorts that have fewer than the set number of likes
  */
+ 
+ // fixed mac scroll issue
 function skipShort( short )
 {
-  const scrollAmount = short.clientHeight
-  document.getElementById( "shorts-container" ).scrollTop += scrollAmount
+  var nextButton = getNextButton();
+  nextButton.click();
 }
 
 // Using localStorage as a fallback for browser/chrome.storage.local
@@ -174,20 +169,35 @@ const getCurrentId = () => {
 };
 
 const getLikeCount = (id) => {
-  // there may be a more direct way of getting the actual value, but i spent 5 hours and this is the best i could find lmao
-  const likesElement = document.querySelector( 
-    `[id='${id}']  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #like-button`
-  )
-  let numberOfLikes = likesElement.firstElementChild.innerText.split( /\r?\n/ )[0]
+  const likesElement = document.querySelector(
+    `[id='${id}'] > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #like-button`
+  );
 
-  // todo  - fill out "like" equivalents in different langs
-  if ( LIKE_TRANSLATIONS.includes( numberOfLikes.toLowerCase() ) ) numberOfLikes = "0"
+  // Use optional chaining and nullish coalescing to handle null values
+  const numberOfLikes = likesElement?.firstElementChild?.innerText.split(/\r?\n/)[0]?.replace(/ /g, "") ?? "0";
 
-  // spanish (and maybe others?) adds a space to qualifiers eg 15K => 15 K
-  numberOfLikes = numberOfLikes.replace( / /g, "" ) 
+  // Convert the number of likes to the appropriate format
+  const likeCount = convertLocaleNumber(numberOfLikes);
 
-  return convertLocaleNumber( numberOfLikes )
-}
+  // If likeCount is anything other than a number, it'll return 0. Meaning it'll translate every language.
+  return !isNaN(likeCount) ? likeCount : "0";
+};
+
+// Checking comment count aswell, as sometimes popular videos bug out and show 0 likes, but there's 1000+ comments.
+const getCommentCount = (id) => {
+  const commentsElement = document.querySelector(
+    `[id='${id}'] > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #comments-button`
+  );
+
+  // Use optional chaining and nullish coalescing to handle null values
+  const numberOfComments = commentsElement?.firstElementChild?.innerText.split(/\r?\n/)[0]?.replace(/ /g, "") ?? "0";
+
+  // Convert the number of comments to the appropriate format
+  const commentCount = convertLocaleNumber(numberOfComments);
+
+  // If commentCount is anything other than a number, it'll return 0. Meaning it'll handle every language.
+  return !isNaN(commentCount) ? commentCount : 0;
+};
 
 const getActionElement = (id) =>
   document.querySelector(
@@ -303,18 +313,22 @@ const timer = setInterval(() => {
   var likeCount = getLikeCount(currentId); 
   var actionList = getActionElement(currentId);
   var overlayList = getOverlayElement(currentId);
+  var commentCount = getCommentCount(currentId);
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   if (autoplayEnabled === null) autoplayEnabled = false;
 
   if ( topId < currentId ) 
     topId = currentId
 
-  if ( shouldSkipShort( currentId, likeCount ) )
-  {
-    console.log( `[Better Youtube Shorts] :: Skipping short that had ${likeCount} likes` )
-    skippedId = currentId
-    skipShort( ytShorts )
-  }
+  // video has to have been playing to skip.
+  // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
+  if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
+	  if (shouldSkipShort(currentId, likeCount, commentCount)) {
+		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
+		skippedId = currentId;
+		skipShort(ytShorts);
+	  }
+	}
   
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
@@ -521,15 +535,90 @@ function convertLocaleNumber( string )
   
   // todo  - add formats from other langs
   const multipliers = {
-    "b":   1_000_000_000,
+      // English
+	  "b":   1_000_000_000,
+	  "m":   1_000_000,
+	  "k":   1_000,
 
-    "m":   1_000_000,
-    "mln": 1_000_000, // italian
+	  // Italian
+	  "mln": 1_000_000,
 
-    "lakh": 100_000,  // indian english (?)
-    
-    "mil": 1_000,     // portguese
-    "k":   1_000,
+	  // Indian English
+	  "lakh": 100_000,
+
+	  // Portuguese
+	  "mil": 1_000,
+
+	  // Spanish
+	  "mil": 1_000,
+
+	  // French
+	  "mio": 1_000_000,
+	  "md":  1_000,
+
+	  // German
+	  "mio": 1_000_000,
+	  "mrd": 1_000_000_000,
+	  "tsd": 1_000,
+
+	  // Japanese
+	  "億":  1_000_000_000,
+	  "万":  10_000,
+
+	  // Chinese (Simplified)
+	  "亿":  1_000_000_000,
+	  "万":  10_000,
+
+	  // Chinese (Traditional)
+	  "億":  1_000_000_000,
+	  "萬":  10_000,
+
+	  // Russian
+	  "млн": 1_000_000,
+	  "тыс": 1_000,
+
+	  // Hindi
+	  "करोड़": 10_000_000,
+	  "लाख":  100_000,
+
+	  // Arabic
+	  "مليون":   1_000_000,
+	  "مليار":   1_000_000_000,
+	  "ألف":     1_000,
+
+	  // Korean
+	  "억":  100_000_000,
+	  "만":  10_000,
+
+	  // Turkish
+	  "milyon":    1_000_000,
+	  "milyar":    1_000_000_000,
+	  "bin":       1_000,
+
+	  // Vietnamese
+	  "triệu":    1_000_000,
+	  "tỷ":       1_000_000_000,
+	  "nghìn":    1_000,
+
+	  // Thai
+	  "ล้าน":    1_000_000,
+	  "พันล้าน": 1_000_000_000,
+	  "พัน":     1_000,
+
+	  // Dutch
+	  "mio":  1_000_000,
+	  "mld":  1_000_000_000,
+	  "k":    1_000,
+
+	  // Greek
+	  "εκ":   1_000_000,
+	  "δισ":  1_000_000_000,
+	  "χιλ":  1_000,
+
+	  // Swedish
+	  "mn":   1_000_000,
+	  "md":   1_000_000_000,
+	  "t":    1_000,
   }
   const end = string.length - 1
   const multiplier = string.toLowerCase().replace( /[^a-z]/g, "" )
