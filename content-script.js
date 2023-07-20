@@ -321,7 +321,7 @@ const timer = setInterval(() => {
     topId = currentId
 
   // video has to have been playing to skip.
-  if (ytShorts && ytShorts.currentTime >= 0.5) {
+  if (ytShorts && ytShorts.currentTime >= 1) {
 	  if (shouldSkipShort(currentId, likeCount, commentCount)) {
 		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
 		skippedId = currentId;
