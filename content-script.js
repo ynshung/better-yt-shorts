@@ -198,11 +198,13 @@ const getLikeCount = (id) => {
   );
 
   // Use optional chaining and nullish coalescing to handle null values
-  const numberOfLikes = likesElement?.firstElementChild?.innerText.split(/\r?\n/)[0]?.replace(/ /g, "") ?? "0";
-
+   const numberOfLikes = likesElement?.firstElementChild?.innerText.split(/\r?\n/)[0]?.trim().replace(/\s/g, "").replace(/\.$/, "").toLowerCase() ?? "0";
+  console.log(`numberofLikes: ${numberOfLikes}`);
+  
   // Convert the number of likes to the appropriate format
   const likeCount = convertLocaleNumber(numberOfLikes);
-  //debug console.log(`numberofLikes: ${numberOfLikes}`);
+  console.log(`likeCount: ${likeCount}`);
+  
   // If likeCount is anything other than a number, it'll return 0. Meaning it'll translate every language.
   return !isNaN(likeCount) ? likeCount : "0";
 };
@@ -350,7 +352,6 @@ const timer = setInterval(() => {
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
   if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
 	  
-	  //debug console.log(`LikeCount: ${likeCount.toLocaleString()}`);
 	  if (shouldSkipShort(currentId, likeCount)) {
 		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
 		skippedId = currentId;
@@ -644,20 +645,32 @@ function convertLocaleNumber( string )
 	  "md":   1_000_000_000,
 	  "t":    1_000,
   }
-  const regex = /^(\d*\.?\d*)([a-z]*)$/i;
-  const matches = string.match(regex);
+	const regex = /^(\d{1,3}(?:(?:,\d{3})*(?:\.\d+)?)|(?:\d+))(?:([,.])(\d+))?([a-z]*)\.?$/i;
+	const matches = string.match(regex);
 
-  if (!matches) return;
+	if (!matches) {
+	  console.log('Failed to match');
+	  return 0;
+	}
 
-  const numericPart = parseFloat(matches[1].replace(/,/g, ""));
-  const multiplier = matches[2].toLowerCase();
-  const hasMultiplier = Object.keys(multipliers).includes(multiplier);
+	let numericPart = matches[1].replace(/,/g, ""); // Remove commas
+	if (matches[2] && matches[3]) {
+	  // Decimal part exists, add it back
+	  numericPart += `.${matches[3]}`;
+	}
 
+	const multiplier = matches[4].toLowerCase();
+	const hasMultiplier = Object.keys(multipliers).includes(multiplier);
+	console.log(`numericPart: ${numericPart}`);
+	console.log(`multiplier: ${multiplier}`);
+  
   if (hasMultiplier) {
     return numericPart * multipliers[multiplier];
+  } else {
+    // Remove decimals and commas from the numeric part
+    const numericValue = parseInt(numericPart.replace(/[.,]/g, ""), 10);
+    return numericValue;
   }
-
-  return numericPart;
 }
 
 function goToNextShort( short )
