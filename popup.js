@@ -10,21 +10,42 @@ const keybindInput = document.getElementById("keybind-input");
 const keybindTable = document.getElementById( "keybind-table" )
 
 let modalTitleSpan = document.getElementById("modal-title-span");
-let invalidKeybinds = ['backspace', 'enter', 'escape', 'tab', ' ', 'space', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'printscreen', 'meta'];
+let invalidKeybinds = [
+  'Backspace',
+  'Enter',
+  'NumpadEnter',
+  'Escape',
+  'Tab',
+  'Space',
+  'PageUp',
+  'PageDown',
+  'ArrowUp',
+  'ArrowDown',
+  'F13',             // printscreen
+  'MetaLeft',        // windows/command
+  'MetaRight',
+
+  'ControlLeft',
+  'ControlRight',
+  'ShiftLeft',
+  'ShiftRight',
+  'AltLeft',
+  'AltRight',
+];
 
 const defaultKeybinds = {
-  'Seek Backward': 'arrowleft',
-  'Seek Forward': 'arrowright',
-  'Decrease Speed': 'u',
-  'Reset Speed': 'i',
-  'Increase Speed': 'o',
-  'Decrease Volume': '-',
-  'Increase Volume': '+',
-  'Toggle Mute': 'm',
-  'Next Frame': ',',
-  'Previous Frame': '.',
-  'Next Short': 's', 
-  'Previous Short': 'w',
+  'Seek Backward':   'ArrowLeft',
+  'Seek Forward':    'ArrowRight',
+  'Decrease Speed':  'KeyU',
+  'Reset Speed':     'KeyI',
+  'Increase Speed':  'KeyO',
+  'Decrease Volume': 'Minus',
+  'Increase Volume': 'Equal',
+  'Toggle Mute':     'KeyM',
+  'Next Frame':      'Comma',
+  'Previous Frame':  'Period',
+  'Next Short': 'KeyS', 
+  'Previous Short': 'KeyW',
 };
 
 // this is so that the bindings are always generated in the right order
@@ -94,21 +115,22 @@ window.onclick = (event) => {
 
 keybindInput.addEventListener('keydown', (event) => {
     event.preventDefault();
-    var keybind = event.key.toLowerCase();
+    var keybind    = event.code;
+    var keybindAlt = event.key;   // for legacy, will become obsolete
 
-    if (invalidKeybinds.includes(keybind)) {
-        if (keybind === ' ') keybind = 'space';
-        keybindInput.value = "";
-        closeBtn.click();
-        alert("Invalid keybind: <<" + keybind + ">> is not allowed.");
-        return;
+    console.log( `[BYS] :: Attempting to set key: ${keybind}` )
+
+    if ( invalidKeybinds.includes(keybind) ) {
+      keybindInput.value = "";
+      closeBtn.click();
+      alert("Invalid keybind: <<" + keybind + ">> is not allowed.");
+      return;
     }
-
-    if (currentKeybindArray.includes(keybind)) {
-        keybindInput.value = "";
-        closeBtn.click();
-        alert("Invalid keybind: <<" + keybind + ">> is already in use.");
-        return;
+    if ( currentKeybindArray.includes( keybind ) || currentKeybindArray.includes( keybindAlt ) ) {
+      keybindInput.value = "";
+      closeBtn.click();
+      alert("Invalid keybind: <<" + keybind + ">> is already in use.");
+      return;
     }
 
     // document.getElementById(keybindState+'-span').textContent = keybind;

@@ -1,16 +1,16 @@
 const defaultKeybinds = {
-  'Seek Backward': 'arrowleft',
-  'Seek Forward': 'arrowright',
-  'Decrease Speed': 'u',
-  'Reset Speed': 'i',
-  'Increase Speed': 'o',
-  'Decrease Volume': '-',
-  'Increase Volume': '+',
-  'Toggle Mute': 'm',
-  'Next Frame': ',',
-  'Previous Frame': '.',
-  'Next Short': 's', 
-  'Previous Short': 'w',
+  'Seek Backward':   'ArrowLeft',
+  'Seek Forward':    'ArrowRight',
+  'Decrease Speed':  'KeyU',
+  'Reset Speed':     'KeyI',
+  'Increase Speed':  'KeyO',
+  'Decrease Volume': 'Minus',
+  'Increase Volume': 'Equal',
+  'Toggle Mute':     'KeyM',
+  'Next Frame':      'Comma',
+  'Previous Frame':  'Period',
+  'Next Short': 'KeyS', 
+  'Previous Short': 'KeyW',
 };
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
@@ -39,11 +39,17 @@ document.addEventListener("keydown", (data) => {
   const ytShorts = getVideo();
   if (!ytShorts) return;
   if (!keybinds) keybinds = defaultKeybinds;
-  const key = data.key.toLowerCase();
+
+  const key    = data.code;
+  const keyAlt = data.key.toLowerCase(); // for legacy keybinds
 
   let command;
-  for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
+  for ( const [cmd, keybind] of Object.entries(keybinds) ) 
+    if ( key === keybind || keyAlt === keybind ) 
+      command = cmd;
+
   if (!command) return;
+  
   switch (command) {
     case "Seek Backward":
       ytShorts.currentTime -= 5;
