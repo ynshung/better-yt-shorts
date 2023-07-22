@@ -9,6 +9,8 @@ const defaultKeybinds = {
   'Toggle Mute':     'KeyM',
   'Next Frame':      'Comma',
   'Previous Frame':  'Period',
+  'Next Short': 'KeyS', 
+  'Previous Short': 'KeyW',
 };
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
@@ -102,6 +104,14 @@ document.addEventListener("keydown", (data) => {
       if (ytShorts.paused) {
         ytShorts.currentTime += 0.04;
       }
+      break;
+    
+    case "Next Short":
+      goToNextShort( ytShorts )
+      break;
+
+    case "Previous Short":
+      goToPrevShort( ytShorts )
       break;
   }
   setSpeed = ytShorts.playbackRate;
@@ -229,6 +239,9 @@ const timer = setInterval(() => {
   var overlayList = getOverlayElement(currentId);
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   if (autoplayEnabled === null) autoplayEnabled = false;
+  
+  var progBarList = overlayList.children[2].children[0].children[0];
+  progBarList.removeAttribute( "hidden" )
 
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
@@ -366,9 +379,6 @@ const timer = setInterval(() => {
       var progBarBG = progBarList.children[0];
       var progBarPlayed = progBarList.children[1]; // The red part of the progress bar
 
-      // Force progress bar to be visible for sub-30s shorts
-      if (ytShorts.duration < 30) progBarList.removeAttribute("hidden"); 
-
       const timestampTooltip = document.createElement("div");
       timestampTooltip.classList.add("betterYT-timestamp-tooltip");
 
@@ -422,3 +432,15 @@ const timer = setInterval(() => {
   }
   if (ytShorts) checkVolume(ytShorts);
 }, 100);
+
+function goToNextShort( short )
+{
+  const scrollAmount = short.clientHeight
+  document.getElementById( "shorts-container" ).scrollTop += scrollAmount
+}
+
+function goToPrevShort( short )
+{
+  const scrollAmount = short.clientHeight
+  document.getElementById( "shorts-container" ).scrollTop -= scrollAmount
+}
