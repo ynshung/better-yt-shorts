@@ -28,7 +28,7 @@ var topId = 0 // store the furthest id in the chain
 // another                => https://www.youtube.com/shorts/qe56pgRVrgE?feature=share
 // video with 1.5M / 1,5M => https://www.youtube.com/shorts/nKZIx1bHUbQ
 
-function shouldSkipShort( currentId, likeCount, commentCount )
+function shouldSkipShort( currentId, likeCount )
 {
   // for debugging purposes
 
@@ -44,8 +44,6 @@ function shouldSkipShort( currentId, likeCount, commentCount )
   //   "number of likes": likeCount
   // })
 
-  // made commentCount 150, as popular videos mostly have more than 150 comments, if comments are disabled it returns 0, so unlucky for them.
-
   if ( extraOptions === null )                    return false
   if ( getVideo().currentTime === 0 )             return false // video unstarted, likes likely not loaded
 
@@ -54,7 +52,6 @@ function shouldSkipShort( currentId, likeCount, commentCount )
   if ( skippedId === currentId )                  return false // prevent skip spam
   if ( likeCount === null || isNaN( likeCount ) ) return false // dont skip unloaded shorts
   if ( likeCount > extraOptions.skip_threshold )  return false
-  if ( commentCount > 150)                        return false
   return true
 }
 
@@ -340,7 +337,6 @@ const timer = setInterval(() => {
   var likeCount = getLikeCount(currentId); 
   var actionList = getActionElement(currentId);
   var overlayList = getOverlayElement(currentId);
-  var commentCount = getCommentCount(currentId);
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   if (autoplayEnabled === null) autoplayEnabled = false;
   
@@ -353,7 +349,7 @@ const timer = setInterval(() => {
   // video has to have been playing to skip.
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
   if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
-	  if (shouldSkipShort(currentId, likeCount, commentCount)) {
+	  if (shouldSkipShort(currentId, likeCount)) {
 		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
 		skippedId = currentId;
 		skipShort(ytShorts);
