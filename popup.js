@@ -112,11 +112,14 @@ browserObj.storage.local.get(['extraopts'])
         }
       }
         
-      // set skip toggle
-      document.getElementById( "extra_options_skip_enabled" ).checked = result.extraopts.skip_enabled
+      if (result.extraopts) {
+        // set skip toggle
+        document.getElementById( "extra_options_skip_enabled" ).checked = result.extraopts.skip_enabled;
 
-      // set skip threshold
-      document.getElementById( "extra_options_skip_threshold" ).value = result.extraopts.skip_threshold
+        // set skip threshold
+        document.getElementById( "extra_options_skip_threshold" ).value = result.extraopts.skip_threshold;
+      } 
+
   })
 
 // Open modal
@@ -183,7 +186,7 @@ keybindInput.addEventListener('keydown', (event) => {
 
 document.getElementById( "extra_options_skip_enabled" ).addEventListener( "change", e => {
   browserObj.storage.local.get(['extraopts']).then( result => {
-    currentExtraOpts = result.extraopts;
+    if (result !== null) currentExtraOpts = result.extraopts;
     currentExtraOpts.skip_enabled = e.target.checked;
     browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
   });
@@ -191,7 +194,7 @@ document.getElementById( "extra_options_skip_enabled" ).addEventListener( "chang
 
 document.getElementById( "extra_options_skip_threshold" ).addEventListener( "input", e => {
   browserObj.storage.local.get(['extraopts']).then( result => {
-    currentExtraOpts = result.extraopts
+    if (result !== null) currentExtraOpts = result.extraopts
     currentExtraOpts.skip_threshold = e.target.valueAsNumber;
     browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
   });
