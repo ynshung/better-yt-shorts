@@ -112,8 +112,11 @@ browserObj.storage.local.get(['extraopts'])
         }
       }
         
-    initOptions( result.extraopts )
+      // set skip toggle
+      document.getElementById( "extra_options_skip_enabled" ).checked = result.extraopts.skip_enabled
 
+      // set skip threshold
+      document.getElementById( "extra_options_skip_threshold" ).value = result.extraopts.skip_threshold
   })
 
 // Open modal
@@ -125,12 +128,6 @@ for (let i = 0; i < editBtnList.length; i++) {
         modalTitleSpan.textContent = this.id;
         keybindState = this.id;
     }
-}
-
-document.querySelector( ".save-btn" ).onclick = () => {
-  let newOptions = getUpdatedOptions( currentExtraOpts )
-  browserObj.storage.local.set({ 'extraopts' : newOptions })
-  alert( "Saved Changes!" )
 }
 
 resetBtn.onclick = () => {
@@ -184,28 +181,21 @@ keybindInput.addEventListener('keydown', (event) => {
     populateKeybindsTable( currentKeybinds )
 });
 
-function getUpdatedOptions( updatedExtraOpts )
-{
-  // save skip toggle
-  updatedExtraOpts.skip_enabled   = document.getElementById( "extra_options_skip_enabled" ).checked
+document.getElementById( "extra_options_skip_enabled" ).addEventListener( "change", e => {
+  browserObj.storage.local.get(['extraopts']).then( result => {
+    currentExtraOpts = result.extraopts;
+    currentExtraOpts.skip_enabled = e.target.checked;
+    browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
+  });
+});
 
-  // save skip threshold
-  updatedExtraOpts.skip_threshold = document.getElementById( "extra_options_skip_threshold" ).valueAsNumber
-
-  return updatedExtraOpts
-}
-
-function initOptions( options )
-{
-  // set skip toggle
-  document.getElementById( "extra_options_skip_enabled" ).checked = options.skip_enabled
-
-  // set skip threshold
-  document.getElementById( "extra_options_skip_threshold" ).value = options.skip_threshold
-
-  console.log( `[Better Youtube Shorts] :: Intitialised Options` )
-
-}
+document.getElementById( "extra_options_skip_threshold" ).addEventListener( "input", e => {
+  browserObj.storage.local.get(['extraopts']).then( result => {
+    currentExtraOpts = result.extraopts
+    currentExtraOpts.skip_threshold = e.target.valueAsNumber;
+    browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
+  });
+});
 
 const EDIT_BUTTON_SVG_STRING = `
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
