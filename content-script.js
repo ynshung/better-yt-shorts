@@ -202,7 +202,7 @@ const getLikeCount = (id) => {
 
   // Convert the number of likes to the appropriate format
   const likeCount = convertLocaleNumber(numberOfLikes);
-
+  //debug console.log(`numberofLikes: ${numberOfLikes}`);
   // If likeCount is anything other than a number, it'll return 0. Meaning it'll translate every language.
   return !isNaN(likeCount) ? likeCount : "0";
 };
@@ -349,6 +349,8 @@ const timer = setInterval(() => {
   // video has to have been playing to skip.
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
   if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
+	  
+	  //debug console.log(`LikeCount: ${likeCount.toLocaleString()}`);
 	  if (shouldSkipShort(currentId, likeCount)) {
 		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
 		skippedId = currentId;
@@ -642,14 +644,20 @@ function convertLocaleNumber( string )
 	  "md":   1_000_000_000,
 	  "t":    1_000,
   }
-  const end = string.length - 1
-  const multiplier = string.toLowerCase().replace( /[^a-z]/g, "" )
-  const hasMultiplier = Object.keys( multipliers ).includes( multiplier )
+  const regex = /^(\d*\.?\d*)([a-z]*)$/i;
+  const matches = string.match(regex);
 
-  if ( hasMultiplier )
-    return +string.slice( 0, end ).replace( /,|\./g, "" ) * multipliers[ multiplier ]
+  if (!matches) return;
 
-  return +string.slice( 0, end + 1 ).replace( /,|\./g, "" ) 
+  const numericPart = parseFloat(matches[1].replace(/,/g, ""));
+  const multiplier = matches[2].toLowerCase();
+  const hasMultiplier = Object.keys(multipliers).includes(multiplier);
+
+  if (hasMultiplier) {
+    return numericPart * multipliers[multiplier];
+  }
+
+  return numericPart;
 }
 
 function goToNextShort( short )
