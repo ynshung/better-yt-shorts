@@ -193,7 +193,7 @@ const setVolume = (volume) => {
 }
 
 const checkVolume = (ytShorts) => {
-  if(JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]){
+  if(localStorage.getItem("yt-player-volume") !== null && JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]){
     actualVolume = JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"];
     ytShorts.volume = actualVolume;
   }else{
