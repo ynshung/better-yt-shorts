@@ -27,6 +27,7 @@ body {
 	font-family: 'Source Sans Pro', 'Roboto', 'Noto', 'Arial', sans-serif;
 	background: var(--bg-primary-color);
 	color: var(--text-primary-color);
+  scrollbar-gutter: stable;
 }
 .modal-content {
 	background: var(--bg-primary-color);
@@ -111,6 +112,12 @@ svg:hover {
 
 .edit-svg {
 	fill: var(--bg-primary-hover-color);
+}
+
+.edit-btn {
+  background: none;
+  outline: none;
+  border: none;
 }
 
 table {
@@ -257,8 +264,6 @@ a {
 	box-shadow: 0 0 3px #00000020;
 }
 
-
-
 .extra_options--row
 {
   display: grid;
@@ -307,4 +312,28 @@ a {
 /* Firefox */
 .extra_options--row input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+  
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  height: 4rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary-color);
+  height: 4rem;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-secondary-hover-color);
 }

@@ -1,4 +1,17 @@
-const defaultKeybinds = {'Seek Backward': 'arrowleft','Seek Forward': 'arrowright','Decrease Speed': 'u','Reset Speed': 'i','Increase Speed': 'o','Decrease Volume': '-','Increase Volume': '+','Toggle Mute': 'm', 'Next Frame': ',', 'Previous Frame': '.'};
+const defaultKeybinds = {
+  'Seek Backward':   'ArrowLeft',
+  'Seek Forward':    'ArrowRight',
+  'Decrease Speed':  'KeyU',
+  'Reset Speed':     'KeyI',
+  'Increase Speed':  'KeyO',
+  'Decrease Volume': 'Minus',
+  'Increase Volume': 'Equal',
+  'Toggle Mute':     'KeyM',
+  'Next Frame':      'Comma',
+  'Previous Frame':  'Period',
+  'Next Short': 'KeyS', 
+  'Previous Short': 'KeyW',
+};
 const defaultExtraOptions = {
   skip_enabled:   false,
   skip_threshold: 500,
@@ -96,11 +109,17 @@ document.addEventListener("keydown", (data) => {
   const ytShorts = getVideo();
   if (!ytShorts) return;
   if (!keybinds) keybinds = defaultKeybinds;
-  const key = data.key.toLowerCase();
-    
+
+  const key    = data.code;
+  const keyAlt = data.key.toLowerCase(); // for legacy keybinds
+
   let command;
-  for (const [cmd, keybind] of Object.entries(keybinds)) if (key === keybind) command = cmd;
+  for ( const [cmd, keybind] of Object.entries(keybinds) ) 
+    if ( key === keybind || keyAlt === keybind ) 
+      command = cmd;
+
   if (!command) return;
+  
   switch (command) {
     case "Seek Backward":
       ytShorts.currentTime -= 5;
@@ -155,6 +174,14 @@ document.addEventListener("keydown", (data) => {
       if (ytShorts.paused) {
         ytShorts.currentTime += 0.04;
       }
+      break;
+    
+    case "Next Short":
+      goToNextShort( ytShorts )
+      break;
+
+    case "Previous Short":
+      goToPrevShort( ytShorts )
       break;
   }
   setSpeed = ytShorts.playbackRate;
@@ -316,6 +343,9 @@ const timer = setInterval(() => {
   var commentCount = getCommentCount(currentId);
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   if (autoplayEnabled === null) autoplayEnabled = false;
+  
+  var progBarList = overlayList.children[2].children[0].children[0];
+  progBarList.removeAttribute( "hidden" )
 
   if ( topId < currentId ) 
     topId = currentId
@@ -466,9 +496,6 @@ const timer = setInterval(() => {
       var progBarBG = progBarList.children[0];
       var progBarPlayed = progBarList.children[1]; // The red part of the progress bar
 
-      // Force progress bar to be visible for sub-30s shorts
-      if (ytShorts.duration < 30) progBarList.removeAttribute("hidden"); 
-
       const timestampTooltip = document.createElement("div");
       timestampTooltip.classList.add("betterYT-timestamp-tooltip");
 
@@ -522,7 +549,6 @@ const timer = setInterval(() => {
   }
   if (ytShorts) checkVolume(ytShorts);
 }, 100);
-
 
 /**
  * Converts a formatted number to its full integer value.
@@ -628,4 +654,16 @@ function convertLocaleNumber( string )
     return +string.slice( 0, end ).replace( /,|\./g, "" ) * multipliers[ multiplier ]
 
   return +string.slice( 0, end + 1 ).replace( /,|\./g, "" ) 
+}
+
+function goToNextShort( short )
+{
+  const scrollAmount = short.clientHeight
+  document.getElementById( "shorts-container" ).scrollTop += scrollAmount
+}
+
+function goToPrevShort( short )
+{
+  const scrollAmount = short.clientHeight
+  document.getElementById( "shorts-container" ).scrollTop -= scrollAmount
 }
