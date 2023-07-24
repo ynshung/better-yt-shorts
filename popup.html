@@ -14,9 +14,21 @@
   <h3 class="prevent-selection" style="text-align: center;margin:5px 0px;">Keybinds</h3>
   <table style="width:100%;" data-theme="light" id="keybind-table">
   </table>
+  <h3 class="prevent-selection" style="text-align: center;margin:5px 0px;">Extra Options</h3>
+  <div id="extra_options">
+    <div class="extra_options--row">
+      <label for="skip-bad-shorts">Automatically skip shorts with fewer likes?</label>
+      <input type="checkbox" id="extra_options_skip_enabled" name="skip-bad-shorts">
+    </div>
+    <div class="extra_options--row">
+      <label for="skip-bad-shorts">Skip shorts with fewer than this many likes:</label>
+      <input type="number" id="extra_options_skip_threshold" name="skip-bad-shorts-threshold" min=0>
+    </div>
+  </div>
+
   <div class="footer prevent-selection">Reload the page for changes to take effect.</div>
   <div class="btn-wrapper"><span class="btn reset-btn">Reset keybinds</span><a href="https://github.com/ynshung/better-yt-shorts" target="_blank"><span class="btn">GitHub</span></a></div>
-
+  
   <!-- Modal -->
   <div id="edit-modal" class="modal">
     <div class="modal-content">

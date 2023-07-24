@@ -12,10 +12,59 @@ const defaultKeybinds = {
   'Next Short': 'KeyS', 
   'Previous Short': 'KeyW',
 };
+const defaultExtraOptions = {
+  skip_enabled:   false,
+  skip_threshold: 500,
+}
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
 var volumeState = 0;
 var actualVolume = 0;
+var skippedId = null
+var topId = 0 // store the furthest id in the chain
+
+// video with no likes    => https://www.youtube.com/shorts/ZFLRydDd9Mw
+// video with no likes and 23k comments => https://www.youtube.com/shorts/gISsypl5xsc
+// another                => https://www.youtube.com/shorts/qe56pgRVrgE?feature=share
+// video with 1.5M / 1,5M => https://www.youtube.com/shorts/nKZIx1bHUbQ
+
+function shouldSkipShort( currentId, likeCount )
+{
+  // for debugging purposes
+
+  // console.dir({
+  //   "extra options check": !( extraOptions == null ),
+  //   "video playing check": !( getVideo().currentTime === 0 ),
+  //   "option enabled?": !( !extraOptions.skip_enabled ),
+  //   "current id check": !( currentId < topId ),
+  //   "skipped id check": !( skippedId === currentId ),
+  //   "likecount null check": !( likeCount === null || isNaN( likeCount ) ),
+  //   "threshold check": !( likeCount >= extraOptions.skip_threshold ),
+  //   "current threshold": extraOptions.skip_threshold,
+  //   "number of likes": likeCount
+  // })
+
+  if ( extraOptions === null )                    return false
+  if ( getVideo().currentTime === 0 )             return false // video unstarted, likes likely not loaded
+
+  if ( !extraOptions.skip_enabled )               return false
+  if ( currentId < topId )                        return false // allow user to scroll back up to see skipped video
+  if ( skippedId === currentId )                  return false // prevent skip spam
+  if ( likeCount === null || isNaN( likeCount ) ) return false // dont skip unloaded shorts
+  if ( likeCount >= extraOptions.skip_threshold )  return false
+  return true
+}
+
+/**
+ * If the setting `shouldSkipUnrecommendedShorts` is true, skip shorts that have fewer than the set number of likes
+ */
+ 
+ // fixed mac scroll issue
+function skipShort( short )
+{
+  var nextButton = getNextButton();
+  nextButton.click();
+}
 
 // Using localStorage as a fallback for browser/chrome.storage.local
 var keybinds = JSON.parse(localStorage.getItem("yt-keybinds"));
@@ -30,6 +79,24 @@ storage.get(["keybinds"])
     keybinds = result.keybinds;
   }
 });
+
+var extraOptions = JSON.parse(localStorage.getItem("yt-extraopts"))
+storage.get( ["extraopts"] )
+  .then((result) => {
+    if (result.extraopts) 
+    {
+      // Set default options if not exists
+      for ( const [ option, value ] of Object.entries( defaultExtraOptions ) ) {
+        if ( result.extraopts[ option ] ) continue
+        result.extraopts[ option ] = value
+      }
+
+      if ( result.extraopts !== extraOptions ) 
+        localStorage.setItem("yt-extraopts", JSON.stringify(result.extraopts) )
+
+      extraOptions = result.extraopts
+    }
+  })
 
 document.addEventListener("keydown", (data) => {
   if (
@@ -121,8 +188,39 @@ const getCurrentId = () => {
   const videoEle = document.querySelector(
     "#shorts-player > div.html5-video-container > video"
   );
-  if (videoEle && videoEle.closest("ytd-reel-video-renderer")) return videoEle.closest("ytd-reel-video-renderer").id;
+  if (videoEle && videoEle.closest("ytd-reel-video-renderer")) return +videoEle.closest("ytd-reel-video-renderer").id;
   return null;
+};
+
+const getLikeCount = (id) => {
+  const likesElement = document.querySelector(
+    `[id='${id}'] > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #like-button`
+  );
+
+  // Use optional chaining and nullish coalescing to handle null values
+  const numberOfLikes = likesElement?.firstElementChild?.innerText.split(/\r?\n/)[0]?.trim().replace(/\s/g, "").replace(/\.$/, "").toLowerCase() ?? "0";
+  
+  // Convert the number of likes to the appropriate format
+  const likeCount = convertLocaleNumber(numberOfLikes);
+  
+  // If likeCount is anything other than a number, it'll return 0. Meaning it'll translate every language.
+  return !isNaN(likeCount) ? likeCount : "0";
+};
+
+// Checking comment count aswell, as sometimes popular videos bug out and show 0 likes, but there's 1000+ comments.
+const getCommentCount = (id) => {
+  const commentsElement = document.querySelector(
+    `[id='${id}'] > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #comments-button`
+  );
+
+  // Use optional chaining and nullish coalescing to handle null values
+  const numberOfComments = commentsElement?.firstElementChild?.innerText.split(/\r?\n/)[0]?.replace(/ /g, "") ?? "0";
+
+  // Convert the number of comments to the appropriate format
+  const commentCount = convertLocaleNumber(numberOfComments);
+
+  // If commentCount is anything other than a number, it'll return 0. Meaning it'll handle every language.
+  return !isNaN(commentCount) ? commentCount : 0;
 };
 
 const getActionElement = (id) =>
@@ -233,8 +331,10 @@ var setSpeed = 1;
 
 const timer = setInterval(() => {
   if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return;
+  
   const ytShorts = getVideo();
   var currentId = getCurrentId();
+  var likeCount = getLikeCount(currentId); 
   var actionList = getActionElement(currentId);
   var overlayList = getOverlayElement(currentId);
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
@@ -243,6 +343,20 @@ const timer = setInterval(() => {
   var progBarList = overlayList.children[2].children[0].children[0];
   progBarList.removeAttribute( "hidden" )
 
+  if ( topId < currentId ) 
+    topId = currentId
+
+  // video has to have been playing to skip.
+  // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
+  if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
+	  
+	  if (shouldSkipShort(currentId, likeCount)) {
+		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
+		skippedId = currentId;
+		skipShort(ytShorts);
+	  }
+	}
+  
   if (injectedItem.has(currentId)) {
     var currTime = Math.round(ytShorts.currentTime);
     var currSpeed = ytShorts.playbackRate;
@@ -432,6 +546,127 @@ const timer = setInterval(() => {
   }
   if (ytShorts) checkVolume(ytShorts);
 }, 100);
+
+/**
+ * Converts a formatted number to its full integer value.
+ * @param {string} string value to be converted (eg: 1.4M, 1,291 or 727) 
+ * @returns converted number
+ */
+function convertLocaleNumber( string )
+{
+  if ( typeof string !== "string" ) return
+  
+  // todo  - add formats from other langs
+  const multipliers = {
+      // English
+	  "b":   1_000_000_000,
+	  "m":   1_000_000,
+	  "k":   1_000,
+
+	  // Italian
+	  "mln": 1_000_000,
+
+	  // Indian English
+	  "lakh": 100_000,
+
+	  // Portuguese
+	  "mil": 1_000,
+
+	  // Spanish
+	  "mil": 1_000,
+
+	  // French
+	  "mio": 1_000_000,
+	  "md":  1_000,
+
+	  // German
+	  "mio": 1_000_000,
+	  "mrd": 1_000_000_000,
+	  "tsd": 1_000,
+
+	  // Japanese
+	  "億":  1_000_000_000,
+	  "万":  10_000,
+
+	  // Chinese (Simplified)
+	  "亿":  1_000_000_000,
+	  "万":  10_000,
+
+	  // Chinese (Traditional)
+	  "億":  1_000_000_000,
+	  "萬":  10_000,
+
+	  // Russian
+	  "млн": 1_000_000,
+	  "тыс": 1_000,
+
+	  // Hindi
+	  "करोड़": 10_000_000,
+	  "लाख":  100_000,
+
+	  // Arabic
+	  "مليون":   1_000_000,
+	  "مليار":   1_000_000_000,
+	  "ألف":     1_000,
+
+	  // Korean
+	  "억":  100_000_000,
+	  "만":  10_000,
+
+	  // Turkish
+	  "milyon":    1_000_000,
+	  "milyar":    1_000_000_000,
+	  "bin":       1_000,
+
+	  // Vietnamese
+	  "triệu":    1_000_000,
+	  "tỷ":       1_000_000_000,
+	  "nghìn":    1_000,
+
+	  // Thai
+	  "ล้าน":    1_000_000,
+	  "พันล้าน": 1_000_000_000,
+	  "พัน":     1_000,
+
+	  // Dutch
+	  "mio":  1_000_000,
+	  "mld":  1_000_000_000,
+	  "k":    1_000,
+
+	  // Greek
+	  "εκ":   1_000_000,
+	  "δισ":  1_000_000_000,
+	  "χιλ":  1_000,
+
+	  // Swedish
+	  "mn":   1_000_000,
+	  "md":   1_000_000_000,
+	  "t":    1_000,
+  }
+	const regex = /^(\d{1,3}(?:(?:,\d{3})*(?:\.\d+)?)|(?:\d+))(?:([,.])(\d+))?([a-z]*)\.?$/i;
+	const matches = string.match(regex);
+
+	if (!matches) {
+	  return 0;
+	}
+
+	let numericPart = matches[1].replace(/,/g, ""); // Remove commas
+	if (matches[2] && matches[3]) {
+	  // Decimal part exists, add it back
+	  numericPart += `.${matches[3]}`;
+	}
+
+	const multiplier = matches[4].toLowerCase();
+	const hasMultiplier = Object.keys(multipliers).includes(multiplier);
+
+  if (hasMultiplier) {
+    return numericPart * multipliers[multiplier];
+  } else {
+    // Remove decimals and commas from the numeric part
+    const numericValue = parseInt(numericPart.replace(/[.,]/g, ""), 10);
+    return numericValue;
+  }
+}
 
 function goToNextShort( short )
 {

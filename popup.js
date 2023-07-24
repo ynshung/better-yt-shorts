@@ -47,6 +47,10 @@ const defaultKeybinds = {
   'Next Short': 'KeyS', 
   'Previous Short': 'KeyW',
 };
+const defaultExtraOptions = {
+  skip_enabled:   false,
+  skip_threshold: 500,
+}
 
 // this is so that the bindings are always generated in the right order
 const bindsOrder = [
@@ -65,6 +69,7 @@ const bindsOrder = [
 ]
 
 let currentKeybinds = Object.assign({}, defaultKeybinds);
+let currentExtraOpts = Object.assign({}, defaultExtraOptions);
 let currentKeybindArray = [];
 let keybindState = '';
 
@@ -94,6 +99,39 @@ browserObj.storage.local.get(['keybinds'])
     currentKeybindArray = Object.values(currentKeybinds);
 });
 
+// Get extra options from storage
+browserObj.storage.local.get(['extraopts'])
+  .then((result) => {
+      let updatedExtraOpts = result['extraopts'];
+      if ( updatedExtraOpts ) {
+        // Set default extraopts if not exists
+        for (const [ option, value ] of Object.entries( defaultExtraOptions )) {
+          if (result.extraopts[ option ]) continue
+
+          result.extraopts[ option ] = value;
+        }
+      }
+        
+      if (result.extraopts) {
+        // set skip toggle
+        document.getElementById( "extra_options_skip_enabled" ).checked = result.extraopts.skip_enabled;
+
+        // set skip threshold
+        document.getElementById( "extra_options_skip_threshold" ).value = result.extraopts.skip_threshold;
+      } 
+
+  })
+
+// Open modal
+for (let i = 0; i < editBtnList.length; i++) {
+    editBtnList[i].onclick = function() {
+        modal.style.display = "block";
+        keybindInput.focus();
+        keybindInput.select();
+        modalTitleSpan.textContent = this.id;
+        keybindState = this.id;
+    }
+}
 
 resetBtn.onclick = () => {
   currentKeybinds     = Object.assign( {},  defaultKeybinds );
@@ -146,6 +184,21 @@ keybindInput.addEventListener('keydown', (event) => {
     populateKeybindsTable( currentKeybinds )
 });
 
+document.getElementById( "extra_options_skip_enabled" ).addEventListener( "change", e => {
+  browserObj.storage.local.get(['extraopts']).then( result => {
+    if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts;
+    currentExtraOpts.skip_enabled = e.target.checked;
+    browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
+  });
+});
+
+document.getElementById( "extra_options_skip_threshold" ).addEventListener( "input", e => {
+  browserObj.storage.local.get(['extraopts']).then( result => {
+    if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts
+    currentExtraOpts.skip_threshold = e.target.valueAsNumber;
+    browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
+  });
+});
 
 const EDIT_BUTTON_SVG_STRING = `
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
