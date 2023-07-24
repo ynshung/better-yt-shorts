@@ -332,10 +332,6 @@ a {
   -moz-appearance: textfield;
 }
 
-.save-btn {
-	margin: auto;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 0.5rem;
