@@ -186,7 +186,7 @@ keybindInput.addEventListener('keydown', (event) => {
 
 document.getElementById( "extra_options_skip_enabled" ).addEventListener( "change", e => {
   browserObj.storage.local.get(['extraopts']).then( result => {
-    if (result !== null) currentExtraOpts = result.extraopts;
+    if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts;
     currentExtraOpts.skip_enabled = e.target.checked;
     browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
   });
@@ -194,7 +194,7 @@ document.getElementById( "extra_options_skip_enabled" ).addEventListener( "chang
 
 document.getElementById( "extra_options_skip_threshold" ).addEventListener( "input", e => {
   browserObj.storage.local.get(['extraopts']).then( result => {
-    if (result !== null) currentExtraOpts = result.extraopts
+    if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts
     currentExtraOpts.skip_threshold = e.target.valueAsNumber;
     browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
   });
