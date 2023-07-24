@@ -1,3 +1,7 @@
+<div align="center">
+
+![BYS Icon](https://raw.githubusercontent.com/ynshung/better-yt-shorts/master/icons/byts128.png)
+
 # Better YouTube Shorts
 
 ![Current Version](https://img.shields.io/amo/v/better-youtube-shorts?label=version)
@@ -5,25 +9,26 @@
 [![Firefox Add-on users](https://img.shields.io/amo/users/better-youtube-shorts?label=firefox)](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts)
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/icnidlkdlledahfgejnagmhgaeijokcp)
 ![License: MIT](https://img.shields.io/github/license/ynshung/better-yt-shorts)
+</div>
 
-You can control your YouTube shorts just like a normal YouTube video!
+Control your YouTube shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
-## Download
 
 * Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp
 * Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 
 ## Features
-* **Seeking** 5 seconds backward and forward with arrow keys
 * **Progress bar** at the bottom with time and duration
-* Mini timestamp and speed above the like button (can be scrolled on!)
+* **Seeking** 5 seconds backward and forward with arrow keys
+* **Auto skip** short when current one ends
+* Auto skip short with likes below custom threshold (e.g. 500 likes)
 * Decrease and increase **playback speed** with keys U and O
 * Revert to normal speed with I or by clicking the speed button
 * Control **volume** with the volume slider or with - and =, mute audio with M
+* Mini timestamp and speed above the like button (can be scrolled on!)
+* Navigate to next or previous short **without animation** with W and S
 * Go to the next **frame** or previous frame with . and , while paused
-* **Auto skip** short when current one ends
-* Auto skip short with likes below custom threshold (e.g. 500 likes)
-* Custom keybinds
+* **Customizable** keybinds
 
 ### Default Keybinds
 | Action               | Shortcut   |
