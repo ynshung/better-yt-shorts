@@ -39,7 +39,7 @@ function shouldSkipShort( currentId, likeCount )
   //   "current id check": !( currentId < topId ),
   //   "skipped id check": !( skippedId === currentId ),
   //   "likecount null check": !( likeCount === null || isNaN( likeCount ) ),
-  //   "threshold check": !( likeCount > extraOptions.skip_threshold ),
+  //   "threshold check": !( likeCount >= extraOptions.skip_threshold ),
   //   "current threshold": extraOptions.skip_threshold,
   //   "number of likes": likeCount
   // })
@@ -51,7 +51,7 @@ function shouldSkipShort( currentId, likeCount )
   if ( currentId < topId )                        return false // allow user to scroll back up to see skipped video
   if ( skippedId === currentId )                  return false // prevent skip spam
   if ( likeCount === null || isNaN( likeCount ) ) return false // dont skip unloaded shorts
-  if ( likeCount > extraOptions.skip_threshold )  return false
+  if ( likeCount >= extraOptions.skip_threshold )  return false
   return true
 }
 
