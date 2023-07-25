@@ -309,17 +309,19 @@ a {
 .extra_options--row input[type="text"]
 {
   outline: none;
-  border: 1px var( --bg-secondary-hover-color ) solid;
+  outline: 1px var( --bg-secondary-hover-color ) solid;
   background: var( --bg-secondary-hover-color );
   color: var(--text-primary-color);
-  padding: 0 1rem;
+  border:none;
+  padding: 0.25rem 1rem;
   border-radius: 100vh;
   width: 5rem;
+  height: fit-content;
 }
 .extra_options--row input[type="number"]:focus,
 .extra_options--row input[type="text"]:focus
 {
-  border: 2px var(--yt-brand-color) solid;
+  outline: 2px var(--yt-brand-color) solid;
 }
 
 
