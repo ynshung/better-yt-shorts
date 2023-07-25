@@ -50,6 +50,7 @@ const defaultKeybinds = {
 const defaultExtraOptions = {
   skip_enabled:   false,
   skip_threshold: 500,
+  automatically_open_comments: false,
 }
 
 // this is so that the bindings are always generated in the right order
@@ -118,6 +119,9 @@ browserObj.storage.local.get(['extraopts'])
 
         // set skip threshold
         document.getElementById( "extra_options_skip_threshold" ).value = result.extraopts.skip_threshold;
+        
+        // set automatically close comments
+        document.getElementById( "extra_options_auto_open_comments" ).checked = result.extraopts.automatically_open_comments;
       } 
 
   })
@@ -196,6 +200,14 @@ document.getElementById( "extra_options_skip_threshold" ).addEventListener( "inp
   browserObj.storage.local.get(['extraopts']).then( result => {
     if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts
     currentExtraOpts.skip_threshold = e.target.valueAsNumber;
+    browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
+  });
+});
+
+document.getElementById( "extra_options_auto_open_comments" ).addEventListener( "change", e => {
+  browserObj.storage.local.get(['extraopts']).then( result => {
+    if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts;
+    currentExtraOpts.automatically_open_comments = e.target.checked;
     browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
   });
 });

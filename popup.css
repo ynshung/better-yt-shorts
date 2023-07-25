@@ -330,6 +330,12 @@ a {
   accent-color: var(--yt-brand-color);
 }
 
+.extra_options--row input[type="checkbox"],
+.extra_options--row input[type="radio"]
+{
+  height: 1rem;
+}
+
 .extra_options--row input[type="number"]::-webkit-outer-spin-button,
 .extra_options--row input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
