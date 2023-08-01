@@ -94,6 +94,8 @@ browserObj.storage.local.get(['keybinds'])
         
         populateKeybindsTable( updatedkeybinds )
         currentKeybinds = updatedkeybinds;
+    } else {
+      resetKeybinds();
     }
     // Keybind array for easier checking if keybind is already in use
     currentKeybindArray = Object.values(currentKeybinds);
@@ -133,7 +135,7 @@ for (let i = 0; i < editBtnList.length; i++) {
     }
 }
 
-resetBtn.onclick = () => {
+function resetKeybinds() {
   currentKeybinds     = Object.assign( {},  defaultKeybinds );
   currentKeybindArray = Object.values(currentKeybinds);
   
@@ -141,6 +143,8 @@ resetBtn.onclick = () => {
 
   browserObj.storage.local.set({ 'keybinds' : defaultKeybinds });
 }
+
+resetBtn.onclick = () => resetKeybinds();
 
 // Close modal (x)
 closeBtn.onclick = () => {
