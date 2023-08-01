@@ -16,6 +16,7 @@ const defaultExtraOptions = {
   skip_enabled:   false,
   skip_threshold: 500,
   automatically_open_comments: false,
+  seek_amount: 5,
 }
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
 var muted = false;
@@ -140,11 +141,11 @@ document.addEventListener("keydown", (data) => {
   
   switch (command) {
     case "Seek Backward":
-      ytShorts.currentTime -= 5;
+      ytShorts.currentTime -= extraOptions?.seek_amount ?? defaultExtraOptions.seek_amount;
       break;
 
     case "Seek Forward":
-      ytShorts.currentTime += 5;
+      ytShorts.currentTime += extraOptions?.seek_amount ?? defaultExtraOptions.seek_amount;
       break;
 
     case "Decrease Speed":

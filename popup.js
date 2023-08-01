@@ -51,6 +51,7 @@ const defaultExtraOptions = {
   skip_enabled:   false,
   skip_threshold: 500,
   automatically_open_comments: false,
+  seek_amount: 5,
 }
 
 // this is so that the bindings are always generated in the right order
@@ -95,6 +96,8 @@ browserObj.storage.local.get(['keybinds'])
         
         populateKeybindsTable( updatedkeybinds )
         currentKeybinds = updatedkeybinds;
+    } else {
+      resetKeybinds();
     }
     // Keybind array for easier checking if keybind is already in use
     currentKeybindArray = Object.values(currentKeybinds);
@@ -122,6 +125,9 @@ browserObj.storage.local.get(['extraopts'])
         
         // set automatically close comments
         document.getElementById( "extra_options_auto_open_comments" ).checked = result.extraopts.automatically_open_comments;
+
+        // set seek amount
+        document.getElementById( "extra_options_seek_amount" ).value = result.extraopts.seek_amount;
       } 
 
   })
@@ -137,7 +143,7 @@ for (let i = 0; i < editBtnList.length; i++) {
     }
 }
 
-resetBtn.onclick = () => {
+function resetKeybinds() {
   currentKeybinds     = Object.assign( {},  defaultKeybinds );
   currentKeybindArray = Object.values(currentKeybinds);
   
@@ -145,6 +151,8 @@ resetBtn.onclick = () => {
 
   browserObj.storage.local.set({ 'keybinds' : defaultKeybinds });
 }
+
+resetBtn.onclick = () => resetKeybinds();
 
 // Close modal (x)
 closeBtn.onclick = () => {
@@ -208,6 +216,14 @@ document.getElementById( "extra_options_auto_open_comments" ).addEventListener( 
   browserObj.storage.local.get(['extraopts']).then( result => {
     if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts;
     currentExtraOpts.automatically_open_comments = e.target.checked;
+    browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
+  });
+});
+
+document.getElementById( "extra_options_seek_amount" ).addEventListener( "input", e => {
+  browserObj.storage.local.get(['extraopts']).then( result => {
+    if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts
+    currentExtraOpts.seek_amount = e.target.valueAsNumber;
     browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
   });
 });
