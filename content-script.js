@@ -23,6 +23,7 @@ var muted = false;
 var volumeState = 0;
 var actualVolume = 0;
 var skippedId = null
+var openedCommentsId = null
 var topId = 0 // store the furthest id in the chain
 
 // video with no likes    => https://www.youtube.com/shorts/ZFLRydDd9Mw
@@ -36,9 +37,16 @@ function openComments()
 }
 function shouldOpenComments()
 {
+  let currentId = getCurrentId()
+
   if ( extraOptions === null )                       return false
   if ( !extraOptions.automatically_open_comments )   return false
-  if ( getCurrentId() === skippedId )                return false // prevents opening comments on skipped shorts
+  if ( currentId === skippedId )                     return false // prevents opening comments on skipped shorts
+  if ( currentId === openedCommentsId )              return false // allow closing of comments
+
+  // change here to prevent bugs with closing comments on previous shorts
+  openedCommentsId = currentId 
+
   if ( isCommentsPanelOpen() )                       return false
 
   return true
