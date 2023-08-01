@@ -85,7 +85,9 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
 // Get keybinds from storage
 browserObj.storage.local.get(['keybinds'])
 .then((result) => {
+    populateKeybindsTable( defaultKeybinds ) // populate with default binds
     let updatedkeybinds = result['keybinds'];
+
     if (updatedkeybinds) {
         // Set default keybinds if not exists
         for (const [cmd, keybind] of Object.entries(defaultKeybinds)) {
@@ -95,6 +97,7 @@ browserObj.storage.local.get(['keybinds'])
         populateKeybindsTable( updatedkeybinds )
         currentKeybinds = updatedkeybinds;
     }
+    
     // Keybind array for easier checking if keybind is already in use
     currentKeybindArray = Object.values(currentKeybinds);
 });
