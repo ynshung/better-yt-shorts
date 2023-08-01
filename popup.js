@@ -50,6 +50,7 @@ const defaultKeybinds = {
 const defaultExtraOptions = {
   skip_enabled:   false,
   skip_threshold: 500,
+  seek_amount: 5,
 }
 
 // this is so that the bindings are always generated in the right order
@@ -120,6 +121,9 @@ browserObj.storage.local.get(['extraopts'])
 
         // set skip threshold
         document.getElementById( "extra_options_skip_threshold" ).value = result.extraopts.skip_threshold;
+
+        // set seek amount
+        document.getElementById( "extra_options_seek_amount" ).value = result.extraopts.seek_amount;
       } 
 
   })
@@ -200,6 +204,14 @@ document.getElementById( "extra_options_skip_threshold" ).addEventListener( "inp
   browserObj.storage.local.get(['extraopts']).then( result => {
     if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts
     currentExtraOpts.skip_threshold = e.target.valueAsNumber;
+    browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
+  });
+});
+
+document.getElementById( "extra_options_seek_amount" ).addEventListener( "input", e => {
+  browserObj.storage.local.get(['extraopts']).then( result => {
+    if (result !== null && Object.keys(result).length !== 0) currentExtraOpts = result.extraopts
+    currentExtraOpts.seek_amount = e.target.valueAsNumber;
     browserObj.storage.local.set({ 'extraopts' : currentExtraOpts });
   });
 });
