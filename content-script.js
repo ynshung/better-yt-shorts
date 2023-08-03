@@ -15,6 +15,7 @@ const defaultKeybinds = {
 const defaultExtraOptions = {
   skip_enabled:   false,
   skip_threshold: 500,
+  automatically_open_comments: false,
   seek_amount: 5,
 }
 const storage = (typeof browser === 'undefined') ? chrome.storage.local : browser.storage.local;
@@ -22,12 +23,34 @@ var muted = false;
 var volumeState = 0;
 var actualVolume = 0;
 var skippedId = null
+var openedCommentsId = null
 var topId = 0 // store the furthest id in the chain
 
 // video with no likes    => https://www.youtube.com/shorts/ZFLRydDd9Mw
 // video with no likes and 23k comments => https://www.youtube.com/shorts/gISsypl5xsc
 // another                => https://www.youtube.com/shorts/qe56pgRVrgE?feature=share
 // video with 1.5M / 1,5M => https://www.youtube.com/shorts/nKZIx1bHUbQ
+
+function openComments()
+{
+  getCommentsButton().click()
+}
+function shouldOpenComments()
+{
+  let currentId = getCurrentId()
+
+  if ( extraOptions === null )                       return false
+  if ( !extraOptions.automatically_open_comments )   return false
+  if ( currentId === skippedId )                     return false // prevents opening comments on skipped shorts
+  if ( currentId === openedCommentsId )              return false // allow closing of comments
+
+  // change here to prevent bugs with closing comments on previous shorts
+  openedCommentsId = currentId 
+
+  if ( isCommentsPanelOpen() )                       return false
+
+  return true
+}
 
 function shouldSkipShort( currentId, likeCount )
 {
@@ -56,11 +79,17 @@ function shouldSkipShort( currentId, likeCount )
   return true
 }
 
-/**
- * If the setting `shouldSkipUnrecommendedShorts` is true, skip shorts that have fewer than the set number of likes
- */
- 
- // fixed mac scroll issue
+const getCommentsButton = () =>
+  document.querySelector( `[ id="${getCurrentId()}" ] #comments-button .yt-spec-touch-feedback-shape__fill` )
+  
+function isCommentsPanelOpen()
+{
+  // return true if the selector finds an open panel
+  // if panel is unfound, then the short either hasnt loaded, or the panel is not open
+  return document.querySelector( `[ id="${getCurrentId()}" ] #watch-while-engagement-panel  [ visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED" ]` ) ?? false
+}
+  
+// fixed mac scroll issue
 function skipShort( short )
 {
   var nextButton = getNextButton();
@@ -352,10 +381,16 @@ const timer = setInterval(() => {
   if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
 	  
 	  if (shouldSkipShort(currentId, likeCount)) {
-		console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
-		skippedId = currentId;
-		skipShort(ytShorts);
-	  }
+      console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes");
+      skippedId = currentId;
+      skipShort(ytShorts);
+    }
+  
+    if( shouldOpenComments() )
+    {
+      console.log("[Better Youtube Shorts] :: Opening comments");
+      openComments()
+    }
 	}
   
   if (injectedItem.has(currentId)) {
@@ -679,4 +714,5 @@ function goToPrevShort( short )
 {
   const scrollAmount = short.clientHeight
   document.getElementById( "shorts-container" ).scrollTop -= scrollAmount
+
 }

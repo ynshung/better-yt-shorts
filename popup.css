@@ -41,6 +41,12 @@
   color: var(--text-primary-color);
 }
 
+h3 {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+
 body {
 	font-family: 'Source Sans Pro', 'Roboto', 'Noto', 'Arial', sans-serif;
 	background: var(--bg-primary-color);
@@ -297,6 +303,7 @@ a {
   grid-template-columns: 5fr 1fr;
   text-wrap: balance;
   margin-bottom: 16px;
+  align-items: center;
 }
 
 .extra_options--row:last-child()
@@ -330,6 +337,12 @@ a {
 .extra_options--row input[type="range"]
 {
   accent-color: var(--yt-brand-color);
+}
+
+.extra_options--row input[type="checkbox"],
+.extra_options--row input[type="radio"]
+{
+  height: 1rem;
 }
 
 .extra_options--row input[type="number"]::-webkit-outer-spin-button,
