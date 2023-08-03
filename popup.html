@@ -11,26 +11,26 @@
   </div>
   <div class="separation-line" style="margin-top:5px;opacity:0.9"></div>
 
-  <h3 class="prevent-selection" style="text-align: center;margin:5px 0px;">Keybinds</h3>
+  <h3 class="prevent-selection" style="margin:8px 0">Keybinds</h3>
   <table style="width:100%;" data-theme="light" id="keybind-table">
   </table>
-  <h3 class="prevent-selection" style="text-align: center;margin:5px 0px;">Extra Options</h3>
+  <h3 class="prevent-selection" style="margin-top:12px;margin-bottom:8px">Extra Options</h3>
   <div id="extra_options">
     <div class="extra_options--row">
-      <label for="skip-bad-shorts">Automatically skip shorts with fewer likes?</label>
+      <label for="seek-amount">Seek amount in seconds</label>
+      <input type="number" id="extra_options_seek_amount" name="seek-amount" min=1 max=60 value=5>
+    </div>
+    <div class="extra_options--row">
+      <label for="auto-open-comments">Open comments on new shorts</label>
+      <input type="checkbox" id="extra_options_auto_open_comments" name="auto-open-comments">
+    </div>
+    <div class="extra_options--row">
+      <label for="skip-bad-shorts">Skip shorts with fewer likes?</label>
       <input type="checkbox" id="extra_options_skip_enabled" name="skip-bad-shorts">
     </div>
     <div class="extra_options--row">
       <label for="skip-bad-shorts">Skip shorts with fewer than this many likes:</label>
       <input type="number" id="extra_options_skip_threshold" name="skip-bad-shorts-threshold" min=0 value=500>
-    </div>
-    <div class="extra_options--row">
-      <label for="auto-open-comments">Automatically open comments on new shorts?</label>
-      <input type="checkbox" id="extra_options_auto_open_comments" name="auto-open-comments">
-    </div>
-    <div class="extra_options--row">
-      <label for="seek-amount">How many seconds to seek?</label>
-      <input type="number" id="extra_options_seek_amount" name="seek-amount" min=1 max=60 value=5>
     </div>
   </div>
 

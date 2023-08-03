@@ -41,6 +41,12 @@
   color: var(--text-primary-color);
 }
 
+h3 {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+
 body {
 	font-family: 'Source Sans Pro', 'Roboto', 'Noto', 'Arial', sans-serif;
 	background: var(--bg-primary-color);
@@ -297,6 +303,7 @@ a {
   grid-template-columns: 5fr 1fr;
   text-wrap: balance;
   margin-bottom: 16px;
+  align-items: center;
 }
 
 .extra_options--row:last-child()
