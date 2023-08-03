@@ -22,6 +22,7 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 * **Seeking** 5 seconds backward and forward with arrow keys
 * **Auto skip** short when current one ends
 * Auto skip short with likes below custom threshold (e.g. 500 likes)
+* Auto open comment section on each short
 * Decrease and increase **playback speed** with keys U and O
 * Revert to normal speed with I or by clicking the speed button
 * Control **volume** with the volume slider or with - and =, mute audio with M
