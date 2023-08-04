@@ -1,9 +1,12 @@
 import { handleColorScheme } from "./background/handleColorScheme"
 import { goToNextShort, goToPrevShort } from "./lib/changeShort"
-import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS, keybinds, setKeybinds, state, storage } from "./lib/declarations"
+import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS, keybinds, setKeybinds, setOptions, state, storage } from "./lib/declarations"
 import { getActionElement, getCurrentId, getLikeCount, getNextButton, getOverlayElement, getVideo, getVolumeContainer } from "./lib/getters"
+import { retrieveKeybindsFromStorage, retrieveOptionsFromStorage } from "./lib/retrieveFromStorage"
 import { shouldSkipShort, skipShort } from "./lib/skipShort"
 import { wheel } from "./lib/utils"
+
+
 
 /**
  * content.ts
@@ -12,42 +15,12 @@ import { wheel } from "./lib/utils"
  * For popup code, see  ./main.tsx
  */
 
+// todo  - also retrieve our keybinds (move that to its own file)
+retrieveOptionsFromStorage( setOptions )
+retrieveKeybindsFromStorage( setOptions )
+
 // watch for color scheme changes
 window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", ({matches}) => handleColorScheme( matches ) )
-
-
-// Using localStorage as a fallback for browser/chrome.storage.local
-setKeybinds( JSON.parse( localStorage.getItem("yt-keybinds") as string ) )
-
-storage.get(["keybinds"])
-.then((result) => {
-  if (result.keybinds) {
-    // Set default keybinds if not exists
-    for (const [cmd, keybind] of Object.entries( DEFAULT_KEYBINDS )) {
-      if (!result.keybinds[cmd]) result.keybinds[cmd] = keybind
-    }
-    if (result.keybinds !== keybinds) localStorage.setItem("yt-keybinds", JSON.stringify(result.keybinds))
-    setKeybinds( result.keybinds )
-  }
-})
-
-var extraOptions = JSON.parse( localStorage.getItem("yt-extraopts") as string )
-storage.get( ["extraopts"] )
-  .then((result) => {
-    if (result.extraopts) 
-    {
-      // Set default options if not exists
-      for ( const [ option, value ] of Object.entries( DEFAULT_OPTIONS ) ) {
-        if ( result.extraopts[ option ] ) continue
-        result.extraopts[ option ] = value
-      }
-
-      if ( result.extraopts !== extraOptions ) 
-        localStorage.setItem("yt-extraopts", JSON.stringify(result.extraopts) )
-
-      extraOptions = result.extraopts
-    }
-  })
 
 document.addEventListener("keydown", (data) => {
   if (

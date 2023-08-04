@@ -1,23 +1,17 @@
-:root {
-	
+:root
+{
+  --text-primary-color: #030303;
+  --text-secondary-color: #888;
+  --bg-primary-color: #fff;
+  --bg-primary-hover-color: #9d9ea1;
+  --bg-secondary-color: #f2f2f2;
+  --bg-secondary-hover-color: #e6e6e6;
+  --separation-line-color: #e5e5e5;
+  --yt-brand-color: #f00;
+  --suggested-action-color: #378de9;
+  --call-to-action-color: #3ea6ff;
 }
 
-@media (prefers-color-scheme: light) 
-{
-  :root
-  {
-    --text-primary-color: #030303;
-    --text-secondary-color: #888;
-    --bg-primary-color: #fff;
-    --bg-primary-hover-color: #9d9ea1;
-    --bg-secondary-color: #f2f2f2;
-    --bg-secondary-hover-color: #e6e6e6;
-    --separation-line-color: #e5e5e5;
-    --yt-brand-color: #f00;
-    --suggested-action-color: #378de9;
-    --call-to-action-color: #3ea6ff;
-  }
-}
 @media (prefers-color-scheme: dark) 
 {
   :root
@@ -74,8 +68,20 @@ tr:not(:first-child):hover {
 	caret-color: var(--text-primary-color);
 	color: var(--text-primary-color);
 }
+
+// Separator
 .separation-line {
 	background-color: var(--separation-line-color);
+  margin-top: 5px;
+  opacity: 0.9;
+  border: none;
+  outline: none;
+}
+
+.popup_subheading
+{
+  text-align: center;
+  margin: 5px 0px
 }
 
 svg {
@@ -206,21 +212,6 @@ a {
 	justify-content: center;
 	flex-direction: row;
 	gap: 8px;
-}
-
-.btn {
-	margin: 5px 0px;
-	padding: 5px 10px;
-	background-color: var(--suggested-action-color);
-	border-radius: 3px;
-	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.275);
-	cursor: pointer;
-	transition: all 0.3s ease;
-	font-size: 12px;
-}
-
-.btn:hover {
-	background-color: var(--call-to-action-color);
 }
 
 .modal {
@@ -374,4 +365,99 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--bg-secondary-hover-color);
+}
+
+
+.--page-indicator-container
+{
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  margin: 0 auto;
+
+  button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  .--page-indicator,
+  .--page-indicator-active
+  {
+    height: 1rem;
+    aspect-ratio: 1/1;
+    border-radius: 5rem;
+    cursor: pointer;
+  }
+  
+  // todo  - change this to be an svg (fill + stroke)
+  .--page-indicator
+  {
+    border: 2px solid var( --text-secondary-color );
+    background: transparent;
+  }
+  .--page-indicator-active
+  {
+    border: 2px solid var( --text-primary-color );
+    background: var( --text-primary-color );
+  }
+}
+
+.--footer-button-container
+{
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 100%;
+  margin: 0 auto;
+
+  button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+  
+  .--footer-button {
+    margin: 5px 0px;
+    padding: 5px 10px;
+
+    background-color: transparent;
+    color: var(--yt-brand-color );
+    outline: 1px var( --yt-brand-color ) solid;
+
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.275);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+  }
+  
+  .--footer-button:hover {
+    background-color: var(--yt-brand-color );
+    color: var(--text-primary-color);
+  }
+}
+
+// this is for the github link
+.--global-footer
+{
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+
+  .--global-footer-link
+  {
+    color: var(--text-secondary-color);
+  }
 }

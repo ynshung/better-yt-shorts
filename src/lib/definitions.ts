@@ -10,6 +10,19 @@ export type PolyDictionary = {
   [key: string]: any
 } | null
 
+export type DefaultsDictionary = {
+  [key: string]: any
+}
+
 export interface StateObject {
   [key: string]: any
+}
+
+export interface OptionsDictionary {
+  [key: string]: PolyDictionary
+}
+
+export enum PopupPageNameEnum {
+  KEYBINDS = 0,
+  OPTIONS
 }

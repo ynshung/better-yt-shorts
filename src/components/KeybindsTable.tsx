@@ -1,0 +1,71 @@
+import React from 'react'
+import { keybinds } from '../lib/declarations'
+import EditButton from './EditButton'
+import { resetKeybinds } from '../lib/ResetDefaults'
+import { StringDictionary } from '../lib/definitions'
+
+interface Props
+{
+  setKeybindsState: ( keybinds: () => StringDictionary ) => void
+  keybindsState: StringDictionary
+}
+
+export default function KeybindsTable( { setKeybindsState, keybindsState }: Props ) {
+ 
+  function handleResetKeybinds()
+  {
+    setKeybindsState( () => {
+      resetKeybinds()
+      return keybinds
+    } )
+  }
+  
+  function populateKeybindsTable()
+  {
+    return Object.entries( keybindsState as Object ).map( ( [ command, bind ] ) => {
+
+      const editButtonProps = {
+        keybindsState, setKeybindsState, command
+      }
+
+      return (
+        <tr key={crypto.randomUUID()}>
+          <td>{command}</td>
+          <td>
+            <div className="keybind-wrapper">
+              <span id={`${command}-span`} className="keybind-span">{bind}</span>
+            </div>
+          </td>
+          <td>
+            <EditButton {...editButtonProps}/>
+          </td>
+        </tr>
+      )
+    } )
+  }
+
+  return (
+    <>
+      <h3 className="popup_subheading prevent-selection">Keybinds</h3>
+      
+      <table style={{width: '100%'}} data-theme="light" id="keybind-table">
+        <tbody>
+          <tr className="prevent-selection">
+            <th>Command</th>
+            <th>Key</th>
+            <th></th>
+          </tr>
+
+          { populateKeybindsTable() }
+        </tbody>
+      </table>
+
+      <footer className="--footer-button-container">
+        <button onClick={ handleResetKeybinds } className="--footer-button">Reset Keybinds</button>
+        <a href="https://github.com/ynshung/better-yt-shorts" target="_blank">
+          <span className="--global-footer-link">Github</span>
+        </a>
+      </footer>
+    </>
+  )
+}

@@ -1,9 +1,9 @@
 import BROWSER from "../background/browser";
-import { NumberDictionary, PolyDictionary, StateObject, StringDictionary } from "./types";
+import { DefaultsDictionary, NumberDictionary, OptionsDictionary, PolyDictionary, StateObject, StringDictionary } from "./definitions";
 
 export const VERSION = BROWSER.runtime.getManifest().version
 
-export const DEFAULT_KEYBINDS = {
+export const DEFAULT_KEYBINDS: DefaultsDictionary = {
   "Seek Backward":   "ArrowLeft",
   "Seek Forward":    "ArrowRight",
   "Decrease Speed":  "KeyU",
@@ -18,16 +18,53 @@ export const DEFAULT_KEYBINDS = {
   "Previous Short":  "KeyW",
 };
 
-export const DEFAULT_OPTIONS = {
-  skip_enabled:   false,
+export const DEFAULT_OPTIONS: DefaultsDictionary = {
+  // add new defaults for your option here
+  skip_enabled: false,
   skip_threshold: 500,
 }
+export const OPTION_DICTIONARY: OptionsDictionary = {
+  // add details for the option (the input element type, the bounds (min/max), etc)
+  skip_enabled: 
+  {
+    type: "checkbox",
+    desc: "Automatically skip shorts with fewer likes?",
+  },
+  skip_threshold: 
+  {
+    desc: "Skip shorts with fewer than this many likes:",
+    type: "number",
+    min:  0
+  },
+}
 
-export var keybinds: StringDictionary = null
+export var keybinds: StringDictionary = Object.assign( {}, DEFAULT_KEYBINDS )
 export const setKeybinds = ( newKeybinds: StringDictionary ) => keybinds = newKeybinds
 
-export var options: PolyDictionary  = null
-export const setOptions = ( newOptions: PolyDictionary ) => keybinds = newOptions
+export function setKeybind( previousState: StringDictionary, command: string, newKey: string ): StringDictionary
+{
+  if ( previousState === null ) return null
+
+  const newKeybinds = {...previousState}
+  newKeybinds[ command ] = newKey
+
+  return newKeybinds
+}
+
+
+export var options: PolyDictionary  = Object.assign( {}, DEFAULT_OPTIONS )
+export const setOptions = ( newOptions: PolyDictionary ) => options = newOptions
+
+export function setOption( previousState: PolyDictionary, option: string, value: string ): StringDictionary
+{
+  if ( previousState === null ) return null
+
+  const newOptions = {...previousState}
+  newOptions[ option ] = value
+
+  return newOptions
+}
+
 
 export const storage = BROWSER.storage.local
 

@@ -1,4 +1,5 @@
 import { NUMBER_MODIFIERS } from "./declarations"
+import { PolyDictionary } from "./definitions"
 
 /**
  * Converts a formatted number to its full integer value.
@@ -42,7 +43,7 @@ export function wheel( element: HTMLElement, codeA: () => void, codeB: () => voi
   element.addEventListener( "wheel", ( e: WheelEvent ) => {
     e.preventDefault()
 
-    if (e.deltaY > 0) codeA()
+    if (e.deltaY < 0) codeA()
     else codeB()
 
     }, { passive: false }
@@ -67,4 +68,49 @@ export function render( htmlString: string ): Node
   if ( elements.length < 1 ) throw new Error( "ADSU | HTML String must have an element!" )
   
   return elements[0] as Node
+}
+
+/**
+ * returns a standard input element type depending on the given sample value
+ * For example, `true` will return `"checkbox"`; `500` will return "number"
+ */
+export function determineInputType( sampleValue: any ): string
+{
+  switch( typeof sampleValue )
+  {
+    case "boolean":
+      return "checkbox"
+    case "number":
+      return "number"
+    case "string":
+      return "text"
+
+    default:
+      return "text"
+  }
+}
+
+export function getEnumEntries( givenEnum: any ): Array<[string, any]>
+{
+  return Object.entries( givenEnum as Object )
+    .filter( ( ( [key, val] ) => isNaN( key as any ) ) )
+}
+
+/**
+ * Assumes one word
+ * @param str 
+ * @returns 
+ */
+export function capitalise( str: string )
+{
+  return str[0].toUpperCase() + str.slice( 1 ).toLowerCase()
+}
+
+
+/**
+ * Get enum value from key string, or return `default_return` if unfound
+ */
+export function getEnumWithString( givenEnum: any, key: string, default_return: any = null )
+{
+  return Object.assign( {}, givenEnum )[ key ] ?? default_return
 }
