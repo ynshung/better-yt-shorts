@@ -370,7 +370,7 @@ const timer = setInterval(() => {
   var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false;
   if (autoplayEnabled === null) autoplayEnabled = false;
   
-  var progBarList = overlayList.children[2].children[0].children[0];
+  var progBarList = overlayList.children[3].children[0].children[0];
   progBarList.removeAttribute( "hidden" )
 
   if ( topId < currentId ) 
@@ -525,7 +525,7 @@ const timer = setInterval(() => {
     }
     // Progress bar
     if (overlayList) {
-      var progBarList = overlayList.children[2].children[0].children[0];
+      var progBarList = overlayList.children[3].children[0].children[0];
       var progBarBG = progBarList.children[0];
       var progBarPlayed = progBarList.children[1]; // The red part of the progress bar
 
