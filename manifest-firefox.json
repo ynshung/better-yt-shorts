@@ -1,7 +1,7 @@
 {
     "name": "Better YouTube Shorts",
     "description": "Take back the controls on YouTube Shorts with playback, volume, timestamp controls and more.",
-    "version": "2.7.0",
+    "version": "2.7.2",
     "manifest_version": 2,
     "permissions": ["storage"],
     "browser_action": {
