@@ -1,5 +1,4 @@
 import BROWSER from "./background/browser"
-import { handleColorScheme } from "./background/handleColorScheme"
 import { goToNextShort, goToPrevShort } from "./lib/changeShort"
 import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS, state, storage } from "./lib/declarations"
 import { ChangedObjectStateEnum } from "./lib/definitions"
@@ -34,7 +33,7 @@ BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
 } )
 
 // watch for color scheme changes
-window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", ({matches}) => handleColorScheme( matches ) )
+// window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", ({matches}) => handleColorScheme( matches ) )
 
 document.addEventListener("keydown", (data) => {
   if (
