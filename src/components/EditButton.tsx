@@ -18,14 +18,19 @@ interface Props {
   keybindsState: StringDictionary,
   setKeybindsState: any, // ! give specific type
   command: string,
+  setSelectedCommand: ( newState: string )  => void, 
+  setIsModalOpen: ( newState: boolean ) => void
 }
-export default function EditButton( { keybindsState, setKeybindsState, command }: Props ) {
+export default function EditButton( { keybindsState, setKeybindsState, command, setSelectedCommand, setIsModalOpen }: Props ) {
 
   // todo  - add on click event + props
 
   function handleEditButtonClick( command: string ): void
   {
     console.log( `Clicked: ${command}` )
+
+    setIsModalOpen( true )
+    setSelectedCommand( command )
 
     // setKeybindState( () => {
     //   const newState = setKeybind( keybindState, command, key )

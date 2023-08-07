@@ -5,9 +5,10 @@ import KeybindsTable from "./KeybindsTable"
 import OptionsTable from "./OptionsTable"
 import Separator from "./Separator"
 import PageIndicatorContainer from "./PageIndicatorContainer"
-import { PolyDictionary, PopupPageNameEnum, StringDictionary } from "../lib/definitions"
-import { keybinds, options } from "../lib/declarations"
+import { ChangedObjectStateEnum, PolyDictionary, PopupPageNameEnum, StringDictionary } from "../lib/definitions"
 import { retrieveKeybindsFromStorage, retrieveOptionsFromStorage } from "../lib/retrieveFromStorage"
+import { pingChanges } from "../lib/chromeEmitters"
+import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS } from "../lib/declarations"
 
 // todo  - split this into its component parts
 
@@ -15,13 +16,17 @@ function Popup() {
   useEffect( () => {
     retrieveOptionsFromStorage( setOptionsState )
     retrieveKeybindsFromStorage( setKeybindsState )
+
+    pingChanges( ChangedObjectStateEnum.KEYBINDS, keybindsState as Object )
+    pingChanges( ChangedObjectStateEnum.OPTIONS,  optionsState  as Object )
+
   }, [] )
   
   const [ currentPage, setCurrentPage ] = useState( PopupPageNameEnum.KEYBINDS )
   const currentPageProps = { currentPage, setCurrentPage }
 
-  const [ keybindsState, setKeybindsState ] = useState<StringDictionary>( keybinds ) 
-  const [ optionsState, setOptionsState ]   = useState<PolyDictionary>(   options ) 
+  const [ keybindsState, setKeybindsState ] = useState<StringDictionary>( DEFAULT_KEYBINDS ) 
+  const [ optionsState, setOptionsState ]   = useState<PolyDictionary>(   DEFAULT_OPTIONS ) 
 
 
   const keybindsProp = { keybindsState, setKeybindsState }

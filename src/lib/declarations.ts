@@ -17,6 +17,20 @@ export const DEFAULT_KEYBINDS: DefaultsDictionary = {
   "Next Short":      "KeyS", 
   "Previous Short":  "KeyW",
 };
+export const KEYBINDS_ORDER: DefaultsDictionary = [
+  "Seek Backward",
+  "Seek Forward",
+  "Decrease Speed",
+  "Reset Speed",
+  "Increase Speed",
+  "Decrease Volume",
+  "Increase Volume",
+  "Toggle Mute",
+  "Next Frame",
+  "Previous Frame",
+  "Next Short",
+  "Previous Short",
+]
 
 export const DEFAULT_OPTIONS: DefaultsDictionary = {
   // add new defaults for your option here
@@ -38,9 +52,6 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   },
 }
 
-export var keybinds: StringDictionary = Object.assign( {}, DEFAULT_KEYBINDS )
-export const setKeybinds = ( newKeybinds: StringDictionary ) => keybinds = newKeybinds
-
 export function setKeybind( previousState: StringDictionary, command: string, newKey: string ): StringDictionary
 {
   if ( previousState === null ) return null
@@ -50,10 +61,6 @@ export function setKeybind( previousState: StringDictionary, command: string, ne
 
   return newKeybinds
 }
-
-
-export var options: PolyDictionary  = Object.assign( {}, DEFAULT_OPTIONS )
-export const setOptions = ( newOptions: PolyDictionary ) => options = newOptions
 
 export function setOption( previousState: PolyDictionary, option: string, value: string ): StringDictionary
 {
@@ -163,3 +170,28 @@ export const NUMBER_MODIFIERS: NumberDictionary = {
   "mn":   1_000_000,
   "t":    1_000,
 }
+
+export const EXCLUDED_KEY_BINDS = [
+  'Backspace',
+  'Enter',
+  'NumpadEnter',
+  'Escape',
+  'Tab',
+  'Space',
+  'PageUp',
+  'PageDown',
+  'ArrowUp',
+  'ArrowDown',
+  'F13',             // printscreen
+  'MetaLeft',        // windows/command
+  'MetaRight',
+
+  'ControlLeft',
+  'ControlRight',
+  'ShiftLeft',
+  'ShiftRight',
+  'AltLeft',
+  'AltRight',
+]
+
+export const DEFAULT_PRESSED_KEY = "Press a Key"

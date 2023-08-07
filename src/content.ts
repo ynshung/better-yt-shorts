@@ -1,10 +1,12 @@
+import BROWSER from "./background/browser"
 import { handleColorScheme } from "./background/handleColorScheme"
 import { goToNextShort, goToPrevShort } from "./lib/changeShort"
-import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS, keybinds, setKeybinds, setOptions, state, storage } from "./lib/declarations"
+import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS, state, storage } from "./lib/declarations"
+import { ChangedObjectStateEnum } from "./lib/definitions"
 import { getActionElement, getCurrentId, getLikeCount, getNextButton, getOverlayElement, getVideo, getVolumeContainer } from "./lib/getters"
 import { retrieveKeybindsFromStorage, retrieveOptionsFromStorage } from "./lib/retrieveFromStorage"
 import { shouldSkipShort, skipShort } from "./lib/skipShort"
-import { wheel } from "./lib/utils"
+import { getKeyFromEnum, wheel } from "./lib/utils"
 
 
 
@@ -15,9 +17,21 @@ import { wheel } from "./lib/utils"
  * For popup code, see  ./main.tsx
  */
 
-// todo  - also retrieve our keybinds (move that to its own file)
-retrieveOptionsFromStorage( setOptions )
-retrieveKeybindsFromStorage( setOptions )
+var keybinds = null as any
+var options  = null as any
+
+retrieveKeybindsFromStorage( newBinds => { keybinds = newBinds } )
+retrieveOptionsFromStorage(  newOpts  => { options = newOpts   } )
+
+// todo  - test this on firefox
+BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
+  if ( req?.keybinds )
+    keybinds = req.keybinds 
+  if ( req?.options )
+    options = req.options
+
+  resetMainInterval()
+} )
 
 // watch for color scheme changes
 window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", ({matches}) => handleColorScheme( matches ) )
@@ -29,7 +43,6 @@ document.addEventListener("keydown", (data) => {
     ) return // Avoids using keys while the user interacts with any input, like search and comment.
   const ytShorts = getVideo()
   if (!ytShorts) return
-  if (!keybinds) setKeybinds( DEFAULT_KEYBINDS )
 
   const key    = data.code
   const keyAlt = data.key.toLowerCase() // for legacy keybinds
@@ -202,7 +215,9 @@ var lastTime = -1
 var lastSpeed = 0
 var setSpeed = 1
 
-const timer = setInterval(() => {
+var timer = setInterval( main, 100 )
+
+function main() {
   if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return
   
   const ytShorts      = getVideo()
@@ -214,7 +229,7 @@ const timer = setInterval(() => {
 
   if (autoplayEnabled === null) autoplayEnabled = false
   
-  var progBarList = overlayList.children[2].children[0].children[0]
+  var progBarList = overlayList.children[3].children[0].children[0]
   progBarList.removeAttribute( "hidden" )
 
   if ( state.topId < state.currentId ) 
@@ -224,7 +239,7 @@ const timer = setInterval(() => {
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
   if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
 	  
-	  if ( shouldSkipShort( state.currentId, likeCount ) ) {
+	  if ( shouldSkipShort( options, state.currentId, likeCount ) ) {
       console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes")
       state.skippedId = currentId
       skipShort(ytShorts)
@@ -446,4 +461,10 @@ const timer = setInterval(() => {
     if (currentId !== null) setVolumeSlider( ytShorts )
   }
   // if (ytShorts) checkVolume(ytShorts) // todo  - uncomment this when added
-}, 100)
+}
+
+function resetMainInterval()
+{
+  clearInterval( timer )
+  timer = setInterval( main, 100 )
+}

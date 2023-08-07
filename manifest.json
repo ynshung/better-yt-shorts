@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Better YouTube Shorts (BETA)",
-  "description": "Take back the controls on YouTube Shorts with playback, volume, progress bar and more.",
-  "version": "0.0.0",
+  "description": "Take back the controls on YouTube Shorts with playback, volume, progress bar and more!",
+  "version": "3.0.0",
   "action": { "default_popup": "index.html" },
-  "permissions": ["storage"],
+  "permissions": [ "storage" ],
 
   "content_scripts": [
     {

@@ -2,6 +2,7 @@
   --text-primary-color: #030303;
   --text-secondary-color: #888;
   --bg-primary-color: #fff;
+  --bg-modal-color: #ffffff33;
   --bg-primary-hover-color: #9d9ea1;
   --bg-secondary-color: #f2f2f2;
   --bg-secondary-hover-color: #e6e6e6;
@@ -9,6 +10,7 @@
   --yt-brand-color: #f00;
   --suggested-action-color: #378de9;
   --call-to-action-color: #3ea6ff;
+  --max-height: 600px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +18,7 @@
     --text-primary-color: #fff;
     --text-secondary-color: #888;
     --bg-primary-color: #0f0f0f;
+    --bg-modal-color: #0f0f0f66;
     --bg-primary-hover-color: #9d9ea1;
     --bg-secondary-color: #272727;
     --bg-secondary-hover-color: #3d3d3d;
@@ -40,16 +43,17 @@ span) {
   color: var(--text-primary-color);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Source Sans Pro", "Roboto", "Noto", "Arial", sans-serif;
   background: var(--bg-primary-color);
   color: var(--text-primary-color);
-  scrollbar-gutter: stable;
-}
-
-.modal-content {
-  background: var(--bg-primary-color);
-  color: var(--text-primary-color);
+  padding: 0.5rem 1rem;
 }
 
 tr:not(:first-child) {
@@ -59,12 +63,6 @@ tr:not(:first-child) {
 
 tr:not(:first-child):hover {
   background-color: var(--bg-secondary-hover-color);
-}
-
-#keybind-input {
-  background-color: var(--bg-primary-hover-color);
-  caret-color: var(--text-primary-color);
-  color: var(--text-primary-color);
 }
 
 .separation-line {
@@ -234,25 +232,13 @@ a {
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
 }
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  margin-bottom: 4px;
-  margin-top: 2px;
-  align-items: center;
-}
-
-.modal-title {
-  font-weight: bold;
-}
-
 .close-btn {
   color: var(--bg-primary-hover-color);
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
+  transition: color 200ms;
 }
 
 .close-btn:hover,
@@ -432,5 +418,83 @@ a {
   margin: 0 auto;
 }
 .--global-footer .--global-footer-link {
+  color: var(--text-secondary-color);
+}
+
+.--modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-modal-color);
+}
+.--modal .--modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.--modal .--modal-header .--modal-header-text {
+  font-style: italic;
+  color: var(--text-secondary-color);
+  display: block;
+}
+.--modal .--modal-header .--modal-header-text .--modal-command {
+  font-style: normal;
+  display: block;
+  font-weight: bold;
+}
+.--modal .--modal-content {
+  background: var(--bg-primary-color);
+  color: var(--text-primary-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 80%;
+  box-shadow: 0 0 0.5rem 0.5rem var(--bg-modal-color);
+}
+.--modal .--modal-input {
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--bg-secondary-color);
+  caret-color: var(--text-primary-color);
+  color: var(--text-primary-color);
+  transition: background 200ms;
+}
+.--modal .--modal-input:hover {
+  background-color: var(--bg-primary-hover-color);
+}
+.--modal .--modal-input:focus {
+  background-color: var(--bg-primary-hover-color);
+}
+.--modal .--modal-input-error,
+.--modal .--modal-input-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 0.25rem;
+}
+.--modal .--modal-input-error {
+  color: red;
+}
+.--modal .--modal-input-success {
+  color: lime;
+}
+.--modal .--modal-label {
+  color: var(--text-secondary-color);
+  font-style: italic;
+}
+.--modal .--modal-label span {
+  font-style: normal;
+  font-weight: bold;
+}
+
+.key-combo-warning {
   color: var(--text-secondary-color);
 }/*# sourceMappingURL=popup.css.map */

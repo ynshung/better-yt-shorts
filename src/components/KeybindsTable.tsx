@@ -1,8 +1,9 @@
-import React from 'react'
-import { keybinds } from '../lib/declarations'
+import React, { useState } from 'react'
+import { DEFAULT_KEYBINDS, KEYBINDS_ORDER } from '../lib/declarations'
 import EditButton from './EditButton'
 import { resetKeybinds } from '../lib/ResetDefaults'
 import { StringDictionary } from '../lib/definitions'
+import EditModal from './EditModal'
 
 interface Props
 {
@@ -11,21 +12,34 @@ interface Props
 }
 
 export default function KeybindsTable( { setKeybindsState, keybindsState }: Props ) {
- 
+
+  const [ isModalOpen, setIsModalOpen ] = useState( false )
+  const [ selectedCommand, setSelectedCommand ] = useState( "Seek Backward" )
+
+  const modalProps = {
+    selectedCommand,
+    isModalOpen,
+    setIsModalOpen,
+    keybindsState,
+    setKeybindsState
+  }
+
   function handleResetKeybinds()
   {
     setKeybindsState( () => {
       resetKeybinds()
-      return keybinds
+      return DEFAULT_KEYBINDS
     } )
   }
   
   function populateKeybindsTable()
   {
-    return Object.entries( keybindsState as Object ).map( ( [ command, bind ] ) => {
+    if ( keybindsState === null ) return <></>
 
+    return KEYBINDS_ORDER.map( ( command: string ) => {
+      const bind = keybindsState[ command ]
       const editButtonProps = {
-        keybindsState, setKeybindsState, command
+        keybindsState, setKeybindsState, command, setSelectedCommand, setIsModalOpen
       }
 
       return (
@@ -47,6 +61,8 @@ export default function KeybindsTable( { setKeybindsState, keybindsState }: Prop
   return (
     <>
       <h3 className="popup_subheading prevent-selection">Keybinds</h3>
+
+      <EditModal {...modalProps}/>
       
       <table style={{width: '100%'}} data-theme="light" id="keybind-table">
         <tbody>

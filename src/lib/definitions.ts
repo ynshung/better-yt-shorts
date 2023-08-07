@@ -26,3 +26,8 @@ export enum PopupPageNameEnum {
   KEYBINDS = 0,
   OPTIONS
 }
+
+export enum ChangedObjectStateEnum {
+  KEYBINDS = 0,
+  OPTIONS
+}

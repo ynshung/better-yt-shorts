@@ -3,10 +3,10 @@
 // another                => https://www.youtube.com/shorts/qe56pgRVrgE?feature=share
 // video with 1.5M / 1,5M => https://www.youtube.com/shorts/nKZIx1bHUbQ
 
-import { options, state } from "./declarations"
+import { state } from "./declarations"
 import { getNextButton, getVideo } from "./getters"
 
-export function shouldSkipShort( currentId: string, likeCount: number )
+export function shouldSkipShort( options: any, currentId: string, likeCount: number )
 {
   // for debugging purposes
 

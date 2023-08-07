@@ -1,4 +1,4 @@
-import { NUMBER_MODIFIERS } from "./declarations"
+import { EXCLUDED_KEY_BINDS, NUMBER_MODIFIERS } from "./declarations"
 import { PolyDictionary } from "./definitions"
 
 /**
@@ -113,4 +113,12 @@ export function capitalise( str: string )
 export function getEnumWithString( givenEnum: any, key: string, default_return: any = null )
 {
   return Object.assign( {}, givenEnum )[ key ] ?? default_return
+}
+/**
+ * Get enum key from enum, or return `default_return` if unfound
+ * note: this will return TO LOWER CASE!!
+ */
+export function getKeyFromEnum( givenEnum: any, value: any, default_return: any = null )
+{
+  return givenEnum[ value ].toLowerCase()
 }

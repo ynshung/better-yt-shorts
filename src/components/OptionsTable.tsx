@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { DEFAULT_OPTIONS, OPTION_DICTIONARY, options, setOption, setOptions, storage } from '../lib/declarations'
+import { DEFAULT_OPTIONS, OPTION_DICTIONARY, setOption, storage } from '../lib/declarations'
 import { determineInputType } from '../lib/utils'
 import { PolyDictionary } from '../lib/definitions'
 import { resetOptions } from '../lib/ResetDefaults'
@@ -19,7 +18,7 @@ export default function OptionsTable( { optionsState, setOptionsState }: Props )
   {
     setOptionsState( () => {
       resetOptions()
-      return options
+      return DEFAULT_OPTIONS  
     } )
   }
 
