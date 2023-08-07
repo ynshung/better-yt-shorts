@@ -397,7 +397,8 @@ const timer = setInterval(() => {
     var currTime = Math.round(ytShorts.currentTime);
     var currSpeed = ytShorts.playbackRate;
 
-    if (autoplayEnabled && ytShorts && ytShorts.currentTime >= ytShorts.duration - 0.11) {
+    if (autoplayEnabled && ytShorts && ytShorts.currentTime >= ytShorts.duration - 0.11 && skippedId !== currentId) {
+      skippedId = currentId;
       var nextButton = getNextButton();
       nextButton.click();
     }
