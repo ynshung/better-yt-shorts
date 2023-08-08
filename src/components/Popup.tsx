@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import "../css/popup.css"
+import "../css/style.css"
 import Header from "./Header"
 import KeybindsTable from "./KeybindsTable"
 import OptionsTable from "./OptionsTable"

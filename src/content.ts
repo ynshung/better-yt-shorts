@@ -1,13 +1,14 @@
 import BROWSER from "./background/browser"
-import { goToNextShort, goToPrevShort } from "./lib/changeShort"
-import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS, state, storage } from "./lib/declarations"
-import { ChangedObjectStateEnum } from "./lib/definitions"
-import { getActionElement, getCurrentId, getLikeCount, getNextButton, getOverlayElement, getVideo, getVolumeContainer } from "./lib/getters"
-import { retrieveKeybindsFromStorage, retrieveOptionsFromStorage } from "./lib/retrieveFromStorage"
+import { setPlaybackRate, setTimer } from "./lib/PlaybackRate"
+import { saveSettingsToStorage } from "./lib/SaveToStorage"
+import { checkVolume, setVolumeSlider } from "./lib/VolumeSlider"
+import { DEFAULT_STATE } from "./lib/declarations"
+import { StateObject } from "./lib/definitions"
+import { getActionElement, getCurrentId, getLikeCount, getNextButton, getOverlayElement, getVideo } from "./lib/getters"
+import { handleKeyEvent } from "./lib/handleKeyEvent"
+import { retrieveKeybindsFromStorage, retrieveOptionsFromStorage, retrieveSettingsFromStorage } from "./lib/retrieveFromStorage"
 import { shouldSkipShort, skipShort } from "./lib/skipShort"
-import { getKeyFromEnum, wheel } from "./lib/utils"
-
-
+import { render, wheel } from "./lib/utils"
 
 /**
  * content.ts
@@ -16,11 +17,25 @@ import { getKeyFromEnum, wheel } from "./lib/utils"
  * For popup code, see  ./main.tsx
  */
 
+const state = new Proxy( DEFAULT_STATE, {
+  set: ( o: StateObject, prop: string, val: any ) => {
+    o[ prop ] = val
+    return true
+  }
+}  )
+
 var keybinds = null as any
 var options  = null as any
+var settings = null as any
 
-retrieveKeybindsFromStorage( newBinds => { keybinds = newBinds } )
-retrieveOptionsFromStorage(  newOpts  => { options = newOpts   } )
+// todo  - add "settings" to localstorage (merge autoplay + player volume into one) 
+// localStorage.getItem("yt-player-volume") !== null && JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]
+
+retrieveKeybindsFromStorage(  newBinds    => { keybinds = newBinds    } )
+
+retrieveOptionsFromStorage(   newOpts     => { options  = newOpts     } )
+
+retrieveSettingsFromStorage(  newSettings => { settings = newSettings } )
 
 // todo  - test this on firefox
 BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
@@ -29,195 +44,23 @@ BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
   if ( req?.options )
     options = req.options
 
-  resetMainInterval()
+  resetIntervals()
 } )
 
 // watch for color scheme changes
 // window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", ({matches}) => handleColorScheme( matches ) )
 
-document.addEventListener("keydown", (data) => {
-  if (
-    document.activeElement === document.querySelector(`input`) ||
-    document.activeElement === document.querySelector("#contenteditable-root")
-    ) return // Avoids using keys while the user interacts with any input, like search and comment.
-  const ytShorts = getVideo()
-  if (!ytShorts) return
-
-  const key    = data.code
-  const keyAlt = data.key.toLowerCase() // for legacy keybinds
-
-  let command
-  for ( const [cmd, keybind] of Object.entries( keybinds as Object ) ) 
-    if ( key === keybind || keyAlt === keybind ) 
-      command = cmd
-
-  if (!command) return
-  
-  switch (command) {
-    case "Seek Backward":
-      ytShorts.currentTime -= 5
-      break
-
-    case "Seek Forward":
-      ytShorts.currentTime += 5
-      break
-
-    case "Decrease Speed":
-      if (ytShorts.playbackRate > 0.25) ytShorts.playbackRate -= 0.25
-      break
-
-    case "Reset Speed":
-      ytShorts.playbackRate = 1
-      break
-
-    case "Increase Speed":
-      if (ytShorts.playbackRate < 16) ytShorts.playbackRate += 0.25
-      break
-
-    case "Increase Volume":
-      if (ytShorts.volume <= 0.975) {
-        setVolume(ytShorts.volume + 0.025)
-      }
-      break
-
-    case "Decrease Volume":
-      if (ytShorts.volume >= 0.025) {
-        setVolume(ytShorts.volume - 0.025)
-      }
-      break
-
-    case "Toggle Mute":
-      if ( !state.muted ) {
-        state.muted = true
-        state.volumeState = ytShorts.volume
-        ytShorts.volume = 0
-      } else {
-        state.muted = false
-        ytShorts.volume = state.volumeState
-      }
-      break
-      
-    case "Next Frame":
-      if (ytShorts.paused) {
-        ytShorts.currentTime -= 0.04
-      }
-      break
-
-    case "Previous Frame":
-      if (ytShorts.paused) {
-        ytShorts.currentTime += 0.04
-      }
-      break
-    
-    case "Next Short":
-      goToNextShort( ytShorts )
-      break
-
-    case "Previous Short":
-      goToPrevShort( ytShorts )
-      break
-  }
-  setSpeed = ytShorts.playbackRate
-})
-
-// todo  - fix this, move this
-const setTimer = ( currTime: number, duration: number ) => {
-  const id = getCurrentId()
-  if ( document.getElementById(`ytTimer${id}`) === null ) return false
-
-  const timerElement = document.getElementById( `ytTimer${id}` ) as HTMLElement
-  
-  timerElement.innerText = `${currTime}/${duration}s`
-
-  return true
-}
-
-// todo  - generate this using my render() util method
-const setVolumeSlider = ( ytShorts: HTMLVideoElement ) => {
-  const id = state.id
-
-  const volumeContainer = getVolumeContainer(id)
-  const slider = document.createElement("input")
-
-  if( state.actualVolume === null ) state.actualVolume = 0.5
-
-  // checkVolume(ytShorts) // todo - uncomment this when added
-  slider.id = `volumeSliderController${id}`
-  slider.classList.add("volume-slider")
-  slider.classList.add("betterYT-volume-slider")
-  slider.type = "range"
-  slider.min  = "0"
-  slider.max  = "1"
-  slider.step = "0.01"
-  slider.setAttribute("orient", "vertical")
-  volumeContainer.appendChild(slider)
-  slider.value = state.actualVolume
-
-  slider.addEventListener( "input", e => setVolume( (<HTMLInputElement>e.target).valueAsNumber ) )
-
-  // Prevent video from pausing/playing on click
-  slider.addEventListener("click", (data) => {
-    data.stopPropagation()
-  })
-}
-
-// todo  - move this to its own lib script (probably call it volumeSlider.ts)
-const setVolume = ( volume: number ) => {
-  const id = getCurrentId()
-  const volumeSliderController = document.getElementById(`volumeSliderController${id}`) as HTMLInputElement
-  
-  if ( volumeSliderController === null ) return
-
-  volumeSliderController.value = "" + volume
-
-  // const ytShorts = document.querySelector(
-  //   "#shorts-player > div.html5-video-container > video"
-  // ) as HTMLVideo
-  const ytShorts = getVideo()
-
-  if ( ytShorts === null ) return
-
-  const volumeData = {
-    data: {
-      volume: state.volume, 
-      muted:  state.muted, 
-    }
-  }
-
-  ytShorts.volume = volume
-  localStorage.setItem( "yt-player-volume", JSON.stringify( volumeData ) )
-}
-
-// todo  - do this
-// const checkVolume = ( ytShorts: HTMLVideoElement ) => {
-//   if(localStorage.getItem("yt-player-volume") !== null && JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]){
-//     actualVolume = JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]
-//     ytShorts.volume = actualVolume
-//   }else{
-//     actualVolume = ytShorts.volume
-//   }
-// }
-
-const setPlaybackRate = ( currSpeed: number ) => {
-  const id = getCurrentId()
-  const playBackElement = document.getElementById( `ytPlayback${id}` ) as HTMLElement
-
-  if ( playBackElement === null ) return false
-
-  playBackElement.innerText = `${currSpeed}x`
-
-  return true
-}
+document.addEventListener( "keydown", e => handleKeyEvent( e, settings, keybinds, options, state ) )
 
 var injectedItem = new Set()
-var lastTime = -1
-var lastSpeed = 0
-var setSpeed = 1
+var lastTime     = -1
+var lastSpeed    = 0
 
-var timer = setInterval( main, 100 )
+var main_interval    = setInterval( main, 100 )
+var volume_interval  = setInterval( volumeIntervalCallback, 10 )
 
 function main() {
-  if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return
+  if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
   
   const ytShorts      = getVideo()
   var currentId       = getCurrentId()
@@ -238,7 +81,7 @@ function main() {
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
   if (ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1) {
 	  
-	  if ( shouldSkipShort( options, state.currentId, likeCount ) ) {
+	  if ( shouldSkipShort( state, options, state.currentId, likeCount ) ) {
       console.log("[Better Youtube Shorts] :: Skipping short that had", likeCount, "likes")
       state.skippedId = currentId
       skipShort(ytShorts)
@@ -265,17 +108,19 @@ function main() {
       if (!injectedSuccess) injectedItem.delete(currentId)
       lastTime = currTime
     }
-    if (currSpeed != lastSpeed) {
-      const setRateSuccess = setPlaybackRate(currSpeed)
-      if (setRateSuccess) lastSpeed = currSpeed
-    }
 
-  } else {
+    setPlaybackRate( state )
+
+  } 
+  else 
+  {
     lastTime = -1
     lastSpeed = 0
+
     if (autoplayEnabled && ytShorts) ytShorts.loop = false
 
-    if (actionList) {
+    if (actionList) 
+    {
 
       const betterYTContainer = document.createElement("div")
       betterYTContainer.id = "betterYT-container"
@@ -306,6 +151,8 @@ function main() {
       span1.setAttribute("role", "text")
       ytTimer.appendChild(span1)
 
+
+
       // Match YT's HTML structure
       ytButton.appendChild(para0)
       ytLabel.appendChild(ytButton)
@@ -317,94 +164,99 @@ function main() {
       actionList.insertBefore(betterYTContainer, actionList.children[1])
 
       // Autoplay Switch
-      const switchContainer = document.createElement("div")
-      const autoplaySwitch = document.createElement("label")
-      autoplaySwitch.classList.add("autoplay-switch")
-      var checkBox = document.createElement("input")
-      checkBox.type = "checkbox"
-      checkBox.id = `autoplay-checkbox${currentId}`
-      checkBox.checked = autoplayEnabled
-      var autoplaySpan = document.createElement("span")
-      autoplaySpan.classList.add("autoplay-slider")
-      autoplaySwitch.append(checkBox, autoplaySpan)
-      switchContainer.appendChild(autoplaySwitch)
+      const autoplaySwitch = `
+        <div>
+          <label class="autoplay-switch">
+            <input type="checkbox" id="autoplay-checkbox${ getCurrentId() }" ${ settings.autoplay ? "checked" : "" }/>
+            <span class="autoplay-slider"></span>
+          </label>
+        </div>
+      `
 
-      actionList.insertBefore(switchContainer, actionList.children[1])
-      
-      const autoplayTitle = document.createElement("div")
-      autoplayTitle.classList.add("yt-spec-button-shape-with-label__label")
-      var span2 = document.createElement("span")
-      span2.setAttribute("class", "betterYT-auto yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center")
-      span2.setAttribute("role", "text")
-      span2.textContent = "Autoplay"
-      autoplayTitle.appendChild(span2)
-    
-      actionList.insertBefore(autoplayTitle, actionList.children[2])
-      injectedItem.add(currentId)
-      
+      actionList.insertBefore( render( autoplaySwitch ), actionList.children[1] )
 
-      ytShorts.playbackRate = setSpeed
-      setPlaybackRate(setSpeed)
+      const autoplayTitle = `
+        <div class="yt-spec-button-shape-with-label__label">
+          <span 
+            role="text"
+            class="betterYT-auto yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center"
+          > Autoplay </span>
+        </div>
+      `
+
+      actionList.insertBefore( render( autoplayTitle ), actionList.children[2] )
+
+      injectedItem.add( getCurrentId() )
+
+      ytShorts.playbackRate = state.playbackRate
+      setPlaybackRate( state )
       injectedSuccess = setTimer( currTime || 0, Math.round(ytShorts.duration || 0))
 
-      betterYTContainer.addEventListener("click",() => {
+      betterYTContainer.addEventListener("click", () => {
         ytShorts.playbackRate = 1
-        setSpeed = ytShorts.playbackRate
+        state.playbackRate = ytShorts.playbackRate
       })
 
-      checkBox.addEventListener('change', () => {
-        if (checkBox.checked) {
+      document.getElementById( `autoplay-checkbox${getCurrentId()}` )?.addEventListener('change', ( e: any ) => {
+        if ( e.target.checked )
+        {
           localStorage.setItem("yt-autoplay", "true")
           ytShorts.loop = false
-        } else {
+        } 
+        else 
+        {
           localStorage.setItem("yt-autoplay", "false")
           ytShorts.loop = true
         }
       })
 
-      // todo  - clean all of this up
+      
       wheel( 
         ytButton, 
-        speedup, 
-        speeddown
+        () => {
+          // speedup
+          const video = getVideo()
+          if ( video === null ) return
+
+          if (video.playbackRate < 16) video.playbackRate += 0.25
+          state.playbackRate = video.playbackRate
+
+        }, 
+        () => {
+          // speeddown
+          const video = getVideo()
+          if ( video === null ) return
+
+          if (video.playbackRate > 0.25) video.playbackRate -= 0.25
+          state.playbackRate = video.playbackRate
+        }
       )
       
-      function speedup() 
-      {
-        const video = getVideo()
-        if ( video === null ) return
-
-        if (video.playbackRate < 16) video.playbackRate += 0.25
-        setSpeed = video.playbackRate
-      }
-      function speeddown() 
-      {
-        const video = getVideo()
-        if ( video === null ) return
-
-        if (video.playbackRate > 0.25) video.playbackRate -= 0.25
-        setSpeed = video.playbackRate
-      }
-
-      wheel( ytTimer, forward, backward )
-      function forward()
-      {
-        const video = getVideo()
-        if ( video !== null ) video.currentTime += 1
-      }
-
-      function backward()
-      {
-        const video = getVideo()
-        if ( video !== null ) video.currentTime -= 1
-      }
+      wheel( 
+        ytTimer, 
+        () =>  { 
+          // forward
+          const video = getVideo()
+          if ( video !== null ) video.currentTime += 1 
+        },
+        () => { 
+          // backward
+          const video = getVideo()
+          if ( video !== null ) video.currentTime -= 1 
+        }
+      )
 
     }
+
+
+
+
+
     // Progress bar
     // todo  - move this to its own file
     if ( overlayList ) 
     {
-      var progBarList = overlayList.children[2].children[0].children[0]
+      var progBarList = overlayList.children[3].children[0].children[0]
       var progBarBG = progBarList.children[0]
       var progBarPlayed = progBarList.children[1] // The red part of the progress bar
 
@@ -457,13 +309,28 @@ function main() {
         ytShorts.currentTime = (x / ytShorts.clientWidth) * ytShorts.duration
       })
     }
-    if (currentId !== null) setVolumeSlider( ytShorts )
+   
+    if (currentId !== null) setVolumeSlider( state, settings )
+  
   }
-  // if (ytShorts) checkVolume(ytShorts) // todo  - uncomment this when added
+
+  
+
 }
 
-function resetMainInterval()
+function volumeIntervalCallback()
 {
-  clearInterval( timer )
-  timer = setInterval( main, 100 )
+  if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
+
+  if ( getVideo() ) checkVolume( settings )
+}
+
+
+function resetIntervals()
+{
+  clearInterval( volume_interval )
+  volume_interval = setInterval( volumeIntervalCallback, 10 )
+  
+  clearInterval( main_interval )
+  main_interval = setInterval( main, 100 )
 }

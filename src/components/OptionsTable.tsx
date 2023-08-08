@@ -2,6 +2,7 @@ import { DEFAULT_OPTIONS, OPTION_DICTIONARY, setOption, storage } from '../lib/d
 import { determineInputType } from '../lib/utils'
 import { PolyDictionary } from '../lib/definitions'
 import { resetOptions } from '../lib/ResetDefaults'
+import { saveOptionsToStorage, saveSettingsToStorage } from '../lib/SaveToStorage'
 
 interface Props
 {
@@ -47,13 +48,10 @@ export default function OptionsTable( { optionsState, setOptionsState }: Props )
           value = +target.min
     }
     
-    // set in storage
     setOptionsState( () => {
       const newState = setOption( optionsState, option, value )
 
-      storage.set( { "extraopts" : newState } )
-      localStorage.setItem( "yt-extraopts", JSON.stringify( newState ) )
-      
+      saveOptionsToStorage( newState )
       console.log( `[BYS] :: Set Option "${option}" to ${value}` )
 
       return newState

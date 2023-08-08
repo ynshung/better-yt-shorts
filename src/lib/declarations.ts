@@ -75,22 +75,23 @@ export function setOption( previousState: PolyDictionary, option: string, value:
 
 export const storage = BROWSER.storage.local
 
-const stateObject = {
+export const DEFAULT_STATE = {
   id          : 0,
   topId       : 0,
   volumeState : 0,
+  playbackRate: 1,
   
   actualVolume: null,
   skippedId   : null,
   
   muted       : false,
+} as StateObject
+
+// ! - add settings
+export const DEFAULT_SETTINGS = {
+  volume: 0.25, // todo  - this should be .5, just doing this for the sake of my ears
 }
-export const state = new Proxy( stateObject, {
-  set: ( o: StateObject, prop: string, val: any ) => {
-    o[ prop ] = val
-    return true
-  }
-} )
+
 
 // todo  - add formats from other langs (note: dont include duplicate keys)#
 export const NUMBER_MODIFIERS: NumberDictionary = {
@@ -195,3 +196,5 @@ export const EXCLUDED_KEY_BINDS = [
 ]
 
 export const DEFAULT_PRESSED_KEY = "Press a Key"
+
+export const VOLUME_INCREMENT_AMOUNT = 0.025

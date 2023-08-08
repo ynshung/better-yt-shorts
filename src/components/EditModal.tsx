@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import Separator from './Separator'
-import { DEFAULT_PRESSED_KEY, EXCLUDED_KEY_BINDS, storage } from '../lib/declarations'
-import { pingChanges } from '../lib/chromeEmitters'
-import { ChangedObjectStateEnum, StringDictionary } from '../lib/definitions'
+import { DEFAULT_PRESSED_KEY, EXCLUDED_KEY_BINDS } from '../lib/declarations'
+import { StringDictionary } from '../lib/definitions'
+import { saveKeybindsToStorage } from '../lib/SaveToStorage'
 
 
 interface Props
@@ -51,13 +51,9 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
       setKeybindsState( () => {
         const newState = {...keybindsState}
         newState[ selectedCommand ] = pressedKey 
-
-        storage.set( { "keybinds" : newState } )
-        localStorage.setItem( "yt-keybinds", JSON.stringify( newState ) )
         
+        saveKeybindsToStorage( newState )
         console.log( `[BYS] :: Bound key "${pressedKey}" to ${selectedCommand}` )
-        
-        pingChanges( ChangedObjectStateEnum.KEYBINDS, newState )
 
         return newState 
       } )
@@ -78,10 +74,10 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
 
   function canUseKey()
   {
-    console.dir( {keybindsState, pressedKey} )
     return (
       !EXCLUDED_KEY_BINDS.includes( pressedKey )                       &&
-      !Object.values( keybindsState as Object ).includes( pressedKey )
+      !Object.values( keybindsState as Object ).includes( pressedKey ) &&
+      pressedKey !== DEFAULT_PRESSED_KEY
     )
   }
 

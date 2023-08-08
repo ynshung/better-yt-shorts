@@ -1,6 +1,6 @@
 import BROWSER from "../background/browser";
 import { ChangedObjectStateEnum } from "./definitions";
-import { getEnumWithString, getKeyFromEnum } from "./utils";
+import { getKeyFromEnum } from "./utils";
 
 /**
  * Expects an object (the keybindsState or optionsState for exmaple)

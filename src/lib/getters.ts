@@ -55,10 +55,13 @@ export const getOverlayElement = ( id: number | null ) =>
     `[id="${id}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay`
   ) as HTMLElement
 
-export const getVolumeContainer = ( id: number | null ) =>
-  document.querySelector(
-    `[id="${id}"]  > #player-container > div.player-controls.style-scope.ytd-reel-video-renderer > ytd-shorts-player-controls.style-scope.ytd-reel-video-renderer`
+export function getVolumeContainer()
+{
+  const id = getCurrentId()
+  return document.querySelector(
+   `[id="${id}"]  > #player-container > div.player-controls.style-scope.ytd-reel-video-renderer > ytd-shorts-player-controls.style-scope.ytd-reel-video-renderer`
   ) as HTMLElement
+}
 
 export const getNextButton = () =>
   document.querySelector(
@@ -68,4 +71,16 @@ export const getNextButton = () =>
 export function getVideo(): HTMLVideoElement | null
 { 
   return document.querySelector( "#shorts-player>div>video" ) 
+}
+
+export function getPlaybackElement()
+{
+  const id = getCurrentId()
+  return document.getElementById( `ytPlayback${id}` )
+}
+
+export function getVolumeSliderController()
+{
+  const id = getCurrentId()
+  return document.getElementById(`volumeSliderController${id}`)
 }

@@ -66,7 +66,7 @@ export function render( htmlString: string ): Node
 
   if ( elements.length > 1 ) throw new Error( "ADSU | HTML String cannot have siblings!" )
   if ( elements.length < 1 ) throw new Error( "ADSU | HTML String must have an element!" )
-  
+
   return elements[0] as Node
 }
 
