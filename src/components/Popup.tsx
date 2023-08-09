@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import "../css/style.css"
+import "../css/popup.css"
 import Header from "./Header"
-import KeybindsTable from "./KeybindsTable"
-import OptionsTable from "./OptionsTable"
+import KeybindsPage from "./KeybindsPage"
+import OptionsPage from "./OptionsPage"
 import Separator from "./Separator"
 import PageIndicatorContainer from "./PageIndicatorContainer"
 import { ChangedObjectStateEnum, PolyDictionary, PopupPageNameEnum, StringDictionary } from "../lib/definitions"
@@ -34,8 +34,8 @@ function Popup() {
 
   function getCurrentPageContent()
   {
-    if ( currentPage === PopupPageNameEnum.KEYBINDS ) return <KeybindsTable {...keybindsProp} />
-    if ( currentPage === PopupPageNameEnum.OPTIONS  ) return <OptionsTable  {...optionsProp } />
+    if ( currentPage === PopupPageNameEnum.KEYBINDS ) return <KeybindsPage {...keybindsProp} />
+    if ( currentPage === PopupPageNameEnum.OPTIONS  ) return <OptionsPage  {...optionsProp } />
   }
 
   return (

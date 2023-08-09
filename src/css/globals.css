@@ -1,0 +1,29 @@
+:root {
+  --text-primary-color: #030303;
+  --text-secondary-color: #888;
+  --bg-primary-color: #fff;
+  --bg-modal-color: #ffffff33;
+  --bg-primary-hover-color: #9d9ea1;
+  --bg-secondary-color: #f2f2f2;
+  --bg-secondary-hover-color: #e6e6e6;
+  --separation-line-color: #e5e5e5;
+  --yt-brand-color: #f00;
+  --suggested-action-color: #378de9;
+  --call-to-action-color: #3ea6ff;
+  --max-height: 600px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary-color: #fff;
+    --text-secondary-color: #888;
+    --bg-primary-color: #0f0f0f;
+    --bg-modal-color: #0f0f0f66;
+    --bg-primary-hover-color: #9d9ea1;
+    --bg-secondary-color: #272727;
+    --bg-secondary-hover-color: #3d3d3d;
+    --separation-line-color: #3f3f3f;
+    --suggested-action-color: #1d5fd4;
+    --call-to-action-color: #3978e6;
+  }
+}/*# sourceMappingURL=globals.css.map */

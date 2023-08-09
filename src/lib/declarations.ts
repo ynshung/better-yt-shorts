@@ -78,8 +78,11 @@ export const storage = BROWSER.storage.local
 export const DEFAULT_STATE = {
   id          : 0,
   topId       : 0,
-  volumeState : 0,
+  volume      : 0,
   playbackRate: 1,
+  lastTime    : -1, // ? this is for checking if items were injected 
+
+  injectedItems: new Set(),
   
   actualVolume: null,
   skippedId   : null,

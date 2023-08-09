@@ -10,9 +10,7 @@ interface Props
   setOptionsState: ( options: ( previousState: PolyDictionary ) => PolyDictionary ) => void
 }
 
-const TYPES_THAT_USE_ON_CHANGE = [ "checkbox", "range" ]
-
-export default function OptionsTable( { optionsState, setOptionsState }: Props ) {
+export default function OptionsPage( { optionsState, setOptionsState }: Props ) {
   // this only exists to rerender on change
 
   function handleResetOptionsClick()
@@ -59,9 +57,10 @@ export default function OptionsTable( { optionsState, setOptionsState }: Props )
 
   }
 
-  function populateOptionsTable()
+  function populateOptionsPage()
   {
-    return Object.entries( optionsState as Object ).map( ( [option, value] ) => {
+    // ! - options may not be in order, will need to implement a OPTIONS_ORDER list at some point
+    return Object.entries( optionsState as Object ).map( ( [option, value], i ) => {
       if ( OPTION_DICTIONARY === null ) return <></>
 
       const type = determineInputType( value )
@@ -69,7 +68,7 @@ export default function OptionsTable( { optionsState, setOptionsState }: Props )
       if ( optionsState === null ) return
 
       return (
-        <div key={crypto.randomUUID()} className="extra_options--row">
+        <div key={i} className="extra_options--row">
           <label htmlFor={`option_input_${option}`}>{ (OPTION_DICTIONARY !== null ) ? "" + OPTION_DICTIONARY[ option ]?.desc : option }</label>
           <input 
             id={`extra_options_${option}`} 
@@ -82,8 +81,7 @@ export default function OptionsTable( { optionsState, setOptionsState }: Props )
             value={   OPTION_DICTIONARY[ option ]?.type !== "checkbox" ? optionsState[ option ] : undefined }
             checked={ OPTION_DICTIONARY[ option ]?.type === "checkbox" ? optionsState[ option ] : undefined }
 
-            onChange ={ (  TYPES_THAT_USE_ON_CHANGE.includes( type ) ) ? e => handleOptionChange( e, option ) : undefined }
-            onInput = { ( !TYPES_THAT_USE_ON_CHANGE.includes( type ) ) ? e => handleOptionChange( e, option ) : undefined }
+            onChange = { e => handleOptionChange( e, option ) }
           />
         </div>
     )
@@ -95,7 +93,7 @@ export default function OptionsTable( { optionsState, setOptionsState }: Props )
       <h3 className="prevent-selection popup_subheading">Extra Options</h3>
 
       <div id="extra_options">
-        { populateOptionsTable() }
+        { populateOptionsPage() }
       </div>
 
       <footer className="--footer-button-container">

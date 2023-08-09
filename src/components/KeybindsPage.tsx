@@ -11,7 +11,7 @@ interface Props
   keybindsState: StringDictionary
 }
 
-export default function KeybindsTable( { setKeybindsState, keybindsState }: Props ) {
+export default function KeybindsPage( { setKeybindsState, keybindsState }: Props ) {
 
   const [ isModalOpen, setIsModalOpen ] = useState( false )
   const [ selectedCommand, setSelectedCommand ] = useState( "Seek Backward" )
@@ -32,7 +32,7 @@ export default function KeybindsTable( { setKeybindsState, keybindsState }: Prop
     } )
   }
   
-  function populateKeybindsTable()
+  function populateKeybindsPage()
   {
     if ( keybindsState === null ) return <></>
 
@@ -72,7 +72,7 @@ export default function KeybindsTable( { setKeybindsState, keybindsState }: Prop
             <th></th>
           </tr>
 
-          { populateKeybindsTable() }
+          { populateKeybindsPage() }
         </tbody>
       </table>
 

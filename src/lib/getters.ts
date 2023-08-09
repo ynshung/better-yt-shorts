@@ -45,15 +45,18 @@ export const getCommentCount = ( id: number | null ) => {
   return !isNaN(commentCount as number) ? commentCount : 0
 }
 
-export const getActionElement = ( id: number | null ) =>
+export const getActionElement = () =>
   document.querySelector(
-    `[id="${id}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #actions`
+    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #actions`
   ) as HTMLElement
 
-export const getOverlayElement = ( id: number | null ) =>
-  document.querySelector(
-    `[id="${id}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay`
+export function getOverlayElement()
+{
+  return document.querySelector(
+    `[id="${ getCurrentId() }"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay`
   ) as HTMLElement
+
+}
 
 export function getVolumeContainer()
 {
@@ -83,4 +86,9 @@ export function getVolumeSliderController()
 {
   const id = getCurrentId()
   return document.getElementById(`volumeSliderController${id}`)
+}
+
+export function getProgressBarList()
+{
+  return getOverlayElement().children[3].children[0].children[0]
 }

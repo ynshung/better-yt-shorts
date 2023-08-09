@@ -20,11 +20,12 @@
 - Test with Firefox (I can't seem to get it to load at the moment, but the [compatibility checker](https://www.extensiontest.com/) agrees it is a compatible extension)
 
 ## Content Script
-- Fix styling for the **autoplay button**
-- Implement the seek bar
+- ~~Separate Popup and Content CSS into their own files (prevent weird side effects)~~
+- ~~Implement the seek bar~~
 - Implement the volume slider
+  - Save setting to storage
 - Clean up code; move each element to their own script
-- ⚠️ **error from recent chrome update may be unfixed**
+- ~~⚠️ **error from recent chrome update may be unfixed**~~
 
 ## Popup
 - Add missing functionality from more recent main branch patches (copy from the main branch):
@@ -32,6 +33,6 @@
   - Option to **change the seek amount**
 - Add proper icons for the tabs see [this icon pack](https://fonts.google.com/icons)
 - Tweak styling for the indicators (padding and margins look off)
-- **Update logo when a new logo is decided if needed**
+- ⚠️ **Update logo when a new logo is decided if needed**
 - Remove console logs **that aren't prefaced with "[BYS] :: "**
-- Fix issue with number and text inputs on the option page losing focus on input (on change changes the state, perhaps we need to instead update on loss of focus, not change)
+- ~~Fix issue with number and text inputs on the option page losing focus on input (on change changes the state, perhaps we need to instead update on loss of focus, not change)~~

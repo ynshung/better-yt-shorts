@@ -33,13 +33,7 @@ export function shouldSkipShort( state: any, options: any, currentId: string, li
   return true
 }
 
-/**
- * If the setting `shouldSkipUnrecommendedShorts` is true, skip shorts that have fewer than the set number of likes
- */
- 
- // fixed mac scroll issue
-export function skipShort( short: HTMLVideoElement )
+export function skipShort()
 {
-  var nextButton = getNextButton();
-  nextButton.click();
+  getNextButton()?.click()
 }
