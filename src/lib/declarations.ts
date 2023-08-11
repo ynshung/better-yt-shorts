@@ -14,6 +14,7 @@ export const DEFAULT_KEYBINDS: DefaultsDictionary = {
   "Toggle Mute":     "KeyM",
   "Next Frame":      "Comma",
   "Previous Frame":  "Period",
+  "Restart Short":  "KeyJ",
   "Next Short":      "KeyS", 
   "Previous Short":  "KeyW",
 };
@@ -28,6 +29,7 @@ export const KEYBINDS_ORDER: DefaultsDictionary = [
   "Toggle Mute",
   "Next Frame",
   "Previous Frame",
+  "Restart Short",
   "Next Short",
   "Previous Short",
 ]

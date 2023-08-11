@@ -30,6 +30,14 @@ export function goToPreviousShort()
   getBackButton()?.click()
 }
 
+export function restartShort()
+{
+  const ytShorts = getVideo()
+  if ( ytShorts === null ) return false
+  
+  ytShorts.currentTime = 0
+}
+
 export function mute()
 {
   const muteButton = getMuteButton()

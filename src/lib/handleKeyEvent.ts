@@ -1,4 +1,4 @@
-import { goToNextShort, goToPreviousShort } from "./VideoState"
+import { goToNextShort, goToPreviousShort, restartShort } from "./VideoState"
 import { setVolume } from "./VolumeSlider"
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations"
 import { BooleanDictionary, PolyDictionary, StringDictionary } from "./definitions"
@@ -105,6 +105,10 @@ export function handleKeyEvent(
 
     case "Previous Short":
       goToPreviousShort()
+      break
+
+    case "Restart Short":
+      restartShort()
       break
   }
 

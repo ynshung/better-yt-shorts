@@ -54,7 +54,7 @@ BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
   resetIntervals()
 } )
 
-document.addEventListener( "keydown", e => handleKeyEvent( e, features[ "Keybinds" ], keybinds, settings, options, state ) )
+document.addEventListener( "keydown", e => handleKeyEvent( e, features, keybinds, settings, options, state ) )
 
 var main_interval    = setInterval( main, 100 )
 var volume_interval  = setInterval( volumeIntervalCallback, 10 )
