@@ -1,17 +1,19 @@
 import BROWSER from "./background/browser"
-import { populateActionElement } from "./lib/ActionElement"
-import { setPlaybackRate, setTimer } from "./lib/PlaybackRate"
-import { modifyProgressBar } from "./lib/ProgressBar"
-import { checkVolume, setVolumeSlider } from "./lib/VolumeSlider"
+import { checkVolume } from "./lib/VolumeSlider"
 import { DEFAULT_STATE } from "./lib/declarations"
 import { StateObject } from "./lib/definitions"
 import { getCurrentId, getLikeCount, getVideo } from "./lib/getters"
 import { handleKeyEvent } from "./lib/handleKeyEvent"
-import { retrieveKeybindsFromStorage, retrieveOptionsFromStorage, retrieveSettingsFromStorage } from "./lib/retrieveFromStorage"
-import { shouldSkipShort, skipShort } from "./lib/skipShort"
+import { retrieveFeaturesFromStorage, retrieveKeybindsFromStorage, retrieveOptionsFromStorage, retrieveSettingsFromStorage } from "./lib/retrieveFromStorage"
+import { handleSkipShortsWithLowLikes, shouldSkipShort } from "./lib/SkipShortsWithLowLikes"
 
 // need this to ensure css is loaded in the dist
 import "./css/content.css"
+import { handleInjectionChecks } from "./lib/InjectionSuccess"
+import { hasVideoEnded, isVideoPlaying } from "./lib/VideoState"
+import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay"
+import { handleAutomaticallyOpenComments } from "./lib/AutomaticallyOpenComments"
+import { handleProgressBarNotAppearing } from "./lib/ProgressBar"
 
 /**
  * content.ts
@@ -30,15 +32,15 @@ const state = new Proxy( DEFAULT_STATE, {
 var keybinds = null as any
 var options  = null as any
 var settings = null as any
+var features = null as any
 
 // todo  - add "settings" to localstorage (merge autoplay + player volume into one) 
 // localStorage.getItem("yt-player-volume") !== null && JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]
 
 retrieveKeybindsFromStorage(  newBinds    => { keybinds = newBinds    } )
-
 retrieveOptionsFromStorage(   newOpts     => { options  = newOpts     } )
-
 retrieveSettingsFromStorage(  newSettings => { settings = newSettings } )
+retrieveFeaturesFromStorage(  newFeatures => { features = newFeatures } )
 
 // todo  - test this on firefox
 BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
@@ -46,18 +48,13 @@ BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
     keybinds = req.keybinds 
   if ( req?.options )
     options = req.options
+  if ( req?.features )
+    features = req.features
 
   resetIntervals()
 } )
 
-// watch for color scheme changes
-// window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", ({matches}) => handleColorScheme( matches ) )
-
-document.addEventListener( "keydown", e => handleKeyEvent( e, settings, keybinds, options, state ) )
-
-// var injectedItem = new Set()
-var lastTime     = -1
-var lastSpeed    = 0
+document.addEventListener( "keydown", e => handleKeyEvent( e, features[ "Keybinds" ], keybinds, settings, options, state ) )
 
 var main_interval    = setInterval( main, 100 )
 var volume_interval  = setInterval( volumeIntervalCallback, 10 )
@@ -66,83 +63,35 @@ function main() {
   if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
   
   const ytShorts      = getVideo()
-  var currentId       = getCurrentId()
-  var likeCount       = getLikeCount( currentId ) 
-  // var actionList      = getActionElement( currentId )
-  // var overlayList     = getOverlayElement()
-  // var autoplayEnabled = localStorage.getItem("yt-autoplay") === "true" ? true : false
+  var currentId       = getCurrentId() 
 
-  // if (autoplayEnabled === null) autoplayEnabled = false // unneeded
-  
-  // var progBarList = getProgressBarList()
-  // progBarList.removeAttribute( "hidden" )
+  if ( ytShorts === null )  return
+  if ( currentId === null ) return
 
-  if ( currentId !== null && state.topId < currentId ) 
+  if ( state.topId < currentId ) 
     state.topId = currentId
 
   // video has to have been playing to skip.
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
-  if ( ytShorts && ytShorts.currentTime > 0.5 && ytShorts.duration > 1 ) {
-	  
-	  if ( shouldSkipShort( state, options, state.currentId, likeCount ) ) {
-      console.log("[BYS] :: Skipping short that had", likeCount, "likes")
-      state.skippedId = currentId
-      skipShort()
-	  }
-
+  if ( isVideoPlaying() ) 
+  {
+	  handleSkipShortsWithLowLikes( state, options )
+    handleAutomaticallyOpenComments( state, options ) // dev note: the implementation of this feature is a good starting point to figure out how to format your own
 	}
-  
-  if ( ytShorts === null ) return
-
-  var currTime = Math.round( ytShorts.currentTime )
-
-  // ? have items been added to the page?
-  if ( state.injectedItems.has( currentId ) )
+  if ( hasVideoEnded() )
   {
-    // let currSpeed = ytShorts.playbackRate
-
-    if ( settings.autoplay && ytShorts.currentTime >= ytShorts.duration - 0.11 ) 
-    {
-      skipShort()
-    }
-
-    if ( currTime !== state.lastTime ) {
-      // Using this as a check whether the elements actually were injected on the page
-      let injectedSuccess = setTimer( currTime, Math.round(ytShorts.duration || 0) )
-      
-      // If failed, retry injection during next interval
-      if (!injectedSuccess) state.injectedItems.delete( currentId )
-      
-      state.lastTime = currTime
-    }
-
-    setPlaybackRate( state )
-
-  } 
-  // ? if not, then add them
-  else 
-  {
-    state.lastTime = -1 // reset
-    
-    if ( settings.autoplay ) ytShorts.loop = false
-    
-    populateActionElement( state, settings )
-    
-    // Progress bar
-    modifyProgressBar()
-    
-    if (currentId !== null) setVolumeSlider( state, settings )
-    
-    state.injectedItems.add( getCurrentId() )
+    handleAutoplay( settings, features[ "Autoplay" ] )
   }
 
+  handleProgressBarNotAppearing()
+  handleEnableAutoplay( settings, features[ "Autoplay" ] )
+  handleInjectionChecks( state, settings, features )
 }
 
 function volumeIntervalCallback()
 {
   if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
-
-  if ( getVideo() ) checkVolume( settings )
+  if ( getVideo() ) checkVolume( settings, features[ "Volume Slider" ] )
 }
 
 function resetIntervals()
@@ -153,4 +102,3 @@ function resetIntervals()
   clearInterval( main_interval )
   main_interval = setInterval( main, 100 )
 }
-

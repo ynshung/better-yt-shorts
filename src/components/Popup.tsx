@@ -5,37 +5,48 @@ import KeybindsPage from "./KeybindsPage"
 import OptionsPage from "./OptionsPage"
 import Separator from "./Separator"
 import PageIndicatorContainer from "./PageIndicatorContainer"
-import { ChangedObjectStateEnum, PolyDictionary, PopupPageNameEnum, StringDictionary } from "../lib/definitions"
-import { retrieveKeybindsFromStorage, retrieveOptionsFromStorage } from "../lib/retrieveFromStorage"
+import { BooleanDictionary, ChangedObjectStateEnum, PolyDictionary, PopupPageNameEnum, StringDictionary } from "../lib/definitions"
+import { retrieveFeaturesFromStorage, retrieveKeybindsFromStorage, retrieveOptionsFromStorage } from "../lib/retrieveFromStorage"
 import { pingChanges } from "../lib/chromeEmitters"
-import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS } from "../lib/declarations"
+import { DEFAULT_FEATURES, DEFAULT_KEYBINDS, DEFAULT_OPTIONS, DEFAULT_SETTINGS } from "../lib/declarations"
+import FeaturesPage from "./FeaturesPage"
+import { saveSettingsToStorage } from "../lib/SaveToStorage"
 
 // todo  - split this into its component parts
 
 function Popup() {
-  useEffect( () => {
-    retrieveOptionsFromStorage( setOptionsState )
-    retrieveKeybindsFromStorage( setKeybindsState )
+  const [ keybindsState, setKeybindsState ] = useState<StringDictionary>(  DEFAULT_KEYBINDS ) 
+  const [ optionsState, setOptionsState ]   = useState<PolyDictionary>(    DEFAULT_OPTIONS  ) 
+  const [ featuresState, setFeaturesState ] = useState<BooleanDictionary>( DEFAULT_FEATURES ) 
+  const [ settingsState, setSettingsState ] = useState<PolyDictionary>(    DEFAULT_SETTINGS ) 
 
-    pingChanges( ChangedObjectStateEnum.KEYBINDS, keybindsState as Object )
-    pingChanges( ChangedObjectStateEnum.OPTIONS,  optionsState  as Object )
-
-  }, [] )
-  
   const [ currentPage, setCurrentPage ] = useState( PopupPageNameEnum.KEYBINDS )
-  const currentPageProps = { currentPage, setCurrentPage }
-
-  const [ keybindsState, setKeybindsState ] = useState<StringDictionary>( DEFAULT_KEYBINDS ) 
-  const [ optionsState, setOptionsState ]   = useState<PolyDictionary>(   DEFAULT_OPTIONS ) 
-
 
   const keybindsProp = { keybindsState, setKeybindsState }
   const optionsProp  = { optionsState, setOptionsState   }
+  const featuresProp  = { featuresState, setFeaturesState }
+
+  const currentPageProps = { currentPage, setCurrentPage, setSettingsState }
+
+  useEffect( () => {
+    // retrieve settings
+    retrieveOptionsFromStorage( setOptionsState )
+    retrieveKeybindsFromStorage( setKeybindsState )
+    retrieveFeaturesFromStorage( setFeaturesState )
+    // retrieveFeaturesFromStorage( setSettingsState )
+
+    pingChanges( ChangedObjectStateEnum.KEYBINDS, keybindsState as Object )
+    pingChanges( ChangedObjectStateEnum.OPTIONS,  optionsState  as Object )
+    pingChanges( ChangedObjectStateEnum.FEATURES, featuresState as Object )
+    // pingChanges( ChangedObjectStateEnum.SETTINGS, settingsState as Object )
+
+  }, [] )
 
   function getCurrentPageContent()
   {
-    if ( currentPage === PopupPageNameEnum.KEYBINDS ) return <KeybindsPage {...keybindsProp} />
-    if ( currentPage === PopupPageNameEnum.OPTIONS  ) return <OptionsPage  {...optionsProp } />
+    if ( currentPage === PopupPageNameEnum.KEYBINDS )  return <KeybindsPage {...keybindsProp} />
+    if ( currentPage === PopupPageNameEnum.OPTIONS  )  return <OptionsPage  {...optionsProp } />
+    if ( currentPage === PopupPageNameEnum.FEATURES  ) return <FeaturesPage  {...featuresProp } />
   }
 
   return (
@@ -46,8 +57,6 @@ function Popup() {
 
       <PageIndicatorContainer {...currentPageProps} />
       
-      <Separator/>
-
       { getCurrentPageContent() }
 
       <div id="edit-modal" className="modal">

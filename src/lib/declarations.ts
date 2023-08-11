@@ -36,13 +36,23 @@ export const DEFAULT_OPTIONS: DefaultsDictionary = {
   // add new defaults for your option here
   skip_enabled: false,
   skip_threshold: 500,
+  seek_amount: 5,
+  automatically_open_comments: false,
 }
+export const OPTIONS_ORDER: DefaultsDictionary = [
+  "skip_enabled",
+  "skip_threshold",
+  "seek_amount",
+  "automatically_open_comments",
+]
+
+
 export const OPTION_DICTIONARY: OptionsDictionary = {
   // add details for the option (the input element type, the bounds (min/max), etc)
   skip_enabled: 
   {
-    type: "checkbox",
     desc: "Automatically skip shorts with fewer likes?",
+    type: "checkbox",
   },
   skip_threshold: 
   {
@@ -50,6 +60,18 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
     type: "number",
     min:  0
   },
+  seek_amount:
+  {
+    desc: "Seek amount in seconds",
+    type: "number",
+    min:  0,
+    max: 60,
+  },
+  automatically_open_comments:
+  {
+    desc: "Open comments on new shorts automatically?",
+    type: "checkbox",
+  }
 }
 
 export function setKeybind( previousState: StringDictionary, command: string, newKey: string ): StringDictionary
@@ -72,15 +94,25 @@ export function setOption( previousState: PolyDictionary, option: string, value:
   return newOptions
 }
 
+export function setFeature( previousState: PolyDictionary, feature: string, value: string ): StringDictionary
+{
+  if ( previousState === null ) return null
+
+  const newFeatures = { ...previousState }
+  newFeatures[ feature ] = value
+
+  return newFeatures
+}
+
 
 export const storage = BROWSER.storage.local
 
 export const DEFAULT_STATE = {
   id          : 0,
   topId       : 0,
-  volume      : 0,
   playbackRate: 1,
   lastTime    : -1, // ? this is for checking if items were injected 
+  openedCommentsId: -1,
 
   injectedItems: new Set(),
   
@@ -92,9 +124,27 @@ export const DEFAULT_STATE = {
 
 // ! - add settings
 export const DEFAULT_SETTINGS = {
-  volume: 0.25, // todo  - this should be .5, just doing this for the sake of my ears
+  volume: 0.5, 
+  autoplay: false,
 }
 
+export const DEFAULT_FEATURES = {
+  "Autoplay":      true,
+  "Progress Bar":  true,
+  "Timer":         true,
+  "Playback Rate": true,
+  "Volume Slider": true,
+  "Keybinds": true,
+}
+
+export const FEATURES_ORDER: DefaultsDictionary = [
+  "Autoplay",    
+  "Progress Bar",
+  "Timer",       
+  "Playback Rate",
+  "Volume Slider",
+  "Keybinds",
+]
 
 // todo  - add formats from other langs (note: dont include duplicate keys)#
 export const NUMBER_MODIFIERS: NumberDictionary = {
@@ -199,5 +249,6 @@ export const EXCLUDED_KEY_BINDS = [
 ]
 
 export const DEFAULT_PRESSED_KEY = "Press a Key"
+export const DISABLED_BIND_STRING = "<disabled>"
 
 export const VOLUME_INCREMENT_AMOUNT = 0.025

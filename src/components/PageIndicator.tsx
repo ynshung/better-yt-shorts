@@ -1,6 +1,19 @@
 import React from 'react'
-import { PopupPageNameEnum } from '../lib/definitions'
+import { PolyDictionary, PopupPageNameEnum, StrictPolyDictionary } from '../lib/definitions'
 import { capitalise, getEnumWithString } from '../lib/utils'
+
+import { MdSettings } from "react-icons/md";
+import { MdOutlineSettings } from "react-icons/md";
+
+import { MdCreate } from "react-icons/md";
+import { MdOutlineCreate } from "react-icons/md";
+
+// import { MdOutlineVisibilityOff } from "react-icons/md";
+// import { MdOutlineVisibility } from "react-icons/md"; // might be good for the features checkbox?
+
+import { MdOutlineRemoveCircleOutline} from "react-icons/md";
+import { MdOutlineRemoveCircle } from "react-icons/md";
+import { saveSettingsToStorage } from '../lib/SaveToStorage';
 
 interface Props
 {
@@ -9,16 +22,41 @@ interface Props
   isCurrentPage: boolean
 }
 
-export default function PageIndicator( {page, setCurrentPage, isCurrentPage}: Props ) {
+const ICONS = {
+  "OPTIONS": {
+    active:   <MdSettings/>,
+    inactive: <MdOutlineSettings/>
+  },
+  "KEYBINDS": {
+    active:   <MdCreate/>,
+    inactive: <MdOutlineCreate/>
+  },
+  "FEATURES": {
+    active:   <MdOutlineRemoveCircle/>,
+    inactive: <MdOutlineRemoveCircleOutline/>
+  }
+} as StrictPolyDictionary
 
-  function handlePageIndicatorClick( page: string )
+export default function PageIndicator( { page, setCurrentPage, isCurrentPage }: Props ) {
+
+  function handlePageIndicatorClick()
   {
-    setCurrentPage( getEnumWithString( PopupPageNameEnum, page, 0 ) )
+    setCurrentPage( getEnumWithString( PopupPageNameEnum, page, 1 ) )
   }
 
+  function getIndicatorIcon()
+  {
+    if ( !ICONS[ page ] ) return <></>
+    return isCurrentPage ? ICONS[ page ].active : ICONS[ page ].inactive
+  }
+
+  const classForIcon = ( isCurrentPage ) ? "--page-indicator-active" : "--page-indicator"
+  
   return (
-    <button>
-      <div className={ isCurrentPage ? "--page-indicator-active" : "--page-indicator" } onClick={ () => handlePageIndicatorClick( page ) }></div>
+    <button onClick={ handlePageIndicatorClick } className={classForIcon}>
+      <span>
+        { getIndicatorIcon() }
+      </span>
     </button>
   )
 }

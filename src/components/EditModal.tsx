@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Separator from './Separator'
-import { DEFAULT_PRESSED_KEY, EXCLUDED_KEY_BINDS } from '../lib/declarations'
+import { DEFAULT_PRESSED_KEY, DISABLED_BIND_STRING, EXCLUDED_KEY_BINDS } from '../lib/declarations'
 import { StringDictionary } from '../lib/definitions'
 import { saveKeybindsToStorage } from '../lib/SaveToStorage'
 
@@ -32,12 +32,17 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
   }, [ isModalOpen ] )
 
   useEffect( () => {
+    if ( 
+      pressedKey === DEFAULT_PRESSED_KEY  ||
+      pressedKey === DISABLED_BIND_STRING
+    ) return
+    
     setInputErrorString( null )
     setInputSuccessString( null )
+    
+    if ( canUseKey() ) 
+      setInputSuccessString( `"${pressedKey}" can be used!` )
 
-    if ( pressedKey === DEFAULT_PRESSED_KEY ) return
-    if ( !canUseKey() ) setInputErrorString( `"${pressedKey}" cannot be used ` )
-    else setInputSuccessString( `"${pressedKey}" can be used! Close to confirm.` )
   }, [ pressedKey ] )
 
   let currentKey = ""
@@ -45,6 +50,15 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
     currentKey = keybindsState[ selectedCommand ]
   
   function handleCloseModal()
+  {
+    setIsModalOpen( false )
+
+    setInputErrorString( null )
+    setInputSuccessString( null )
+    setPressedKey( DEFAULT_PRESSED_KEY )
+  }
+
+  function handleSaveBind()
   {
     if ( canUseKey() )
     {
@@ -66,19 +80,20 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
     setPressedKey( DEFAULT_PRESSED_KEY )
   }
 
-  function handleModalInput( e: any ) // todo  - change to be actual type
-  {
-    const code = e.code
-    setPressedKey( code )
-  }
-
   function canUseKey()
   {
-    return (
-      !EXCLUDED_KEY_BINDS.includes( pressedKey )                       &&
-      !Object.values( keybindsState as Object ).includes( pressedKey ) &&
-      pressedKey !== DEFAULT_PRESSED_KEY
-    )
+    if ( EXCLUDED_KEY_BINDS.includes( pressedKey ) )
+    {
+      setInputErrorString( `"${pressedKey}" cannot be used ` )
+      return false 
+    }
+    if ( Object.values( keybindsState as Object ).includes( pressedKey ) )
+    {
+      setInputErrorString( `"${pressedKey}" is already in use` )
+      return false 
+    }
+
+    return true
   }
 
   function showInputInfoString()
@@ -88,6 +103,40 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
     if ( inputErrorString )   return <div className="--modal-input-error">{`❌ ${inputErrorString}`}</div>
     
     return <div className="--modal-input-error">{"\u00A0"}</div>
+  }
+
+  function handleDisableBind()
+  {
+    setKeybindsState( () => {
+      const newState = {...keybindsState}
+      newState[ selectedCommand ] = DISABLED_BIND_STRING 
+      
+      saveKeybindsToStorage( newState )
+      console.log( `[BYS] :: Disabled binding "${pressedKey}" that was bound to ${selectedCommand}` )
+
+      setInputSuccessString( `"${selectedCommand}" was disabled!` ) 
+      return newState 
+    } )
+
+    setPressedKey( DISABLED_BIND_STRING )
+        
+  }
+
+  function getCurrentKeybindString()
+  {
+    if ( currentKey === DISABLED_BIND_STRING )
+      return <>Keybind is currently disabled</>
+
+    return <>Current bind is <span>{currentKey}</span></>
+  }
+
+  function showConfirmButton()
+  {
+    if ( !inputSuccessString ) return <></>
+
+    return (
+      <button className="--flex-button good" onClick={handleSaveBind}>Confirm</button>
+    )
   }
 
   return (
@@ -112,9 +161,17 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
         <Separator/>
 
         <div className="input-wrapper">
-          <label htmlFor="keybind-input" className="prevent-selection --modal-label">Current bind is <span>{currentKey}</span></label>
+          <label htmlFor="keybind-input" className="prevent-selection --modal-label">
+            {
+              getCurrentKeybindString()
+            }
+          </label>
           <span className="">{pressedKey}</span>
           {showInputInfoString()}
+          <div className= "--flex-button-container">
+            <button className="--flex-button" onClick={handleDisableBind}>Disable Bind</button>
+            {showConfirmButton()}
+          </div>
           <div className="prevent-selection key-combo-warning">Does not support key combinations</div>
         </div>
       </div>

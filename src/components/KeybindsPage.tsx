@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DEFAULT_KEYBINDS, KEYBINDS_ORDER } from '../lib/declarations'
+import { DEFAULT_KEYBINDS, DISABLED_BIND_STRING, KEYBINDS_ORDER } from '../lib/declarations'
 import EditButton from './EditButton'
 import { resetKeybinds } from '../lib/ResetDefaults'
 import { StringDictionary } from '../lib/definitions'
@@ -31,7 +31,7 @@ export default function KeybindsPage( { setKeybindsState, keybindsState }: Props
       return DEFAULT_KEYBINDS
     } )
   }
-  
+
   function populateKeybindsPage()
   {
     if ( keybindsState === null ) return <></>
@@ -76,8 +76,8 @@ export default function KeybindsPage( { setKeybindsState, keybindsState }: Props
         </tbody>
       </table>
 
-      <footer className="--footer-button-container">
-        <button onClick={ handleResetKeybinds } className="--footer-button">Reset Keybinds</button>
+      <footer className="--flex-button-container">
+        <button onClick={ handleResetKeybinds } className="--flex-button warn">Reset Keybinds</button>
         <a href="https://github.com/ynshung/better-yt-shorts" target="_blank">
           <span className="--global-footer-link">Github</span>
         </a>
