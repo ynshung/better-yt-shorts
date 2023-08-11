@@ -1,8 +1,11 @@
-import { getOverlayElement, getVideo } from "./getters"
+import { getOverlayElement, getProgressBarList, getVideo } from "./getters"
 import { render } from "./utils"
 
-export function modifyProgressBar()
+export function modifyProgressBar( enabled: boolean )
 {
+  console.log( {enabled} )
+  if ( !enabled ) return
+
   const overlayElement = getOverlayElement()
   const ytShorts       = getVideo()
 
@@ -10,14 +13,13 @@ export function modifyProgressBar()
   if ( ytShorts === null ) return
 
   //[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay
-  let progressBar  = overlayElement.children[3].children[0].children[0] as HTMLElement // ? the progressbar itself
+  let progressBar  = getProgressBarList()    as HTMLElement // ? the progressbar itself
   let pbBackground = progressBar.children[0] as HTMLElement                            // ? the grey background of the bar
   let pbForeground = progressBar.children[1] as HTMLElement                            // ? The red part of the progress bar
   
   const subBox = overlayElement.children[1] as HTMLElement
   const tooltip = render( `<div class="betterYT-timestamp-tooltip"></div>` ) as HTMLElement
 
-  progressBar.removeAttribute( "hidden" ) // ? to show on shorter shorts
   progressBar.appendChild( tooltip );
 
   // Styling to ensure rest of bottom overlay (shorts title/sub button) stay in place
@@ -94,4 +96,10 @@ function addListeners( { progressBar, pbBackground, pbForeground, tooltip }: Lis
     if (x > ytShorts.clientWidth) x = ytShorts.clientWidth
     ytShorts.currentTime = (x / ytShorts.clientWidth) * ytShorts.duration
   })
+}
+
+export function handleProgressBarNotAppearing()
+{
+  // ? to show on shorter shorts
+  getProgressBarList()?.removeAttribute( "hidden" ) 
 }

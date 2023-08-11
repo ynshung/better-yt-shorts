@@ -4,22 +4,23 @@ import { StateObject } from "./definitions"
 import { getCurrentId, getVideo, getVolumeContainer, getVolumeSliderController } from "./getters"
 import { render } from "./utils"
 
-export function checkVolume( settings: any )
+export function checkVolume( settings: any, sliderEnabled: boolean )
 {
   const ytShorts = getVideo()
 
   if ( ytShorts === null ) return
+  if ( !sliderEnabled ) return
 
   if ( settings?.volume !== null ) 
     ytShorts.volume = settings.volume
   else
-    settings[ "volume" ] = ytShorts.volume
+    settings.volume = ytShorts.volume
 }
 
 // todo  - move this to its own lib script (probably call it volumeSlider.ts)
-export function setVolume( settings: any, newVolume: number )
+export function setVolume( settings: any, newVolume: number, enabled: boolean )
 {
-  settings[ "volume" ] = newVolume
+  settings.volume = newVolume
 
   const volumeSliderController = getVolumeSliderController() as HTMLInputElement
   if ( volumeSliderController === null ) return
@@ -29,14 +30,16 @@ export function setVolume( settings: any, newVolume: number )
 
   if ( ytShorts === null ) return
 
-  checkVolume( settings )
+  checkVolume( settings, enabled )
 
   saveSettingsToStorage( settings )
    
 }
 
-export function setVolumeSlider( state: StateObject, settings: any  )
+export function setVolumeSlider( state: StateObject, settings: any, enabled: boolean )
 {
+  if ( !enabled ) return
+
   const id = getCurrentId()
 
   const volumeContainer = getVolumeContainer()
@@ -50,26 +53,16 @@ export function setVolumeSlider( state: StateObject, settings: any  )
       max="1"
       step="0.01"
       orient="vertical"
-      value="${state.volume}"
+      value="${settings.volume}"
     />
   `)
 
-  if( state.volume === null ) state.volume = 0.5
+  if( settings.volume === null ) settings.volume = 0.5
 
-  // checkVolume(ytShorts) // todo - uncomment this when added
-  // slider.id = `volumeSliderController${id}`
-  // slider.classList.add("volume-slider")
-  // slider.classList.add("betterYT-volume-slider")
-  // slider.type = "range"
-  // slider.min  = "0"
-  // slider.max  = "1"
-  // slider.step = "0.01"
-  // slider.setAttribute("orient", "vertical")
-  // slider.value = state.userVolume
   volumeContainer.appendChild( slider )
-
   
   // Prevent video from pausing/playing on click
-  slider.addEventListener( "input", (e: any) => setVolume( settings, e.target.valueAsNumber ) )
+  slider.addEventListener( "input", (e: any) => setVolume( settings, e.target.valueAsNumber, enabled ) )
   slider.addEventListener( "click", e => e.stopPropagation() )
 }
+

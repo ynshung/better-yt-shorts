@@ -25,3 +25,11 @@ export function saveOptionsToStorage( options: any )
   
   pingChanges( ChangedObjectStateEnum.OPTIONS, options )
 }
+
+export function saveFeaturesToStorage( features: any )
+{
+  storage.set( { "features" : features } )
+  localStorage.setItem( "yt-features", JSON.stringify( features ) )
+  
+  pingChanges( ChangedObjectStateEnum.FEATURES, features )
+}

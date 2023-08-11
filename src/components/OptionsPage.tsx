@@ -1,4 +1,4 @@
-import { DEFAULT_OPTIONS, OPTION_DICTIONARY, setOption, storage } from '../lib/declarations'
+import { DEFAULT_OPTIONS, OPTIONS_ORDER, OPTION_DICTIONARY, setOption, storage } from '../lib/declarations'
 import { determineInputType } from '../lib/utils'
 import { PolyDictionary } from '../lib/definitions'
 import { resetOptions } from '../lib/ResetDefaults'
@@ -59,8 +59,11 @@ export default function OptionsPage( { optionsState, setOptionsState }: Props ) 
 
   function populateOptionsPage()
   {
-    // ! - options may not be in order, will need to implement a OPTIONS_ORDER list at some point
-    return Object.entries( optionsState as Object ).map( ( [option, value], i ) => {
+    if ( optionsState === null ) return <></>
+
+    return OPTIONS_ORDER.map( ( option: string, i: number ) => {
+      const value = optionsState[ option ]
+      
       if ( OPTION_DICTIONARY === null ) return <></>
 
       const type = determineInputType( value )
@@ -68,7 +71,7 @@ export default function OptionsPage( { optionsState, setOptionsState }: Props ) 
       if ( optionsState === null ) return
 
       return (
-        <div key={i} className="extra_options--row">
+        <div key={i} className="label_input--row">
           <label htmlFor={`option_input_${option}`}>{ (OPTION_DICTIONARY !== null ) ? "" + OPTION_DICTIONARY[ option ]?.desc : option }</label>
           <input 
             id={`extra_options_${option}`} 
@@ -96,8 +99,8 @@ export default function OptionsPage( { optionsState, setOptionsState }: Props ) 
         { populateOptionsPage() }
       </div>
 
-      <footer className="--footer-button-container">
-        <button onClick={ handleResetOptionsClick } className="--footer-button">Reset Options</button>
+      <footer className="--flex-button-container">
+        <button onClick={ handleResetOptionsClick } className="--flex-button warn">Reset Options</button>
         <a href="https://github.com/ynshung/better-yt-shorts" target="_blank">
           <span className="--global-footer-link">Github</span>
         </a>

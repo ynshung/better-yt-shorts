@@ -1,8 +1,9 @@
-import { setPlaybackRate } from "./PlaybackRate"
+import { createAutoplaySwitch } from "./Autoplay"
+import { setPlaybackRate, setTimer } from "./PlaybackRate"
 import { getActionElement, getCurrentId, getVideo } from "./getters"
 import { render, wheel } from "./utils"
 
-export function populateActionElement( state: any, settings: any ) // ! use proper types
+export function populateActionElement( state: any, settings: any, features: any ) // ! use proper types
 {
   const id            = getCurrentId()
   const actionElement = getActionElement()
@@ -11,6 +12,7 @@ export function populateActionElement( state: any, settings: any ) // ! use prop
   if ( !actionElement ) return
   if ( !ytShorts )      return
 
+  // adsu - idk how any of this works so im just going to leave it be
   const betterYTContainer = document.createElement("div")
   betterYTContainer.id = "betterYT-container"
   betterYTContainer.setAttribute("class", "button-container style-scope ytd-reel-player-overlay-renderer")
@@ -31,6 +33,8 @@ export function populateActionElement( state: any, settings: any ) // ! use prop
   para0.classList.add("betterYT")
   para0.id = `ytPlayback${id}`
 
+  ytButton.style.display = ( features[ "Playback Rate" ] === false ) ? "none" : "" // need this to check injection, so wont fully disable
+
 
   // Timer
   const ytTimer = document.createElement("div")
@@ -39,6 +43,7 @@ export function populateActionElement( state: any, settings: any ) // ! use prop
   span1.setAttribute("class", "yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center yt-core-attributed-string--word-wrapping")
   span1.id = `ytTimer${getCurrentId()}`
   span1.setAttribute("role", "text")
+  ytTimer.style.display = features[ "Timer" ] ? "" : "none !important" // need this to check injection, so wont fully disable
   ytTimer.appendChild(span1)
 
 
@@ -54,36 +59,12 @@ export function populateActionElement( state: any, settings: any ) // ! use prop
 
   actionElement.insertBefore(betterYTContainer, actionElement.children[1])
 
-  // Autoplay Switch
-  const autoplaySwitch = `
-    <div class="yt-spec-button-shape-with-label__label">
-      <label class="autoplay-switch">
-        <input type="checkbox" id="autoplay-checkbox${ getCurrentId() }" ${ settings.autoplay ? "checked" : "" }/>
-        <span class="autoplay-slider"></span>
-      </label>
 
-      <span 
-        role="text"
-        class=" yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center"
-      > Autoplay </span>
-    </div>
-  `
+  createAutoplaySwitch( settings, features[ "Autoplay" ] )
 
-  actionElement.insertBefore( render( autoplaySwitch ), actionElement.children[1] )
-
-  // const autoplayTitle = `
-  //   <div class="yt-spec-button-shape-with-label__label">
-  //     <span 
-  //       role="text"
-  //       class="betterYT-auto yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center"
-  //     > Autoplay </span>
-  //   </div>
-  // `
-
-  // actionElement.insertBefore( render( autoplayTitle ), actionElement.children[2] )
-
-
-  ytShorts.playbackRate = state.playbackRate
+  if ( features[ "Playback Rate" ] )
+    ytShorts.playbackRate = state.playbackRate
+  
   setPlaybackRate( state )
   // injectedSuccess = setTimer( currTime || 0, Math.round(ytShorts.duration || 0))
 
@@ -92,40 +73,27 @@ export function populateActionElement( state: any, settings: any ) // ! use prop
     state.playbackRate = ytShorts.playbackRate
   })
 
-  document.getElementById( `autoplay-checkbox${getCurrentId()}` )?.addEventListener('change', ( e: any ) => {
-    if ( e.target.checked )
-    {
-      localStorage.setItem("yt-autoplay", "true")
-      ytShorts.loop = false
-    } 
-    else 
-    {
-      localStorage.setItem("yt-autoplay", "false")
-      ytShorts.loop = true
-    }
-  })
+  if ( features[ "Timer" ] )
+    wheel( 
+      ytButton, 
+      () => {
+        // speedup
+        const video = getVideo()
+        if ( video === null ) return
 
-  
-  wheel( 
-    ytButton, 
-    () => {
-      // speedup
-      const video = getVideo()
-      if ( video === null ) return
+        if (video.playbackRate < 16) video.playbackRate += 0.25
+        state.playbackRate = video.playbackRate
 
-      if (video.playbackRate < 16) video.playbackRate += 0.25
-      state.playbackRate = video.playbackRate
+      }, 
+      () => {
+        // speeddown
+        const video = getVideo()
+        if ( video === null ) return
 
-    }, 
-    () => {
-      // speeddown
-      const video = getVideo()
-      if ( video === null ) return
-
-      if (video.playbackRate > 0.25) video.playbackRate -= 0.25
-      state.playbackRate = video.playbackRate
-    }
-  )
+        if (video.playbackRate > 0.25) video.playbackRate -= 0.25
+        state.playbackRate = video.playbackRate
+      }
+    )
   
   wheel( 
     ytTimer, 

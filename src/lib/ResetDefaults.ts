@@ -1,6 +1,6 @@
 import { pingChanges } from "./chromeEmitters"
-import { DEFAULT_KEYBINDS, DEFAULT_OPTIONS, storage } from "./declarations"
-import { ChangedObjectStateEnum } from "./definitions"
+import { DEFAULT_FEATURES, DEFAULT_KEYBINDS, DEFAULT_OPTIONS, storage } from "./declarations"
+import { BooleanDictionary, ChangedObjectStateEnum } from "./definitions"
 
 /**
  * Resets keybinds to their factory values in local and storage as well as the live binds
@@ -24,4 +24,38 @@ export function resetOptions()
   console.log( `[BYS] :: Reset Options to Defaults!` )
   
   pingChanges( ChangedObjectStateEnum.OPTIONS, DEFAULT_OPTIONS )
+}
+
+/**
+ * Features are all set to true (this is essentially a regular reset)
+ */
+export function enableAllFeatures()
+{
+  storage.set( { "features" : DEFAULT_FEATURES } )
+  localStorage.setItem( "yt-features", JSON.stringify( DEFAULT_FEATURES ) )
+  console.log( `[BYS] :: Enabled all features!` )
+  
+  pingChanges( ChangedObjectStateEnum.FEATURES, DEFAULT_FEATURES )
+
+  return DEFAULT_FEATURES
+}
+/**
+ * Features are all set to false
+ */
+export function disableAllFeatures()
+{
+  const newState = {...DEFAULT_FEATURES} as BooleanDictionary
+  if ( newState === null ) return null
+
+  Object.entries( newState ).map( ([ feature, value ]) => {
+    newState[ feature ] = false
+  } )
+
+  storage.set( { "features" : newState } )
+  localStorage.setItem( "yt-features", JSON.stringify( newState ) )
+  console.log( `[BYS] :: Disabled all features!` )
+  
+  pingChanges( ChangedObjectStateEnum.FEATURES, newState )
+
+  return newState
 }
