@@ -491,7 +491,7 @@ const timer = setInterval(() => {
       injectedSuccess = setTimer(currTime || 0, Math.round(ytShorts.duration || 0));
 
       betterYTContainer.addEventListener("click",() => {
-        ytShorts.playbackRate = 1;
+	ytShorts.playbackRate = ytShorts.playbackRate == 1 ? 2 : 1;
         setSpeed = ytShorts.playbackRate;
       });
 
