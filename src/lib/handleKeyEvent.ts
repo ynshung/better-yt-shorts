@@ -112,5 +112,5 @@ export function handleKeyEvent(
       break
   }
 
-  state.currentPlaybackRate = ytShorts.playbackRate
+  state.playbackRate = ytShorts.playbackRate
 }
