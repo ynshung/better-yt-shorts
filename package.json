@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "concurrently --kill-others \"sass --watch src/css\" \"vite\"",
+    "build": "sass src/css && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,6 +19,8 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
+    "concurrently": "^8.2.0",
+    "sass": "^1.66.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.15"
   }
