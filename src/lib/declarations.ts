@@ -42,10 +42,10 @@ export const DEFAULT_OPTIONS: DefaultsDictionary = {
   automatically_open_comments: false,
 }
 export const OPTIONS_ORDER: DefaultsDictionary = [
-  "skip_enabled",
-  "skip_threshold",
   "seek_amount",
   "automatically_open_comments",
+  "skip_enabled",
+  "skip_threshold",
 ]
 
 

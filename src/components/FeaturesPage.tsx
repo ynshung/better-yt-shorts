@@ -88,9 +88,6 @@ export default function FeaturesPage( { featuresState, setFeaturesState }: Props
         <button onClick={ handleResetFeaturesClick } className="--flex-button good">
           { buttonEnablesAll ? "Enable" : "Disable" } All
         </button>
-        <a href="https://github.com/ynshung/better-yt-shorts" target="_blank">
-          <span className="--global-footer-link">Github</span>
-        </a>
       </footer>
     </>
   )

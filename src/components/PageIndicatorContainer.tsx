@@ -2,6 +2,7 @@ import React from 'react'
 import PageIndicator from './PageIndicator'
 import { PolyDictionary, PopupPageNameEnum } from '../lib/definitions'
 import { getEnumEntries } from '../lib/utils'
+import { MdWeb } from 'react-icons/md'
 
 interface Props
 {
@@ -28,6 +29,11 @@ export default function PageIndicatorContainer( { currentPage, setCurrentPage, s
   return (
     <div className="--page-indicator-container">
       { populatePageIndicators() }
+      <a href="https://github.com/ynshung/better-yt-shorts" target="_blank" className="--page-indicator" title="Website">
+        <span>
+          <MdWeb/>
+        </span>
+      </a>
     </div>
   )
 }

@@ -51,27 +51,32 @@ function Popup() {
 
   return (
     <div className="container" data-theme="light">
-      <Header/>
-
-      <Separator/>
-
-      <PageIndicatorContainer {...currentPageProps} />
-      
-      { getCurrentPageContent() }
-
-      <div id="edit-modal" className="modal">
-        <div className="modal-content">
-          <div className="modal-header">
-            <div>Edit keybind: <span className="modal-title" id="modal-title-span" /></div>
-            <span className="close-btn">×</span>
-          </div>
-          <div className="separation-line" style={{opacity: '0.5'}} />
-          <div className="input-wrapper">
-            <label htmlFor="keybind-input" className="prevent-selection">Press desired key</label>
-            <input type="text" id="keybind-input" />
-            <div className="prevent-selection" style={{opacity: '0.8', fontSize: 10}}>Does not support key combinations</div>
+      <div className="content-container">
+        <Header/>
+  
+        <Separator/>
+  
+        
+        { getCurrentPageContent() }
+  
+        <div id="edit-modal" className="modal">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div>Edit keybind: <span className="modal-title" id="modal-title-span" /></div>
+              <span className="close-btn">×</span>
+            </div>
+            <div className="separation-line" style={{opacity: '0.5'}} />
+            <div className="input-wrapper">
+              <label htmlFor="keybind-input" className="prevent-selection">Press desired key</label>
+              <input type="text" id="keybind-input" />
+              <div className="prevent-selection" style={{opacity: '0.8', fontSize: 10}}>Does not support key combinations</div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div id="page-indicator">
+        <PageIndicatorContainer {...currentPageProps} />
       </div>
 
     </div>

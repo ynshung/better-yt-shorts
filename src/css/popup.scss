@@ -30,7 +30,6 @@ body {
   font-family: 'Source Sans Pro', 'Roboto', 'Noto', 'Arial', sans-serif;
   background: var(--bg-primary-color);
   color: var(--text-primary-color);
-  padding: 0.5rem 1rem;
 }
 
 tr:not(:first-child) {
@@ -68,6 +67,10 @@ tr:not(:first-child):hover {
 
 .container {
   width: 280px;
+}
+
+.content-container {
+  padding: 0.75em 1em 0.5em 1em;
 }
 
 .title-container {
@@ -394,6 +397,11 @@ a {
       background 200ms,
       stroke 200ms  
     ;
+
+    &:hover
+    {
+      background: var(--bg-secondary-hover-color);
+    }
   }
   
   .--page-indicator svg,
@@ -724,4 +732,12 @@ input:checked + .autoplay-slider:before {
   color: var(--text-secondary-color);
   text-align: center;
   padding-bottom: .5rem;
+}
+
+#page-indicator {
+  position: sticky;
+  bottom: 0;
+  padding: 4px;
+  background: var(--bg-secondary-color);
+  z-index: 10;
 }

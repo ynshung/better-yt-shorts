@@ -101,9 +101,6 @@ export default function OptionsPage( { optionsState, setOptionsState }: Props ) 
 
       <footer className="--flex-button-container">
         <button onClick={ handleResetOptionsClick } className="--flex-button warn">Reset Options</button>
-        <a href="https://github.com/ynshung/better-yt-shorts" target="_blank">
-          <span className="--global-footer-link">Github</span>
-        </a>
       </footer>
     </>
   )

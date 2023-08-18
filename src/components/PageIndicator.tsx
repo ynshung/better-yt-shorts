@@ -2,17 +2,17 @@ import React from 'react'
 import { PolyDictionary, PopupPageNameEnum, StrictPolyDictionary } from '../lib/definitions'
 import { capitalise, getEnumWithString } from '../lib/utils'
 
-import { MdSettings } from "react-icons/md";
-import { MdOutlineSettings } from "react-icons/md";
+import { MdVideoSettings } from "react-icons/md";
+import { MdOutlineVideoSettings } from "react-icons/md";
 
-import { MdCreate } from "react-icons/md";
-import { MdOutlineCreate } from "react-icons/md";
+import { MdKeyboard } from "react-icons/md";
+import { MdOutlineKeyboard } from "react-icons/md";
 
 // import { MdOutlineVisibilityOff } from "react-icons/md";
 // import { MdOutlineVisibility } from "react-icons/md"; // might be good for the features checkbox?
 
-import { MdOutlineRemoveCircleOutline} from "react-icons/md";
-import { MdOutlineRemoveCircle } from "react-icons/md";
+import { MdSettings } from "react-icons/md";
+import { MdOutlineSettings } from "react-icons/md";
 import { saveSettingsToStorage } from '../lib/SaveToStorage';
 
 interface Props
@@ -24,16 +24,19 @@ interface Props
 
 const ICONS = {
   "OPTIONS": {
-    active:   <MdSettings/>,
-    inactive: <MdOutlineSettings/>
+    active:   <MdVideoSettings/>,
+    inactive: <MdOutlineVideoSettings/>,
+    name: "Extra Options",
   },
   "KEYBINDS": {
-    active:   <MdCreate/>,
-    inactive: <MdOutlineCreate/>
+    active:   <MdKeyboard/>,
+    inactive: <MdOutlineKeyboard/>,
+    name: "Keybinds",
   },
   "FEATURES": {
-    active:   <MdOutlineRemoveCircle/>,
-    inactive: <MdOutlineRemoveCircleOutline/>
+    active:   <MdSettings/>,
+    inactive: <MdOutlineSettings/>,
+    name: "Toggle Features",
   }
 } as StrictPolyDictionary
 
@@ -51,9 +54,10 @@ export default function PageIndicator( { page, setCurrentPage, isCurrentPage }: 
   }
 
   const classForIcon = ( isCurrentPage ) ? "--page-indicator-active" : "--page-indicator"
+  const pageTitle = ICONS[ page ].name;
   
   return (
-    <button onClick={ handlePageIndicatorClick } className={classForIcon}>
+    <button onClick={ handlePageIndicatorClick } className={classForIcon} title={pageTitle}>
       <span>
         { getIndicatorIcon() }
       </span>
