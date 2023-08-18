@@ -27,6 +27,7 @@
 --- 
 ## General
 - Test with Firefox (I can't seem to get it to load at the moment, but the [compatibility checker](https://www.extensiontest.com/) agrees it is a compatible extension)
+- Update README content and screenshots
 
 ## Content Script
 - ~~Separate Popup and Content CSS into their own files (prevent weird side effects)~~

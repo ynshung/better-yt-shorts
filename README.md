@@ -16,7 +16,7 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 ## ⚠️ Development Notice
 This branch is currently a work in progress and there are countless unimplemented/broken features that have yet to be addressed.
 
-see the [roadmap](./ROADMAP.md) for a list of goals
+View the [roadmap](./ROADMAP.md) for a list of development goals.
 
 ---
 ### Development Guide
@@ -29,9 +29,9 @@ see the [roadmap](./ROADMAP.md) for a list of goals
 7. Toggle `Developer Mode` with the switch at the top-right of that page
 8. Drag and drop the `dist` directory into that page to load the unpacked extension
 
-**Note that the content script will only work on the shorts page of youtube, though the popup should work anywhere**
+Note that the content script will only work on the shorts page of youtube, though the popup should work anywhere.
 
-**Also note that, so long as the `npm run dev` is active, the extension will automatically update and refresh**
+Also note that, so long as the `npm run dev` is active, the extension will automatically update and refresh.
 
 ## Installation
 
