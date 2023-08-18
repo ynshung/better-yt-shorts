@@ -26,3 +26,7 @@ dist-ssr
 # extension packing files
 dist.crx
 dist.pem
+
+# scss generated files
+*.css
+*.css.map
