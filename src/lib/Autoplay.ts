@@ -17,7 +17,7 @@ export function handleEnableAutoplay( settings: any, enabled: boolean )
   if ( ytShorts === null ) return false
 
   if ( settings.autoplay ) ytShorts.loop = !enabled
-  else ytShorts.loop = true;
+  else ytShorts.loop = true
 }
 
 export function createAutoplaySwitch( settings: any, enabled: boolean )
@@ -25,19 +25,20 @@ export function createAutoplaySwitch( settings: any, enabled: boolean )
   if ( !enabled ) return
 
   const actionElement = getActionElement()
-  
+
   // Autoplay Switch
   const autoplaySwitch = render(`
-    <div class="yt-spec-button-shape-with-label__label">
+    <div>
       <label class="autoplay-switch">
         <input type="checkbox" id="autoplay-checkbox${ getCurrentId() }" ${ settings.autoplay ? "checked" : "" }/>
         <span class="autoplay-slider"></span>
       </label>
-
-      <span 
-        role="text"
-        class=" yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center"
-      > ${local("autoplay")} </span>
+      <div class="yt-spec-button-shape-with-label__label">
+        <span 
+          role="text"
+          class="betterYT-auto yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center"
+        > ${local("autoplay")} </span>
+      </div>
     </div>
   `)
 
