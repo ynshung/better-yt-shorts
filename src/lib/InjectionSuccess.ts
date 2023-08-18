@@ -15,8 +15,8 @@ export function injectItems( state: StateObject, settings: any, features: any )
   state.lastTime = -1
 
   populateActionElement( state, settings, features )
-  modifyProgressBar( features[ "Progress Bar" ] )
-  setVolumeSlider( state, settings, features[ "Volume Slider" ] )
+  modifyProgressBar( features[ "progressBar" ] )
+  setVolumeSlider( state, settings, features[ "volumeSlider" ] )
   
   registerInjection( state )
 }
@@ -30,7 +30,7 @@ export function injectionWasRegistered( state: StateObject )
 export function checkForInjectionSuccess( state: StateObject, features: any )
 {
   // If failed, retry injection during next interval
-  if ( !setTimer( state, features[ "Timer" ] ) ) state.injectedItems.delete( getCurrentId() )
+  if ( !setTimer( state, features[ "timer" ] ) ) state.injectedItems.delete( getCurrentId() )
   
   state.lastTime = state.currTime
 }

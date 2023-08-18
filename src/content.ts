@@ -80,18 +80,18 @@ function main() {
 	}
   if ( hasVideoEnded() )
   {
-    handleAutoplay( settings, features[ "Autoplay" ] )
+    handleAutoplay( settings, features[ "autoplay" ] )
   }
 
   handleProgressBarNotAppearing()
-  handleEnableAutoplay( settings, features[ "Autoplay" ] )
+  handleEnableAutoplay( settings, features[ "autoplay" ] )
   handleInjectionChecks( state, settings, features )
 }
 
 function volumeIntervalCallback()
 {
   if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
-  if ( getVideo() ) checkVolume( settings, features[ "Volume Slider" ] )
+  if ( getVideo() ) checkVolume( settings, features[ "volumeSlider" ] )
 }
 
 function resetIntervals()

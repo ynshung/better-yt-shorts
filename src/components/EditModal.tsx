@@ -3,6 +3,7 @@ import Separator from './Separator'
 import { DEFAULT_PRESSED_KEY, DISABLED_BIND_STRING, EXCLUDED_KEY_BINDS } from '../lib/declarations'
 import { StringDictionary } from '../lib/definitions'
 import { saveKeybindsToStorage } from '../lib/SaveToStorage'
+import local from '../background/i18n'
 
 
 interface Props
@@ -41,7 +42,7 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
     setInputSuccessString( null )
     
     if ( canUseKey() ) 
-      setInputSuccessString( `"${pressedKey}" can be used!` )
+      setInputSuccessString( `${local("keyCanBeUsed", pressedKey)}` )
 
   }, [ pressedKey ] )
 
@@ -84,12 +85,12 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
   {
     if ( EXCLUDED_KEY_BINDS.includes( pressedKey ) )
     {
-      setInputErrorString( `"${pressedKey}" cannot be used ` )
+      setInputErrorString( `${local("keyCannotBeUsed", pressedKey)}` )
       return false 
     }
     if ( Object.values( keybindsState as Object ).includes( pressedKey ) )
     {
-      setInputErrorString( `"${pressedKey}" is already in use` )
+      setInputErrorString( `${local("keyAlreadyInUse", pressedKey)}` )
       return false 
     }
 
@@ -114,7 +115,7 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
       saveKeybindsToStorage( newState )
       console.log( `[BYS] :: Disabled binding "${pressedKey}" that was bound to ${selectedCommand}` )
 
-      setInputSuccessString( `"${selectedCommand}" was disabled!` ) 
+      setInputSuccessString( `${local("disableKeybind", local(selectedCommand))}` ) 
       return newState 
     } )
 
@@ -125,9 +126,9 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
   function getCurrentKeybindString()
   {
     if ( currentKey === DISABLED_BIND_STRING )
-      return <>Keybind is currently disabled</>
+      return <>{local("keybindDisabled")}</>
 
-    return <>Current bind is <span>{currentKey}</span></>
+    return <>{local("currentKeybind", currentKey)}</>
   }
 
   function showConfirmButton()
@@ -135,7 +136,7 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
     if ( !inputSuccessString || inputSuccessString.includes("disabled") ) return <></>
 
     return (
-      <button className="--flex-button good" onClick={handleSaveBind}>Confirm</button>
+      <button className="--flex-button good" onClick={handleSaveBind}>{local("confirm")}</button>
     )
   }
 
@@ -151,8 +152,8 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
 
         <span className="--modal-header">
           <span className="--modal-header-text">
-            Edit binding for 
-            <span className="--modal-command">{selectedCommand}</span>
+            {local("editBinding")} 
+            <span className="--modal-command">{local(selectedCommand)}</span>
           </span>
 
           <span className="close-btn" onClick={handleCloseModal}>×</span>
@@ -169,10 +170,10 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
           <span className="">{pressedKey}</span>
           {showInputInfoString()}
           <div className= "--flex-button-container">
-            <button className="--flex-button" onClick={handleDisableBind}>Disable Bind</button>
+            <button className="--flex-button" onClick={handleDisableBind}>{local("disableBind")}</button>
             {showConfirmButton()}
           </div>
-          <div className="prevent-selection key-combo-warning">Does not support key combinations</div>
+          <div className="prevent-selection key-combo-warning">{local("notSupportKeyCombo")}</div>
         </div>
       </div>
     </dialog>

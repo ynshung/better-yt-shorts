@@ -33,7 +33,7 @@ export function populateActionElement( state: any, settings: any, features: any 
   para0.classList.add("betterYT")
   para0.id = `ytPlayback${id}`
 
-  ytButton.style.display = ( features[ "Playback Rate" ] === false ) ? "none" : "" // need this to check injection, so wont fully disable
+  ytButton.style.display = ( features[ "playbackRate" ] === false ) ? "none" : "" // need this to check injection, so wont fully disable
 
 
   // Timer
@@ -43,7 +43,7 @@ export function populateActionElement( state: any, settings: any, features: any 
   span1.setAttribute("class", "yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center yt-core-attributed-string--word-wrapping")
   span1.id = `ytTimer${getCurrentId()}`
   span1.setAttribute("role", "text")
-  ytTimer.style.display = features[ "Timer" ] ? "" : "none !important" // need this to check injection, so wont fully disable
+  ytTimer.style.display = features[ "timer" ] ? "" : "none !important" // need this to check injection, so wont fully disable
   ytTimer.appendChild(span1)
 
 
@@ -60,9 +60,9 @@ export function populateActionElement( state: any, settings: any, features: any 
   actionElement.insertBefore(betterYTContainer, actionElement.children[1])
 
 
-  createAutoplaySwitch( settings, features[ "Autoplay" ] )
+  createAutoplaySwitch( settings, features[ "autoplay" ] )
 
-  if ( features[ "Playback Rate" ] )
+  if ( features[ "playbackRate" ] )
     ytShorts.playbackRate = state.playbackRate
   
   setPlaybackRate( state )
@@ -73,7 +73,7 @@ export function populateActionElement( state: any, settings: any, features: any 
     state.playbackRate = ytShorts.playbackRate
   })
 
-  if ( features[ "Timer" ] )
+  if ( features[ "timer" ] )
     wheel( 
       ytButton, 
       () => {

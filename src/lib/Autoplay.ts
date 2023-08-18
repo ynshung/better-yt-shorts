@@ -1,3 +1,4 @@
+import local from "../background/i18n"
 import { saveSettingsToStorage } from "./SaveToStorage"
 import { skipShort } from "./VideoState"
 import { getActionElement, getCurrentId, getVideo } from "./getters"
@@ -36,7 +37,7 @@ export function createAutoplaySwitch( settings: any, enabled: boolean )
       <span 
         role="text"
         class=" yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center"
-      > Autoplay </span>
+      > ${local("autoplay")} </span>
     </div>
   `)
 

@@ -17,7 +17,7 @@ export function handleKeyEvent(
     document.activeElement === document.querySelector("#contenteditable-root")
     ) return // Avoids using keys while the user interacts with any input, like search and comment.
 
-  if ( features !== null && !features[ "Keybinds" ] ) return
+  if ( features !== null && !features[ "keybinds" ] ) return
   
   const ytShorts = getVideo()
   if ( !ytShorts ) return
@@ -32,30 +32,30 @@ export function handleKeyEvent(
   
   if (!command) return
 
-  const volumeSliderEnabled = features !== null && features[ "Volume Slider" ]
+  const volumeSliderEnabled = features !== null && features[ "volumeSlider" ]
 
   switch (command) {
-    case "Seek Backward":
-      ytShorts.currentTime -= options?.seek_amount
+    case "seekBackward":
+      ytShorts.currentTime -= options?.seekAmount
       break
 
-    case "Seek Forward":
-      ytShorts.currentTime += options?.seek_amount
+    case "seekForward":
+      ytShorts.currentTime += options?.seekAmount
       break
 
-    case "Decrease Speed":
+    case "decreaseSpeed":
       if (ytShorts.playbackRate > 0.25) ytShorts.playbackRate -= 0.25
       break
 
-    case "Reset Speed":
+    case "resetSpeed":
       ytShorts.playbackRate = 1
       break
 
-    case "Increase Speed":
+    case "increaseSpeed":
       if ( ytShorts.playbackRate < 16 ) ytShorts.playbackRate += 0.25
       break
 
-    case "Increase Volume":
+    case "increaseVolume":
       if ( ytShorts.volume < 1 )
         setVolume( settings, ytShorts.volume + VOLUME_INCREMENT_AMOUNT, volumeSliderEnabled )
 
@@ -64,7 +64,7 @@ export function handleKeyEvent(
 
       break
 
-    case "Decrease Volume":
+    case "decreaseVolume":
       if ( ytShorts.volume > 0 )
         setVolume( settings, ytShorts.volume - VOLUME_INCREMENT_AMOUNT, volumeSliderEnabled )
 
@@ -73,7 +73,7 @@ export function handleKeyEvent(
 
       break
 
-    // case "Toggle Mute":
+    // case "toggleMute":
     //   if ( !state.muted ) 
     //   {
     //     state.muted = true
@@ -87,27 +87,27 @@ export function handleKeyEvent(
     //   }
     //   break
       
-    case "Next Frame":
+    case "nextFrame":
       if (ytShorts.paused) {
         ytShorts.currentTime -= 0.04
       }
       break
 
-    case "Previous Frame":
+    case "previousFrame":
       if (ytShorts.paused) {
         ytShorts.currentTime += 0.04
       }
       break
     
-    case "Next Short":
+    case "nextShort":
       goToNextShort()
       break
 
-    case "Previous Short":
+    case "previousShort":
       goToPreviousShort()
       break
 
-    case "Restart Short":
+    case "restartShort":
       restartShort()
       break
   }

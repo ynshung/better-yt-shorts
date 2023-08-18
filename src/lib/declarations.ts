@@ -1,77 +1,76 @@
 import BROWSER from "../background/browser";
+import local from "../background/i18n";
 import { DefaultsDictionary, NumberDictionary, OptionsDictionary, PolyDictionary, StateObject, StringDictionary } from "./definitions";
 
 export const VERSION = BROWSER.runtime.getManifest().version
 
 export const DEFAULT_KEYBINDS: DefaultsDictionary = {
-  "Seek Backward":   "ArrowLeft",
-  "Seek Forward":    "ArrowRight",
-  "Decrease Speed":  "KeyU",
-  "Reset Speed":     "KeyI",
-  "Increase Speed":  "KeyO",
-  "Decrease Volume": "Minus",
-  "Increase Volume": "Equal",
-  "Toggle Mute":     "KeyM",
-  "Next Frame":      "Comma",
-  "Previous Frame":  "Period",
-  "Restart Short":  "KeyJ",
-  "Next Short":      "KeyS", 
-  "Previous Short":  "KeyW",
+  seekBackward:      "ArrowLeft",
+  seekForward:       "ArrowRight",
+  decreaseSpeed:     "KeyU",
+  resetSpeed:        "KeyI",
+  increaseSpeed:     "KeyO",
+  decreaseVolume:    "Minus",
+  increaseVolume:    "Equal",
+  toggleMute:        "KeyM",
+  nextFrame:         local("disabled"),
+  previousFrame:     local("disabled"),
+  restartShort:      "KeyJ",
+  nextShort:         local("disabled"), 
+  previousShort:     local("disabled"),
 };
+
 export const KEYBINDS_ORDER: DefaultsDictionary = [
-  "Seek Backward",
-  "Seek Forward",
-  "Decrease Speed",
-  "Reset Speed",
-  "Increase Speed",
-  "Decrease Volume",
-  "Increase Volume",
-  "Toggle Mute",
-  "Next Frame",
-  "Previous Frame",
-  "Restart Short",
-  "Next Short",
-  "Previous Short",
-]
+  "seekBackward",
+  "seekForward",
+  "decreaseSpeed",
+  "resetSpeed",
+  "increaseSpeed",
+  "decreaseVolume",
+  "increaseVolume",
+  "toggleMute",
+  "restartShort",
+  "nextFrame",
+  "previousFrame",
+  "nextShort",
+  "previousShort",
+];
+
 
 export const DEFAULT_OPTIONS: DefaultsDictionary = {
   // add new defaults for your option here
-  skip_enabled: false,
-  skip_threshold: 500,
-  seek_amount: 5,
-  automatically_open_comments: false,
-}
-export const OPTIONS_ORDER: DefaultsDictionary = [
-  "seek_amount",
-  "automatically_open_comments",
-  "skip_enabled",
-  "skip_threshold",
-]
+  skipEnabled: false,
+  skipThreshold: 500,
+  seekAmount: 5,
+  automaticallyOpenComments: false,
+};
 
+export const OPTIONS_ORDER: DefaultsDictionary = [
+  "seekAmount",
+  "automaticallyOpenComments",
+  "skipEnabled",
+  "skipThreshold",
+];
 
 export const OPTION_DICTIONARY: OptionsDictionary = {
   // add details for the option (the input element type, the bounds (min/max), etc)
-  skip_enabled: 
-  {
-    desc: "Automatically skip shorts with fewer likes?",
+  skipEnabled: {
+    desc: local("autoSkipTitle"),
     type: "checkbox",
   },
-  skip_threshold: 
-  {
-    desc: "Skip shorts with fewer than this many likes:",
+  skipThreshold: {
+    desc: local("skipThresholdTitle"),
     type: "number",
-    min:  0
+    min:  0,
   },
-  seek_amount:
-  {
-    desc: "Seek amount in seconds",
+  seekAmount: {
+    desc: local("seekAmountTitle"),
     type: "number",
     min:  0,
     max: 60,
   },
-  automatically_open_comments:
-  {
-    desc: "Open comments on new shorts automatically?",
+  automaticallyOpenComments: {
+    desc: local("automaticallyOpenCommentsTitle"),
     type: "checkbox",
   }
 }
@@ -131,22 +130,22 @@ export const DEFAULT_SETTINGS = {
 }
 
 export const DEFAULT_FEATURES = {
-  "Autoplay":      true,
-  "Progress Bar":  true,
-  "Timer":         true,
-  "Playback Rate": true,
-  "Volume Slider": true,
-  "Keybinds": true,
-}
+  autoplay: true,
+  progressBar: true,
+  timer: true,
+  playbackRate: true,
+  volumeSlider: true,
+  keybinds: true,
+};
 
 export const FEATURES_ORDER: DefaultsDictionary = [
-  "Autoplay",    
-  "Progress Bar",
-  "Timer",       
-  "Playback Rate",
-  "Volume Slider",
-  "Keybinds",
-]
+  "autoplay",    
+  "progressBar",
+  "timer",       
+  "playbackRate",
+  "volumeSlider",
+  "keybinds",
+];
 
 // todo  - add formats from other langs (note: dont include duplicate keys)#
 export const NUMBER_MODIFIERS: NumberDictionary = {
@@ -250,7 +249,7 @@ export const EXCLUDED_KEY_BINDS = [
   'AltRight',
 ]
 
-export const DEFAULT_PRESSED_KEY = "Press a Key"
-export const DISABLED_BIND_STRING = "<disabled>"
+export const DEFAULT_PRESSED_KEY = local("pressAKey")
+export const DISABLED_BIND_STRING = local("disabled")
 
 export const VOLUME_INCREMENT_AMOUNT = 0.025
