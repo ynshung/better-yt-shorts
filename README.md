@@ -19,6 +19,8 @@ Control your YouTube Shorts just like a normal YouTube video! Features include p
 ## 🙌 Version 3 is in Beta!
 Test out the latest version at the [v3 branch](https://github.com/ynshung/better-yt-shorts/tree/v3). Simply clone the repository, install the dependencies, start development mode and load the `dist` folder unpackaged. Feel free to leave or report any bugs, suggestion or improvement for this version. Your help is greatly appreciated!
 
+Special thanks to [Adam Suth](https://github.com/adsuth) for the development of the project!
+
 ## Features
 * **Progress bar** at the bottom with time and duration
 * **Seeking** 5 seconds backward and forward with arrow keys
