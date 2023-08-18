@@ -132,7 +132,7 @@ export default function EditModal( { selectedCommand, isModalOpen, setIsModalOpe
 
   function showConfirmButton()
   {
-    if ( !inputSuccessString ) return <></>
+    if ( !inputSuccessString || inputSuccessString.includes("disabled") ) return <></>
 
     return (
       <button className="--flex-button good" onClick={handleSaveBind}>Confirm</button>
