@@ -58,7 +58,7 @@ export function populateActionElement( state: any, settings: any, features: any 
 
   actionElement.insertBefore(betterYTContainer, actionElement.children[1])
 
-  createAutoplaySwitch( settings, features[ "autoplay" ] )\
+  createAutoplaySwitch( settings, features[ "autoplay" ] )
 
   if ( features[ "playbackRate" ] )
     ytShorts.playbackRate = state.playbackRate
