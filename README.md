@@ -13,6 +13,10 @@
 
 Control your YouTube Shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
+## Notice: Chrome Web Store Policy Violation
+
+We're working on bringing the extension back due to the violation of the use of YouTube Shorts logo. The new version will be submitted for review and hopefully will be updated as soon as possible. The current workaround is to load the extension right from this GitHub repository. We thank you for your patience.
+
 * Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp
 * Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 
