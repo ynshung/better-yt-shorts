@@ -13,12 +13,21 @@
 
 Control your YouTube Shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
-## Notice: Chrome Web Store Policy Violation
-
-We're working on bringing the extension back due to the violation of the use of YouTube Shorts logo. The new version will be submitted for review and hopefully will be updated as soon as possible. The current workaround is to load the extension right from this GitHub repository. We thank you for your patience.
-
-* Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp
+* ⚠️ Chrome Extension (see notice below): https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp
 * Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
+
+## ⚠️ Notice: Chrome Web Store Policy Violation
+
+We're working on bringing the extension back due to the violation of the use of YouTube Shorts logo. The new version is submitted for review and hopefully will be updated as soon as possible. The current workaround is to load the extension right from this GitHub repository and the steps are provided below. We thank you for your patience.
+
+### Guide to load the extension manually (unpacked)
+
+1. Click the "<> Code" green button and click "Download ZIP"
+2. Extract the zip file
+3. Go to the "Manage extensions" page by navigating to `chrome://extensions`
+4. Enable developer mode by clicking the button at the top right corner
+5. Drag the unzipped folder (make sure the contents are the file and not another folder) into the page
+6. **OR** Click load unpacked and select the `manifest.json` file in the unzipped folder
 
 ## 🙌 Version 3 is in Beta!
 Test out the latest version at the [v3 branch](https://github.com/ynshung/better-yt-shorts/tree/v3). Simply clone the repository, install the dependencies, start development mode and load the `dist` folder unpackaged. Feel free to leave or report any bugs, suggestion or improvement for this version. Your help is greatly appreciated!
