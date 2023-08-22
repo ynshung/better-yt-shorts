@@ -57,7 +57,7 @@ Special thanks to [Adam Suth](https://github.com/adsuth) for the development of 
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/80070435/219866197-2401c0d0-2632-45ed-9152-f1024828f46f.png)
+![image](https://github.com/ynshung/better-yt-shorts/assets/61302840/6d7ac315-7c16-4490-a1fe-683a3aa5538d)
 ![image](https://user-images.githubusercontent.com/80070435/219866370-d1acbd50-049b-47ef-9688-19d1dc4efe91.png)
 ![image](https://user-images.githubusercontent.com/80070435/219866388-13770811-674d-4681-be32-c7d27f35c000.png)
 
