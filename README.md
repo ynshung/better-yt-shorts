@@ -20,7 +20,7 @@ Control your YouTube Shorts just like a normal YouTube video! Features include p
 
 ### Notice: Chrome Web Store Takedown
 
-We have reuploaded the extension under a new link above as the previous one was taken down due to trademark issue. We hope the original link will be restored soon, if possible. We apologize for any inconvenience caused.
+We have reuploaded the extension under a new link above as the previous one was taken down due to trademark issue. The original extension had a total of 25K installs, 16K active users and 4.59★ rating. We hope the original link will be restored soon, if possible. We apologize for any inconvenience caused.
 
 ### Guide to load the extension manually (unpacked)
 
