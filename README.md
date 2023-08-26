@@ -5,20 +5,22 @@
 # Better YouTube Shorts
 
 ![Current Version](https://img.shields.io/amo/v/better-youtube-shorts?label=version)
-[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/icnidlkdlledahfgejnagmhgaeijokcp?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp)
+[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/pehohlhkhbcfdneocgnfbnilppmfncdg?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg)
 [![Firefox Add-on users](https://img.shields.io/amo/users/better-youtube-shorts?label=firefox)](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts)
-![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/icnidlkdlledahfgejnagmhgaeijokcp)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pehohlhkhbcfdneocgnfbnilppmfncdg)
 ![License: MIT](https://img.shields.io/github/license/ynshung/better-yt-shorts)
 </div>
 
 Control your YouTube Shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
-* ⚠️ Chrome Extension (see notice below): https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp
+## Installation
+
+* ⚠️ **[NEW LINK]** Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
 * Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 
-## ⚠️ Notice: Chrome Web Store Policy Violation
+### Notice: Chrome Web Store Takedown
 
-We're working on bringing the extension back due to the violation of the use of YouTube Shorts logo. The new version is submitted for review and hopefully will be updated as soon as possible. The current workaround is to load the extension right from this GitHub repository and the steps are provided below. We thank you for your patience.
+We have reuploaded the extension under a new link above as the previous one was taken down due to trademark issue. We hope the original link will be restored soon, if possible. We apologize for any inconvenience caused.
 
 ### Guide to load the extension manually (unpacked)
 
@@ -28,6 +30,8 @@ We're working on bringing the extension back due to the violation of the use of 
 4. Enable developer mode by clicking the button at the top right corner
 5. Drag the unzipped folder (make sure the contents are the file and not another folder) into the page
 6. **OR** Click load unpacked and select the `manifest.json` file in the unzipped folder
+
+Note: The extension will not automatically update. You must check for updates manually in this repository for new eversions.
 
 ## 🙌 Version 3 is in Beta!
 Test out the latest version at the [v3 branch](https://github.com/ynshung/better-yt-shorts/tree/v3). Simply clone the repository, install the dependencies, start development mode and load the `dist` folder unpackaged. Feel free to leave or report any bugs, suggestion or improvement for this version. Your help is greatly appreciated!
