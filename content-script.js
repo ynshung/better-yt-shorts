@@ -72,6 +72,7 @@ function shouldSkipShort( currentId, likeCount )
   if ( getVideo().currentTime === 0 )             return false // video unstarted, likes likely not loaded
 
   if ( !extraOptions.skip_enabled )               return false
+  if ( topId === 0 )                              return false // dont skip first short ever
   if ( currentId < topId )                        return false // allow user to scroll back up to see skipped video
   if ( skippedId === currentId )                  return false // prevent skip spam
   if ( likeCount === null || isNaN( likeCount ) ) return false // dont skip unloaded shorts
