@@ -38,7 +38,6 @@ export function populateActionElement( state: any, settings: any, features: any 
   // Video title links to the main YT watch page
   const videoId = document.location.pathname?.match(/\/shorts\/(.+)$/)
   if (!!videoId) {
-    console.log("video id", videoId[1])
     const ytTitle = getTitle()
     const ytTitleLink = document.createElement('a');
     ytTitleLink.href = `https://youtube.com/watch?v=${videoId[1]}`
