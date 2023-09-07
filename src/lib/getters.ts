@@ -58,6 +58,10 @@ export function getOverlayElement()
 
 }
 
+export function getTitle() {
+  return document.querySelector(`[id="${getCurrentId()}"] h2.title`) as HTMLElement
+}
+
 export function getVolumeContainer()
 {
   const id = getCurrentId()

@@ -1,6 +1,6 @@
 import { createAutoplaySwitch } from "./Autoplay"
 import { setPlaybackRate, setTimer } from "./PlaybackRate"
-import { getActionElement, getCurrentId, getVideo } from "./getters"
+import { getActionElement, getCurrentId, getTitle, getVideo } from "./getters"
 import { render, wheel } from "./utils"
 
 export function populateActionElement( state: any, settings: any, features: any ) // ! use proper types
@@ -35,6 +35,18 @@ export function populateActionElement( state: any, settings: any, features: any 
 
   ytButton.style.display = ( features[ "Playback Rate" ] === false ) ? "none" : "" // need this to check injection, so wont fully disable
 
+  // Video title links to the main YT watch page
+  const videoId = document.location.pathname?.match(/\/shorts\/(.+)$/)
+  if (!!videoId) {
+    console.log("video id", videoId[1])
+    const ytTitle = getTitle()
+    const ytTitleLink = document.createElement('a');
+    ytTitleLink.href = `https://youtube.com/watch?v=${videoId[1]}`
+    ytTitleLink.style.color = 'inherit'
+    ytTitleLink.style.textDecoration = 'none'
+    ytTitle.parentNode?.insertBefore(ytTitleLink, ytTitle)
+    ytTitleLink.appendChild(ytTitle)
+  }
 
   // Timer
   const ytTimer = document.createElement("div")
