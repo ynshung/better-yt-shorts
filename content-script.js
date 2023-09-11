@@ -68,13 +68,14 @@ function shouldSkipShort( currentId, likeCount )
   //   "number of likes": likeCount
   // })
 
-  if ( extraOptions === null )                    return false
-  if ( getVideo().currentTime === 0 )             return false // video unstarted, likes likely not loaded
+  if ( extraOptions === null )                     return false
+  if ( getVideo().currentTime === 0 )              return false // video unstarted, likes likely not loaded
 
-  if ( !extraOptions.skip_enabled )               return false
-  if ( currentId < topId )                        return false // allow user to scroll back up to see skipped video
-  if ( skippedId === currentId )                  return false // prevent skip spam
-  if ( likeCount === null || isNaN( likeCount ) ) return false // dont skip unloaded shorts
+  if ( !extraOptions.skip_enabled )                return false
+  if ( topId === 0 )                               return false // dont skip first short ever
+  if ( currentId < topId )                         return false // allow user to scroll back up to see skipped video
+  if ( skippedId === currentId )                   return false // prevent skip spam
+  if ( likeCount === null || isNaN( likeCount ) )  return false // dont skip unloaded shorts
   if ( likeCount >= extraOptions.skip_threshold )  return false
   return true
 }
@@ -130,9 +131,10 @@ storage.get( ["extraopts"] )
 
 document.addEventListener("keydown", (data) => {
   if (
-    document.activeElement === document.querySelector(`input`) ||
-    document.activeElement === document.querySelector("#contenteditable-root")
-    ) return; // Avoids using keys while the user interacts with any input, like search and comment.
+    [ ...document.querySelectorAll("input") ].includes( document.activeElement ) ||
+    [ ...document.querySelectorAll("#contenteditable-root") ].includes( document.activeElement )
+  ) return; // Avoids using keys while the user interacts with any input, like search and comment.
+
   const ytShorts = getVideo();
   if (!ytShorts) return;
   if (!keybinds) keybinds = defaultKeybinds;
