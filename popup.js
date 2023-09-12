@@ -306,3 +306,21 @@ function generateKeybindItem( command, bind )
 
   return tr
 }
+
+browserObj.storage.local.get(['bys-announcement'])
+.then((result) => {
+    let announcement = result['bys-announcement'];
+    if (announcement) {
+        if (parseInt(announcement) >= parseInt(document.getElementById("announcement").dataset.no)) {
+            document.getElementById("announcement").style.display = "none";
+        }
+    } else {
+        browserObj.storage.local.set({ 'bys-announcement' : 0 });
+    }
+});
+
+document.getElementById("close-btn").onclick = () => {
+    browserObj.storage.local.set({ 'bys-announcement' : parseInt(document.getElementById("announcement").dataset.no) });
+    document.getElementById("announcement").style.display = "none";
+}
+

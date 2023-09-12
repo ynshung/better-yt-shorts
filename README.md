@@ -13,6 +13,13 @@
 
 Control your YouTube Shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
+## 🫵 Help us test Version 3!
+Help us test out the latest version at the [v3 branch](https://github.com/ynshung/better-yt-shorts/tree/v3) with multiple features and improved functionalities. Simply clone the repository, install the dependencies, start development mode and load the `dist` folder unpackaged (full guide [here](https://github.com/ynshung/better-yt-shorts/tree/v3#development-guide)).
+
+We encourage you to test out the version extensively, report any bugs and leave your suggestion in the issue page. Your help is greatly appreciated! Do note that it only works on Chrome currently and you need to manually check for update from time to time.
+
+Special thanks to [Adam Suth](https://github.com/adsuth) for the development of the project!
+
 ## Installation
 
 * ⚠️ **[NEW LINK]** Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
@@ -32,11 +39,6 @@ We have reuploaded the extension under a new link above as the previous one was 
 6. **OR** Click load unpacked and select the `manifest.json` file in the unzipped folder
 
 Note: The extension will not automatically update. You must check for updates manually in this repository for new eversions.
-
-## 🙌 Version 3 is in Beta!
-Test out the latest version at the [v3 branch](https://github.com/ynshung/better-yt-shorts/tree/v3). Simply clone the repository, install the dependencies, start development mode and load the `dist` folder unpackaged. Feel free to leave or report any bugs, suggestion or improvement for this version. Your help is greatly appreciated!
-
-Special thanks to [Adam Suth](https://github.com/adsuth) for the development of the project!
 
 ## Features
 * **Progress bar** at the bottom with time and duration

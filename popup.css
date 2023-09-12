@@ -1,7 +1,7 @@
 :root {
 	--text-primary-color: #030303;
 	--text-secondary-color: #888;
-	--bg-primary-color: #fff;
+	--bg-primary-color: #fdfdfd;
 	--bg-primary-hover-color: #9d9ea1;
 	--bg-secondary-color: #f2f2f2;
 	--bg-secondary-hover-color: #e6e6e6;
@@ -9,6 +9,7 @@
 	--yt-brand-color: #f00;
 	--suggested-action-color: #378de9;
 	--call-to-action-color: #3ea6ff;
+	--announcement-color: #50a5b5;
 }
 
 [data-theme='dark'] {
@@ -21,6 +22,7 @@
 	--separation-line-color: #3f3f3f;
 	--suggested-action-color: #1d5fd4;
 	--call-to-action-color: #3978e6;
+	--announcement-color: #1e3055;
 }
 
 :where(
@@ -48,6 +50,7 @@ h3 {
 }
 
 body {
+	margin: 0;
 	font-family: 'Source Sans Pro', 'Roboto', 'Noto', 'Arial', sans-serif;
 	background: var(--bg-primary-color);
 	color: var(--text-primary-color);
@@ -84,7 +87,34 @@ svg:hover {
 }
 
 .container {
+	margin: 8px;
 	width: 280px;
+}
+
+#announcement {
+	background-color: var(--announcement-color);
+	padding: 5px 0px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#announcement a {
+	display: inline;
+}
+
+#announcement a:hover {
+	text-decoration: underline;
+}
+
+#announcement #close-btn {
+	float: right;
+	font-size: 16px;
+	padding-right: 8px;
+}
+
+#announcement #close-btn:hover {
+	text-decoration: none;
+	color: var(--yt-brand-color);
 }
 
 .title-container {
