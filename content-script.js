@@ -683,7 +683,7 @@ function convertLocaleNumber( string )
 	  "t":    1_000,
   }
   // const regex = /^(\d{1,3}(?:(?:,\d{3})*(?:\.\d+)?)|(?:\d+))(?:([,.])(\d+))?([a-z]*)\.?$/i;
-  const regex = /^([0-9\.,]+)\s?(\p{L}*)/ui
+  const regex = /^([0-9\.,]+)\s?(\p{L}+)/ui
   const matches = string.match( regex )
 
   if (!matches) return 0
@@ -702,17 +702,16 @@ function convertLocaleNumber( string )
   else
   {
     // remove separators
-    console.log( "no multiplier" )
     numericPart = matches[1].replace( /\.,/g, "" )
   }
 
-  const hasMultiplier = Object.keys(multipliers).includes(multiplier);
+  const hasMultiplier = Object.keys(multipliers).includes(multiplier)
 
+  // debug console log
   // console.log({
-  //   hasMultiplier,
-  //   numericPart,
-  //   return: hasMultiplier ? numericPart * multipliers[multiplier] : parseInt(numericPart.replace( /[.,]/g, ""), 10 ),
-  //   matches
+  //   multiplier,
+  //   matches,
+  //   returned: hasMultiplier ? numericPart * multipliers[multiplier] : parseInt( numericPart, 10 )
   // });
 
   if (hasMultiplier) {
@@ -720,7 +719,7 @@ function convertLocaleNumber( string )
   } 
   else {
     // Remove decimals and commas from the numeric part
-    const numericValue = parseInt(numericPart.replace( /[.,]/g, ""), 10 )
+    const numericValue = parseInt( numericPart, 10 )
     return numericValue;
   }
 }
