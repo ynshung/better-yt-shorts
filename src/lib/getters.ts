@@ -114,3 +114,18 @@ export function getCommentsButton()
   ) as HTMLElement
   
 }
+
+export function getComments() {
+  // make sure this works
+  // [id="0"] ytd-comment-thread-renderer #comment #body #main #comment-content #content #content-text .style-scope.yt-formatted-string
+  return (
+    [ ...document.querySelectorAll( `[ id="${getCurrentId()}" ] ytd-comment-thread-renderer #comment #body #main #comment-content #content #content-text span.style-scope.yt-formatted-string` ) ]
+  )
+}
+  
+export function isCommentsPanelOpen()
+{
+  // return true if the selector finds an open panel
+  // if panel is unfound, then the short either hasnt loaded, or the panel is not open
+  return document.querySelector( `[ id="${getCurrentId()}" ] #watch-while-engagement-panel  [ visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED" ]` ) ?? false
+}
