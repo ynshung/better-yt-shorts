@@ -1,4 +1,4 @@
-import { getComments, isCommentsPanelOpen } from "../lib/getters" 
+import { getComments } from "../lib/getters" 
 
 const prefixRegex = /((https?|ftp|www):\/\/)/
 const linkRegex   = /[^\s]+\.[^\s]{2,}/g
@@ -6,11 +6,11 @@ const linkRegex   = /[^\s]+\.[^\s]{2,}/g
 // todo - move to getters
 
 
-export function handleReturnLinksToComments()
+export function handleReturnLinksToComments( enabled: boolean )
 {
-	const comments = getComments()
+  if ( !enabled ) return
 
-  console.log( {comments} )
+	const comments = getComments()
 
   comments.forEach( comment => {
     if ( comment.getAttribute( "data-bys-checkedForLinks" ) === "true" ) return // dont check twice
@@ -21,8 +21,6 @@ export function handleReturnLinksToComments()
     comment.setAttribute( "data-bys-checkedForLinks", "true" )
     
     if ( links === null ) return
-
-    console.log( links )
     
     links.map( link => {
 			let href = link

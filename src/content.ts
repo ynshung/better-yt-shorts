@@ -115,7 +115,7 @@ function lowPriorityInterval()
   if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
 
   if ( isCommentsPanelOpen() )
-    handleReturnLinksToComments()
+    handleReturnLinksToComments( options[ "show_links_in_comments" ] )
 }
 
 function resetIntervals()
