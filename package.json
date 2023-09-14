@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "concurrently --kill-others \"sass --watch src/css\" \"vite\"",
     "build": "sass src/css && tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    
+    "ff-dev": "python3 firefox_manifest_gen.py"
   },
   "dependencies": {
     "react": "^18.0.0",
