@@ -682,27 +682,44 @@ function convertLocaleNumber( string )
 	  "md":   1_000_000_000,
 	  "t":    1_000,
   }
-	const regex = /^(\d{1,3}(?:(?:,\d{3})*(?:\.\d+)?)|(?:\d+))(?:([,.])(\d+))?([a-z]*)\.?$/i;
-	const matches = string.match(regex);
+  // const regex = /^(\d{1,3}(?:(?:,\d{3})*(?:\.\d+)?)|(?:\d+))(?:([,.])(\d+))?([a-z]*)\.?$/i;
+  const regex = /^([0-9\.,]+)\s?(\p{L}+)/ui
+  const matches = string.match( regex )
 
-	if (!matches) {
-	  return 0;
-	}
+  if (!matches) return 0
 
-	let numericPart = matches[1].replace(/,/g, ""); // Remove commas
-	if (matches[2] && matches[3]) {
-	  // Decimal part exists, add it back
-	  numericPart += `.${matches[3]}`;
-	}
+  // 1 - number with point (now 1)
+  // 4 - multiplier (eg: m, b, k) (now 2)
 
-	const multiplier = matches[4].toLowerCase();
-	const hasMultiplier = Object.keys(multipliers).includes(multiplier);
+  let numericPart = matches[1]
+  const multiplier = matches[2]?.toLowerCase();
+
+  if ( multiplier )
+  {
+    // if has multiplier, comma is decimal point
+    numericPart = matches[1].replace( /,/g, "." )
+  }
+  else
+  {
+    // remove separators
+    numericPart = matches[1].replace( /\.,/g, "" )
+  }
+
+  const hasMultiplier = Object.keys(multipliers).includes(multiplier)
+
+  // debug console log
+  // console.log({
+  //   multiplier,
+  //   matches,
+  //   returned: hasMultiplier ? numericPart * multipliers[multiplier] : parseInt( numericPart, 10 )
+  // });
 
   if (hasMultiplier) {
     return numericPart * multipliers[multiplier];
-  } else {
+  } 
+  else {
     // Remove decimals and commas from the numeric part
-    const numericValue = parseInt(numericPart.replace(/[.,]/g, ""), 10);
+    const numericValue = parseInt( numericPart, 10 )
     return numericValue;
   }
 }
@@ -717,5 +734,4 @@ function goToPrevShort( short )
 {
   const scrollAmount = short.clientHeight
   document.getElementById( "shorts-container" ).scrollTop -= scrollAmount
-
 }
