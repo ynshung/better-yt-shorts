@@ -610,6 +610,7 @@ function convertLocaleNumber( string )
 
 	  // Portuguese
 	  "mil": 1_000,
+	  "mi": 1_000_000,
 
 	  // Spanish
 	  "mil": 1_000,
