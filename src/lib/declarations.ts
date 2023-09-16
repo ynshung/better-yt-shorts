@@ -163,6 +163,7 @@ export const NUMBER_MODIFIERS: NumberDictionary = {
 
   // Portuguese
   "mil": 1_000,
+  "mi": 1_000_000,
 
   // French
   "mio": 1_000_000,
@@ -173,14 +174,16 @@ export const NUMBER_MODIFIERS: NumberDictionary = {
   "tsd": 1_000,
 
   // Japanese
-  "億":  1_000_000_000,
+  "億":  100_000_000,
   "万":  10_000,
 
   // Chinese (Simplified)
-  "亿":  1_000_000_000,
+  "亿":  100_000_000,
+  // "万":  10_000,
 
   // Chinese (Traditional)
   "萬":  10_000,
+  // "億":  100_000_000,
 
   // Russian
   "млн": 1_000_000,
