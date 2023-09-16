@@ -13,9 +13,9 @@ export function handleKeyEvent(
   state: any
 ) { 
   if (
-    document.activeElement === document.querySelector(`input`) ||
-    document.activeElement === document.querySelector("#contenteditable-root")
-    ) return // Avoids using keys while the user interacts with any input, like search and comment.
+    [ ...document.querySelectorAll("input") ].includes( document.activeElement as HTMLInputElement ) ||
+    [ ...document.querySelectorAll("#contenteditable-root") ].includes( document.activeElement as HTMLElement )
+  ) return // Avoids using keys while the user interacts with any input, like search and comment.
 
   if ( features !== null && !features[ "Keybinds" ] ) return
   
