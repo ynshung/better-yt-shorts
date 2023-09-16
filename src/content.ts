@@ -35,7 +35,7 @@ const state = new Proxy( DEFAULT_STATE, {
       switch ( prop )
       {
         case "playbackRate":
-          ytShorts .playbackRate = val
+          ytShorts.playbackRate = val
           break;
       }
     }
