@@ -257,3 +257,5 @@ export const DEFAULT_PRESSED_KEY = "Press a Key"
 export const DISABLED_BIND_STRING = "<disabled>"
 
 export const VOLUME_INCREMENT_AMOUNT = 0.025
+
+export const CYCLABLE_PLAYBACK_RATES = [ 0.5, 1, 1.5, 2 ]

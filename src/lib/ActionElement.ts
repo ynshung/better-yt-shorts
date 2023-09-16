@@ -1,5 +1,6 @@
 import { createAutoplaySwitch } from "./Autoplay"
 import { setPlaybackRate, setTimer } from "./PlaybackRate"
+import { CYCLABLE_PLAYBACK_RATES } from "./declarations"
 import { getActionElement, getCurrentId, getTitle, getVideo } from "./getters"
 import { render, wheel } from "./utils"
 
@@ -78,8 +79,18 @@ export function populateActionElement( state: any, settings: any, features: any 
   // injectedSuccess = setTimer( currTime || 0, Math.round(ytShorts.duration || 0))
 
   betterYTContainer.addEventListener("click", () => {
-    ytShorts.playbackRate = 1
-    state.playbackRate = ytShorts.playbackRate
+    const index = CYCLABLE_PLAYBACK_RATES.indexOf( ytShorts.playbackRate )
+    
+    // cycle through defined rates
+    if ( index !== -1 ) 
+    {
+      let newIndex = ( index + 1 ) % CYCLABLE_PLAYBACK_RATES.length
+      state.playbackRate = CYCLABLE_PLAYBACK_RATES[newIndex]
+      return
+    }
+
+    // note that state is a proxy, and will automatically update the video's settings
+    state.playbackRate = 1
   })
 
   if ( features[ "Timer" ] )

@@ -23,8 +23,23 @@ import { handleProgressBarNotAppearing } from "./lib/ProgressBar"
  */
 
 const state = new Proxy( DEFAULT_STATE, {
-  set: ( o: StateObject, prop: string, val: any ) => {
+  set( o: StateObject, prop: string, val: any )
+  {
     o[ prop ] = val
+
+    const ytShorts = getVideo()
+
+    // handle additional changes
+    if ( ytShorts !== null )
+    {
+      switch ( prop )
+      {
+        case "playbackRate":
+          ytShorts .playbackRate = val
+          break;
+      }
+    }
+
     return true
   }
 }  )
