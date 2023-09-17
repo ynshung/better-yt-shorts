@@ -12,6 +12,7 @@ import { DEFAULT_FEATURES, DEFAULT_KEYBINDS, DEFAULT_OPTIONS, DEFAULT_SETTINGS }
 import FeaturesPage from "./FeaturesPage"
 import { saveSettingsToStorage } from "../lib/SaveToStorage"
 import local from "../background/i18n"
+import Announcement from "./Announcement"
 
 // todo  - split this into its component parts
 
@@ -52,6 +53,7 @@ function Popup() {
 
   return (
     <div className="container" data-theme="light">
+      <Announcement/>
       <div className="content-container">
         <Header/>
   
