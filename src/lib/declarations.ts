@@ -40,12 +40,14 @@ export const DEFAULT_OPTIONS: DefaultsDictionary = {
   skip_threshold: 500,
   seek_amount: 5,
   automatically_open_comments: false,
+  show_links_in_comments: false,
 }
 export const OPTIONS_ORDER: DefaultsDictionary = [
   "seek_amount",
   "automatically_open_comments",
   "skip_enabled",
   "skip_threshold",
+  "show_links_in_comments",
 ]
 
 
@@ -72,6 +74,11 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   automatically_open_comments:
   {
     desc: "Open comments on new shorts automatically?",
+    type: "checkbox",
+  },
+  show_links_in_comments:
+  {
+    desc: "Make links in the comments clickable?",
     type: "checkbox",
   }
 }

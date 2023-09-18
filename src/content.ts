@@ -2,7 +2,7 @@ import BROWSER from "./background/browser"
 import { checkVolume } from "./lib/VolumeSlider"
 import { DEFAULT_STATE } from "./lib/declarations"
 import { StateObject } from "./lib/definitions"
-import { getCurrentId, getLikeCount, getVideo } from "./lib/getters"
+import { getCurrentId, getLikeCount, getVideo, isCommentsPanelOpen } from "./lib/getters"
 import { handleKeyEvent } from "./lib/handleKeyEvent"
 import { retrieveFeaturesFromStorage, retrieveKeybindsFromStorage, retrieveOptionsFromStorage, retrieveSettingsFromStorage } from "./lib/retrieveFromStorage"
 import { handleSkipShortsWithLowLikes, shouldSkipShort } from "./lib/SkipShortsWithLowLikes"
@@ -14,6 +14,7 @@ import { hasVideoEnded, isVideoPlaying } from "./lib/VideoState"
 import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay"
 import { handleAutomaticallyOpenComments } from "./lib/AutomaticallyOpenComments"
 import { handleProgressBarNotAppearing } from "./lib/ProgressBar"
+import { handleReturnLinksToComments } from "./lib/ReturnLinksToComments"
 
 /**
  * content.ts
@@ -56,8 +57,9 @@ BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
 
 document.addEventListener( "keydown", e => handleKeyEvent( e, features, keybinds, settings, options, state ) )
 
-var main_interval    = setInterval( main, 100 )
-var volume_interval  = setInterval( volumeIntervalCallback, 10 )
+var high_priority_interval = setInterval( highPriorityInterval,  10 )
+var mid_priority_interval  = setInterval( midPriorityInterval,  100 )
+var low_priority_interval  = setInterval( lowPriorityInterval, 1000 )
 
 function main() {
   if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
@@ -88,17 +90,42 @@ function main() {
   handleInjectionChecks( state, settings, features )
 }
 
-function volumeIntervalCallback()
+/**
+ * Reserve this specifically for things that require instantaneous response
+ */
+function highPriorityInterval()
 {
   if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
   if ( getVideo() ) checkVolume( settings, features[ "Volume Slider" ] )
 }
 
+/**
+ * Most actions should go here
+ */
+function midPriorityInterval()
+{
+  main()
+}
+
+/**
+ * Put expensive, unimportant actions in here.
+ */
+function lowPriorityInterval()
+{
+  if ( window.location.toString().indexOf("youtube.com/shorts/") < 0 ) return
+
+  if ( isCommentsPanelOpen() )
+    handleReturnLinksToComments( options[ "show_links_in_comments" ] )
+}
+
 function resetIntervals()
 {
-  clearInterval( volume_interval )
-  volume_interval = setInterval( volumeIntervalCallback, 10 )
+  clearInterval( high_priority_interval )
+  high_priority_interval = setInterval( highPriorityInterval, 10 )
   
-  clearInterval( main_interval )
-  main_interval = setInterval( main, 100 )
+  clearInterval( mid_priority_interval )
+  mid_priority_interval = setInterval( midPriorityInterval, 100 )
+
+  clearInterval( low_priority_interval )
+  low_priority_interval = setInterval( lowPriorityInterval, 1000 )
 }

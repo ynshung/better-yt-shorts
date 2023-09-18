@@ -1,5 +1,5 @@
 import { StateObject } from "./definitions";
-import { getCommentsButton, getCurrentId } from "./getters";
+import { getCommentsButton, getCurrentId, isCommentsPanelOpen } from "./getters";
 
 
 export function handleAutomaticallyOpenComments( state: StateObject, options: any )
@@ -28,11 +28,4 @@ function shouldOpenComments( state: StateObject, options: any )
   if ( isCommentsPanelOpen() )                  return false
 
   return true
-}
-
-function isCommentsPanelOpen()
-{
-  // return true if the selector finds an open panel
-  // if panel is unfound, then the short either hasnt loaded, or the panel is not open
-  return document.querySelector( `[ id="${getCurrentId()}" ] #watch-while-engagement-panel  [ visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED" ]` ) ?? false
 }
