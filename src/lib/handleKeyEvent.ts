@@ -111,10 +111,6 @@ export function handleKeyEvent(
     case "Restart Short":
       restartShort()
       break
-
-    case "Hide Overlay":
-      setHideShortsOverlay( !( options?.hide_shorts_overlay ), options );
-      break;
   }
 
   state.playbackRate = ytShorts.playbackRate

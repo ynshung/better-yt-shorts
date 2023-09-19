@@ -45,8 +45,6 @@ retrieveFeaturesFromStorage(  newFeatures => { features = newFeatures } )
 
 // todo  - test this on firefox
 BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
-  console.log( "ping changes" )
-
   if ( req?.keybinds )
     keybinds = req.keybinds 
   if ( req?.options )
