@@ -1,0 +1,164 @@
+{
+    "extName": {
+        "message": "Better YouTube Shorts (Beta)",
+        "description": "Name of the extension"
+    },
+    "extDescription": {
+        "message": "Retome o controle do YouTube Shorts com playback, volume, barra de progresso e muito mais!",
+        "description": "Description of the extension"
+    },
+    "announcement": {
+        "message": "Ajude-nos a traduzir BYS!",
+        "description": "Announcement which will update from time to time"
+    },
+
+    "website": {
+        "message": "Website"
+    },
+
+
+    "keybinds": {
+        "message": "Atalhos de Teclado"
+    },
+    "command": {
+        "message": "Comando"
+    },
+    "key": {
+        "message": "Tecla"
+    },
+    "pressKeybinds": {
+        "message": "Pressione a tecla desejada"
+    },
+    "pressAKey": {
+        "message": "Pressione uma tecla"
+    },
+    "disabled": {
+        "message": "<desabilitado>"
+    },
+    "notSupportKeyCombo": {
+        "message": "Não suporta combinações de teclas"
+    },
+    "keyCanBeUsed": {
+        "message": "\"$1\" pode ser usada!"
+    },
+    "keyCannotBeUsed": {
+        "message": "\"$1\" não pode ser usada"
+    },
+    "keyAlreadyInUse": {
+        "message": "\"$1\" já está em uso"
+    },
+    "disableKeybind": {
+        "message": "\"$1\" foi desabilitado!"
+    },
+    "editBinding": {
+        "message": "Editando tecla para "
+    },
+    "keybindDisabled": {
+        "message": "Atalho atualmente desabilitado"
+    },
+    "currentKeybind": {
+        "message": "Tecla atual é $1"
+    },
+    "confirm": {
+        "message": "Confirmar"
+    },
+    "disableBind": {
+        "message": "Desabilitar"
+    },
+
+    "resetKB": {
+        "message": "Resetar Atalhos"
+    },
+    "seekBackward": {
+        "message": "Retroceder"
+    },
+    "seekForward": {
+        "message": "Avançar"
+    },
+    "decreaseSpeed": {
+        "message": "Diminuir Velocidade"
+    },
+    "resetSpeed": {
+        "message": "Resetar Velocidade"
+    },
+    "increaseSpeed": {
+        "message": "Aumentar Velocidade"
+    },
+    "decreaseVolume": {
+        "message": "Diminuir Volume"
+    },
+    "increaseVolume": {
+        "message": "Aumentar Volume"
+    },
+    "toggleMute": {
+        "message": "Ativar/Desativar Som"
+    },
+    "nextFrame": {
+        "message": "Próximo Frame"
+    },
+    "previousFrame": {
+        "message": "Frame Anterior"
+    },
+    "restartShort": {
+        "message": "Recomeçar Short"
+    },
+    "nextShort": {
+        "message": "Próximo Short"
+    },
+    "previousShort": {
+        "message": "Short Anterior"
+    },
+
+
+    "extraOptions": {
+        "message": "Opções Extras"
+    },
+    "resetOptions": {
+        "message": "Resetar Opções"
+    },
+
+    "autoSkipTitle": {
+        "message": "Pule Shorts com menos curtidas automaticamente"
+    },
+    "skipThresholdTitle": {
+        "message": "Pule Shorts com menos do que esse número de curtidas"
+    },
+    "seekAmountTitle": {
+        "message": "Segundos de retrocesso/avanço"
+    },
+    "automaticallyOpenCommentsTitle": {
+        "message": "Abra comentários automaticamente"
+    },
+    
+
+    "toggleFeatures": {
+        "message": "Recursos"
+    },
+    "changesAffectNewShorts": {
+        "message": "Alterações afetarão apenas novos Shorts"
+    },
+    "enableAll": {
+        "message": "Habilitar Tudo"
+    },
+    "disableAll": {
+        "message": "Desabilitar Tudo"
+    },
+    "autoplay": {
+        "message": "Autoplay"
+    },
+    "progressBar": {
+        "message": "Barra de Progresso"
+    },
+    "timer": {
+        "message": "Timer"
+    },
+    "playbackRate": {
+        "message": "Velocidade de Reprodução"
+    },
+    "volumeSlider": {
+        "message": "Barra de Volume"
+    },
+    "enable": {
+        "message": "Habilitar $1"
+    }
+}
