@@ -128,3 +128,8 @@ input:checked + .autoplay-slider:before {
   color: white;
   z-index: 50;
 }
+
+.betterYT-hidden
+{
+  visibility: hidden !important;
+}

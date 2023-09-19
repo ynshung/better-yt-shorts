@@ -40,12 +40,14 @@ export const DEFAULT_OPTIONS: DefaultsDictionary = {
   skip_threshold: 500,
   seek_amount: 5,
   automatically_open_comments: false,
+  hide_shorts_overlay: false,
 }
 export const OPTIONS_ORDER: DefaultsDictionary = [
   "seek_amount",
   "automatically_open_comments",
   "skip_enabled",
   "skip_threshold",
+  "hide_shorts_overlay"
 ]
 
 
@@ -72,6 +74,11 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   automatically_open_comments:
   {
     desc: "Open comments on new shorts automatically?",
+    type: "checkbox",
+  },
+  hide_shorts_overlay:
+  {
+    desc: "Hide the the overlay on shorts (title, channel, etc)",
     type: "checkbox",
   }
 }

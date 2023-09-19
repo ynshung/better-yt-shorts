@@ -14,6 +14,7 @@ import { hasVideoEnded, isVideoPlaying } from "./lib/VideoState"
 import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay"
 import { handleAutomaticallyOpenComments } from "./lib/AutomaticallyOpenComments"
 import { handleProgressBarNotAppearing } from "./lib/ProgressBar"
+import { handleHideShortsOverlay } from "./lib/HideShortsOverlay"
 
 /**
  * content.ts
@@ -44,6 +45,8 @@ retrieveFeaturesFromStorage(  newFeatures => { features = newFeatures } )
 
 // todo  - test this on firefox
 BROWSER.runtime.onMessage.addListener( ( req, sender, sendResponse ) => {
+  console.log( "ping changes" )
+
   if ( req?.keybinds )
     keybinds = req.keybinds 
   if ( req?.options )
@@ -86,6 +89,7 @@ function main() {
   handleProgressBarNotAppearing()
   handleEnableAutoplay( settings, features[ "Autoplay" ] )
   handleInjectionChecks( state, settings, features )
+  handleHideShortsOverlay( options )
 }
 
 function volumeIntervalCallback()

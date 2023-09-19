@@ -1,3 +1,4 @@
+import { setHideShortsOverlay } from "./HideShortsOverlay"
 import { goToNextShort, goToPreviousShort, restartShort } from "./VideoState"
 import { setVolume } from "./VolumeSlider"
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations"
@@ -110,6 +111,10 @@ export function handleKeyEvent(
     case "Restart Short":
       restartShort()
       break
+
+    case "Hide Overlay":
+      setHideShortsOverlay( !( options?.hide_shorts_overlay ), options );
+      break;
   }
 
   state.playbackRate = ytShorts.playbackRate
