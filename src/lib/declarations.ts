@@ -75,9 +75,9 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
     desc: local("automaticallyOpenCommentsTitle"),
     type: "checkbox",
   },
-  hide_shorts_overlay:
+  hideShortsOverlay:
   {
-    desc: "Hide the the overlay on shorts (title, channel, etc)",
+    desc: local("hideShortsOverlayTitle"),
     type: "checkbox",
   }
 }
