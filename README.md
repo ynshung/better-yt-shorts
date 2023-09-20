@@ -5,16 +5,16 @@
 # Better YouTube Shorts v3
 
 ![Current Version](https://img.shields.io/amo/v/better-youtube-shorts?label=version)
-[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/icnidlkdlledahfgejnagmhgaeijokcp?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp)
+[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/pehohlhkhbcfdneocgnfbnilppmfncdg?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg)
 [![Firefox Add-on users](https://img.shields.io/amo/users/better-youtube-shorts?label=firefox)](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts)
-![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/icnidlkdlledahfgejnagmhgaeijokcp)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pehohlhkhbcfdneocgnfbnilppmfncdg)
 ![License: MIT](https://img.shields.io/github/license/ynshung/better-yt-shorts)
 </div>
 
 Control your YouTube shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
 ## ⚠️ Development Notice
-This branch is currently a work in progress and there are countless unimplemented/broken features that have yet to be addressed.
+This branch is currently in beta and there may be unexpected bugs. If you encounter any bugs, please report them [here](https://github.com/ynshung/better-yt-shorts/issues/new), indicating that you are using v3.
 
 View the [roadmap](./ROADMAP.md) for a list of development goals.
 
@@ -24,17 +24,22 @@ View the [roadmap](./ROADMAP.md) for a list of development goals.
 2. Clone your fork
 3. Open the working directory in the terminal
 4. run `npm i` to install all dependencies (ensure [node and npm are installed](https://nodejs.org/en))
-5. Once finished, run `npm run dev` to start developing. It will also create the distribution (dist)
-6. Open Chrome, and type `chrome://extensions` in the searchbar
-7. Toggle `Developer Mode` with the switch at the top-right of that page
-8. Drag and drop the `dist` directory into that page to load the unpacked extension
-
-Note that the content script will only work on the shorts page of youtube, though the popup should work anywhere.
-
-Also note that, so long as the `npm run dev` is active, the extension will automatically update and refresh.
+5. For **Chrome development**
+    1. Run `npm run dev` to start development
+    2. Open Chrome and navigate to `chrome://extensions`
+    3. Toggle `Developer Mode` with the switch at the top-right of that page
+    4. Drag and drop the `dist` directory into that page to load the unpacked extension
+    5. **OR** click load unpacked and select the `manifest.json` file in the directory
+    6. Changing a file should automatically update and refresh the extension
+8. For **Firefox development**
+    1. Run `npm run ff-dev` to start development
+    2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
+    3. Click `Load Temporary Add-on...` and select the `package.json` in the `dist` directory
+    4. Everytime a file is changed, make sure to reload the extension after the message of `Firefox manifest created successfully.` is shown.
 
 ## Installation
 
+* Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
 * Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 
 ## Features
@@ -69,9 +74,7 @@ Also note that, so long as the `npm run dev` is active, the extension will autom
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/80070435/219866197-2401c0d0-2632-45ed-9152-f1024828f46f.png)
-![image](https://user-images.githubusercontent.com/80070435/219866370-d1acbd50-049b-47ef-9688-19d1dc4efe91.png)
-![image](https://user-images.githubusercontent.com/80070435/219866388-13770811-674d-4681-be32-c7d27f35c000.png)
+<!-- Update with v3 screenshot -->
 
 ## Issues / Suggestion
 If you faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.

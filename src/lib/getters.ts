@@ -58,6 +58,10 @@ export function getOverlayElement()
 
 }
 
+export function getTitle() {
+  return document.querySelector(`[id="${getCurrentId()}"] h2.title`) as HTMLElement
+}
+
 export function getVolumeContainer()
 {
   const id = getCurrentId()
@@ -109,4 +113,11 @@ export function getCommentsButton()
     document.querySelector( `[ id="${getCurrentId()}" ] #comments-button .yt-spec-touch-feedback-shape__fill` )
   ) as HTMLElement
   
+}
+
+export function getOverlay()
+{
+  return document.querySelector(
+    `[id="${ getCurrentId() }"] #overlay ytd-reel-player-header-renderer`
+  ) as HTMLElement
 }

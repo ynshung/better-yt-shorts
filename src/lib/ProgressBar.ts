@@ -3,7 +3,6 @@ import { render } from "./utils"
 
 export function modifyProgressBar( enabled: boolean )
 {
-  console.log( {enabled} )
   if ( !enabled ) return
 
   const overlayElement = getOverlayElement()

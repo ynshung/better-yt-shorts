@@ -111,6 +111,7 @@ tr:not(:first-child):hover {
 
 .version {
   color: var(--bg-primary-hover-color);
+  font-size: 0.8rem;
 }
 
 .separation-line {
@@ -756,7 +757,9 @@ input:checked + .autoplay-slider:before {
 {
   color: var(--text-secondary-color);
   text-align: center;
-  padding-bottom: .5rem;
+  padding: .4rem 0;
+  font-size: .8rem;
+  word-wrap: balance;
 }
 
 #page-indicator {

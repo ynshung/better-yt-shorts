@@ -20,7 +20,7 @@ export function pingChanges( objectEnum: ChangedObjectStateEnum, message: Object
     const response = await BROWSER.tabs.sendMessage( tab.id as number, content ); // ! - see if this works in firefox
   
     // do something with response here, not outside the function
-    console.log( `[BYS] :: Updating Keybinds` )
+    console.log( `[BYS] :: Saving Changes` )
   } )()
   .catch( err => {} )
 }
