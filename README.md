@@ -57,6 +57,7 @@ View the [roadmap](./ROADMAP.md) for a list of development goals.
 * **Customizable** keybinds
 
 ### Default Keybinds
+
 | Action               | Shortcut   |
 |----------------------|------------|
 | Seek Backward (+5s)  | ArrowLeft  |
@@ -67,16 +68,28 @@ View the [roadmap](./ROADMAP.md) for a list of development goals.
 | Decrease Volume      | Minus      |
 | Increase Volume      | Equal      |
 | Toggle Mute          | KeyM       |
-| Next Frame           | Comma      |
-| Previous Frame       | Period     |
-| Next Short           | KeyS       |
-| Previous Short       | KeyW       |
+| Next Frame           |            |
+| Previous Frame       |            |
+| Next Short           |            |
+| Previous Short       |            |
+
+Some keybinds are disabled by default. You can enable them by setting its keybinds.
 
 ## Screenshots
 
 <!-- Update with v3 screenshot -->
 
-## Issues / Suggestion
+## Contributing
+All type of contributions are welcome. You may contribute by reporting bugs, suggesting new features, translating the extension or even by submitting a pull request.
+
+### 🌐 Translations
+Help translate the extension into your language! See the list of supported locales [here](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support).
+
+If your language is supported, you can start by forking the repo, copying the `_locales/en/messages.json` file and paste it to your locale code directory. Then, you can start translating the messages in the `messages.json` file. The `description` are just for reference and will not be visible to the user. Once you are done, you may create a pull request.
+
+If you need any help in translating, you may create an issue or contact us using the Google Form below.
+
+### Issues / Suggestion
 If you faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
 
 You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfwyALfA).
