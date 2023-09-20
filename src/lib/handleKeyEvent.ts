@@ -1,3 +1,4 @@
+import { setHideShortsOverlay } from "./HideShortsOverlay"
 import { goToNextShort, goToPreviousShort, restartShort } from "./VideoState"
 import { setVolume } from "./VolumeSlider"
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations"

@@ -114,3 +114,10 @@ export function getCommentsButton()
   ) as HTMLElement
   
 }
+
+export function getOverlay()
+{
+  return document.querySelector(
+    `[id="${ getCurrentId() }"] #overlay ytd-reel-player-header-renderer`
+  ) as HTMLElement
+}
