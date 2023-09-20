@@ -3,6 +3,7 @@ import { determineInputType } from '../lib/utils'
 import { PolyDictionary } from '../lib/definitions'
 import { resetOptions } from '../lib/ResetDefaults'
 import { saveOptionsToStorage, saveSettingsToStorage } from '../lib/SaveToStorage'
+import local from '../background/i18n'
 
 interface Props
 {
@@ -93,14 +94,14 @@ export default function OptionsPage( { optionsState, setOptionsState }: Props ) 
 
   return (
     <>
-      <h3 className="prevent-selection popup_subheading">Extra Options</h3>
+      <h3 className="prevent-selection popup_subheading">{ local("extraOptions") }</h3>
 
       <div id="extra_options">
         { populateOptionsPage() }
       </div>
 
       <footer className="--flex-button-container">
-        <button onClick={ handleResetOptionsClick } className="--flex-button warn">Reset Options</button>
+        <button onClick={ handleResetOptionsClick } className="--flex-button warn">{local("resetOptions")}</button>
       </footer>
     </>
   )

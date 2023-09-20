@@ -4,6 +4,7 @@ import EditButton from './EditButton'
 import { resetKeybinds } from '../lib/ResetDefaults'
 import { StringDictionary } from '../lib/definitions'
 import EditModal from './EditModal'
+import local from '../background/i18n'
 
 interface Props
 {
@@ -44,7 +45,7 @@ export default function KeybindsPage( { setKeybindsState, keybindsState }: Props
 
       return (
         <tr key={crypto.randomUUID()}>
-          <td>{command}</td>
+          <td>{local(command)}</td>
           <td>
             <div className="keybind-wrapper">
               <span id={`${command}-span`} className="keybind-span">{bind}</span>
@@ -60,15 +61,15 @@ export default function KeybindsPage( { setKeybindsState, keybindsState }: Props
 
   return (
     <>
-      <h3 className="popup_subheading prevent-selection">Keybinds</h3>
+      <h3 className="popup_subheading prevent-selection">{local("keybinds")}</h3>
 
       <EditModal {...modalProps}/>
       
       <table style={{width: '100%'}} data-theme="light" id="keybind-table">
         <tbody>
           <tr className="prevent-selection">
-            <th>Command</th>
-            <th>Key</th>
+            <th>{local("command")}</th>
+            <th>{local("key")}</th>
             <th></th>
           </tr>
 
@@ -77,7 +78,7 @@ export default function KeybindsPage( { setKeybindsState, keybindsState }: Props
       </table>
 
       <footer className="--flex-button-container">
-        <button onClick={ handleResetKeybinds } className="--flex-button warn">Reset Keybinds</button>
+        <button onClick={ handleResetKeybinds } className="--flex-button warn">{local("resetKB")}</button>
       </footer>
     </>
   )

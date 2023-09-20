@@ -4,6 +4,7 @@ import { PolyDictionary } from '../lib/definitions'
 import { disableAllFeatures, enableAllFeatures } from '../lib/ResetDefaults'
 import { saveFeaturesToStorage } from '../lib/SaveToStorage'
 import { useEffect, useState } from 'react'
+import local from '../background/i18n'
 
 interface Props
 {
@@ -61,7 +62,7 @@ export default function FeaturesPage( { featuresState, setFeaturesState }: Props
 
       return (
         <div key={i} className="label_input--row">
-          <label htmlFor={`feature_input_${feature}`}>{`Enable ${feature}?`}</label>
+          <label htmlFor={`feature_input_${feature}`}>{`${local("enable", local(feature))}`}</label>
           <input 
             id={`features_${feature}`} 
             type="checkbox" 
@@ -76,17 +77,17 @@ export default function FeaturesPage( { featuresState, setFeaturesState }: Props
 
   return (
     <>
-      <h3 className="prevent-selection popup_subheading">Toggle Features</h3>
+      <h3 className="prevent-selection popup_subheading">{local("toggleFeatures")}</h3>
 
       <div id="extra_features">
         { populateFeaturesPage() }
       </div>
 
-      <p className="prevent-selection page-warning">Changes will only affect new Shorts</p>
+      <p className="prevent-selection page-warning">{local("changesAffectNewShorts")}</p>
 
       <footer className="--flex-button-container">
         <button onClick={ handleResetFeaturesClick } className="--flex-button good">
-          { buttonEnablesAll ? "Enable" : "Disable" } All
+          { buttonEnablesAll ? local("enableAll") : local("disableAll") }
         </button>
       </footer>
     </>

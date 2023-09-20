@@ -11,6 +11,8 @@ import { pingChanges } from "../lib/chromeEmitters"
 import { DEFAULT_FEATURES, DEFAULT_KEYBINDS, DEFAULT_OPTIONS, DEFAULT_SETTINGS } from "../lib/declarations"
 import FeaturesPage from "./FeaturesPage"
 import { saveSettingsToStorage } from "../lib/SaveToStorage"
+import local from "../background/i18n"
+import Announcement from "./Announcement"
 
 // todo  - split this into its component parts
 
@@ -51,6 +53,7 @@ function Popup() {
 
   return (
     <div className="container" data-theme="light">
+      <Announcement/>
       <div className="content-container">
         <Header/>
   
@@ -67,9 +70,9 @@ function Popup() {
             </div>
             <div className="separation-line" style={{opacity: '0.5'}} />
             <div className="input-wrapper">
-              <label htmlFor="keybind-input" className="prevent-selection">Press desired key</label>
+              <label htmlFor="keybind-input" className="prevent-selection">{local("pressKeybinds")}</label>
               <input type="text" id="keybind-input" />
-              <div className="prevent-selection" style={{opacity: '0.8', fontSize: 10}}>Does not support key combinations</div>
+              <div className="prevent-selection" style={{opacity: '0.8', fontSize: 10}}>{local("notSupportKeyCombo")}</div>
             </div>
           </div>
         </div>

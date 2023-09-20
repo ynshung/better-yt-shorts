@@ -18,7 +18,7 @@ function shouldOpenComments( state: StateObject, options: any )
   let currentId = getCurrentId()
 
   if ( options === null )                       return false
-  if ( !options.automatically_open_comments )   return false
+  if ( !options.automaticallyOpenComments )     return false
   if ( currentId === state.skippedId )          return false // prevents opening comments on skipped shorts
   if ( currentId === state.openedCommentsId )   return false // allow closing of comments
 

@@ -14,6 +14,7 @@ import { MdOutlineKeyboard } from "react-icons/md";
 import { MdSettings } from "react-icons/md";
 import { MdOutlineSettings } from "react-icons/md";
 import { saveSettingsToStorage } from '../lib/SaveToStorage';
+import local from '../background/i18n';
 
 interface Props
 {
@@ -26,17 +27,17 @@ const ICONS = {
   "OPTIONS": {
     active:   <MdVideoSettings/>,
     inactive: <MdOutlineVideoSettings/>,
-    name: "Extra Options",
+    name: local("extraOptions"),
   },
   "KEYBINDS": {
     active:   <MdKeyboard/>,
     inactive: <MdOutlineKeyboard/>,
-    name: "Keybinds",
+    name: local("keybinds"),
   },
   "FEATURES": {
     active:   <MdSettings/>,
     inactive: <MdOutlineSettings/>,
-    name: "Toggle Features",
+    name: local("toggleFeatures"),
   }
 } as StrictPolyDictionary
 
