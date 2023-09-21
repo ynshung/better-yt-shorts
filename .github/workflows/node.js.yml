@@ -1,4 +1,4 @@
-name: Build Extension wiuth Node.js
+name: Build Extension with Node.js
 
 on:
   push:
