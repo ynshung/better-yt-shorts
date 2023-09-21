@@ -13,12 +13,71 @@
 
 Control your YouTube shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
-## ⚠️ Development Notice
-This branch is currently in beta and there may be unexpected bugs. If you encounter any bugs, please report them [here](https://github.com/ynshung/better-yt-shorts/issues/new), indicating that you are using v3.
+## Installation
 
-View the [roadmap](./ROADMAP.md) for a list of development goals.
+* Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
+* Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
+* Edge Add-ons: 
 
----
+## Features
+- **Progress bar** at the bottom with time and duration
+- **Seeking** 5 seconds backward and forward with arrow keys (adjustable time)
+- Mini **timestamp** and speed above the like button (can be scrolled on!)
+- Decrease and increase **playback speed** with keys U and O
+- Toggle to auto skip short when current one ends
+- Control volume with the **volume slider** or with - and =, mute audio with M
+- **Customizable** keybinds
+
+Extra features:
+- Start short from beginning with J
+- Auto skip short with likes below custom threshold (e.g. 500 likes)
+- Auto open comment section on each short
+- Hide overlay on shorts (title, channel, etc.)
+- Revert to normal speed with I or by clicking the speed button
+- Navigate to previous or next short without animation with W and S
+- Go to the next frame or previous frame with . and , while paused
+
+### Screenshots
+
+<!-- Update with v3 screenshot -->
+
+### Default Keybinds
+
+| Action               | Shortcut   |
+|----------------------|------------|
+| Seek Backward (+5s)  | ArrowLeft  |
+| Seek Forward (-5s)   | ArrowRight |
+| Decrease Speed       | KeyU       |
+| Reset Speed          | KeyI       |
+| Increase Speed       | KeyO       |
+| Decrease Volume      | Minus      |
+| Increase Volume      | Equal      |
+| Toggle Mute          | KeyM       |
+| Restart Short        | KeyJ       |
+| Next Frame           |            |
+| Previous Frame       |            |
+| Next Short           |            |
+| Previous Short       |            |
+
+Some keybinds are disabled by default. You can enable them by setting its keybinds.
+
+## Contributing
+All type of contributions are welcome. You may contribute by reporting bugs, suggesting new features, translating the extension or even by submitting a pull request.
+
+### 🌐 Translations
+Help translate the extension into your language! See the list of supported locales [here](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support).
+
+If your language is supported, you can start by forking the repo, copying the `_locales/en/messages.json` file and paste it to your locale code directory. Then, you can start translating the messages in the `messages.json` file. The `description` are just for reference and will not be visible to the user.
+
+You can also add localized store listing under the `store-desc/` directory. Create a file based on the original English language and translate it. Once you are done, you may create a pull request.
+
+If you need any help in translating, you may create an issue or contact us using the Google Form below.
+
+### Issues / Suggestion
+If you faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
+
+You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfwyALfA).
+
 ### Development Guide
 1. Fork the project on Github
 2. Clone your fork
@@ -36,63 +95,6 @@ View the [roadmap](./ROADMAP.md) for a list of development goals.
     2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
     3. Click `Load Temporary Add-on...` and select the `package.json` in the `dist` directory
     4. Everytime a file is changed, make sure to reload the extension after the message of `Firefox manifest created successfully.` is shown.
-
-## Installation
-
-* Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
-* Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
-
-## Features
-* **Progress bar** at the bottom with time and duration
-* **Seeking** 5 seconds backward and forward with arrow keys
-* **Auto skip** short when current one ends
-* Auto skip short with likes below custom threshold (e.g. 500 likes)
-* Auto open comment section on each short
-* Decrease and increase **playback speed** with keys U and O
-* Revert to normal speed with I or by clicking the speed button
-* Control **volume** with the volume slider or with - and =, mute audio with M
-* Mini timestamp and speed above the like button (can be scrolled on!)
-* Navigate to next or previous short **without animation** with W and S
-* Go to the next **frame** or previous frame with . and , while paused
-* **Customizable** keybinds
-
-### Default Keybinds
-
-| Action               | Shortcut   |
-|----------------------|------------|
-| Seek Backward (+5s)  | ArrowLeft  |
-| Seek Forward (-5s)   | ArrowRight |
-| Decrease Speed       | KeyU       |
-| Reset Speed          | KeyI       |
-| Increase Speed       | KeyO       |
-| Decrease Volume      | Minus      |
-| Increase Volume      | Equal      |
-| Toggle Mute          | KeyM       |
-| Next Frame           |            |
-| Previous Frame       |            |
-| Next Short           |            |
-| Previous Short       |            |
-
-Some keybinds are disabled by default. You can enable them by setting its keybinds.
-
-## Screenshots
-
-<!-- Update with v3 screenshot -->
-
-## Contributing
-All type of contributions are welcome. You may contribute by reporting bugs, suggesting new features, translating the extension or even by submitting a pull request.
-
-### 🌐 Translations
-Help translate the extension into your language! See the list of supported locales [here](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support).
-
-If your language is supported, you can start by forking the repo, copying the `_locales/en/messages.json` file and paste it to your locale code directory. Then, you can start translating the messages in the `messages.json` file. The `description` are just for reference and will not be visible to the user. Once you are done, you may create a pull request.
-
-If you need any help in translating, you may create an issue or contact us using the Google Form below.
-
-### Issues / Suggestion
-If you faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
-
-You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfwyALfA).
 
 ## License
 
