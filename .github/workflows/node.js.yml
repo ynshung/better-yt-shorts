@@ -27,7 +27,7 @@ jobs:
           zip -r chrome-extension.zip dist
     
     - name: Upload Chrome extension
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: chrome-extension-${{ github.sha }}
         path: chrome-extension.zip
@@ -38,7 +38,7 @@ jobs:
           zip -r firefox-extension.zip dist
     
     - name: Upload Firefox extension
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: firefox-extension-${{ github.sha }}
         path: firefox-extension.zip
