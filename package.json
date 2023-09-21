@@ -6,7 +6,8 @@
     "dev": "concurrently --kill-others \"sass --watch src/css\" \"vite\"",
     "build": "sass src/css && tsc && vite build",
     "preview": "vite preview",
-    "ff-dev": "node firefox-watch.js"
+    "dev:firefox": "node firefox-watch.js",
+    "build:firefox": "node firefox-build-manifest.js"
   },
   "dependencies": {
     "react": "^18.0.0",

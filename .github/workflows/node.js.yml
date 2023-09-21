@@ -1,7 +1,4 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
+name: Build Extension wiuth Node.js
 
 on:
   push:
@@ -11,20 +8,42 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 18.x
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build
+    
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Chrome extension
+      run: npm run build
+
+    - name: Zip extension
+      run: zip -r chrome-extension.zip dist
+  
+    - name: Clear dist folder
+      run: rm -rf dist
+
+    - name: Build Firefox extension
+      run: npm run build:firefox -- --skip-build
+
+    - name: Zip extension
+      run: zip -r firefox-extension.zip dist
+    
+    - name: Upload Chrome extension
+      uses: actions/upload-artifact@v2
+      with:
+        name: chrome-extension-${{ github.sha }}
+        path: chrome-extension.zip
+    
+    - name: Upload Firefox extension
+      uses: actions/upload-artifact@v2
+      with:
+        name: firefox-extension-${{ github.sha }}
+        path: firefox-extension.zip
