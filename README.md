@@ -32,7 +32,7 @@ View the [roadmap](./ROADMAP.md) for a list of development goals.
     5. **OR** click load unpacked and select the `manifest.json` file in the directory
     6. Changing a file should automatically update and refresh the extension
 8. For **Firefox development**
-    1. Run `npm run ff-dev` to start development
+    1. Run `npm run dev:firefox` to start development
     2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
     3. Click `Load Temporary Add-on...` and select the `package.json` in the `dist` directory
     4. Everytime a file is changed, make sure to reload the extension after the message of `Firefox manifest created successfully.` is shown.
