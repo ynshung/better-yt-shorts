@@ -1,0 +1,44 @@
+name: Build Extension with Node.js
+
+on:
+  push:
+    branches: [ "master", "v3" ]
+  pull_request:
+    branches: [ "master", "v3" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Chrome extension
+      run: |
+          npm run build
+          zip -r chrome-extension.zip dist
+    
+    - name: Upload Chrome extension
+      uses: actions/upload-artifact@v3
+      with:
+        name: chrome-extension-${{ github.sha }}
+        path: chrome-extension.zip
+
+    - name: Build Firefox extension
+      run: |
+          npm run build:firefox -- --skip-build
+          zip -r firefox-extension.zip dist
+    
+    - name: Upload Firefox extension
+      uses: actions/upload-artifact@v3
+      with:
+        name: firefox-extension-${{ github.sha }}
+        path: firefox-extension.zip
