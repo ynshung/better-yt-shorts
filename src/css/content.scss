@@ -17,8 +17,10 @@
 .betterYT-volume-slider{
   -webkit-appearance: slider-vertical;
   position: absolute;
-  right: -40px;
-  top: 40px;
+  //right: -40px;
+  //top: 40px;
+  left: -40px;
+  top: 50px;
   opacity: 0.4;
   pointer-events: all !important;
   accent-color: var( --yt-brand-color );
