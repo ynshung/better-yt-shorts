@@ -67,9 +67,11 @@ All type of contributions are welcome. You may contribute by reporting bugs, sug
 ### Translation
 Know multiple languages? Help translate the extension so we can have a reach worldwide! See the list of supported locales [here](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support).
 
-If your language is supported, you can start by forking the repo, copying the `_locales/en/messages.json` file and paste it to your locale code directory. Then, you can start translating the messages in the `messages.json` file. The `description` are just for reference and will not be visible to the user so you may translate it or leave it as it-is. Please note that you will need to [set the locale of your browser](https://developer.chrome.com/docs/extensions/reference/i18n/#how-to-set-browsers-locale) in order to test the one that you are testing on. See the development guide below to build your extension in real-time.
+We are currently using POEditor to facilitate the localization process for new users. You can join the project using this [invite link](https://poeditor.com/join/project/QwlUFSANOG). Note that you can choose to translate or copy the `description` as it is just for reference. To test your translation in the browser, export the file as _Key-Value JSON_, rename the file to `messages.json` and put it in the `_locales/[LANG]` folder where _LANG_ is the code of the language. Make sure the [locale of your browser](https://developer.chrome.com/docs/extensions/reference/i18n/#how-to-set-browsers-locale) is set properly. See the development guide below to build your extension in real-time. Please note that this method haven't been fully tested yet, so please let us know of any issues you faced in the issue page.
 
-You can also add help translate the **store listing** which is under the `store-desc/` directory. Create a file based on the original English language and translate it. Once you are done, you may create a pull request.
+Alternatively, you can start by forking the repo, copying the `_locales/en/messages.json` file and paste it to your locale code directory. Then, you can start translating the messages in the `messages.json` file. The `description` are just for reference and will not be visible to the user so you may translate it or leave it as it-is.
+
+You can also add help translate the **store listing description** which is under the `store-desc/` directory. Create a file based on the original English language and translate it. Once you are done, you may create a pull request.
 
 If you need any help in translating, you may create an issue or contact us using the Google Form below.
 
@@ -80,9 +82,9 @@ You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfw
 
 ### Development Guide
 1. Fork the project on Github
-2. Clone your fork
+2. Clone your fork in your local machine
 3. Open the working directory in the terminal
-4. run `npm i` to install all dependencies (ensure [node and npm are installed](https://nodejs.org/en))
+4. Run `npm i` to install all dependencies (ensure that [node and npm are installed](https://nodejs.org/en))
 5. For **Chrome development**
     1. Run `npm run dev` to start development
     2. Open Chrome and navigate to `chrome://extensions`
