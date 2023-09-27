@@ -8,7 +8,7 @@ export default function Header() {
     <header className="title-container">
       <div>
         <div className="title">{local("extName")}</div>
-        <div className="version">v<span id="version"/>{VERSION}</div>
+        <div className="version">v<span>{VERSION}</span></div>
       </div>
       <img src={bys_logo} alt="Better Youtube Shorts logo" height="30px" width="auto" />
     </header>

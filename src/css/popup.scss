@@ -106,6 +106,10 @@ tr:not(:first-child):hover {
 .version {
   color: var(--bg-primary-hover-color);
   font-size: 0.8rem;
+
+  span {
+    color: var(--text-primary-color);
+  }
 }
 
 .separation-line {
