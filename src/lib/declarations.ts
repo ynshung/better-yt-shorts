@@ -169,6 +169,7 @@ export const NUMBER_MODIFIERS: NumberDictionary = {
 
   // Portuguese
   "mil": 1_000,
+  "mi": 1_000_000,
 
   // French
   "mio": 1_000_000,
@@ -179,14 +180,16 @@ export const NUMBER_MODIFIERS: NumberDictionary = {
   "tsd": 1_000,
 
   // Japanese
-  "億":  1_000_000_000,
+  "億":  100_000_000,
   "万":  10_000,
 
   // Chinese (Simplified)
-  "亿":  1_000_000_000,
+  "亿":  100_000_000,
+  // "万":  10_000,
 
   // Chinese (Traditional)
   "萬":  10_000,
+  // "億":  100_000_000,
 
   // Russian
   "млн": 1_000_000,
@@ -260,3 +263,5 @@ export const DEFAULT_PRESSED_KEY = local("pressAKey")
 export const DISABLED_BIND_STRING = local("disabled")
 
 export const VOLUME_INCREMENT_AMOUNT = 0.025
+
+export const CYCLABLE_PLAYBACK_RATES = [ 0.5, 1, 1.5, 2 ]

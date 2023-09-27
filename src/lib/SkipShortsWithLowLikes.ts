@@ -28,6 +28,7 @@ export function shouldSkipShort( state: any, options: any )
   if ( !isVideoPlaying() )                         return false // video unstarted, likes likely not loaded
 
   if ( !options.skip_enabled )                     return false
+  if ( state.topId === 0 )                         return false // dont skip first short ever
   if ( currentId < state.topId )                   return false // allow user to scroll back up to see skipped video
   if ( state.skippedId === currentId )             return false // prevent skip spam
   if ( likeCount === null || isNaN( likeCount ) )  return false // dont skip unloaded shorts
