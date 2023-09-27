@@ -32,6 +32,10 @@ body {
   color: var(--text-primary-color);
 }
 
+h3 {
+  font-size: 0.9rem;
+}
+
 tr:not(:first-child) {
   background-color: var(--bg-secondary-color);
   transition: all 0.3s ease;
