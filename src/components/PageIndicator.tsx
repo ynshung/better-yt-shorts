@@ -8,11 +8,9 @@ import { MdOutlineVideoSettings } from "react-icons/md";
 import { MdKeyboard } from "react-icons/md";
 import { MdOutlineKeyboard } from "react-icons/md";
 
-// import { MdOutlineVisibilityOff } from "react-icons/md";
-// import { MdOutlineVisibility } from "react-icons/md"; // might be good for the features checkbox?
+import { MdVisibilityOff } from "react-icons/md";
+import { MdOutlineVisibilityOff } from "react-icons/md";
 
-import { MdSettings } from "react-icons/md";
-import { MdOutlineSettings } from "react-icons/md";
 import { saveSettingsToStorage } from '../lib/SaveToStorage';
 import local from '../background/i18n';
 
@@ -35,8 +33,8 @@ const ICONS = {
     name: local("keybinds"),
   },
   "FEATURES": {
-    active:   <MdSettings/>,
-    inactive: <MdOutlineSettings/>,
+    active:   <MdVisibilityOff/>,
+    inactive: <MdOutlineVisibilityOff/>,
     name: local("toggleFeatures"),
   }
 } as StrictPolyDictionary
