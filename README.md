@@ -2,7 +2,7 @@
 
 ![BYS Icon](./src/assets/icons/bys-128.png)
 
-# Better YouTube Shorts v3
+# Better YouTube Shorts
 
 ![Current Version](https://img.shields.io/amo/v/better-youtube-shorts?label=version)
 [![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/pehohlhkhbcfdneocgnfbnilppmfncdg?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg)
