@@ -99,7 +99,7 @@ export function getVolumeSliderController()
 
 export function getProgressBarList()
 {
-  return getOverlayElement().children[3].children[0].children[0]
+  return getOverlayElement().querySelector('#progress-bar-line')
 }
 
 export function getMuteButton()
