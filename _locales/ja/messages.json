@@ -1,0 +1,160 @@
+{
+    "extName": {
+        "message": "Better YouTube Shorts",
+        "description": "Name of the extension"
+    },
+    "extDescription": {
+        "message": "再生、音量、シークバーなど、YouTube Shortsのコントロールを取り戻しましょう！",
+        "description": "Description of the extension"
+    },
+
+    "website": {
+        "message": "GitHub🔗"
+    },
+
+
+    "keybinds": {
+        "message": "ショートカットキー"
+    },
+    "command": {
+        "message": "コマンド"
+    },
+    "key": {
+        "message": "キー"
+    },
+    "pressKeybinds": {
+        "message": "希望のキーを押下"
+    },
+    "pressAKey": {
+        "message": "キーを入力..."
+    },
+    "disabled": {
+        "message": "<無効>"
+    },
+    "notSupportKeyCombo": {
+        "message": "このキーは設定できません。"
+    },
+    "keyCanBeUsed": {
+        "message": "\"$1\" は設定可能です。"
+    },
+    "keyCannotBeUsed": {
+        "message": "\"$1\" は設定できません。"
+    },
+    "keyAlreadyInUse": {
+        "message": "\"$1\" は既に使用されています。"
+    },
+    "disableKeybind": {
+        "message": "\"$1\" は無効に設定されます。"
+    },
+    "editBinding": {
+        "message": "以下のショートカットを設定しています..."
+    },
+    "keybindDisabled": {
+        "message": "現在キーは設定されていません。"
+    },
+    "currentKeybind": {
+        "message": "現在のキーは $1 です。"
+    },
+    "confirm": {
+        "message": "確認"
+    },
+    "disableBind": {
+        "message": "無効"
+    },
+
+    "resetKB": {
+        "message": "リセット"
+    },
+    "seekBackward": {
+        "message": "先送り"
+    },
+    "seekForward": {
+        "message": "巻き戻し"
+    },
+    "decreaseSpeed": {
+        "message": "再生速度を上げる"
+    },
+    "resetSpeed": {
+        "message": "通常の再生速度"
+    },
+    "increaseSpeed": {
+        "message": "再生速度を下げる"
+    },
+    "decreaseVolume": {
+        "message": "音量を下げる"
+    },
+    "increaseVolume": {
+        "message": "音量を上げる"
+    },
+    "toggleMute": {
+        "message": "ミュート"
+    },
+    "nextFrame": {
+        "message": "次フレーム"
+    },
+    "previousFrame": {
+        "message": "前フレーム"
+    },
+    "restartShort": {
+        "message": "初めから再生"
+    },
+    "nextShort": {
+        "message": "次のショート"
+    },
+    "previousShort": {
+        "message": "前のショート"
+    },
+
+
+    "extraOptions": {
+        "message": "高度なオプション"
+    },
+    "resetOptions": {
+        "message": "リセット"
+    },
+
+    "autoSkipTitle": {
+        "message": "高評価が少ないショートをスキップ"
+    },
+    "skipThresholdTitle": {
+        "message": "上項の閾値"
+    },
+    "seekAmountTitle": {
+        "message": "巻き戻し、先送りの秒数"
+    },
+    "automaticallyOpenCommentsTitle": {
+        "message": "自動的にコメントを開く"
+    },
+    
+
+    "toggleFeatures": {
+        "message": "機能"
+    },
+    "changesAffectNewShorts": {
+        "message": "変更は新しいショートで適用されます"
+    },
+    "enableAll": {
+        "message": "すべて有効"
+    },
+    "disableAll": {
+        "message": "すべて無効"
+    },
+    "autoplay": {
+        "message": "自動再生"
+    },
+    "progressBar": {
+        "message": "シークバー"
+    },
+    "timer": {
+        "message": "時間表示"
+    },
+    "playbackRate": {
+        "message": "再生速度"
+    },
+    "volumeSlider": {
+        "message": "音量バー"
+    },
+    "enable": {
+        "message": "$1 を有効にする"
+    }
+}

@@ -1,6 +1,6 @@
 <div align="center">
 
-![BYS Icon](https://raw.githubusercontent.com/ynshung/better-yt-shorts/master/icons/byts128.png)
+![BYS Icon](./src/assets/icons/bys-128.png)
 
 # Better YouTube Shorts
 
@@ -11,50 +11,38 @@
 ![License: MIT](https://img.shields.io/github/license/ynshung/better-yt-shorts)
 </div>
 
-Control your YouTube Shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
-
-## 🫵 Help us test Version 3!
-Help us test out the latest version at the [v3 branch](https://github.com/ynshung/better-yt-shorts/tree/v3) with multiple features and improved functionalities. Simply clone the repository, install the dependencies, start development mode and load the `dist` folder unpackaged (full guide [here](https://github.com/ynshung/better-yt-shorts/tree/v3#development-guide)).
-
-We encourage you to test out the version extensively, report any bugs and leave your suggestion in the issue page. Your help is greatly appreciated! Do note that it only works on Chrome currently and you need to manually check for update from time to time.
-
-Special thanks to [Adam Suth](https://github.com/adsuth) for the development of the project!
+Control your YouTube shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
 ## Installation
 
-* ⚠️ **[NEW LINK]** Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
-* Firefox Add-on: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
-
-### Notice: Chrome Web Store Takedown
-
-We have reuploaded the extension under a new link above as the previous one was taken down due to trademark issue. The original extension had a total of 25K installs, 16K active users and 4.59★ rating. We hope the original link will be restored soon, if possible. We apologize for any inconvenience caused.
-
-### Guide to load the extension manually (unpacked)
-
-1. Click the "<> Code" green button and click "Download ZIP"
-2. Extract the zip file
-3. Go to the "Manage extensions" page by navigating to `chrome://extensions`
-4. Enable developer mode by clicking the button at the top right corner
-5. Drag the unzipped folder (make sure the contents are the file and not another folder) into the page
-6. **OR** Click load unpacked and select the `manifest.json` file in the unzipped folder
-
-Note: The extension will not automatically update. You must check for updates manually in this repository for new eversions.
+* Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
+* Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 
 ## Features
-* **Progress bar** at the bottom with time and duration
-* **Seeking** 5 seconds backward and forward with arrow keys
-* **Auto skip** short when current one ends
-* Auto skip short with likes below custom threshold (e.g. 500 likes)
-* Auto open comment section on each short
-* Decrease and increase **playback speed** with keys U and O
-* Revert to normal speed with I or by clicking the speed button
-* Control **volume** with the volume slider or with - and =, mute audio with M
-* Mini timestamp and speed above the like button (can be scrolled on!)
-* Navigate to next or previous short **without animation** with W and S
-* Go to the next **frame** or previous frame with . and , while paused
-* **Customizable** keybinds
+- **Progress bar** at the bottom with time and duration
+- **Seeking** 5 seconds backward and forward with arrow keys (adjustable time)
+- Mini **timestamp** and speed above the like button (can be scrolled on!)
+- Decrease and increase **playback speed** with keys U and O
+- Toggle to auto skip short when current one ends
+- Control volume with the **volume slider** or with - and =, mute audio with M
+- **Customizable** keybinds
+
+Extra features:
+- Start short from beginning with J
+- Auto skip short with likes below custom threshold (e.g. 500 likes)
+- Auto open comment section on each short
+- Hide overlay on shorts (title, channel, etc.)
+- Revert to normal speed with I or by clicking the speed button
+- Navigate to previous or next short without animation with W and S
+- Go to the next frame or previous frame with . and , while paused
+
+### Screenshots
+
+![image](https://github.com/ynshung/better-yt-shorts/assets/61302840/448f4050-cc7f-4676-b072-8bf2771d4b59)
+
 
 ### Default Keybinds
+
 | Action               | Shortcut   |
 |----------------------|------------|
 | Seek Backward (+5s)  | ArrowLeft  |
@@ -65,21 +53,50 @@ Note: The extension will not automatically update. You must check for updates ma
 | Decrease Volume      | Minus      |
 | Increase Volume      | Equal      |
 | Toggle Mute          | KeyM       |
-| Next Frame           | Comma      |
-| Previous Frame       | Period     |
-| Next Short           | KeyS       |
-| Previous Short       | KeyW       |
+| Restart Short        | KeyJ       |
+| Next Frame           |            |
+| Previous Frame       |            |
+| Next Short           |            |
+| Previous Short       |            |
 
-## Screenshots
+Some keybinds are disabled by default. You can enable them by setting its keybinds.
 
-![image](https://github.com/ynshung/better-yt-shorts/assets/61302840/6d7ac315-7c16-4490-a1fe-683a3aa5538d)
-![image](https://user-images.githubusercontent.com/80070435/219866370-d1acbd50-049b-47ef-9688-19d1dc4efe91.png)
-![image](https://user-images.githubusercontent.com/80070435/219866388-13770811-674d-4681-be32-c7d27f35c000.png)
+## Contributing
+All type of contributions are welcome. You may contribute by reporting bugs, suggesting new features, translating the extension or even by submitting a pull request.
 
-## Issues / Suggestion
-If you faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
+### Translation
+Know multiple languages? Help translate the extension so we can have a reach worldwide! See the list of supported locales [here](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support).
+
+We are currently using POEditor to facilitate the localization process for new users. You can join the project using this [invite link](https://poeditor.com/join/project/QwlUFSANOG). Note that you can choose to translate or copy the `description` as it is just for reference. To test your translation in the browser, export the file as _Key-Value JSON_, rename the file to `messages.json` and put it in the `_locales/[LANG]` folder where _LANG_ is the code of the language. Make sure the [locale of your browser](https://developer.chrome.com/docs/extensions/reference/i18n/#how-to-set-browsers-locale) is set properly. See the development guide below to build your extension in real-time. Please note that this method haven't been fully tested yet, so please let us know of any issues you faced in the issue page.
+
+Alternatively, you can start by forking the repo, copying the `_locales/en/messages.json` file and paste it to your locale code directory. Then, you can start translating the messages in the `messages.json` file. The `description` are just for reference and will not be visible to the user so you may translate it or leave it as it-is.
+
+You can also add help translate the **store listing description** which is under the `store-desc/` directory. Create a file based on the original English language and translate it. Once you are done, you may create a pull request.
+
+If you need any help in translating, you may create an issue or contact us using the Google Form below.
+
+### Issues / Suggestion
+If you have faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
 
 You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfwyALfA).
+
+### Development Guide
+1. Fork the project on Github
+2. Clone your fork in your local machine
+3. Open the working directory in the terminal
+4. Run `npm i` to install all dependencies (ensure that [node and npm are installed](https://nodejs.org/en))
+5. For **Chrome development**
+    1. Run `npm run dev` to start development
+    2. Open Chrome and navigate to `chrome://extensions`
+    3. Toggle `Developer Mode` with the switch at the top-right of that page
+    4. Drag and drop the `dist` directory into that page to load the unpacked extension
+    5. **OR** click load unpacked and select the `manifest.json` file in the directory
+    6. Changing a file should automatically update and refresh the extension
+8. For **Firefox development**
+    1. Run `npm run dev:firefox` to start development
+    2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
+    3. Click `Load Temporary Add-on...` and select the `package.json` in the `dist` directory
+    4. Everytime a file is changed, make sure to reload the extension after the message of `Firefox manifest created successfully.` is shown.
 
 ## License
 

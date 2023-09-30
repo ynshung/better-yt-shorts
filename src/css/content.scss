@@ -1,0 +1,134 @@
+@import url( "./globals.css" );
+
+.betterYT {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.betterYT-renderer {
+  display: inline-block;
+}
+
+.betterYT-button-shape {
+  display: flex;
+}
+
+.betterYT-volume-slider{
+  -webkit-appearance: slider-vertical;
+  position: absolute;
+  right: -40px;
+  top: 40px;
+  opacity: 0.4;
+  pointer-events: all !important;
+  accent-color: var( --yt-brand-color );
+  cursor: pointer;
+}
+
+@supports (-moz-appearance:none) {  
+  .volume-slider{
+      right: 16px;
+  }
+}
+
+.volume-slider:hover{
+  opacity: 1;
+}
+
+.autoplay-switch {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 27px;
+  margin: 0 auto;
+}
+
+/* Hide default HTML checkbox */
+.autoplay-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.autoplay-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #272727;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 27px;
+
+  &:hover {
+    background-color: #3f3f3f;
+  }
+  
+  &:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+}
+
+input:checked + .autoplay-slider {
+  background-color: #3f3f3f;
+}
+
+input:checked + .autoplay-slider:before {
+  -webkit-transform: translateX(21px);
+  -ms-transform: translateX(21px);
+  transform: translateX(21px);
+}
+
+@media screen and (max-width: 599px) {
+  .volumeSlider {
+    -webkit-appearance: slider-horizontal;
+    right: 44px;
+    top: 18px;
+  }
+  .autoplay-slider {
+      background-color: #FFFFFF1A;
+  }
+  input:checked + .autoplay-slider {
+      background-color: #FFFFFF2A;
+  }
+  .betterYT-auto {
+      padding-bottom: 16px;
+  }
+}
+
+.betterYT-progress-bar{
+  bottom: 0;
+  pointer-events: auto !important;
+}
+
+.betterYT-progress-bar-hover{
+  height: 10px !important;
+  cursor: pointer;
+}
+
+.betterYT-timestamp-tooltip{
+  position: absolute;
+  display: none;
+  background-color: #272727c4;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 11px;
+  color: white;
+  z-index: 50;
+}
+
+.betterYT-hidden
+{
+  visibility: hidden !important;
+}
