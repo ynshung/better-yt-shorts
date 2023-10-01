@@ -17,22 +17,22 @@ export function shouldSkipShort( state: any, options: any )
   // console.dir({
   //   "options are null": options === null,
   //   "is the video playing": isVideoPlaying(),
-  //   "option isnt enabled": !options.skip_enabled,
+  //   "option isnt enabled": !options.skipEnabled,
   //   "current id below top id": currentId < state.topId,
   //   "current id is the skipped id": state.skippedId === currentId,
   //   "likecount is null or undefined": likeCount === null || isNaN( likeCount ),
-  //   "likecount is above threshold": likeCount >= options.skip_threshold
+  //   "likecount is above threshold": likeCount >= options.skipThreshold
   // })
 
   if ( options === null )                          return false
   if ( !isVideoPlaying() )                         return false // video unstarted, likes likely not loaded
 
-  if ( !options.skip_enabled )                     return false
+  if ( !options.skipEnabled )                     return false
   if ( state.topId === 0 )                         return false // dont skip first short ever
   if ( currentId < state.topId )                   return false // allow user to scroll back up to see skipped video
   if ( state.skippedId === currentId )             return false // prevent skip spam
   if ( likeCount === null || isNaN( likeCount ) )  return false // dont skip unloaded shorts
-  if ( likeCount >= options.skip_threshold )       return false
+  if ( likeCount >= options.skipThreshold )       return false
 
   return true
 }
