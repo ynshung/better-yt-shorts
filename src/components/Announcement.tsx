@@ -21,7 +21,7 @@ export default function Announcement() {
     return (
         <div className="announcement">
             <a
-                href="https://github.com/ynshung/better-yt-shorts/tree/v3#translation"
+                href="https://github.com/ynshung/better-yt-shorts#translation"
                 target="_blank"
             >
                 {local("announcement")}
