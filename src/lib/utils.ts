@@ -10,31 +10,38 @@ export function convertLocaleNumber( string: string ): number | null
 {
   if ( typeof string !== "string" ) return null
   
-	const regex = /^(\d{1,3}(?:(?:,\d{3})*(?:\.\d+)?)|(?:\d+))(?:([,.])(\d+))?([a-z]*)\.?$/i
-	const matches = string.match(regex)
+  const regex = /^([0-9\.,]+)\s?(\p{L}+)/ui;
+  const matches = string.match(regex)
 
 	if (!matches) {
 	  return 0
 	}
 
-	let numericPart = matches[1].replace(/,/g, "") // Remove commas
-	if (matches[2] && matches[3]) {
-	  // Decimal part exists, add it back
-	  numericPart += `.${matches[3]}`
-	}
+  // 1 - number with point (now 1)
+  // 4 - multiplier (eg: m, b, k) (now 2)
 
-	const multiplier = matches[4].toLowerCase()
-	const modifier   = ( NUMBER_MODIFIERS === null ) ? null : NUMBER_MODIFIERS[multiplier]
+  let numericPart = matches[1];
+  const multiplier = matches[2]?.toLowerCase();
 
-  if ( modifier !== null ) 
+  if ( multiplier )
   {
-    return +numericPart * modifier
-  } 
-  else 
+    // if has multiplier, comma is decimal point
+    numericPart = matches[1].replace( /,/g, "." )
+  }
+  else
   {
+    // remove separators
+    numericPart = matches[1].replace( /\.,/g, "" )
+  }
+
+  const hasMultiplier = NUMBER_MODIFIERS?.hasOwnProperty( multiplier )
+
+  if (hasMultiplier) {
+    return Number(numericPart) * NUMBER_MODIFIERS![multiplier];
+  } else {
     // Remove decimals and commas from the numeric part
-    const numericValue = parseInt(numericPart.replace(/[.,]/g, ""), 10)
-    return numericValue
+    const numericValue = parseInt( numericPart, 10 )
+    return numericValue;
   }
 }
 
