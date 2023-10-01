@@ -3,10 +3,6 @@ const fs = require("fs");
 
 const RELATIVE_PATH_TO_MANIFEST = "./dist/manifest.json";
 
-const REPLACED_LINES = {
-    service_worker: '\t\t"scripts": ["service-worker-loader.js"],',
-};
-
 if (process.argv[2] && process.argv[2] === "--skip-build") {
     buildFirefoxManifest();
 } else {
@@ -24,23 +20,30 @@ if (process.argv[2] && process.argv[2] === "--skip-build") {
 
 function buildFirefoxManifest() {
     try {
-        const chromeManifest = fs.readFileSync(
-            RELATIVE_PATH_TO_MANIFEST,
-            "utf8"
+        const manifest = JSON.parse(
+            fs.readFileSync(RELATIVE_PATH_TO_MANIFEST, "utf8")
         );
-        const lines = chromeManifest.split("\n");
-        const newLines = [];
 
-        lines.forEach((line) => {
-            for (const key in REPLACED_LINES) {
-                if (line.includes(key)) {
-                    line = REPLACED_LINES[key];
-                }
-            }
-            newLines.push(line);
-        });
+        manifest.manifest_version = 2;
+        manifest.browser_action = manifest.action;
+        delete manifest.action;
 
-        fs.writeFileSync(RELATIVE_PATH_TO_MANIFEST, newLines.join("\n"));
+        manifest.background.scripts = [manifest.background.service_worker];
+        delete manifest.background.service_worker;
+
+        manifest.web_accessible_resources = manifest.web_accessible_resources.resources;
+
+        manifest.browser_specific_settings = {
+            gecko: {
+                id: "{ac34afe8-3a2e-4201-b745-346c0cf6ec7d}",
+            },
+        };
+
+        fs.writeFileSync(
+            RELATIVE_PATH_TO_MANIFEST,
+            JSON.stringify(manifest, null, 2)
+        );
+
         console.log("Firefox manifest created successfully.");
     } catch (error) {
         console.error(
