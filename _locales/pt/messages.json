@@ -129,6 +129,9 @@
     "automaticallyOpenCommentsTitle": {
         "message": "Abra comentários automaticamente"
     },
+    "hideShortsOverlayTitle": {
+        "message": "Ocultar sobreposição nos Shorts (título, canal, etc)"
+    },
     
 
     "toggleFeatures": {
