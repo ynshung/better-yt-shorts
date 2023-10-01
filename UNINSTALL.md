@@ -12,7 +12,7 @@ If you can understand code, feel free to make changes to the code and submit a p
 
 ## Thank you!
 
-You may reinstall the extension at any time by visiting the [Chrome Web Store](https://chrome.google.com/webstore/detail/better-youtube-shorts/icnidlkdlledahfgejnagmhgaeijokcp) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts).
+You may reinstall the extension at any time by visiting the [Chrome Web Store](https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts).
 
 Thank you for your support, and we hope to see you again in the future!
 
