@@ -66,10 +66,10 @@
         "message": "Réinitialiser les raccourcis clavier"
     },
     "seekBackward": {
-        "message": "Reculer la lecture"
+        "message": "Revenir en arrière"
     },
     "seekForward": {
-        "message": "Avancer la lecture"
+        "message": "Avancer"
     },
     "decreaseSpeed": {
         "message": "Diminuer la vitesse de lecture"
@@ -111,10 +111,10 @@
         "message": "Réinitialiser les options"
     },
     "autoSkipTitle": {
-        "message": "Passer automatiquement les shorts avec moins de likes"
+        "message": "Passer automatiquement les shorts avec moins de likes que la valeur paramétré"
     },
     "skipThresholdTitle": {
-        "message": "Passer les shorts avec moins de likes que ceci"
+        "message": "Passer les shorts avec moins de likes que :"
     },
     "seekAmountTitle": {
         "message": "Nombre de secondes pour avancer/reculer la lecture"
@@ -138,7 +138,7 @@
         "message": "Désactiver tout"
     },
     "autoplay": {
-        "message": "Auto-Lecture"
+        "message": "Lecture automatique"
     },
     "progressBar": {
         "message": "Barre de progression"
