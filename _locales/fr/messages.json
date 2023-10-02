@@ -72,19 +72,19 @@
         "message": "Avancer"
     },
     "decreaseSpeed": {
-        "message": "Diminuer la vitesse de lecture"
+        "message": "Ralentir la vitesse de lecture"
     },
     "resetSpeed": {
         "message": "Réinitialiser la vitesse de lecture"
     },
     "increaseSpeed": {
-        "message": "Augmenter la vitesse de lecture"
+        "message": "Accélérer la vitesse de lecture"
     },
     "decreaseVolume": {
-        "message": "Diminuer le volume"
+        "message": "Diminuer le volume audio"
     },
     "increaseVolume": {
-        "message": "Augmenter le volume"
+        "message": "Augmenter le volume audio"
     },
     "toggleMute": {
         "message": "Activer/Désactiver le son"
