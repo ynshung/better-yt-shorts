@@ -15,9 +15,11 @@ export function handleEnableAutoplay( settings: any, enabled: boolean )
 {
   const ytShorts = getVideo()
   if ( ytShorts === null ) return false
+  if ( !enabled )          return false
 
-  if ( settings.autoplay ) ytShorts.loop = !enabled
-  else ytShorts.loop = true
+  // ? - for issue 131 - may want to enable this later
+  // if ( settings.autoplay ) ytShorts.loop = !settings.autoplay
+  // else ytShorts.loop = true
 }
 
 export function createAutoplaySwitch( settings: any, enabled: boolean )
@@ -25,6 +27,7 @@ export function createAutoplaySwitch( settings: any, enabled: boolean )
   if ( !enabled ) return
 
   const actionElement = getActionElement()
+  const ytShorts = getVideo()
 
   // Autoplay Switch
   const autoplaySwitch = render(`
@@ -44,9 +47,18 @@ export function createAutoplaySwitch( settings: any, enabled: boolean )
 
   actionElement.insertBefore( autoplaySwitch, actionElement.children[1] )
 
+  // ? - for issue 131 - may want to delete this later
+  if ( ytShorts !== null )
+    ytShorts.loop = !settings.autoplay
+
   document.getElementById( `autoplay-checkbox${ getCurrentId() }` )
     ?.addEventListener( "change", ( e: any ) => {
       settings.autoplay = e.target.checked
+
+      // ? - for issue 131 - may want to delete this later
+      const ytShorts = getVideo()
+      if ( ytShorts !== null )
+        ytShorts.loop = !settings.autoplay
 
       saveSettingsToStorage( settings )
     })
