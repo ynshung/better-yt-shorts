@@ -10,7 +10,7 @@ export function convertLocaleNumber( string: string ): number | null
 {
   if ( typeof string !== "string" ) return null
   
-  const regex = /^([0-9\.,]+)\s?(\p{L}+)/ui;
+  const regex = /^([0-9\.,]+)\s?(\p{L}+)?/ui;
   const matches = string.match(regex)
 
 	if (!matches) {
