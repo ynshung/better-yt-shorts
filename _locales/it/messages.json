@@ -1,0 +1,158 @@
+{
+    "extName": {
+        "message": "Better YouTube Shorts",
+        "description": "Nome dell'estensione"
+    },
+    "extDescription": {
+        "message": "Riprendi il controllo degli Shorts di YouTube con il playback, controllo del volume, barra del progresso e altro ancora!",
+        "description": "Descrizione dell'estensione"
+    },
+    "website": {
+        "message": "SitoWeb"
+    },
+    "keybinds": {
+        "message": "Tasti Rapidi"
+    },
+    "command": {
+        "message": "Comando"
+    },
+    "key": {
+        "message": "Tasto"
+    },
+    "pressKeybinds": {
+        "message": "Premi il tasto desiderato"
+    },
+    "pressAKey": {
+        "message": "Premi un tasto"
+    },
+    "disabled": {
+        "message": "<disabilitato>"
+    },
+    "notSupportKeyCombo": {
+        "message": "Non supporta combinazioni di tasti"
+    },
+    "keyCanBeUsed": {
+        "message": "\"$1\" può essere usato!"
+    },
+    "keyCannotBeUsed": {
+        "message": "\"$1\" non può essere usato"
+    },
+    "keyAlreadyInUse": {
+        "message": "\"$1\" è già in uso"
+    },
+    "disableKeybind": {
+        "message": "\"$1\" è stato disabilitato!"
+    },
+    "editBinding": {
+        "message": "Modifica la combinazione per "
+    },
+    "keybindDisabled": {
+        "message": "Tasto rapido attualmente disabilitato"
+    },
+    "currentKeybind": {
+        "message": "Il tasto rapido corrente è $1"
+    },
+    "confirm": {
+        "message": "Conferma"
+    },
+    "disableBind": {
+        "message": "Disabilita Scorciatoia"
+    },
+    "resetKB": {
+        "message": "Resetta tasti rapidi"
+    },
+    "seekBackward": {
+        "message": "Manda Indietro"
+    },
+    "seekForward": {
+        "message": "Manda Avanti"
+    },
+    "decreaseSpeed": {
+        "message": "Diminuisci Velocità"
+    },
+    "resetSpeed": {
+        "message": "Resetta Velocità"
+    },
+    "increaseSpeed": {
+        "message": "Aumenta Velocità"
+    },
+    "decreaseVolume": {
+        "message": "Diminuisci Volume"
+    },
+    "increaseVolume": {
+        "message": "Aumenta Volume"
+    },
+    "toggleMute": {
+        "message": "Attiva Muto"
+    },
+    "nextFrame": {
+        "message": "Frame Successivo"
+    },
+    "previousFrame": {
+        "message": "Frame Precedente"
+    },
+    "restartShort": {
+        "message": "Riavvia Short"
+    },
+    "nextShort": {
+        "message": "Successivo Short"
+    },
+    "previousShort": {
+        "message": "Precedente Short"
+    },
+    "extraOptions": {
+        "message": "Opzioni Extra"
+    },
+    "resetOptions": {
+        "message": "Resetta Opzioni"
+    },
+    "autoSkipTitle": {
+        "message": "Salta automaticamente gli shorts con pochi like"
+    },
+    "skipThresholdTitle": {
+        "message": "Salta gli shorts con meno di questo numero di like"
+    },
+    "seekAmountTitle": {
+        "message": "Movimento in secondi"
+    },
+    "automaticallyOpenCommentsTitle": {
+        "message": "Apri automaticamente i commenti nei nuovi short"
+    },
+    "toggleFeatures": {
+        "message": "Attiva Funzioni"
+    },
+    "changesAffectNewShorts": {
+        "message": "Le modifiche avranno effetto solo nei nuovi short"
+    },
+    "enableAll": {
+        "message": "Abilita tutto"
+    },
+    "disableAll": {
+        "message": "Disabilita tutto"
+    },
+    "autoplay": {
+        "message": "Autoplay"
+    },
+    "progressBar": {
+        "message": "Barra di progresso"
+    },
+    "timer": {
+        "message": "Timer"
+    },
+    "playbackRate": {
+        "message": "Velocità di riproduzione"
+    },
+    "volumeSlider": {
+        "message": "Volume"
+    },
+    "enable": {
+        "message": "Abilita $1"
+    },
+    "announcement": {
+        "message": "Aiutaci a tradurre BYS!",
+        "description": "Annunci che saranno aggiornati di tanto in tanto"
+    },
+    "hideShortsOverlayTitle": {
+        "message": "Disabilita sovraimpressione degli short (titolo, canale, ecc)"
+    }
+}
