@@ -1,5 +1,5 @@
 import { saveSettingsToStorage } from "./SaveToStorage"
-import { storage } from "./declarations"
+import { VOLUME_INCREMENT_AMOUNT } from "./declarations"
 import { StateObject } from "./definitions"
 import { getCurrentId, getVideo, getVolumeContainer, getVolumeSliderController } from "./getters"
 import { render, wheel } from "./utils"
@@ -69,11 +69,11 @@ export function setVolumeSlider( state: StateObject, settings: any, enabled: boo
     slider as HTMLElement,
     () => {
       const video = getVideo();
-      if (video !== null) setVolume(settings, video.volume + 0.1, enabled);
+      if (video !== null) setVolume(settings, video.volume + VOLUME_INCREMENT_AMOUNT, enabled);
     },
     () => {
       const video = getVideo();
-      if (video !== null) setVolume(settings, video.volume - 0.1, enabled);
+      if (video !== null) setVolume(settings, video.volume - VOLUME_INCREMENT_AMOUNT, enabled);
     }
   );
 }
