@@ -1,8 +1,8 @@
 import { saveSettingsToStorage } from "./SaveToStorage"
-import { storage } from "./declarations"
+import { VOLUME_INCREMENT_AMOUNT } from "./declarations"
 import { StateObject } from "./definitions"
 import { getCurrentId, getVideo, getVolumeContainer, getVolumeSliderController } from "./getters"
-import { render } from "./utils"
+import { render, wheel } from "./utils"
 
 export function checkVolume( settings: any, sliderEnabled: boolean )
 {
@@ -64,5 +64,17 @@ export function setVolumeSlider( state: StateObject, settings: any, enabled: boo
   // Prevent video from pausing/playing on click
   slider.addEventListener( "input", (e: any) => setVolume( settings, e.target.valueAsNumber, enabled ) )
   slider.addEventListener( "click", e => e.stopPropagation() )
+
+  wheel(
+    slider as HTMLElement,
+    () => {
+      const video = getVideo();
+      if (video !== null) setVolume(settings, video.volume + VOLUME_INCREMENT_AMOUNT, enabled);
+    },
+    () => {
+      const video = getVideo();
+      if (video !== null) setVolume(settings, video.volume - VOLUME_INCREMENT_AMOUNT, enabled);
+    }
+  );
 }
 
