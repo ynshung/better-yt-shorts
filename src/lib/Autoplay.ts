@@ -16,8 +16,8 @@ export function handleEnableAutoplay( settings: any, enabled: boolean )
   const ytShorts = getVideo()
   if ( ytShorts === null ) return false
 
-  if ( settings.autoplay ) ytShorts.loop = !enabled
-  else ytShorts.loop = true
+  // if ( settings.autoplay ) ytShorts.loop = !enabled
+  // else ytShorts.loop = true
 }
 
 export function createAutoplaySwitch( settings: any, enabled: boolean )
