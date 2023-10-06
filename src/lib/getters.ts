@@ -124,13 +124,8 @@ export function getOverlay()
 
 export function getViews()
 {
-  const views = parseInt(((document.querySelector(
+  return ((document.querySelector(
     "#factoids ytd-factoid-renderer:nth-child(2) div"
     ) as HTMLElement)
-  .attributes.getNamedItem('aria-label'))?.textContent?.replace(/,/g, '') ?? '0')
-
-  return `${Intl.NumberFormat('en-US', {
-    notation: "compact",
-    maximumFractionDigits: 1
-  }).format(views)} Views`;
+  .attributes.getNamedItem('aria-label'))?.textContent ?? ''
 }
