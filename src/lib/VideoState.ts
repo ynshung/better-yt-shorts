@@ -13,7 +13,7 @@ export function hasVideoEnded()
   const ytShorts = getVideo()
   if ( ytShorts === null ) return false
 
-  return ytShorts.currentTime >= ytShorts.duration - 0.11
+  return ytShorts.currentTime >= ytShorts.duration - 0.25
 }
 
 export function skipShort()
