@@ -23,6 +23,7 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 - **Seeking** 5 seconds backward and forward with arrow keys (adjustable time)
 - Mini **timestamp** and speed above the like button (can be scrolled on!)
 - Decrease and increase **playback speed** with keys U and O
+- Click the speed button to revert to normal speed or toggle between different speeds
 - Toggle to auto skip short when current one ends
 - Control volume with the **volume slider** or with - and =, mute audio with M
 - **Customizable** keybinds
@@ -32,7 +33,6 @@ Extra features:
 - Auto skip short with likes below custom threshold (e.g. 500 likes)
 - Auto open comment section on each short
 - Hide overlay on shorts (title, channel, etc.)
-- Revert to normal speed with I or by clicking the speed button
 - Navigate to previous or next short without animation with W and S
 - Go to the next frame or previous frame with . and , while paused
 
