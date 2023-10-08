@@ -88,13 +88,13 @@ export function handleKeyEvent(
     //   }
     //   break
       
-    case "nextFrame":
+    case "previousFrame":
       if (ytShorts.paused) {
         ytShorts.currentTime -= 0.04
       }
       break
 
-    case "previousFrame":
+    case "nextFrame":
       if (ytShorts.paused) {
         ytShorts.currentTime += 0.04
       }
