@@ -121,3 +121,11 @@ export function getOverlay()
     `[id="${ getCurrentId() }"] #overlay ytd-reel-player-header-renderer`
   ) as HTMLElement
 }
+
+export function getViews()
+{
+  return ((document.querySelector(
+    "#factoids ytd-factoid-renderer:nth-child(2) div"
+    ) as HTMLElement)
+  .attributes.getNamedItem('aria-label'))?.textContent ?? ''
+}
