@@ -77,7 +77,7 @@ If you need any help in translating, you may create an issue or contact us using
 #### For advanced users
 Start by forking the repo, copying the `_locales/en/messages.json` file and paste it to your locale code directory. Then, you can start translating the messages in the `messages.json` file. The `description` are just for reference and will not be visible to the user so you may translate it or leave it as it-is.
 
-You can also add help translate the **store listing description** which is under the `store-desc/` directory. Create a file based on the original English language and translate it. Once you are done, you may create a pull request.
+You can also add help translate the **store listing description** by emailing @ynshung or creating an issue to express your interest. Note that you will be notified to update the description from time to time.
 
 ### Issues / Suggestion
 If you have faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
