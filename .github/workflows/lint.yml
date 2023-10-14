@@ -1,4 +1,4 @@
-name: Lint
+name: Run ESLint
 
 on:
   # Trigger the workflow on push or pull request,
@@ -27,10 +27,5 @@ jobs:
       # ESLint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
         run: npm ci
-
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
-          eslint_dir: src/
+      - name: Run ESLint
+        run: npm run eslint src/**

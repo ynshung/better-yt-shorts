@@ -7,7 +7,9 @@
     "build": "sass src/css && tsc && vite build",
     "preview": "vite preview",
     "dev:firefox": "node scripts/firefox-watch.js",
-    "build:firefox": "node scripts/firefox-build-manifest.js"
+    "build:firefox": "node scripts/firefox-build-manifest.js",
+    "lint": "eslint src",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "react": "^18.0.0",
