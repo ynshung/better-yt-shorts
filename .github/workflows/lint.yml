@@ -28,4 +28,4 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
       - name: Run ESLint
-        run: npm run eslint src/**
+        run: npm run lint
