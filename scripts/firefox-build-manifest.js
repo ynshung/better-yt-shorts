@@ -31,7 +31,8 @@ function buildFirefoxManifest() {
         manifest.background.scripts = [manifest.background.service_worker];
         delete manifest.background.service_worker;
 
-        manifest.web_accessible_resources = manifest.web_accessible_resources.resources;
+        manifest.web_accessible_resources =
+            manifest.web_accessible_resources.resources;
 
         manifest.browser_specific_settings = {
             gecko: {
