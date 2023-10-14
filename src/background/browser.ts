@@ -1,2 +1,2 @@
-const BROWSER = ( typeof browser === "undefined" ) ? chrome : browser;
-export default BROWSER; 
+const BROWSER = typeof browser === "undefined" ? chrome : browser;
+export default BROWSER;

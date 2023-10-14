@@ -5,23 +5,19 @@
   "description": "__MSG_extDescription__",
   "version": "3.1.0",
   "action": { "default_popup": "index.html" },
-  "permissions": [ "storage" ],
+  "permissions": ["storage"],
 
   "content_scripts": [
     {
-      "js": [
-        "src/content.ts"
-      ],
-      "matches": [
-        "https://*.youtube.com/*"
-      ]
+      "js": ["src/content.ts"],
+      "matches": ["https://*.youtube.com/*"]
     }
   ],
- 
+
   "icons": {
-     "16": "src/assets/icons/bys-16.png",
-     "32": "src/assets/icons/bys-32.png",
-     "48": "src/assets/icons/bys-48.png",
+    "16": "src/assets/icons/bys-16.png",
+    "32": "src/assets/icons/bys-32.png",
+    "48": "src/assets/icons/bys-48.png",
     "128": "src/assets/icons/bys-128.png"
   },
 

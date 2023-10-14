@@ -7,43 +7,40 @@ import { isVideoPlaying, skipShort } from "./VideoState";
 import { StateObject } from "./definitions";
 import { getCurrentId, getLikeCount, getNextButton } from "./getters";
 
-export function shouldSkipShort( state: any, options: any )
-{
-    const currentId = getCurrentId();
-    const likeCount = getLikeCount();
+export function shouldSkipShort(state: any, options: any) {
+  const currentId = getCurrentId();
+  const likeCount = getLikeCount();
 
-    if ( currentId === null ) return;
+  if (currentId === null) return;
 
-    // console.dir({
-    //   "options are null": options === null,
-    //   "is the video playing": isVideoPlaying(),
-    //   "option isnt enabled": !options.skipEnabled,
-    //   "current id below top id": currentId < state.topId,
-    //   "current id is the skipped id": state.skippedId === currentId,
-    //   "likecount is null or undefined": likeCount === null || isNaN( likeCount ),
-    //   "likecount is above threshold": likeCount >= options.skipThreshold
-    // })
+  // console.dir({
+  //   "options are null": options === null,
+  //   "is the video playing": isVideoPlaying(),
+  //   "option isnt enabled": !options.skipEnabled,
+  //   "current id below top id": currentId < state.topId,
+  //   "current id is the skipped id": state.skippedId === currentId,
+  //   "likecount is null or undefined": likeCount === null || isNaN( likeCount ),
+  //   "likecount is above threshold": likeCount >= options.skipThreshold
+  // })
 
-    if ( options === null )                          return false;
-    if ( !isVideoPlaying() )                         return false; // video unstarted, likes likely not loaded
+  if (options === null) return false;
+  if (!isVideoPlaying()) return false; // video unstarted, likes likely not loaded
 
-    if ( !options.skipEnabled )                     return false;
-    if ( state.topId === 0 )                         return false; // dont skip first short ever
-    if ( currentId < state.topId )                   return false; // allow user to scroll back up to see skipped video
-    if ( state.skippedId === currentId )             return false; // prevent skip spam
-    if ( likeCount === null || isNaN( likeCount ) )  return false; // dont skip unloaded shorts
-    if ( likeCount >= options.skipThreshold )       return false;
+  if (!options.skipEnabled) return false;
+  if (state.topId === 0) return false; // dont skip first short ever
+  if (currentId < state.topId) return false; // allow user to scroll back up to see skipped video
+  if (state.skippedId === currentId) return false; // prevent skip spam
+  if (likeCount === null || isNaN(likeCount)) return false; // dont skip unloaded shorts
+  if (likeCount >= options.skipThreshold) return false;
 
-    return true;
+  return true;
 }
-export function handleSkipShortsWithLowLikes( state: StateObject, options: any )
-{
-    const likeCount = getLikeCount();
-  
-    if ( shouldSkipShort( state, options ) ) 
-    {
-        console.log("[BYS] :: Skipping short that had", likeCount, "likes");
-        state.skippedId = getCurrentId();
-        skipShort();
-    }
+export function handleSkipShortsWithLowLikes(state: StateObject, options: any) {
+  const likeCount = getLikeCount();
+
+  if (shouldSkipShort(state, options)) {
+    console.log("[BYS] :: Skipping short that had", likeCount, "likes");
+    state.skippedId = getCurrentId();
+    skipShort();
+  }
 }
