@@ -1,21 +1,13 @@
 import local from "../background/i18n";
 import { saveSettingsToStorage } from "./SaveToStorage";
 import { skipShort } from "./VideoState";
-import { getActionElement, getCurrentId, getVideo } from "./getters";
+import { getActionElement, getCurrentId } from "./getters";
 import { render } from "./utils";
 
 export function handleAutoplay(settings: any, enabled: boolean) {
   if (!enabled) return;
   if (!settings.autoplay) return;
   skipShort();
-}
-
-export function handleEnableAutoplay(settings: any, enabled: boolean) {
-  const ytShorts = getVideo();
-  if (ytShorts === null) return false;
-
-  // if ( settings.autoplay ) ytShorts.loop = !enabled
-  // else ytShorts.loop = true
 }
 
 export function createAutoplaySwitch(settings: any, enabled: boolean) {

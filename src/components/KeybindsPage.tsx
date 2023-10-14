@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  DEFAULT_KEYBINDS,
-  DISABLED_BIND_STRING,
-  KEYBINDS_ORDER,
-} from "../lib/declarations";
+import { DEFAULT_KEYBINDS, KEYBINDS_ORDER } from "../lib/declarations";
 import EditButton from "./EditButton";
 import { resetKeybinds } from "../lib/ResetDefaults";
 import { StringDictionary } from "../lib/definitions";

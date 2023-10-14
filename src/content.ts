@@ -2,7 +2,7 @@ import BROWSER from "./background/browser";
 import { checkVolume } from "./lib/VolumeSlider";
 import { DEFAULT_STATE } from "./lib/declarations";
 import { StateObject } from "./lib/definitions";
-import { getCurrentId, getLikeCount, getVideo } from "./lib/getters";
+import { getCurrentId, getVideo } from "./lib/getters";
 import { handleKeyEvent } from "./lib/handleKeyEvent";
 import {
   retrieveFeaturesFromStorage,
@@ -10,16 +10,13 @@ import {
   retrieveOptionsFromStorage,
   retrieveSettingsFromStorage,
 } from "./lib/retrieveFromStorage";
-import {
-  handleSkipShortsWithLowLikes,
-  shouldSkipShort,
-} from "./lib/SkipShortsWithLowLikes";
+import { handleSkipShortsWithLowLikes } from "./lib/SkipShortsWithLowLikes";
 
 // need this to ensure css is loaded in the dist
 import "./css/content.css";
 import { handleInjectionChecks } from "./lib/InjectionSuccess";
 import { hasVideoEnded, isVideoPlaying } from "./lib/VideoState";
-import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay";
+import { handleAutoplay } from "./lib/Autoplay";
 import { handleAutomaticallyOpenComments } from "./lib/AutomaticallyOpenComments";
 import { handleProgressBarNotAppearing } from "./lib/ProgressBar";
 import { handleHideShortsOverlay } from "./lib/HideShortsOverlay";
@@ -72,7 +69,7 @@ retrieveFeaturesFromStorage((newFeatures) => {
 });
 
 // todo  - test this on firefox
-BROWSER.runtime.onMessage.addListener((req, sender, sendResponse) => {
+BROWSER.runtime.onMessage.addListener((req) => {
   if (req?.keybinds) keybinds = req.keybinds;
   if (req?.options) options = req.options;
   if (req?.features) features = req.features;
@@ -109,7 +106,6 @@ function main() {
   }
 
   handleProgressBarNotAppearing();
-  handleEnableAutoplay(settings, features["autoplay"]);
   handleInjectionChecks(state, settings, features);
   handleHideShortsOverlay(options);
 }

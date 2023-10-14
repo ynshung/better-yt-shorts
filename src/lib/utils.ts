@@ -1,5 +1,5 @@
-import { EXCLUDED_KEY_BINDS, NUMBER_MODIFIERS } from "./declarations";
-import { PolyDictionary } from "./definitions";
+import { NUMBER_MODIFIERS } from "./declarations";
+// import { PolyDictionary } from "./definitions";
 
 /**
  * Converts a formatted number to its full integer value.
@@ -9,7 +9,7 @@ import { PolyDictionary } from "./definitions";
 export function convertLocaleNumber(string: string): number | null {
   if (typeof string !== "string") return null;
 
-  const regex = /^([0-9\.,]+)\s?(\p{L}+)?/iu;
+  const regex = /^([0-9.,]+)\s?(\p{L}+)?/iu;
   const matches = string.match(regex);
 
   if (!matches) {

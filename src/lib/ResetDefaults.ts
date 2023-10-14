@@ -48,7 +48,7 @@ export function disableAllFeatures() {
   const newState = { ...DEFAULT_FEATURES } as BooleanDictionary;
   if (newState === null) return null;
 
-  Object.entries(newState).map(([feature, value]) => {
+  Object.entries(newState).map(([feature]) => {
     newState[feature] = false;
   });
 

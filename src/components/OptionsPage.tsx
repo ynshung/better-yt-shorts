@@ -1,17 +1,14 @@
+import React from "react";
 import {
   DEFAULT_OPTIONS,
   OPTIONS_ORDER,
   OPTION_DICTIONARY,
   setOption,
-  storage,
 } from "../lib/declarations";
 import { determineInputType } from "../lib/utils";
 import { PolyDictionary } from "../lib/definitions";
 import { resetOptions } from "../lib/ResetDefaults";
-import {
-  saveOptionsToStorage,
-  saveSettingsToStorage,
-} from "../lib/SaveToStorage";
+import { saveOptionsToStorage } from "../lib/SaveToStorage";
 import local from "../background/i18n";
 
 interface Props {
@@ -31,11 +28,14 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
     });
   }
 
-  function handleOptionChange(e: any, option: string) {
+  function handleOptionChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    option: string,
+  ) {
     if (optionsState === null) return;
 
     const target = e.target as HTMLInputElement;
-    let value: any = target.value;
+    let value: string | boolean | number = target.value;
 
     // this may need changed depending on different input types
     if (target.type === "checkbox") value = target.checked;
@@ -54,7 +54,7 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
     }
 
     setOptionsState(() => {
-      const newState = setOption(optionsState, option, value);
+      const newState = setOption(optionsState, option, value.toString());
 
       saveOptionsToStorage(newState);
       console.log(`[BYS] :: Set Option "${option}" to ${value}`);

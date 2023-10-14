@@ -2,7 +2,7 @@ import { StateObject } from "./definitions";
 import { getCurrentId, getPlaybackElement, getVideo } from "./getters";
 
 export function setPlaybackRate(state: any) {
-  const id = getCurrentId();
+  // const id = getCurrentId();
   const playBackElement = getPlaybackElement() as HTMLElement;
 
   if (playBackElement === null) return false;
@@ -30,7 +30,7 @@ export function setTimer(state: StateObject, timerEnabled: boolean) {
   return true;
 }
 
-export function createPlaybackElement(state: StateObject, enabled: boolean) {
-  // enabled is handled differently here because this element is used to test injection
-  // style="display: ${enabled ? "block" : "none"};"
-}
+// export function createPlaybackElement(state: StateObject, enabled: boolean) {
+//   enabled is handled differently here because this element is used to test injection
+//   style="display: ${enabled ? "block" : "none"};"
+// }

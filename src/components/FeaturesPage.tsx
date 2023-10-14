@@ -1,13 +1,8 @@
-import {
-  DEFAULT_FEATURES,
-  FEATURES_ORDER,
-  setFeature,
-} from "../lib/declarations";
-import { determineInputType } from "../lib/utils";
+import { FEATURES_ORDER, setFeature } from "../lib/declarations";
 import { PolyDictionary } from "../lib/definitions";
 import { disableAllFeatures, enableAllFeatures } from "../lib/ResetDefaults";
 import { saveFeaturesToStorage } from "../lib/SaveToStorage";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import local from "../background/i18n";
 
 interface Props {

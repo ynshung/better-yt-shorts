@@ -5,7 +5,7 @@
 
 import { isVideoPlaying, skipShort } from "./VideoState";
 import { StateObject } from "./definitions";
-import { getCurrentId, getLikeCount, getNextButton } from "./getters";
+import { getCurrentId, getLikeCount } from "./getters";
 
 export function shouldSkipShort(state: any, options: any) {
   const currentId = getCurrentId();

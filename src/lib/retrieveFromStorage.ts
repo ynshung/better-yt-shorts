@@ -33,7 +33,7 @@ export async function retrieveOptionsFromStorage(
 
       setter(extraopts);
     })
-    .catch((err) => {
+    .catch(() => {
       setter(DEFAULT_OPTIONS);
     });
 }
@@ -64,7 +64,7 @@ export async function retrieveKeybindsFromStorage(
 
       setter(keybinds);
     })
-    .catch((err) => {
+    .catch(() => {
       setter(DEFAULT_KEYBINDS);
     });
 }
@@ -95,7 +95,7 @@ export async function retrieveSettingsFromStorage(
 
       setter(settings);
     })
-    .catch((err) => {
+    .catch(() => {
       setter(DEFAULT_SETTINGS);
     });
 }
@@ -126,7 +126,7 @@ export async function retrieveFeaturesFromStorage(
 
       setter(features);
     })
-    .catch((err) => {
+    .catch(() => {
       setter(DEFAULT_FEATURES);
     });
 }

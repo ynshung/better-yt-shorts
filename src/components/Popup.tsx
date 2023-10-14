@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/popup.css";
 import Header from "./Header";
 import KeybindsPage from "./KeybindsPage";
@@ -25,7 +25,6 @@ import {
   DEFAULT_SETTINGS,
 } from "../lib/declarations";
 import FeaturesPage from "./FeaturesPage";
-import { saveSettingsToStorage } from "../lib/SaveToStorage";
 import local from "../background/i18n";
 import Announcement from "./Announcement";
 

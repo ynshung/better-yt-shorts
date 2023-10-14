@@ -15,7 +15,6 @@ import { MdOutlineKeyboard } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
 import { MdOutlineVisibilityOff } from "react-icons/md";
 
-import { saveSettingsToStorage } from "../lib/SaveToStorage";
 import local from "../background/i18n";
 
 interface Props {

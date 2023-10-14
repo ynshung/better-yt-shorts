@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Separator from "./Separator";
 import {
   DEFAULT_PRESSED_KEY,
@@ -14,7 +14,7 @@ interface Props {
   isModalOpen: boolean;
   setIsModalOpen: (newState: boolean) => void;
   keybindsState: StringDictionary;
-  setKeybindsState: any; // ! - use proper type
+  setKeybindsState: (keybinds: () => StringDictionary) => void; // ! - use proper type
 }
 
 export default function EditModal({

@@ -1,11 +1,12 @@
 import { createAutoplaySwitch } from "./Autoplay";
-import { setPlaybackRate, setTimer } from "./PlaybackRate";
+import { setPlaybackRate } from "./PlaybackRate";
 import { CYCLABLE_PLAYBACK_RATES } from "./declarations";
+import { StateObject } from "./definitions";
 import { getActionElement, getCurrentId, getTitle, getVideo } from "./getters";
-import { render, wheel } from "./utils";
+import { wheel } from "./utils";
 
 export function populateActionElement(
-  state: any,
+  state: StateObject,
   settings: any,
   features: any,
 ) {
