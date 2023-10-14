@@ -1,33 +1,33 @@
-import local from "../background/i18n"
-import { saveSettingsToStorage } from "./SaveToStorage"
-import { skipShort } from "./VideoState"
-import { getActionElement, getCurrentId, getVideo } from "./getters"
-import { render } from "./utils"
+import local from "../background/i18n";
+import { saveSettingsToStorage } from "./SaveToStorage";
+import { skipShort } from "./VideoState";
+import { getActionElement, getCurrentId, getVideo } from "./getters";
+import { render } from "./utils";
 
 export function handleAutoplay( settings: any, enabled: boolean )
 { 
-  if ( !enabled ) return
-  if ( !settings.autoplay ) return
-  skipShort()
+    if ( !enabled ) return;
+    if ( !settings.autoplay ) return;
+    skipShort();
 }
 
 export function handleEnableAutoplay( settings: any, enabled: boolean )
 {
-  const ytShorts = getVideo()
-  if ( ytShorts === null ) return false
+    const ytShorts = getVideo();
+    if ( ytShorts === null ) return false;
 
-  // if ( settings.autoplay ) ytShorts.loop = !enabled
-  // else ytShorts.loop = true
+    // if ( settings.autoplay ) ytShorts.loop = !enabled
+    // else ytShorts.loop = true
 }
 
 export function createAutoplaySwitch( settings: any, enabled: boolean )
 {
-  if ( !enabled ) return
+    if ( !enabled ) return;
 
-  const actionElement = getActionElement()
+    const actionElement = getActionElement();
 
-  // Autoplay Switch
-  const autoplaySwitch = render(`
+    // Autoplay Switch
+    const autoplaySwitch = render(`
     <div>
       <label class="autoplay-switch">
         <input type="checkbox" id="autoplay-checkbox${ getCurrentId() }" ${ settings.autoplay ? "checked" : "" }/>
@@ -40,14 +40,14 @@ export function createAutoplaySwitch( settings: any, enabled: boolean )
         > ${local("autoplay")} </span>
       </div>
     </div>
-  `)
+  `);
 
-  actionElement.insertBefore( autoplaySwitch, actionElement.children[1] )
+    actionElement.insertBefore( autoplaySwitch, actionElement.children[1] );
 
-  document.getElementById( `autoplay-checkbox${ getCurrentId() }` )
-    ?.addEventListener( "change", ( e: any ) => {
-      settings.autoplay = e.target.checked
+    document.getElementById( `autoplay-checkbox${ getCurrentId() }` )
+        ?.addEventListener( "change", ( e: any ) => {
+            settings.autoplay = e.target.checked;
 
-      saveSettingsToStorage( settings )
-    })
+            saveSettingsToStorage( settings );
+        });
 }

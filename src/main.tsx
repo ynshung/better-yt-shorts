@@ -6,12 +6,12 @@
  * see  ./content.ts
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Popup from './components/Popup'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Popup from "./components/Popup";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Popup />
-  </React.StrictMode>
-)
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <React.StrictMode>
+        <Popup />
+    </React.StrictMode>
+);

@@ -10,17 +10,17 @@ import { getKeyFromEnum } from "./utils";
 
 export function pingChanges( objectEnum: ChangedObjectStateEnum, message: Object )
 {
-  ( async () => {
-    const [ tab ]    = await BROWSER.tabs.query({active: true, lastFocusedWindow: true})
-    const key      = getKeyFromEnum( ChangedObjectStateEnum, objectEnum, null )
+    ( async () => {
+        const [ tab ]    = await BROWSER.tabs.query({active: true, lastFocusedWindow: true});
+        const key      = getKeyFromEnum( ChangedObjectStateEnum, objectEnum, null );
 
-    const content  = {} as any
-    content[ key ] = message
+        const content  = {} as any;
+        content[ key ] = message;
   
-    const response = await BROWSER.tabs.sendMessage( tab.id as number, content ); // ! - see if this works in firefox
+        const response = await BROWSER.tabs.sendMessage( tab.id as number, content ); // ! - see if this works in firefox
   
-    // do something with response here, not outside the function
-    console.log( `[BYS] :: Saving Changes` )
-  } )()
-  .catch( err => {} )
+        // do something with response here, not outside the function
+        console.log( "[BYS] :: Saving Changes" );
+    } )()
+        .catch( err => {} );
 }

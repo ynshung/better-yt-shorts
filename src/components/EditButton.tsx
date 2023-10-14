@@ -1,8 +1,8 @@
-import React from 'react'
-import { setKeybind, storage } from '../lib/declarations'
-import { StringDictionary } from '../lib/definitions'
+import React from "react";
+import { setKeybind, storage } from "../lib/declarations";
+import { StringDictionary } from "../lib/definitions";
 
-import { MdCreate } from "react-icons/md" 
+import { MdCreate } from "react-icons/md"; 
 
 interface Props {
   keybindsState: StringDictionary,
@@ -13,15 +13,15 @@ interface Props {
 }
 export default function EditButton( { keybindsState, setKeybindsState, command, setSelectedCommand, setIsModalOpen }: Props ) {
 
-  function handleEditButtonClick( command: string ): void
-  {
-    setIsModalOpen( true )
-    setSelectedCommand( command )
-  }
+    function handleEditButtonClick( command: string ): void
+    {
+        setIsModalOpen( true );
+        setSelectedCommand( command );
+    }
 
-  return (
-    <button id={command} className="edit-btn" onClick={ e => handleEditButtonClick( command ) }>
-      <MdCreate/>
-    </button>
-  )
+    return (
+        <button id={command} className="edit-btn" onClick={ e => handleEditButtonClick( command ) }>
+            <MdCreate/>
+        </button>
+    );
 }

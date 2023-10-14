@@ -8,46 +8,46 @@ import { getCurrentId, getVideo } from "./getters";
 
 export function registerInjection( state: StateObject )
 {
-  state.injectedItems.add( getCurrentId() )
+    state.injectedItems.add( getCurrentId() );
 }
 
 export function injectItems( state: StateObject, settings: any, features: any )
 {
-  state.lastTime = -1
+    state.lastTime = -1;
 
-  populateActionElement( state, settings, features )
-  modifyProgressBar( features[ "progressBar" ] )
-  setVolumeSlider( state, settings, features[ "volumeSlider" ] )
-  setViews()
+    populateActionElement( state, settings, features );
+    modifyProgressBar( features[ "progressBar" ] );
+    setVolumeSlider( state, settings, features[ "volumeSlider" ] );
+    setViews();
 
-  registerInjection( state )
+    registerInjection( state );
 }
 
 export function injectionWasRegistered( state: StateObject )
 {
   
-  return state.injectedItems.has( getCurrentId() )
+    return state.injectedItems.has( getCurrentId() );
 }
 
 export function checkForInjectionSuccess( state: StateObject, features: any )
 {
-  // If failed, retry injection during next interval
-  if ( !setTimer( state, features[ "timer" ] ) ) state.injectedItems.delete( getCurrentId() )
+    // If failed, retry injection during next interval
+    if ( !setTimer( state, features[ "timer" ] ) ) state.injectedItems.delete( getCurrentId() );
   
-  state.lastTime = state.currTime
+    state.lastTime = state.currTime;
 }
 
 export function handleInjectionChecks( state: StateObject, settings: any, features: any )
 {
-  const ytShorts = getVideo()
-  if ( ytShorts === null ) return
+    const ytShorts = getVideo();
+    if ( ytShorts === null ) return;
 
-  state.currTime = Math.round( ytShorts.currentTime )
+    state.currTime = Math.round( ytShorts.currentTime );
 
-  if ( !injectionWasRegistered( state ) ) return injectItems( state, settings, features )
+    if ( !injectionWasRegistered( state ) ) return injectItems( state, settings, features );
 
-  if ( state.currTime !== state.lastTime )
-    checkForInjectionSuccess( state, features )
+    if ( state.currTime !== state.lastTime )
+        checkForInjectionSuccess( state, features );
 
-  setPlaybackRate( state )
+    setPlaybackRate( state );
 }

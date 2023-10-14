@@ -1,5 +1,5 @@
-import { EXCLUDED_KEY_BINDS, NUMBER_MODIFIERS } from "./declarations"
-import { PolyDictionary } from "./definitions"
+import { EXCLUDED_KEY_BINDS, NUMBER_MODIFIERS } from "./declarations";
+import { PolyDictionary } from "./definitions";
 
 /**
  * Converts a formatted number to its full integer value.
@@ -8,53 +8,53 @@ import { PolyDictionary } from "./definitions"
  */
 export function convertLocaleNumber( string: string ): number | null
 {
-  if ( typeof string !== "string" ) return null
+    if ( typeof string !== "string" ) return null;
   
-  const regex = /^([0-9\.,]+)\s?(\p{L}+)?/ui;
-  const matches = string.match(regex)
+    const regex = /^([0-9\.,]+)\s?(\p{L}+)?/ui;
+    const matches = string.match(regex);
 
-	if (!matches) {
-	  return 0
-	}
+    if (!matches) {
+	  return 0;
+    }
 
-  // 1 - number with point (now 1)
-  // 4 - multiplier (eg: m, b, k) (now 2)
+    // 1 - number with point (now 1)
+    // 4 - multiplier (eg: m, b, k) (now 2)
 
-  let numericPart = matches[1];
-  const multiplier = matches[2]?.toLowerCase();
+    let numericPart = matches[1];
+    const multiplier = matches[2]?.toLowerCase();
 
-  if ( multiplier )
-  {
+    if ( multiplier )
+    {
     // if has multiplier, comma is decimal point
-    numericPart = matches[1].replace( /,/g, "." )
-  }
-  else
-  {
+        numericPart = matches[1].replace( /,/g, "." );
+    }
+    else
+    {
     // remove separators
-    numericPart = matches[1].replace( /\.,/g, "" )
-  }
+        numericPart = matches[1].replace( /\.,/g, "" );
+    }
 
-  const hasMultiplier = NUMBER_MODIFIERS?.hasOwnProperty( multiplier )
+    const hasMultiplier = NUMBER_MODIFIERS?.hasOwnProperty( multiplier );
 
-  if (hasMultiplier) {
-    return Number(numericPart) * NUMBER_MODIFIERS![multiplier];
-  } else {
+    if (hasMultiplier) {
+        return Number(numericPart) * NUMBER_MODIFIERS![multiplier];
+    } else {
     // Remove decimals and commas from the numeric part
-    const numericValue = parseInt( numericPart, 10 )
-    return numericValue;
-  }
+        const numericValue = parseInt( numericPart, 10 );
+        return numericValue;
+    }
 }
 
 // todo  - fix types on this
 export function wheel( element: HTMLElement, codeA: () => void, codeB: () => void ) {
-  element.addEventListener( "wheel", ( e: WheelEvent ) => {
-    e.preventDefault()
+    element.addEventListener( "wheel", ( e: WheelEvent ) => {
+        e.preventDefault();
 
-    if (e.deltaY < 0) codeA()
-    else codeB()
+        if (e.deltaY < 0) codeA();
+        else codeB();
 
     }, { passive: false }
-  )
+    );
 }
 
 /**
@@ -69,12 +69,12 @@ export function wheel( element: HTMLElement, codeA: () => void, codeB: () => voi
  */
 export function render( htmlString: string ): Node
 {
-  const elements = new DOMParser().parseFromString( htmlString, "text/html" ).body.children
+    const elements = new DOMParser().parseFromString( htmlString, "text/html" ).body.children;
 
-  if ( elements.length > 1 ) throw new Error( "ADSU | HTML String cannot have siblings!" )
-  if ( elements.length < 1 ) throw new Error( "ADSU | HTML String must have an element!" )
+    if ( elements.length > 1 ) throw new Error( "ADSU | HTML String cannot have siblings!" );
+    if ( elements.length < 1 ) throw new Error( "ADSU | HTML String must have an element!" );
 
-  return elements[0] as Node
+    return elements[0] as Node;
 }
 
 /**
@@ -83,24 +83,24 @@ export function render( htmlString: string ): Node
  */
 export function determineInputType( sampleValue: any ): string
 {
-  switch( typeof sampleValue )
-  {
+    switch( typeof sampleValue )
+    {
     case "boolean":
-      return "checkbox"
+        return "checkbox";
     case "number":
-      return "number"
+        return "number";
     case "string":
-      return "text"
+        return "text";
 
     default:
-      return "text"
-  }
+        return "text";
+    }
 }
 
 export function getEnumEntries( givenEnum: any ): Array<[string, any]>
 {
-  return Object.entries( givenEnum as Object )
-    .filter( ( ( [key, val] ) => isNaN( key as any ) ) )
+    return Object.entries( givenEnum as Object )
+        .filter( ( ( [key, val] ) => isNaN( key as any ) ) );
 }
 
 /**
@@ -110,7 +110,7 @@ export function getEnumEntries( givenEnum: any ): Array<[string, any]>
  */
 export function capitalise( str: string )
 {
-  return str[0].toUpperCase() + str.slice( 1 ).toLowerCase()
+    return str[0].toUpperCase() + str.slice( 1 ).toLowerCase();
 }
 
 
@@ -119,7 +119,7 @@ export function capitalise( str: string )
  */
 export function getEnumWithString( givenEnum: any, key: string, default_return: any = null )
 {
-  return Object.assign( {}, givenEnum )[ key ] ?? default_return
+    return Object.assign( {}, givenEnum )[ key ] ?? default_return;
 }
 /**
  * Get enum key from enum, or return `default_return` if unfound
@@ -127,5 +127,5 @@ export function getEnumWithString( givenEnum: any, key: string, default_return: 
  */
 export function getKeyFromEnum( givenEnum: any, value: any, default_return: any = null )
 {
-  return givenEnum[ value ].toLowerCase()
+    return givenEnum[ value ].toLowerCase();
 }
