@@ -17,6 +17,7 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 
 * Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
 * Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
+* Edge Add-ons: https://microsoftedge.microsoft.com/addons/detail/aecmjohahafjbkgifpoiojifhdchgkpe
 
 ## Features
 - **Progress bar** at the bottom with time and duration
