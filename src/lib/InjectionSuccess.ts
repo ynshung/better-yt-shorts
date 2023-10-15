@@ -1,7 +1,7 @@
 import { populateActionElement } from "./ActionElement";
 import { setPlaybackRate, setTimer } from "./PlaybackRate";
 import { modifyProgressBar } from "./ProgressBar";
-import { setViews } from "./Views";
+import { setInfo } from "./Info";
 import { setVolumeSlider } from "./VolumeSlider";
 import { BooleanDictionary, StateObject } from "./definitions";
 import { getCurrentId, getVideo } from "./getters";
@@ -18,7 +18,7 @@ export function injectItems( state: StateObject, settings: any, features: any )
   populateActionElement( state, settings, features )
   modifyProgressBar( features[ "progressBar" ] )
   setVolumeSlider( state, settings, features[ "volumeSlider" ] )
-  setViews()
+  setInfo()
 
   registerInjection( state )
 }
