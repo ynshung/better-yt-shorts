@@ -78,7 +78,7 @@ function addListeners( { progressBar, pbBackground, pbForeground, tooltip }: Lis
       tooltip.style.left = `${x - (tooltip.offsetWidth / 2)}px`
     }
 
-    tooltip.style.top = "-20px"
+    tooltip.style.bottom = "12px"
     tooltip.style.display = 'block'
   })
 
