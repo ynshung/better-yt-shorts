@@ -1,13 +1,21 @@
 import local from "../background/i18n"
 import { saveSettingsToStorage } from "./SaveToStorage"
 import { skipShort } from "./VideoState"
+import { StateObject } from "./definitions"
 import { getActionElement, getCurrentId, getVideo } from "./getters"
 import { render } from "./utils"
 
-export function handleAutoplay( settings: any, enabled: boolean )
-{ 
-  if ( !enabled ) return
-  if ( !settings.autoplay ) return
+export function handleAutoplay( state: StateObject, settings: any, enabled: boolean )
+{
+  if ( !enabled ) return;
+  if ( !settings.autoplay ) return;
+
+  // prevent autoplay spam
+  const currentId = getCurrentId()
+  if ( currentId === null ) return
+  if ( state.skippedId === currentId ) return
+
+  state.skippedId = currentId
   skipShort()
 }
 

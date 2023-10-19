@@ -96,7 +96,7 @@ function main() {
 	}
   if ( hasVideoEnded() )
   {
-    handleAutoplay( settings, features[ "autoplay" ] )
+    handleAutoplay( state, settings, features[ "autoplay" ] )
   }
 
   handleProgressBarNotAppearing()
