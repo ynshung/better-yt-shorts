@@ -1,30 +1,23 @@
 import BROWSER from "../background/browser";
 import local from "../background/i18n";
-import {
-  DefaultsDictionary,
-  NumberDictionary,
-  OptionsDictionary,
-  PolyDictionary,
-  StateObject,
-  StringDictionary,
-} from "./definitions";
+import { DefaultsDictionary, NumberDictionary, OptionsDictionary, PolyDictionary, StateObject, StringDictionary } from "./definitions";
 
-export const VERSION = BROWSER.runtime.getManifest().version;
+export const VERSION = BROWSER.runtime.getManifest().version
 
 export const DEFAULT_KEYBINDS: DefaultsDictionary = {
-  seekBackward: "ArrowLeft",
-  seekForward: "ArrowRight",
-  decreaseSpeed: "KeyU",
-  resetSpeed: "KeyI",
-  increaseSpeed: "KeyO",
-  decreaseVolume: "Minus",
-  increaseVolume: "Equal",
-  toggleMute: "KeyM",
-  nextFrame: local("disabled"),
-  previousFrame: local("disabled"),
-  restartShort: "KeyJ",
-  nextShort: local("disabled"),
-  previousShort: local("disabled"),
+  seekBackward:      "ArrowLeft",
+  seekForward:       "ArrowRight",
+  decreaseSpeed:     "KeyU",
+  resetSpeed:        "KeyI",
+  increaseSpeed:     "KeyO",
+  decreaseVolume:    "Minus",
+  increaseVolume:    "Equal",
+  toggleMute:        "KeyM",
+  nextFrame:         local("disabled"),
+  previousFrame:     local("disabled"),
+  restartShort:      "KeyJ",
+  nextShort:         local("disabled"), 
+  previousShort:     local("disabled"),
 };
 
 export const KEYBINDS_ORDER: DefaultsDictionary = [
@@ -43,6 +36,7 @@ export const KEYBINDS_ORDER: DefaultsDictionary = [
   "previousShort",
 ];
 
+
 export const DEFAULT_OPTIONS: DefaultsDictionary = {
   // add new defaults for your option here
   skipEnabled: false,
@@ -50,14 +44,14 @@ export const DEFAULT_OPTIONS: DefaultsDictionary = {
   seekAmount: 5,
   automaticallyOpenComments: false,
   hideShortsOverlay: false,
-};
+}
 
 export const OPTIONS_ORDER: DefaultsDictionary = [
   "seekAmount",
   "automaticallyOpenComments",
   "skipEnabled",
   "skipThreshold",
-  "hideShortsOverlay",
+  "hideShortsOverlay"
 ];
 
 export const OPTION_DICTIONARY: OptionsDictionary = {
@@ -69,85 +63,78 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   skipThreshold: {
     desc: local("skipThresholdTitle"),
     type: "number",
-    min: 0,
+    min:  0,
   },
   seekAmount: {
     desc: local("seekAmountTitle"),
     type: "number",
-    min: 0,
+    min:  0,
     max: 60,
   },
   automaticallyOpenComments: {
     desc: local("automaticallyOpenCommentsTitle"),
     type: "checkbox",
   },
-  hideShortsOverlay: {
+  hideShortsOverlay:
+  {
     desc: local("hideShortsOverlayTitle"),
     type: "checkbox",
-  },
-};
-
-export function setKeybind(
-  previousState: StringDictionary,
-  command: string,
-  newKey: string,
-): StringDictionary {
-  if (previousState === null) return null;
-
-  const newKeybinds = { ...previousState };
-  newKeybinds[command] = newKey;
-
-  return newKeybinds;
+  }
 }
 
-export function setOption(
-  previousState: PolyDictionary,
-  option: string,
-  value: string,
-): StringDictionary {
-  if (previousState === null) return null;
+export function setKeybind( previousState: StringDictionary, command: string, newKey: string ): StringDictionary
+{
+  if ( previousState === null ) return null
 
-  const newOptions = { ...previousState };
-  newOptions[option] = value;
+  const newKeybinds = {...previousState}
+  newKeybinds[ command ] = newKey
 
-  return newOptions;
+  return newKeybinds
 }
 
-export function setFeature(
-  previousState: PolyDictionary,
-  feature: string,
-  value: string,
-): StringDictionary {
-  if (previousState === null) return null;
+export function setOption( previousState: PolyDictionary, option: string, value: string ): StringDictionary
+{
+  if ( previousState === null ) return null
 
-  const newFeatures = { ...previousState };
-  newFeatures[feature] = value;
+  const newOptions = {...previousState}
+  newOptions[ option ] = value
 
-  return newFeatures;
+  return newOptions
 }
 
-export const storage = BROWSER.storage.local;
+export function setFeature( previousState: PolyDictionary, feature: string, value: string ): StringDictionary
+{
+  if ( previousState === null ) return null
+
+  const newFeatures = { ...previousState }
+  newFeatures[ feature ] = value
+
+  return newFeatures
+}
+
+
+export const storage = BROWSER.storage.local
 
 export const DEFAULT_STATE = {
-  id: 0,
-  topId: 0,
+  id          : 0,
+  topId       : 0,
   playbackRate: 1,
-  lastTime: -1, // ? this is for checking if items were injected
+  lastTime    : -1, // ? this is for checking if items were injected 
   openedCommentsId: -1,
 
   injectedItems: new Set(),
-
+  
   actualVolume: null,
-  skippedId: null,
-
-  muted: false,
-} as StateObject;
+  skippedId   : null,
+  
+  muted       : false,
+} as StateObject
 
 // ! - add settings
 export const DEFAULT_SETTINGS = {
-  volume: 0.5,
+  volume: 0.5, 
   autoplay: false,
-};
+}
 
 export const DEFAULT_FEATURES = {
   autoplay: true,
@@ -159,9 +146,9 @@ export const DEFAULT_FEATURES = {
 };
 
 export const FEATURES_ORDER: DefaultsDictionary = [
-  "autoplay",
+  "autoplay",    
   "progressBar",
-  "timer",
+  "timer",       
   "playbackRate",
   "volumeSlider",
   "keybinds",
@@ -169,112 +156,112 @@ export const FEATURES_ORDER: DefaultsDictionary = [
 
 // todo  - add formats from other langs (note: dont include duplicate keys)#
 export const NUMBER_MODIFIERS: NumberDictionary = {
-  // English
-  b: 1_000_000_000,
-  m: 1_000_000,
-  k: 1_000,
+    // English
+  "b":   1_000_000_000,
+  "m":   1_000_000,
+  "k":   1_000,
 
   // Italian
-  mln: 1_000_000,
+  "mln": 1_000_000,
 
   // Indian English
-  lakh: 100_000,
+  "lakh": 100_000,
 
   // Portuguese
-  mil: 1_000,
-  mi: 1_000_000,
+  "mil": 1_000,
+  "mi": 1_000_000,
 
   // French
-  mio: 1_000_000,
-  md: 1_000,
+  "mio": 1_000_000,
+  "md":  1_000,
 
   // German
-  mrd: 1_000_000_000,
-  tsd: 1_000,
+  "mrd": 1_000_000_000,
+  "tsd": 1_000,
 
   // Japanese
-  億: 100_000_000,
-  万: 10_000,
+  "億":  100_000_000,
+  "万":  10_000,
 
   // Chinese (Simplified)
-  亿: 100_000_000,
+  "亿":  100_000_000,
   // "万":  10_000,
 
   // Chinese (Traditional)
-  萬: 10_000,
+  "萬":  10_000,
   // "億":  100_000_000,
 
   // Russian
-  млн: 1_000_000,
-  тыс: 1_000,
+  "млн": 1_000_000,
+  "тыс": 1_000,
 
   // Hindi
-  करोड़: 10_000_000,
-  लाख: 100_000,
+  "करोड़": 10_000_000,
+  "लाख":  100_000,
 
   // Arabic
-  مليون: 1_000_000,
-  مليار: 1_000_000_000,
-  ألف: 1_000,
+  "مليون":   1_000_000,
+  "مليار":   1_000_000_000,
+  "ألف":     1_000,
 
   // Korean
-  억: 100_000_000,
-  만: 10_000,
+  "억":  100_000_000,
+  "만":  10_000,
 
   // Turkish
-  milyon: 1_000_000,
-  milyar: 1_000_000_000,
-  bin: 1_000,
+  "milyon":    1_000_000,
+  "milyar":    1_000_000_000,
+  "bin":       1_000,
 
   // Vietnamese
-  triệu: 1_000_000,
-  tỷ: 1_000_000_000,
-  nghìn: 1_000,
+  "triệu":    1_000_000,
+  "tỷ":       1_000_000_000,
+  "nghìn":    1_000,
 
   // Thai
-  ล้าน: 1_000_000,
-  พันล้าน: 1_000_000_000,
-  พัน: 1_000,
+  "ล้าน":    1_000_000,
+  "พันล้าน": 1_000_000_000,
+  "พัน":     1_000,
 
   // Dutch
-  mld: 1_000_000_000,
+  "mld":  1_000_000_000,
 
   // Greek
-  εκ: 1_000_000,
-  δισ: 1_000_000_000,
-  χιλ: 1_000,
+  "εκ":   1_000_000,
+  "δισ":  1_000_000_000,
+  "χιλ":  1_000,
 
   // Swedish
-  mn: 1_000_000,
-  t: 1_000,
-};
+  "mn":   1_000_000,
+  "t":    1_000,
+}
 
 export const EXCLUDED_KEY_BINDS = [
-  "Backspace",
-  "Enter",
-  "NumpadEnter",
-  "Escape",
-  "Tab",
-  "Space",
-  "PageUp",
-  "PageDown",
-  "ArrowUp",
-  "ArrowDown",
-  "F13", // printscreen
-  "MetaLeft", // windows/command
-  "MetaRight",
+  'Backspace',
+  'Enter',
+  'NumpadEnter',
+  'Escape',
+  'Tab',
+  'Space',
+  'PageUp',
+  'PageDown',
+  'ArrowUp',
+  'ArrowDown',
+  'F13',             // printscreen
+  'MetaLeft',        // windows/command
+  'MetaRight',
 
-  "ControlLeft",
-  "ControlRight",
-  "ShiftLeft",
-  "ShiftRight",
-  "AltLeft",
-  "AltRight",
-];
+  'ControlLeft',
+  'ControlRight',
+  'ShiftLeft',
+  'ShiftRight',
+  'AltLeft',
+  'AltRight',
+]
 
-export const DEFAULT_PRESSED_KEY = local("pressAKey");
-export const DISABLED_BIND_STRING = local("disabled");
+export const DEFAULT_PRESSED_KEY = local("pressAKey")
+export const DISABLED_BIND_STRING = local("disabled")
 
-export const VOLUME_INCREMENT_AMOUNT = 0.025;
+export const VOLUME_INCREMENT_AMOUNT = 0.025
 
-export const CYCLABLE_PLAYBACK_RATES = [0.5, 1, 1.5, 2];
+export const CYCLABLE_PLAYBACK_RATES = [ 0.5, 1, 1.5, 2 ]

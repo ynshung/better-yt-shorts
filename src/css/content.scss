@@ -1,4 +1,4 @@
-@import url("./globals.css");
+@import url( "./globals.css" );
 
 .betterYT {
   font-size: 16px;
@@ -14,24 +14,24 @@
   display: flex;
 }
 
-.betterYT-volume-slider {
+.betterYT-volume-slider{
   -webkit-appearance: slider-vertical;
   position: absolute;
   right: -40px;
   top: 40px;
   opacity: 0.4;
   pointer-events: all !important;
-  accent-color: var(--yt-brand-color);
+  accent-color: var( --yt-brand-color );
   cursor: pointer;
 }
 
-@supports (-moz-appearance: none) {
-  .volume-slider {
-    right: 16px;
+@supports (-moz-appearance:none) {  
+  .volume-slider{
+      right: 16px;
   }
 }
 
-.volume-slider:hover {
+.volume-slider:hover{
   opacity: 1;
 }
 
@@ -58,14 +58,14 @@
   right: 0;
   bottom: 0;
   background-color: #272727;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: .4s;
+  transition: .4s;
   border-radius: 27px;
 
   &:hover {
     background-color: #3f3f3f;
   }
-
+  
   &:before {
     position: absolute;
     content: "";
@@ -74,8 +74,8 @@
     left: 3px;
     bottom: 3px;
     background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+    -webkit-transition: .4s;
+    transition: .4s;
     border-radius: 50%;
   }
 }
@@ -97,27 +97,27 @@ input:checked + .autoplay-slider:before {
     top: 18px;
   }
   .autoplay-slider {
-    background-color: #ffffff1a;
+      background-color: #FFFFFF1A;
   }
   input:checked + .autoplay-slider {
-    background-color: #ffffff2a;
+      background-color: #FFFFFF2A;
   }
   .betterYT-auto {
-    padding-bottom: 16px;
+      padding-bottom: 16px;
   }
 }
 
-.betterYT-progress-bar {
+.betterYT-progress-bar{
   bottom: 0;
   pointer-events: auto !important;
 }
 
-.betterYT-progress-bar-hover {
+.betterYT-progress-bar-hover{
   height: 10px !important;
   cursor: pointer;
 }
 
-.betterYT-timestamp-tooltip {
+.betterYT-timestamp-tooltip{
   position: absolute;
   display: none;
   background-color: #272727c4;
@@ -128,6 +128,7 @@ input:checked + .autoplay-slider:before {
   z-index: 50;
 }
 
-.betterYT-hidden {
+.betterYT-hidden
+{
   visibility: hidden !important;
 }

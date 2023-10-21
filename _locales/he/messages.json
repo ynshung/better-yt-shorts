@@ -1,157 +1,157 @@
 {
-  "extName": {
-    "message": "Better YouTube Shorts",
-    "description": "Name of the extension"
-  },
-  "extDescription": {
-    "message": "לקבל בחזרה את השליטה ב-YouTube Shorts עם השמעה, עוצמת קול, סרגל התקדמות ועוד!",
-    "description": "Description of the extension"
-  },
+	"extName": {
+		"message": "Better YouTube Shorts",
+		"description": "Name of the extension"
+	},
+	"extDescription": {
+		"message": "לקבל בחזרה את השליטה ב-YouTube Shorts עם השמעה, עוצמת קול, סרגל התקדמות ועוד!",
+		"description": "Description of the extension"
+	},
 
-  "website": {
-    "message": "אתר"
-  },
+	"website": {
+		"message": "אתר"
+	},
 
-  "keybinds": {
-    "message": "קיצורי דרך במקלדת"
-  },
-  "command": {
-    "message": "פקודה"
-  },
-  "key": {
-    "message": "מקש"
-  },
-  "pressKeybinds": {
-    "message": "לחץ על המקש הרצוי"
-  },
-  "pressAKey": {
-    "message": "לחץ על מקש"
-  },
-  "disabled": {
-    "message": "<מושבת>"
-  },
-  "notSupportKeyCombo": {
-    "message": "אינו תומך בשילובי מקשים"
-  },
-  "keyCanBeUsed": {
-    "message": "\"$1\" יכול להיות בשימוש!"
-  },
-  "keyCannotBeUsed": {
-    "message": "\"$1\" לא יכול להיות בשימוש"
-  },
-  "keyAlreadyInUse": {
-    "message": "\"$1\" כבר נמצא בשימוש"
-  },
-  "disableKeybind": {
-    "message": "\"$1\" הושבת!"
-  },
-  "editBinding": {
-    "message": "עריכת קיצור עבור "
-  },
-  "keybindDisabled": {
-    "message": "קיצור מקשים מושבת כרגע"
-  },
-  "currentKeybind": {
-    "message": "קיצור נוכחי הוא $1"
-  },
-  "confirm": {
-    "message": "אישור"
-  },
-  "disableBind": {
-    "message": "השבת קיצור"
-  },
+	"keybinds": {
+		"message": "קיצורי דרך במקלדת"
+	},
+	"command": {
+		"message": "פקודה"
+	},
+	"key": {
+		"message": "מקש"
+	},
+	"pressKeybinds": {
+		"message": "לחץ על המקש הרצוי"
+	},
+	"pressAKey": {
+		"message": "לחץ על מקש"
+	},
+	"disabled": {
+		"message": "<מושבת>"
+	},
+	"notSupportKeyCombo": {
+		"message": "אינו תומך בשילובי מקשים"
+	},
+	"keyCanBeUsed": {
+		"message": "\"$1\" יכול להיות בשימוש!"
+	},
+	"keyCannotBeUsed": {
+		"message": "\"$1\" לא יכול להיות בשימוש"
+	},
+	"keyAlreadyInUse": {
+		"message": "\"$1\" כבר נמצא בשימוש"
+	},
+	"disableKeybind": {
+		"message": "\"$1\" הושבת!"
+	},
+	"editBinding": {
+		"message": "עריכת קיצור עבור "
+	},
+	"keybindDisabled": {
+		"message": "קיצור מקשים מושבת כרגע"
+	},
+	"currentKeybind": {
+		"message": "קיצור נוכחי הוא $1"
+	},
+	"confirm": {
+		"message": "אישור"
+	},
+	"disableBind": {
+		"message": "השבת קיצור"
+	},
 
-  "resetKB": {
-    "message": "איפוס קיצורי מקשים"
-  },
-  "seekBackward": {
-    "message": "הרצה אחורה"
-  },
-  "seekForward": {
-    "message": "הרצה קדימה"
-  },
-  "decreaseSpeed": {
-    "message": "הנמכת מהירות"
-  },
-  "resetSpeed": {
-    "message": "איפוס מהירות"
-  },
-  "increaseSpeed": {
-    "message": "הגברת מהירות"
-  },
-  "decreaseVolume": {
-    "message": "הנמכת עוצמת שמע"
-  },
-  "increaseVolume": {
-    "message": "הגברת עוצמת שמע"
-  },
-  "toggleMute": {
-    "message": "הפעל/כיבוי השתקה"
-  },
-  "nextFrame": {
-    "message": "פריים הבא"
-  },
-  "previousFrame": {
-    "message": "פריים קודם"
-  },
-  "restartShort": {
-    "message": "התחלה מחדש של Short"
-  },
-  "nextShort": {
-    "message": "Short הבא"
-  },
-  "previousShort": {
-    "message": "Short קודם"
-  },
+	"resetKB": {
+		"message": "איפוס קיצורי מקשים"
+	},
+	"seekBackward": {
+		"message": "הרצה אחורה"
+	},
+	"seekForward": {
+		"message": "הרצה קדימה"
+	},
+	"decreaseSpeed": {
+		"message": "הנמכת מהירות"
+	},
+	"resetSpeed": {
+		"message": "איפוס מהירות"
+	},
+	"increaseSpeed": {
+		"message": "הגברת מהירות"
+	},
+	"decreaseVolume": {
+		"message": "הנמכת עוצמת שמע"
+	},
+	"increaseVolume": {
+		"message": "הגברת עוצמת שמע"
+	},
+	"toggleMute": {
+		"message": "הפעל/כיבוי השתקה"
+	},
+	"nextFrame": {
+		"message": "פריים הבא"
+	},
+	"previousFrame": {
+		"message": "פריים קודם"
+	},
+	"restartShort": {
+		"message": "התחלה מחדש של Short"
+	},
+	"nextShort": {
+		"message": "Short הבא"
+	},
+	"previousShort": {
+		"message": "Short קודם"
+	},
 
-  "extraOptions": {
-    "message": "אפשרויות נוספות"
-  },
-  "resetOptions": {
-    "message": "איפוס אפשרויות"
-  },
+	"extraOptions": {
+		"message": "אפשרויות נוספות"
+	},
+	"resetOptions": {
+		"message": "איפוס אפשרויות"
+	},
 
-  "autoSkipTitle": {
-    "message": "דלג אוטומטית על Shorts עם פחות לייקים"
-  },
-  "skipThresholdTitle": {
-    "message": "דלג על Shorts עם פחות מכזו כמות של לייקים"
-  },
-  "seekAmountTitle": {
-    "message": "זמן הרצה בשניות"
-  },
-  "automaticallyOpenCommentsTitle": {
-    "message": "פתח תגובות עבור Shorts חדשים באופן אוטומטי"
-  },
+	"autoSkipTitle": {
+		"message": "דלג אוטומטית על Shorts עם פחות לייקים"
+	},
+	"skipThresholdTitle": {
+		"message": "דלג על Shorts עם פחות מכזו כמות של לייקים"
+	},
+	"seekAmountTitle": {
+		"message": "זמן הרצה בשניות"
+	},
+	"automaticallyOpenCommentsTitle": {
+		"message": "פתח תגובות עבור Shorts חדשים באופן אוטומטי"
+	},
 
-  "toggleFeatures": {
-    "message": "הפעל/כיבוי פיצ'רים"
-  },
-  "changesAffectNewShorts": {
-    "message": "שינווים ישפיעו על Shorts חדשים בלבד"
-  },
-  "enableAll": {
-    "message": "הפעל הכל"
-  },
-  "disableAll": {
-    "message": "השבת הכל"
-  },
-  "autoplay": {
-    "message": "ניגון אוטומטי"
-  },
-  "progressBar": {
-    "message": "סרגל התקדמות"
-  },
-  "timer": {
-    "message": "שעון עצר"
-  },
-  "playbackRate": {
-    "message": "קצב השמעה"
-  },
-  "volumeSlider": {
-    "message": "מחוון עוצמת שמע"
-  },
-  "enable": {
-    "message": "הפעל $1"
-  }
+	"toggleFeatures": {
+		"message": "הפעל/כיבוי פיצ'רים"
+	},
+	"changesAffectNewShorts": {
+		"message": "שינווים ישפיעו על Shorts חדשים בלבד"
+	},
+	"enableAll": {
+		"message": "הפעל הכל"
+	},
+	"disableAll": {
+		"message": "השבת הכל"
+	},
+	"autoplay": {
+		"message": "ניגון אוטומטי"
+	},
+	"progressBar": {
+		"message": "סרגל התקדמות"
+	},
+	"timer": {
+		"message": "שעון עצר"
+	},
+	"playbackRate": {
+		"message": "קצב השמעה"
+	},
+	"volumeSlider": {
+		"message": "מחוון עוצמת שמע"
+	},
+	"enable": {
+		"message": "הפעל $1"
+	}
 }

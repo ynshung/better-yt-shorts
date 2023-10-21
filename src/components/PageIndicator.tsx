@@ -1,10 +1,6 @@
-import React from "react";
-import {
-  PolyDictionary,
-  PopupPageNameEnum,
-  StrictPolyDictionary,
-} from "../lib/definitions";
-import { capitalise, getEnumWithString } from "../lib/utils";
+import React from 'react'
+import { PolyDictionary, PopupPageNameEnum, StrictPolyDictionary } from '../lib/definitions'
+import { capitalise, getEnumWithString } from '../lib/utils'
 
 import { MdVideoSettings } from "react-icons/md";
 import { MdOutlineVideoSettings } from "react-icons/md";
@@ -15,58 +11,55 @@ import { MdOutlineKeyboard } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
 import { MdOutlineVisibilityOff } from "react-icons/md";
 
-import local from "../background/i18n";
+import { saveSettingsToStorage } from '../lib/SaveToStorage';
+import local from '../background/i18n';
 
-interface Props {
-  page: string;
-  setCurrentPage: (page: PopupPageNameEnum) => void;
-  isCurrentPage: boolean;
+interface Props
+{
+  page: string
+  setCurrentPage: ( page: PopupPageNameEnum ) => void
+  isCurrentPage: boolean
 }
 
 const ICONS = {
-  OPTIONS: {
-    active: <MdVideoSettings />,
-    inactive: <MdOutlineVideoSettings />,
+  "OPTIONS": {
+    active:   <MdVideoSettings/>,
+    inactive: <MdOutlineVideoSettings/>,
     name: local("extraOptions"),
   },
-  KEYBINDS: {
-    active: <MdKeyboard />,
-    inactive: <MdOutlineKeyboard />,
+  "KEYBINDS": {
+    active:   <MdKeyboard/>,
+    inactive: <MdOutlineKeyboard/>,
     name: local("keybinds"),
   },
-  FEATURES: {
-    active: <MdVisibilityOff />,
-    inactive: <MdOutlineVisibilityOff />,
+  "FEATURES": {
+    active:   <MdVisibilityOff/>,
+    inactive: <MdOutlineVisibilityOff/>,
     name: local("toggleFeatures"),
-  },
-} as StrictPolyDictionary;
+  }
+} as StrictPolyDictionary
 
-export default function PageIndicator({
-  page,
-  setCurrentPage,
-  isCurrentPage,
-}: Props) {
-  function handlePageIndicatorClick() {
-    setCurrentPage(getEnumWithString(PopupPageNameEnum, page, 1));
+export default function PageIndicator( { page, setCurrentPage, isCurrentPage }: Props ) {
+
+  function handlePageIndicatorClick()
+  {
+    setCurrentPage( getEnumWithString( PopupPageNameEnum, page, 1 ) )
   }
 
-  function getIndicatorIcon() {
-    if (!ICONS[page]) return <></>;
-    return isCurrentPage ? ICONS[page].active : ICONS[page].inactive;
+  function getIndicatorIcon()
+  {
+    if ( !ICONS[ page ] ) return <></>
+    return isCurrentPage ? ICONS[ page ].active : ICONS[ page ].inactive
   }
 
-  const classForIcon = isCurrentPage
-    ? "--page-indicator-active"
-    : "--page-indicator";
-  const pageTitle = ICONS[page].name;
-
+  const classForIcon = ( isCurrentPage ) ? "--page-indicator-active" : "--page-indicator"
+  const pageTitle = ICONS[ page ].name;
+  
   return (
-    <button
-      onClick={handlePageIndicatorClick}
-      className={classForIcon}
-      title={pageTitle}
-    >
-      <span>{getIndicatorIcon()}</span>
+    <button onClick={ handlePageIndicatorClick } className={classForIcon} title={pageTitle}>
+      <span>
+        { getIndicatorIcon() }
+      </span>
     </button>
-  );
+  )
 }
