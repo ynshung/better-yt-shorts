@@ -122,10 +122,22 @@ export function getOverlay()
   ) as HTMLElement
 }
 
-export function getViews()
-{
-  return ((document.querySelector(
-    "#factoids ytd-factoid-renderer:nth-child(2) div"
-    ) as HTMLElement)
-  .attributes.getNamedItem('aria-label'))?.textContent ?? ''
+export function getViews() {
+  return (
+    (
+      document.querySelector(
+        "#factoids ytd-factoid-renderer:nth-child(2) div"
+      ) as HTMLElement
+    ).attributes.getNamedItem("aria-label")?.textContent ?? ""
+  );
+}
+
+export function getUploadDate() {
+  return (
+    (
+      document.querySelector(
+        "#factoids ytd-factoid-renderer:nth-child(3) div"
+      ) as HTMLElement
+    ).textContent ?? ""
+  );
 }
