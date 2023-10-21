@@ -12,7 +12,7 @@ export function setInfo() {
   function addInfo() {
     const uploadDate = getUploadDate().replace(/(\r\n|\n|\r)/gm, "");
     const views = getViews().replace(/(\r\n|\n|\r)/gm, "");
-    const info = views ? `${uploadDate} | ${views}` : uploadDate;
+    const info = views ? `${views} | ${uploadDate}` : uploadDate;
     if (!isVideoPlaying()) return;
     const overlayElement = getOverlayElement();
     var h3 = document.createElement("h3");
