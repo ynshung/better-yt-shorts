@@ -123,13 +123,7 @@ export function getOverlay()
 }
 
 export function getViews() {
-  return (
-    (
-      document.querySelector(
-        "#factoids ytd-factoid-renderer:nth-child(2) div"
-      ) as HTMLElement
-    ).attributes.getNamedItem("aria-label")?.textContent ?? ""
-  );
+  return document.querySelector("#factoids ytd-factoid-renderer:nth-child(2) div")?.textContent ?? "";
 }
 
 export function getUploadDate() {
