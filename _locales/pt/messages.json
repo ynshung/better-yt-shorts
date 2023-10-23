@@ -161,6 +161,12 @@
     "volumeSlider": {
         "message": "Barra de Volume"
     },
+    "viewCounter": {
+        "message": "Ver contador"
+    },
+    "uploadDate": {
+        "message": "Data de upload"
+    },
     "enable": {
         "message": "Habilitar $1"
     }

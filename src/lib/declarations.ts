@@ -143,6 +143,8 @@ export const DEFAULT_FEATURES = {
   playbackRate: true,
   volumeSlider: true,
   keybinds: true,
+  viewCounter: true,
+  uploadDate: true
 };
 
 export const FEATURES_ORDER: DefaultsDictionary = [
@@ -152,6 +154,8 @@ export const FEATURES_ORDER: DefaultsDictionary = [
   "playbackRate",
   "volumeSlider",
   "keybinds",
+  "viewCounter",
+  "uploadDate"
 ];
 
 // todo  - add formats from other langs (note: dont include duplicate keys)#
