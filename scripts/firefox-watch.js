@@ -5,7 +5,7 @@ const FILES_TO_WATCH = "ts,tsx,scss";
 
 const watcher = nodemon({
   ext: FILES_TO_WATCH,
-  script: "firefox-build-manifest.js",
+  script: "scripts/firefox-build-manifest.js",
 });
 
 watcher.on("quit", () => {
