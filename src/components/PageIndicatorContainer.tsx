@@ -1,6 +1,6 @@
 import React from "react";
 import PageIndicator from "./PageIndicator";
-import { PolyDictionary, PopupPageNameEnum } from "../lib/definitions";
+import { PopupPageNameEnum } from "../lib/definitions";
 import { getEnumEntries } from "../lib/utils";
 import { MdWeb } from "react-icons/md";
 import local from "../background/i18n";
@@ -8,13 +8,11 @@ import local from "../background/i18n";
 interface Props {
   currentPage: PopupPageNameEnum;
   setCurrentPage: (newPage: PopupPageNameEnum) => void;
-  setSettingsState: (settings: PolyDictionary) => void;
 }
 
 export default function PageIndicatorContainer({
   currentPage,
   setCurrentPage,
-  setSettingsState,
 }: Props) {
   function populatePageIndicators() {
     return getEnumEntries(PopupPageNameEnum).map(([name, page]) => {
@@ -26,7 +24,6 @@ export default function PageIndicatorContainer({
         page: name,
         setCurrentPage,
         isCurrentPage,
-        setSettingsState,
       };
 
       return <PageIndicator key={crypto.randomUUID()} {...props} />;

@@ -42,7 +42,10 @@ export default function FeaturesPage({
     });
   }
 
-  function handleFeatureChange(e: any, feature: string) {
+  function handleFeatureChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    feature: string,
+  ) {
     const value = e.target.checked;
 
     setFeaturesState(() => {

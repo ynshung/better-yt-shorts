@@ -103,7 +103,7 @@ export function setKeybind(
 export function setOption(
   previousState: PolyDictionary,
   option: string,
-  value: string,
+  value: string | number | boolean,
 ): StringDictionary {
   if (previousState === null) return null;
 
@@ -116,7 +116,7 @@ export function setOption(
 export function setFeature(
   previousState: PolyDictionary,
   feature: string,
-  value: string,
+  value: boolean,
 ): StringDictionary {
   if (previousState === null) return null;
 

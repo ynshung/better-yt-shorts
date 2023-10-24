@@ -22,7 +22,6 @@ import {
   DEFAULT_FEATURES,
   DEFAULT_KEYBINDS,
   DEFAULT_OPTIONS,
-  DEFAULT_SETTINGS,
 } from "../lib/declarations";
 import FeaturesPage from "./FeaturesPage";
 import local from "../background/i18n";
@@ -37,8 +36,6 @@ function Popup() {
     useState<PolyDictionary>(DEFAULT_OPTIONS);
   const [featuresState, setFeaturesState] =
     useState<BooleanDictionary>(DEFAULT_FEATURES);
-  const [settingsState, setSettingsState] =
-    useState<PolyDictionary>(DEFAULT_SETTINGS);
 
   const [currentPage, setCurrentPage] = useState(PopupPageNameEnum.KEYBINDS);
 
@@ -46,19 +43,17 @@ function Popup() {
   const optionsProp = { optionsState, setOptionsState };
   const featuresProp = { featuresState, setFeaturesState };
 
-  const currentPageProps = { currentPage, setCurrentPage, setSettingsState };
+  const currentPageProps = { currentPage, setCurrentPage };
 
   useEffect(() => {
     // retrieve settings
     retrieveOptionsFromStorage(setOptionsState);
     retrieveKeybindsFromStorage(setKeybindsState);
     retrieveFeaturesFromStorage(setFeaturesState);
-    // retrieveFeaturesFromStorage( setSettingsState )
 
     pingChanges(ChangedObjectStateEnum.KEYBINDS, keybindsState as object);
     pingChanges(ChangedObjectStateEnum.OPTIONS, optionsState as object);
     pingChanges(ChangedObjectStateEnum.FEATURES, featuresState as object);
-    // pingChanges( ChangedObjectStateEnum.SETTINGS, settingsState as object )
   }, []);
 
   function getCurrentPageContent() {

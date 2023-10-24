@@ -28,15 +28,18 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
     });
   }
 
-  function handleOptionChange(e: any, option: string) {
+  function handleOptionChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    option: string,
+  ) {
     if (optionsState === null) return;
 
     const target = e.target as HTMLInputElement;
-    let value: any = target.value;
+    let value: string | number | boolean;
 
-    // this may need changed depending on different input types
     if (target.type === "checkbox") value = target.checked;
     else if (!isNaN(target.valueAsNumber)) value = target.valueAsNumber;
+    else value = target.value;
 
     if (value === null)
       return console.warn(
@@ -67,8 +70,6 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
       const value = optionsState[option];
 
       if (OPTION_DICTIONARY === null) return <></>;
-
-      // const type = determineInputType(value);
 
       if (optionsState === null) return;
 
