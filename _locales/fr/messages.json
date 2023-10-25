@@ -152,12 +152,6 @@
     "volumeSlider": {
         "message": "Curseur de volume"
     },
-    "viewCounter": {
-        "message": "Afficher le compteur"
-    },
-    "uploadDate": {
-        "message": "Date de dépôt"
-    },
     "enable": {
         "message": "Activer $1"
     }

@@ -151,12 +151,6 @@
 	"volumeSlider": {
 		"message": "מחוון עוצמת שמע"
 	},
-	"viewCounter": {
-        "message": "מונה צפייה"
-    },
-    "uploadDate": {
-        "message": "תאריך העלאה"
-    },
 	"enable": {
 		"message": "הפעל $1"
 	}

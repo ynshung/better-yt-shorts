@@ -145,12 +145,6 @@
     "volumeSlider": {
         "message": "Volume"
     },
-    "viewCounter": {
-        "message": "Visualizza contatore"
-    },
-    "uploadDate": {
-        "message": "Data di caricamento"
-    },
     "enable": {
         "message": "Abilita $1"
     },

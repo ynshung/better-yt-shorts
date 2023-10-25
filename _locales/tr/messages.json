@@ -145,12 +145,6 @@
     "volumeSlider": {
         "message": "Ses Düzey Ayarı"
     },
-    "viewCounter": {
-        "message": "Sayacı Görüntüle"
-    },
-    "uploadDate": {
-        "message": "Yükleme tarihi"
-    },
     "enable": {
         "message": "$1'i Aktif Et"
     },

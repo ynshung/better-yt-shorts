@@ -161,12 +161,6 @@
     "volumeSlider": {
         "message": "音量バー"
     },
-    "viewCounter": {
-        "message": "ビューカウンター"
-    },
-    "uploadDate": {
-        "message": "アップロード日"
-    },
     "enable": {
         "message": "$1 を有効にする"
     }
