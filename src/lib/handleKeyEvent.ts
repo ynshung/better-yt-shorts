@@ -37,7 +37,7 @@ export function handleKeyEvent(
   const mod = e.ctrlKey ? "Ctrl" : e.altKey ? "Alt" : "";
 
   let command;
-  for (const [cmd, keybind] of Object.entries(keybinds as Object)) {
+  for (const [cmd, keybind] of Object.entries(keybinds as object)) {
     if (validateKeybind(keybind)) {
       // prevent youtube's default keybinds if we have our own set
       e.stopPropagation();

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Separator from "./Separator";
 import {
   DEFAULT_PRESSED_KEY,
@@ -89,7 +89,7 @@ export default function EditModal({
       setInputErrorString(`${local("keyCannotBeUsed", pressedKey)}`);
       return false;
     }
-    if (Object.values(keybindsState as Object).includes(pressedKey)) {
+    if (Object.values(keybindsState as object).includes(pressedKey)) {
       setInputErrorString(`${local("keyAlreadyInUse", pressedKey)}`);
       return false;
     }
