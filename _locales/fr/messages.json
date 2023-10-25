@@ -1,158 +1,158 @@
 {
-    "extName": {
-        "message": "Better YouTube Shorts",
-        "description": "Name of the extension"
-    },
-    "extDescription": {
-        "message": "Reprenez le contrôle sur YouTube Shorts avec la lecture, le contrôle du volume, une barre de progression et plus encore !",
-        "description": "Description of the extension"
-    },
-    "announcement": {
-        "message": "Aidez-nous à traduire BYS !",
-        "description": "Announcement which will update from time to time"
-    },
-    "website": {
-        "message": "Site Web"
-    },
-    "keybinds": {
-        "message": "Raccourcis clavier"
-    },
-    "command": {
-        "message": "Commande"
-    },
-    "key": {
-        "message": "Touche"
-    },
-    "pressKeybinds": {
-        "message": "Appuyez sur la touche désirée"
-    },
-    "pressAKey": {
-        "message": "Appuyez sur une touche"
-    },
-    "disabled": {
-        "message": "<désactivé>"
-    },
-    "notSupportKeyCombo": {
-        "message": "Ne supporte pas les combinaisons de touche"
-    },
-    "keyCanBeUsed": {
-        "message": "\"$1\" peut être utilisé !"
-    },
-    "keyCannotBeUsed": {
-        "message": "\"$1\" ne peut pas être utilisé"
-    },
-    "keyAlreadyInUse": {
-        "message": "\"$1\" est déjà utilisé"
-    },
-    "disableKeybind": {
-        "message": "\"$1\" a été désactivé !"
-    },
-    "editBinding": {
-        "message": "Modifier la touche de raccourci pour "
-    },
-    "keybindDisabled": {
-        "message": "Le raccourci est actuellement désactivée"
-    },
-    "currentKeybind": {
-        "message": "Le raccourci actuelle est $1"
-    },
-    "confirm": {
-        "message": "Confirmer"
-    },
-    "disableBind": {
-        "message": "Désactiver le raccourci"
-    },
-    "resetKB": {
-        "message": "Réinitialiser les raccourcis clavier"
-    },
-    "seekBackward": {
-        "message": "Revenir en arrière"
-    },
-    "seekForward": {
-        "message": "Avancer"
-    },
-    "decreaseSpeed": {
-        "message": "Ralentir la vitesse de lecture"
-    },
-    "resetSpeed": {
-        "message": "Réinitialiser la vitesse de lecture"
-    },
-    "increaseSpeed": {
-        "message": "Accélérer la vitesse de lecture"
-    },
-    "decreaseVolume": {
-        "message": "Diminuer le volume audio"
-    },
-    "increaseVolume": {
-        "message": "Augmenter le volume audio"
-    },
-    "toggleMute": {
-        "message": "Activer/Désactiver le son"
-    },
-    "nextFrame": {
-        "message": "Image suivante"
-    },
-    "previousFrame": {
-        "message": "Image précédente"
-    },
-    "restartShort": {
-        "message": "Recommencer le short"
-    },
-    "nextShort": {
-        "message": "Short suivant"
-    },
-    "previousShort": {
-        "message": "Short précédent"
-    },
-    "extraOptions": {
-        "message": "Options supplémentaires"
-    },
-    "resetOptions": {
-        "message": "Réinitialiser les options"
-    },
-    "autoSkipTitle": {
-        "message": "Passer automatiquement les shorts avec moins de likes que la valeur paramétré"
-    },
-    "skipThresholdTitle": {
-        "message": "Passer les shorts avec moins de likes que :"
-    },
-    "seekAmountTitle": {
-        "message": "Nombre de secondes pour avancer/reculer la lecture"
-    },
-    "automaticallyOpenCommentsTitle": {
-        "message": "Ouvrir automatiquement les commentaires sur les nouveaux shorts"
-    },
-    "hideShortsOverlayTitle": {
-        "message": "Masquer l'interface superposée sur les shorts (titre, chaîne, etc.)"
-    },
-    "toggleFeatures": {
-        "message": "Activer/Désactiver les fonctionnalités"
-    },
-    "changesAffectNewShorts": {
-        "message": "Les modifications n'affecteront que les nouveaux shorts"
-    },
-    "enableAll": {
-        "message": "Activer tout"
-    },
-    "disableAll": {
-        "message": "Désactiver tout"
-    },
-    "autoplay": {
-        "message": "Lecture automatique"
-    },
-    "progressBar": {
-        "message": "Barre de progression"
-    },
-    "timer": {
-        "message": "Minuteur"
-    },
-    "playbackRate": {
-        "message": "Vitesse de lecture"
-    },
-    "volumeSlider": {
-        "message": "Curseur de volume"
-    },
-    "enable": {
-        "message": "Activer $1"
-    }
+  "extName": {
+    "message": "Better YouTube Shorts",
+    "description": "Name of the extension"
+  },
+  "extDescription": {
+    "message": "Reprenez le contrôle sur YouTube Shorts avec la lecture, le contrôle du volume, une barre de progression et plus encore !",
+    "description": "Description of the extension"
+  },
+  "announcement": {
+    "message": "Aidez-nous à traduire BYS !",
+    "description": "Announcement which will update from time to time"
+  },
+  "website": {
+    "message": "Site Web"
+  },
+  "keybinds": {
+    "message": "Raccourcis clavier"
+  },
+  "command": {
+    "message": "Commande"
+  },
+  "key": {
+    "message": "Touche"
+  },
+  "pressKeybinds": {
+    "message": "Appuyez sur la touche désirée"
+  },
+  "pressAKey": {
+    "message": "Appuyez sur une touche"
+  },
+  "disabled": {
+    "message": "<désactivé>"
+  },
+  "notSupportKeyCombo": {
+    "message": "Ne supporte pas les combinaisons de touche"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" peut être utilisé !"
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" ne peut pas être utilisé"
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" est déjà utilisé"
+  },
+  "disableKeybind": {
+    "message": "\"$1\" a été désactivé !"
+  },
+  "editBinding": {
+    "message": "Modifier la touche de raccourci pour "
+  },
+  "keybindDisabled": {
+    "message": "Le raccourci est actuellement désactivée"
+  },
+  "currentKeybind": {
+    "message": "Le raccourci actuelle est $1"
+  },
+  "confirm": {
+    "message": "Confirmer"
+  },
+  "disableBind": {
+    "message": "Désactiver le raccourci"
+  },
+  "resetKB": {
+    "message": "Réinitialiser les raccourcis clavier"
+  },
+  "seekBackward": {
+    "message": "Revenir en arrière"
+  },
+  "seekForward": {
+    "message": "Avancer"
+  },
+  "decreaseSpeed": {
+    "message": "Ralentir la vitesse de lecture"
+  },
+  "resetSpeed": {
+    "message": "Réinitialiser la vitesse de lecture"
+  },
+  "increaseSpeed": {
+    "message": "Accélérer la vitesse de lecture"
+  },
+  "decreaseVolume": {
+    "message": "Diminuer le volume audio"
+  },
+  "increaseVolume": {
+    "message": "Augmenter le volume audio"
+  },
+  "toggleMute": {
+    "message": "Activer/Désactiver le son"
+  },
+  "nextFrame": {
+    "message": "Image suivante"
+  },
+  "previousFrame": {
+    "message": "Image précédente"
+  },
+  "restartShort": {
+    "message": "Recommencer le short"
+  },
+  "nextShort": {
+    "message": "Short suivant"
+  },
+  "previousShort": {
+    "message": "Short précédent"
+  },
+  "extraOptions": {
+    "message": "Options supplémentaires"
+  },
+  "resetOptions": {
+    "message": "Réinitialiser les options"
+  },
+  "autoSkipTitle": {
+    "message": "Passer automatiquement les shorts avec moins de likes que la valeur paramétré"
+  },
+  "skipThresholdTitle": {
+    "message": "Passer les shorts avec moins de likes que :"
+  },
+  "seekAmountTitle": {
+    "message": "Nombre de secondes pour avancer/reculer la lecture"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "Ouvrir automatiquement les commentaires sur les nouveaux shorts"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "Masquer l'interface superposée sur les shorts (titre, chaîne, etc.)"
+  },
+  "toggleFeatures": {
+    "message": "Activer/Désactiver les fonctionnalités"
+  },
+  "changesAffectNewShorts": {
+    "message": "Les modifications n'affecteront que les nouveaux shorts"
+  },
+  "enableAll": {
+    "message": "Activer tout"
+  },
+  "disableAll": {
+    "message": "Désactiver tout"
+  },
+  "autoplay": {
+    "message": "Lecture automatique"
+  },
+  "progressBar": {
+    "message": "Barre de progression"
+  },
+  "timer": {
+    "message": "Minuteur"
+  },
+  "playbackRate": {
+    "message": "Vitesse de lecture"
+  },
+  "volumeSlider": {
+    "message": "Curseur de volume"
+  },
+  "enable": {
+    "message": "Activer $1"
+  }
 }
