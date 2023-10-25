@@ -28,6 +28,14 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["@typescript-eslint", "react"],
-  rules: {},
+  rules: {
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+  },
   ignorePatterns: ["*.png", ".eslintrc.js", "scripts/*"],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };
