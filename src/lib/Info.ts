@@ -13,13 +13,13 @@ export function setInfo(features: any) {
     const info = [];
     if (features["viewCounter"]) {
       const views = getViews().replace(/(\r\n|\n|\r)/gm, "");
-      if(views) info.push(views);
+      if (views) info.push(views);
     }
     if (features["uploadDate"]) {
       const uploadDate = getUploadDate().replace(/(\r\n|\n|\r)/gm, "");
-      if(uploadDate) info.push(uploadDate);
+      if (uploadDate) info.push(uploadDate);
     }
-    
+
     if (!isVideoPlaying()) return;
     const overlayElement = getOverlayElement();
     const h3 = document.createElement("h3");
