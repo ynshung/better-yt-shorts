@@ -6,18 +6,25 @@ import {
   getViews,
 } from "./getters";
 
-export function setInfo() {
+export function setInfo(features: any) {
   const views_interval = setInterval(addInfo, 10);
 
   function addInfo() {
-    const uploadDate = getUploadDate().replace(/(\r\n|\n|\r)/gm, "");
-    const views = getViews().replace(/(\r\n|\n|\r)/gm, "");
-    const info = views ? `${views} | ${uploadDate}` : uploadDate;
+    const info = [];
+    if (features["viewCounter"]) {
+      const views = getViews().replace(/(\r\n|\n|\r)/gm, "");
+      if(views) info.push(views);
+    }
+    if (features["uploadDate"]) {
+      const uploadDate = getUploadDate().replace(/(\r\n|\n|\r)/gm, "");
+      if(uploadDate) info.push(uploadDate);
+    }
+    
     if (!isVideoPlaying()) return;
     const overlayElement = getOverlayElement();
     const h3 = document.createElement("h3");
     h3.id = `ytViews${getCurrentId()}`;
-    h3.innerText = info;
+    h3.innerText = info.join(" | ");
     overlayElement
       .querySelector("ytd-reel-player-header-renderer a")
       ?.prepend(h3);

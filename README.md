@@ -28,6 +28,7 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 - Click the speed button to revert to normal speed or toggle between different speeds
 - Toggle to auto skip short when current one ends
 - Control volume with the **volume slider** or with - and =, mute audio with M
+- View counter and upload date above video title
 - **Customizable** keybinds
 
 Extra features:
