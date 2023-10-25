@@ -109,11 +109,11 @@ function main() {
     handleAutomaticallyOpenComments(state, options); // dev note: the implementation of this feature is a good starting point to figure out how to format your own
   }
   if (hasVideoEnded()) {
-    handleAutoplay(settings, features["autoplay"]);
+    handleAutoplay(state, settings, features["autoplay"]);
   }
 
   handleProgressBarNotAppearing();
-  handleEnableAutoplay(settings, features["autoplay"]);
+  handleEnableAutoplay();
   handleInjectionChecks(state, settings, features);
   handleHideShortsOverlay(options);
 }
