@@ -1,167 +1,164 @@
 {
-    "extName": {
-        "message": "Better YouTube Shorts",
-        "description": "Name of the extension"
-    },
-    "extDescription": {
-        "message": "Take back the controls on YouTube Shorts with playback, volume, progress bar and more!",
-        "description": "Description of the extension"
-    },
-    "announcement": {
-        "message": "Help us translate BYS!",
-        "description": "Announcement which will update from time to time"
-    },
+  "extName": {
+    "message": "Better YouTube Shorts",
+    "description": "Name of the extension"
+  },
+  "extDescription": {
+    "message": "Take back the controls on YouTube Shorts with playback, volume, progress bar and more!",
+    "description": "Description of the extension"
+  },
+  "announcement": {
+    "message": "Help us translate BYS!",
+    "description": "Announcement which will update from time to time"
+  },
 
-    "website": {
-        "message": "Website"
-    },
+  "website": {
+    "message": "Website"
+  },
 
+  "keybinds": {
+    "message": "Keybinds"
+  },
+  "command": {
+    "message": "Command"
+  },
+  "key": {
+    "message": "Key"
+  },
+  "pressKeybinds": {
+    "message": "Press desired key"
+  },
+  "pressAKey": {
+    "message": "Press a key"
+  },
+  "disabled": {
+    "message": "<disabled>"
+  },
+  "notSupportKeyCombo": {
+    "message": "Does not support key combinations"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" can be used!"
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" cannot be used"
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" is already in use"
+  },
+  "disableKeybind": {
+    "message": "\"$1\" was disabled!"
+  },
+  "editBinding": {
+    "message": "Edit binding for "
+  },
+  "keybindDisabled": {
+    "message": "Keybind is currently disabled"
+  },
+  "currentKeybind": {
+    "message": "Current bind is $1"
+  },
+  "confirm": {
+    "message": "Confirm"
+  },
+  "disableBind": {
+    "message": "Disable Bind"
+  },
 
-    "keybinds": {
-        "message": "Keybinds"
-    },
-    "command": {
-        "message": "Command"
-    },
-    "key": {
-        "message": "Key"
-    },
-    "pressKeybinds": {
-        "message": "Press desired key"
-    },
-    "pressAKey": {
-        "message": "Press a key"
-    },
-    "disabled": {
-        "message": "<disabled>"
-    },
-    "notSupportKeyCombo": {
-        "message": "Does not support key combinations"
-    },
-    "keyCanBeUsed": {
-        "message": "\"$1\" can be used!"
-    },
-    "keyCannotBeUsed": {
-        "message": "\"$1\" cannot be used"
-    },
-    "keyAlreadyInUse": {
-        "message": "\"$1\" is already in use"
-    },
-    "disableKeybind": {
-        "message": "\"$1\" was disabled!"
-    },
-    "editBinding": {
-        "message": "Edit binding for "
-    },
-    "keybindDisabled": {
-        "message": "Keybind is currently disabled"
-    },
-    "currentKeybind": {
-        "message": "Current bind is $1"
-    },
-    "confirm": {
-        "message": "Confirm"
-    },
-    "disableBind": {
-        "message": "Disable Bind"
-    },
+  "resetKB": {
+    "message": "Reset Keybinds"
+  },
+  "seekBackward": {
+    "message": "Seek Backward"
+  },
+  "seekForward": {
+    "message": "Seek Forward"
+  },
+  "decreaseSpeed": {
+    "message": "Decrease Speed"
+  },
+  "resetSpeed": {
+    "message": "Reset Speed"
+  },
+  "increaseSpeed": {
+    "message": "Increase Speed"
+  },
+  "decreaseVolume": {
+    "message": "Decrease Volume"
+  },
+  "increaseVolume": {
+    "message": "Increase Volume"
+  },
+  "toggleMute": {
+    "message": "Toggle Mute"
+  },
+  "nextFrame": {
+    "message": "Next Frame"
+  },
+  "previousFrame": {
+    "message": "Previous Frame"
+  },
+  "restartShort": {
+    "message": "Restart Short"
+  },
+  "nextShort": {
+    "message": "Next Short"
+  },
+  "previousShort": {
+    "message": "Previous Short"
+  },
 
-    "resetKB": {
-        "message": "Reset Keybinds"
-    },
-    "seekBackward": {
-        "message": "Seek Backward"
-    },
-    "seekForward": {
-        "message": "Seek Forward"
-    },
-    "decreaseSpeed": {
-        "message": "Decrease Speed"
-    },
-    "resetSpeed": {
-        "message": "Reset Speed"
-    },
-    "increaseSpeed": {
-        "message": "Increase Speed"
-    },
-    "decreaseVolume": {
-        "message": "Decrease Volume"
-    },
-    "increaseVolume": {
-        "message": "Increase Volume"
-    },
-    "toggleMute": {
-        "message": "Toggle Mute"
-    },
-    "nextFrame": {
-        "message": "Next Frame"
-    },
-    "previousFrame": {
-        "message": "Previous Frame"
-    },
-    "restartShort": {
-        "message": "Restart Short"
-    },
-    "nextShort": {
-        "message": "Next Short"
-    },
-    "previousShort": {
-        "message": "Previous Short"
-    },
+  "extraOptions": {
+    "message": "Extra Options"
+  },
+  "resetOptions": {
+    "message": "Reset Options"
+  },
 
+  "autoSkipTitle": {
+    "message": "Automatically skip shorts with fewer likes"
+  },
+  "skipThresholdTitle": {
+    "message": "Skip shorts with fewer than this many likes"
+  },
+  "seekAmountTitle": {
+    "message": "Seek amount in seconds"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "Open comments on new shorts automatically"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "Hide the overlay on shorts (title, channel, etc)"
+  },
 
-    "extraOptions": {
-        "message": "Extra Options"
-    },
-    "resetOptions": {
-        "message": "Reset Options"
-    },
-
-    "autoSkipTitle": {
-        "message": "Automatically skip shorts with fewer likes"
-    },
-    "skipThresholdTitle": {
-        "message": "Skip shorts with fewer than this many likes"
-    },
-    "seekAmountTitle": {
-        "message": "Seek amount in seconds"
-    },
-    "automaticallyOpenCommentsTitle": {
-        "message": "Open comments on new shorts automatically"
-    },
-    "hideShortsOverlayTitle": {
-        "message": "Hide the overlay on shorts (title, channel, etc)"
-    },
-    
-
-    "toggleFeatures": {
-        "message": "Toggle Features"
-    },
-    "changesAffectNewShorts": {
-        "message": "Changes will only affect new Shorts"
-    },
-    "enableAll": {
-        "message": "Enable All"
-    },
-    "disableAll": {
-        "message": "Disable All"
-    },
-    "autoplay": {
-        "message": "Autoplay"
-    },
-    "progressBar": {
-        "message": "Progress Bar"
-    },
-    "timer": {
-        "message": "Timer"
-    },
-    "playbackRate": {
-        "message": "Playback Rate"
-    },
-    "volumeSlider": {
-        "message": "Volume Slider"
-    },
-    "enable": {
-        "message": "Enable $1"
-    }
+  "toggleFeatures": {
+    "message": "Toggle Features"
+  },
+  "changesAffectNewShorts": {
+    "message": "Changes will only affect new Shorts"
+  },
+  "enableAll": {
+    "message": "Enable All"
+  },
+  "disableAll": {
+    "message": "Disable All"
+  },
+  "autoplay": {
+    "message": "Autoplay"
+  },
+  "progressBar": {
+    "message": "Progress Bar"
+  },
+  "timer": {
+    "message": "Timer"
+  },
+  "playbackRate": {
+    "message": "Playback Rate"
+  },
+  "volumeSlider": {
+    "message": "Volume Slider"
+  },
+  "enable": {
+    "message": "Enable $1"
+  }
 }

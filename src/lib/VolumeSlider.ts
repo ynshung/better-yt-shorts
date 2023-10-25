@@ -1,48 +1,52 @@
-import { saveSettingsToStorage } from "./SaveToStorage"
-import { VOLUME_INCREMENT_AMOUNT } from "./declarations"
-import { StateObject } from "./definitions"
-import { getCurrentId, getVideo, getVolumeContainer, getVolumeSliderController } from "./getters"
-import { render, wheel } from "./utils"
+import { saveSettingsToStorage } from "./SaveToStorage";
+import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
+import { StateObject } from "./definitions";
+import {
+  getCurrentId,
+  getVideo,
+  getVolumeContainer,
+  getVolumeSliderController,
+} from "./getters";
+import { render, wheel } from "./utils";
 
-export function checkVolume( settings: any, sliderEnabled: boolean )
-{
-  const ytShorts = getVideo()
+export function checkVolume(settings: any, sliderEnabled: boolean) {
+  const ytShorts = getVideo();
 
-  if ( ytShorts === null ) return
-  if ( !sliderEnabled ) return
+  if (ytShorts === null) return;
+  if (!sliderEnabled) return;
 
-  if ( settings?.volume !== null ) 
-    ytShorts.volume = settings.volume
-  else
-    settings.volume = ytShorts.volume
+  if (settings?.volume !== null) ytShorts.volume = settings.volume;
+  else settings.volume = ytShorts.volume;
 }
 
 // todo  - move this to its own lib script (probably call it volumeSlider.ts)
-export function setVolume( settings: any, newVolume: number, enabled: boolean )
-{
-  settings.volume = newVolume
+export function setVolume(settings: any, newVolume: number, enabled: boolean) {
+  settings.volume = newVolume;
 
-  const volumeSliderController = getVolumeSliderController() as HTMLInputElement
-  if ( volumeSliderController === null ) return
-  
-  const ytShorts = getVideo()
-  volumeSliderController.value = "" + settings.volume
+  const volumeSliderController =
+    getVolumeSliderController() as HTMLInputElement;
+  if (volumeSliderController === null) return;
 
-  if ( ytShorts === null ) return
+  const ytShorts = getVideo();
+  volumeSliderController.value = "" + settings.volume;
 
-  checkVolume( settings, enabled )
+  if (ytShorts === null) return;
 
-  saveSettingsToStorage( settings )
-   
+  checkVolume(settings, enabled);
+
+  saveSettingsToStorage(settings);
 }
 
-export function setVolumeSlider( state: StateObject, settings: any, enabled: boolean )
-{
-  if ( !enabled ) return
+export function setVolumeSlider(
+  state: StateObject,
+  settings: any,
+  enabled: boolean,
+) {
+  if (!enabled) return;
 
-  const id = getCurrentId()
+  const id = getCurrentId();
 
-  const volumeContainer = getVolumeContainer()
+  const volumeContainer = getVolumeContainer();
   // const slider = document.createElement("input")
   const slider = render(`
     <input
@@ -55,26 +59,29 @@ export function setVolumeSlider( state: StateObject, settings: any, enabled: boo
       orient="vertical"
       value="${settings.volume}"
     />
-  `)
+  `);
 
-  if( settings.volume === null ) settings.volume = 0.5
+  if (settings.volume === null) settings.volume = 0.5;
 
-  volumeContainer.appendChild( slider )
-  
+  volumeContainer.appendChild(slider);
+
   // Prevent video from pausing/playing on click
-  slider.addEventListener( "input", (e: any) => setVolume( settings, e.target.valueAsNumber, enabled ) )
-  slider.addEventListener( "click", e => e.stopPropagation() )
+  slider.addEventListener("input", (e: any) =>
+    setVolume(settings, e.target.valueAsNumber, enabled),
+  );
+  slider.addEventListener("click", (e) => e.stopPropagation());
 
   wheel(
     slider as HTMLElement,
     () => {
       const video = getVideo();
-      if (video !== null) setVolume(settings, video.volume + VOLUME_INCREMENT_AMOUNT, enabled);
+      if (video !== null)
+        setVolume(settings, video.volume + VOLUME_INCREMENT_AMOUNT, enabled);
     },
     () => {
       const video = getVideo();
-      if (video !== null) setVolume(settings, video.volume - VOLUME_INCREMENT_AMOUNT, enabled);
-    }
+      if (video !== null)
+        setVolume(settings, video.volume - VOLUME_INCREMENT_AMOUNT, enabled);
+    },
   );
 }
-

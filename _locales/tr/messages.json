@@ -1,158 +1,158 @@
 {
-    "extName": {
-        "message": "Daha İyi YouTube Shorts'ları",
-        "description": "Uzantının ismi"
-    },
-    "extDescription": {
-        "message": "Oynatma hızı, ses, ilerleme çubuğu ve daha fazlası ile YouTube Shorts'ta kontrolleri geri kazanın!",
-        "description": "Uzantı açıklaması"
-    },
-    "website": {
-        "message": "Site"
-    },
-    "keybinds": {
-        "message": "Tuş Bağları"
-    },
-    "command": {
-        "message": "Komut"
-    },
-    "key": {
-        "message": "Tuş"
-    },
-    "pressKeybinds": {
-        "message": "İstediğiniz tuşa basınız"
-    },
-    "pressAKey": {
-        "message": "Bir tuşa basınız"
-    },
-    "disabled": {
-        "message": "<engelli>"
-    },
-    "notSupportKeyCombo": {
-        "message": "Tuş kombinasyonları desteklenmiyor"
-    },
-    "keyCanBeUsed": {
-        "message": "\"$1\" kullanılabilir!"
-    },
-    "keyCannotBeUsed": {
-        "message": "\"$1\" kullanılamaz"
-    },
-    "keyAlreadyInUse": {
-        "message": "\"$1\" kullanılmış"
-    },
-    "disableKeybind": {
-        "message": "\"$1\" devre dışı!"
-    },
-    "editBinding": {
-        "message": "Şu tuş için bağı düzenle "
-    },
-    "keybindDisabled": {
-        "message": "Tuş bağı şu an devre dışı"
-    },
-    "currentKeybind": {
-        "message": "Mevcut bağlantı $1"
-    },
-    "confirm": {
-        "message": "Onayla"
-    },
-    "disableBind": {
-        "message": "Bağı kopar"
-    },
-    "resetKB": {
-        "message": "Bağı sıfırla"
-    },
-    "seekBackward": {
-        "message": "Geri Sar"
-    },
-    "seekForward": {
-        "message": "İleri Sar"
-    },
-    "decreaseSpeed": {
-        "message": "Hızı Azalt"
-    },
-    "resetSpeed": {
-        "message": "Hızı Sıfırla"
-    },
-    "increaseSpeed": {
-        "message": "Hızı Artır"
-    },
-    "decreaseVolume": {
-        "message": "Sesi Azalt"
-    },
-    "increaseVolume": {
-        "message": "Sesi Artır"
-    },
-    "toggleMute": {
-        "message": "Ses Aç/Kapa"
-    },
-    "nextFrame": {
-        "message": "Sonraki Kare"
-    },
-    "previousFrame": {
-        "message": "Önceki Kare"
-    },
-    "restartShort": {
-        "message": "Short'u yeniden başlat"
-    },
-    "nextShort": {
-        "message": "Sonraki Short"
-    },
-    "previousShort": {
-        "message": "Önceki Short"
-    },
-    "extraOptions": {
-        "message": "Ek Ayarlar"
-    },
-    "resetOptions": {
-        "message": "Ayarları Sıfırla"
-    },
-    "autoSkipTitle": {
-        "message": "Düşük beğenili shortları otomatik atla"
-    },
-    "skipThresholdTitle": {
-        "message": "Bu sayıdan daha az beğeni alan shortları atla"
-    },
-    "seekAmountTitle": {
-        "message": "Şu kadar saniye atla"
-    },
-    "automaticallyOpenCommentsTitle": {
-        "message": "Yeni shortlarda yorumları otomatik aç"
-    },
-    "toggleFeatures": {
-        "message": "Özellikleri Aç/Kapa"
-    },
-    "changesAffectNewShorts": {
-        "message": "Değişiklikler yalnızca yeni Shorts'u etkileyecek"
-    },
-    "enableAll": {
-        "message": "Hepsini aç"
-    },
-    "disableAll": {
-        "message": "Hepsini Kapa"
-    },
-    "autoplay": {
-        "message": "Otomatik Oynat"
-    },
-    "progressBar": {
-        "message": "İlerleme Çubuğu"
-    },
-    "timer": {
-        "message": "Zamanlayıcı"
-    },
-    "playbackRate": {
-        "message": "Oynatma Hızı"
-    },
-    "volumeSlider": {
-        "message": "Ses Düzey Ayarı"
-    },
-    "enable": {
-        "message": "$1'i Aktif Et"
-    },
-    "announcement": {
-        "message": "BYS'yi Çevirmemize Yardım Et!",
-        "description": "Zaman zaman güncellenecek duyuru"
-    },
-    "hideShortsOverlayTitle": {
-        "message": "Shortlardaki ek sayfayı gizle (başlık, kanal, vb)"
-    }
+  "extName": {
+    "message": "Daha İyi YouTube Shorts'ları",
+    "description": "Uzantının ismi"
+  },
+  "extDescription": {
+    "message": "Oynatma hızı, ses, ilerleme çubuğu ve daha fazlası ile YouTube Shorts'ta kontrolleri geri kazanın!",
+    "description": "Uzantı açıklaması"
+  },
+  "website": {
+    "message": "Site"
+  },
+  "keybinds": {
+    "message": "Tuş Bağları"
+  },
+  "command": {
+    "message": "Komut"
+  },
+  "key": {
+    "message": "Tuş"
+  },
+  "pressKeybinds": {
+    "message": "İstediğiniz tuşa basınız"
+  },
+  "pressAKey": {
+    "message": "Bir tuşa basınız"
+  },
+  "disabled": {
+    "message": "<engelli>"
+  },
+  "notSupportKeyCombo": {
+    "message": "Tuş kombinasyonları desteklenmiyor"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" kullanılabilir!"
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" kullanılamaz"
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" kullanılmış"
+  },
+  "disableKeybind": {
+    "message": "\"$1\" devre dışı!"
+  },
+  "editBinding": {
+    "message": "Şu tuş için bağı düzenle "
+  },
+  "keybindDisabled": {
+    "message": "Tuş bağı şu an devre dışı"
+  },
+  "currentKeybind": {
+    "message": "Mevcut bağlantı $1"
+  },
+  "confirm": {
+    "message": "Onayla"
+  },
+  "disableBind": {
+    "message": "Bağı kopar"
+  },
+  "resetKB": {
+    "message": "Bağı sıfırla"
+  },
+  "seekBackward": {
+    "message": "Geri Sar"
+  },
+  "seekForward": {
+    "message": "İleri Sar"
+  },
+  "decreaseSpeed": {
+    "message": "Hızı Azalt"
+  },
+  "resetSpeed": {
+    "message": "Hızı Sıfırla"
+  },
+  "increaseSpeed": {
+    "message": "Hızı Artır"
+  },
+  "decreaseVolume": {
+    "message": "Sesi Azalt"
+  },
+  "increaseVolume": {
+    "message": "Sesi Artır"
+  },
+  "toggleMute": {
+    "message": "Ses Aç/Kapa"
+  },
+  "nextFrame": {
+    "message": "Sonraki Kare"
+  },
+  "previousFrame": {
+    "message": "Önceki Kare"
+  },
+  "restartShort": {
+    "message": "Short'u yeniden başlat"
+  },
+  "nextShort": {
+    "message": "Sonraki Short"
+  },
+  "previousShort": {
+    "message": "Önceki Short"
+  },
+  "extraOptions": {
+    "message": "Ek Ayarlar"
+  },
+  "resetOptions": {
+    "message": "Ayarları Sıfırla"
+  },
+  "autoSkipTitle": {
+    "message": "Düşük beğenili shortları otomatik atla"
+  },
+  "skipThresholdTitle": {
+    "message": "Bu sayıdan daha az beğeni alan shortları atla"
+  },
+  "seekAmountTitle": {
+    "message": "Şu kadar saniye atla"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "Yeni shortlarda yorumları otomatik aç"
+  },
+  "toggleFeatures": {
+    "message": "Özellikleri Aç/Kapa"
+  },
+  "changesAffectNewShorts": {
+    "message": "Değişiklikler yalnızca yeni Shorts'u etkileyecek"
+  },
+  "enableAll": {
+    "message": "Hepsini aç"
+  },
+  "disableAll": {
+    "message": "Hepsini Kapa"
+  },
+  "autoplay": {
+    "message": "Otomatik Oynat"
+  },
+  "progressBar": {
+    "message": "İlerleme Çubuğu"
+  },
+  "timer": {
+    "message": "Zamanlayıcı"
+  },
+  "playbackRate": {
+    "message": "Oynatma Hızı"
+  },
+  "volumeSlider": {
+    "message": "Ses Düzey Ayarı"
+  },
+  "enable": {
+    "message": "$1'i Aktif Et"
+  },
+  "announcement": {
+    "message": "BYS'yi Çevirmemize Yardım Et!",
+    "description": "Zaman zaman güncellenecek duyuru"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "Shortlardaki ek sayfayı gizle (başlık, kanal, vb)"
+  }
 }

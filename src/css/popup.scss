@@ -1,33 +1,17 @@
+@import url("./globals.css");
 
-@import url( "./globals.css" );
-
-:where(
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  table,
-  tr,
-  td,
-  th,
-  p,
-  li,
-  span
-){
+:where(h1, h2, h3, h4, h5, h6, table, tr, td, th, p, li, span) {
   color: var(--text-primary-color);
 }
 
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Source Sans Pro', 'Roboto', 'Noto', 'Arial', sans-serif;
+  font-family: "Source Sans Pro", "Roboto", "Noto", "Arial", sans-serif;
   background: var(--bg-primary-color);
   color: var(--text-primary-color);
 }
@@ -53,10 +37,9 @@ tr:not(:first-child):hover {
   outline: none;
 }
 
-.popup_subheading
-{
+.popup_subheading {
   text-align: center;
-  margin: 5px 0px
+  margin: 5px 0px;
 }
 
 .container {
@@ -64,9 +47,9 @@ tr:not(:first-child):hover {
 }
 
 .announcement {
-	background-color: var(--announcement-color);
-	padding: 5px 0px;
-	text-align: center;
+  background-color: var(--announcement-color);
+  padding: 5px 0px;
+  text-align: center;
 
   a {
     display: inline;
@@ -169,8 +152,7 @@ label {
     transition: fill 200ms;
   }
 
-  &:hover svg
-  {
+  &:hover svg {
     fill: var(--text-primary-color);
   }
 }
@@ -256,7 +238,7 @@ a {
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
-  transition: color 200ms; 
+  transition: color 200ms;
 
   &:hover,
   &:focus {
@@ -293,8 +275,7 @@ a {
   }
 }
 
-.label_input--row
-{
+.label_input--row {
   display: grid;
   grid-template-columns: 5fr 1fr;
   text-wrap: balance;
@@ -302,42 +283,38 @@ a {
   align-items: center;
   justify-content: center;
 
-  [ type="number" ],
-  [ type="text" ] {
+  [type="number"],
+  [type="text"] {
     height: 1.75rem;
   }
 
-  [ type="checkbox" ]
-  {
+  [type="checkbox"] {
     height: 1rem;
     cursor: pointer;
   }
 
-	&:last-child {
-		margin-bottom: 0;
-	}
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   input[type="number"],
-  input[type="text"]
-  {
+  input[type="text"] {
     outline: none;
-    border: 1px var( --bg-secondary-hover-color ) solid;
-    background: var( --bg-secondary-hover-color );
+    border: 1px var(--bg-secondary-hover-color) solid;
+    background: var(--bg-secondary-hover-color);
     color: var(--text-primary-color);
     padding: 0 1rem;
     border-radius: 100vh;
     width: 5rem;
-    
-    &:focus
-    {
+
+    &:focus {
       border: 1px var(--yt-brand-color) solid;
     }
   }
 
   input[type="checkbox"],
   input[type="radio"],
-  input[type="range"]
-  {
+  input[type="range"] {
     accent-color: var(--yt-brand-color);
   }
 
@@ -361,7 +338,6 @@ a {
 /* width */
 ::-webkit-scrollbar {
   width: 0.5rem;
-  
 }
 
 /* Track */
@@ -382,15 +358,15 @@ a {
   background: var(--bg-secondary-hover-color);
 }
 
-
-.--page-indicator-container
-{
+.--page-indicator-container {
   display: flex;
   gap: 1rem;
   width: fit-content;
   margin: 0 auto;
 
-  button, input[type="submit"], input[type="reset"] {
+  button,
+  input[type="submit"],
+  input[type="reset"] {
     background: none;
     color: inherit;
     border: none;
@@ -401,47 +377,40 @@ a {
   }
 
   .--page-indicator,
-  .--page-indicator-active
-  {
+  .--page-indicator-active {
     border-radius: 5rem;
     height: 1.5rem;
-    width:  1.5rem;
+    width: 1.5rem;
     padding: 1rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    transition: 
+    transition:
       background 200ms,
-      stroke 200ms  
-    ;
+      stroke 200ms;
 
-    &:hover
-    {
+    &:hover {
       background: var(--bg-secondary-hover-color);
     }
   }
-  
+
   .--page-indicator svg,
-  .--page-indicator-active svg
-  {
+  .--page-indicator-active svg {
     height: 1.5rem;
-    width:  1.5rem;
+    width: 1.5rem;
   }
-  
-  .--page-indicator svg
-  {
+
+  .--page-indicator svg {
     fill: var(--text-secondary-color);
   }
-  .--page-indicator-active svg
-  {
+  .--page-indicator-active svg {
     fill: var(--text-primary-color);
   }
 }
 
-.--flex-button-container
-{
+.--flex-button-container {
   display: flex;
   width: fit-content;
   align-items: center;
@@ -451,7 +420,9 @@ a {
   margin: 0 auto;
   padding-top: 4px;
 
-  button, input[type="submit"], input[type="reset"] {
+  button,
+  input[type="submit"],
+  input[type="reset"] {
     background: none;
     color: inherit;
     border: none;
@@ -460,15 +431,14 @@ a {
     cursor: pointer;
     outline: inherit;
   }
-  
-  .--flex-button
-  {
+
+  .--flex-button {
     margin: 5px 0px;
     padding: 5px 10px;
 
     background-color: transparent;
     color: var(--text-primary-color);
-    outline: 1px var( --text-primary-color ) solid;
+    outline: 1px var(--text-primary-color) solid;
 
     border-radius: 3px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.275);
@@ -482,11 +452,11 @@ a {
   }
 
   .--flex-button.warn {
-    color: var(--yt-brand-color );
-    outline: 1px var( --yt-brand-color ) solid;
+    color: var(--yt-brand-color);
+    outline: 1px var(--yt-brand-color) solid;
   }
   .--flex-button.warn:hover {
-    color: var(--text-primary-color );
+    color: var(--text-primary-color);
     background-color: var(--yt-brand-color);
   }
   .--flex-button.good {
@@ -494,29 +464,24 @@ a {
     outline: 1px var(--call-to-action-color) solid;
   }
   .--flex-button.good:hover {
-    color: var(--text-primary-color );
-    background-color: var(--call-to-action-color)
+    color: var(--text-primary-color);
+    background-color: var(--call-to-action-color);
   }
-  
-  
 }
 
 // this is for the github link
-.--global-footer
-{
+.--global-footer {
   display: flex;
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
 
-  .--global-footer-link
-  {
+  .--global-footer-link {
     color: var(--text-secondary-color);
   }
 }
 
-.--modal
-{
+.--modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -526,29 +491,25 @@ a {
 
   align-items: center;
   justify-content: center;
-  
-  background: var( --bg-modal-color );
+
+  background: var(--bg-modal-color);
 
   .--modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    .--modal-header-text
-    {
+
+    .--modal-header-text {
       font-style: italic;
       color: var(--text-secondary-color);
       display: block;
-      
-      .--modal-command
-      {
+
+      .--modal-command {
         font-style: normal;
         display: block;
         font-weight: bold;
       }
-      
     }
-    
   }
 
   .--modal-content {
@@ -561,7 +522,6 @@ a {
   }
 
   .--modal-input {
-
     outline: none;
     border: none;
     border-radius: 1rem;
@@ -576,49 +536,40 @@ a {
 
     transition: background 200ms;
 
-    &:hover
-    {
+    &:hover {
       background-color: var(--bg-primary-hover-color);
     }
-    &:focus
-    {
+    &:focus {
       background-color: var(--bg-primary-hover-color);
     }
   }
   .--modal-input-error,
-  .--modal-input-success
-  {
+  .--modal-input-success {
     display: flex;
     align-items: center;
     justify-content: center;
     text-wrap: balance;
     text-align: center;
   }
-  .--modal-input-error
-  {
-    color: var(--yt-brand-color)
+  .--modal-input-error {
+    color: var(--yt-brand-color);
   }
-  .--modal-input-success
-  {
-    color: var(--call-to-action-color)
+  .--modal-input-success {
+    color: var(--call-to-action-color);
   }
 
-  .--modal-label
-  {
+  .--modal-label {
     color: var(--text-secondary-color);
     font-style: italic;
 
-    span
-    {
+    span {
       font-style: normal;
       font-weight: bold;
     }
   }
-  
 }
 
-.key-combo-warning
-{
+.key-combo-warning {
   color: var(--text-secondary-color);
 }
 
@@ -636,7 +587,7 @@ a {
   display: flex;
 }
 
-.betterYT-volume-slider{
+.betterYT-volume-slider {
   -webkit-appearance: slider-vertical;
   position: absolute;
   right: -40px;
@@ -646,13 +597,13 @@ a {
   cursor: pointer;
 }
 
-@supports (-moz-appearance:none) {  
-  .volume-slider{
-      right: 16px;
+@supports (-moz-appearance: none) {
+  .volume-slider {
+    right: 16px;
   }
 }
 
-.volume-slider:hover{
+.volume-slider:hover {
   opacity: 1;
 }
 
@@ -678,14 +629,14 @@ a {
   right: 0;
   bottom: 0;
   background-color: #272727;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   border-radius: 27px;
 
   &:hover {
     background-color: #3f3f3f;
   }
-  
+
   &:before {
     position: absolute;
     content: "";
@@ -694,13 +645,11 @@ a {
     left: 3px;
     bottom: 3px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
     border-radius: 50%;
   }
 }
-
-
 
 input:checked + .autoplay-slider {
   background-color: #3f3f3f;
@@ -719,27 +668,27 @@ input:checked + .autoplay-slider:before {
     top: 18px;
   }
   .autoplay-slider {
-      background-color: #FFFFFF1A;
+    background-color: #ffffff1a;
   }
   input:checked + .autoplay-slider {
-      background-color: #FFFFFF2A;
+    background-color: #ffffff2a;
   }
   .betterYT-auto {
-      padding-bottom: 16px;
+    padding-bottom: 16px;
   }
 }
 
-.betterYT-progress-bar{
+.betterYT-progress-bar {
   bottom: 0;
   pointer-events: auto !important;
 }
 
-.betterYT-progress-bar-hover{
+.betterYT-progress-bar-hover {
   height: 10px !important;
   cursor: pointer;
 }
 
-.betterYT-timestamp-tooltip{
+.betterYT-timestamp-tooltip {
   position: absolute;
   display: none;
   background-color: #272727c4;
@@ -750,12 +699,11 @@ input:checked + .autoplay-slider:before {
   z-index: 50;
 }
 
-.page-warning
-{
+.page-warning {
   color: var(--text-secondary-color);
   text-align: center;
   padding-top: 12px;
-  font-size: .75rem;
+  font-size: 0.75rem;
   word-wrap: balance;
 }
 
@@ -767,6 +715,7 @@ input:checked + .autoplay-slider:before {
   z-index: 10;
 }
 
-#extra_features, #extra_options {
+#extra_features,
+#extra_options {
   padding: 4px 0;
 }

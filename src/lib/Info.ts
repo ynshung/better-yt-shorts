@@ -15,7 +15,7 @@ export function setInfo() {
     const info = views ? `${views} | ${uploadDate}` : uploadDate;
     if (!isVideoPlaying()) return;
     const overlayElement = getOverlayElement();
-    var h3 = document.createElement("h3");
+    const h3 = document.createElement("h3");
     h3.id = `ytViews${getCurrentId()}`;
     h3.innerText = info;
     overlayElement
