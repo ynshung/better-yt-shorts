@@ -6,8 +6,10 @@
     "dev": "concurrently --kill-others \"sass --watch src/css\" \"vite\"",
     "build": "sass src/css && tsc && vite build",
     "preview": "vite preview",
-    "dev:firefox": "node firefox-watch.js",
-    "build:firefox": "node firefox-build-manifest.js"
+    "dev:firefox": "node scripts/firefox-watch.js",
+    "build:firefox": "node scripts/firefox-build-manifest.js",
+    "lint": "eslint src",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "react": "^18.0.0",
@@ -20,9 +22,16 @@
     "@types/firefox-webext-browser": "^111.0.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
     "@vitejs/plugin-react": "^1.3.0",
     "concurrently": "^8.2.0",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
     "nodemon": "^3.0.1",
+    "prettier": "3.0.3",
     "sass": "^1.66.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.15"

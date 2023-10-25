@@ -1,5 +1,4 @@
-:root
-{
+:root {
   --text-primary-color: #030303;
   --text-secondary-color: #888;
   --bg-primary-color: #fff;
@@ -11,17 +10,15 @@
   --yt-brand-color: #f00;
   --suggested-action-color: #378de9;
   --call-to-action-color: #3ea6ff;
-	--announcement-color: #50a5b5;
+  --announcement-color: #50a5b5;
 
-  --max-height: 600px; // of the chrome popup 
+  --max-height: 600px; // of the chrome popup
 
   font-size: 16px;
 }
 
-@media (prefers-color-scheme: dark) 
-{
-  :root
-  {
+@media (prefers-color-scheme: dark) {
+  :root {
     --text-primary-color: #fff;
     --text-secondary-color: #888;
     --bg-primary-color: #0f0f0f;
