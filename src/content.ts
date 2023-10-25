@@ -106,7 +106,7 @@ function main() {
   }
 
   handleProgressBarNotAppearing();
-  handleEnableAutoplay(settings, features["autoplay"]);
+  handleEnableAutoplay();
   handleInjectionChecks(state, settings, features);
   handleHideShortsOverlay(options);
 }
