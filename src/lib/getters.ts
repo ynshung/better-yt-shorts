@@ -126,19 +126,9 @@ export function getOverlay() {
   ) as HTMLElement;
 }
 
-export function getViews() {
+export function getUploadDate() {
   return (
     document.querySelector("#factoids ytd-factoid-renderer:nth-child(2) div")
       ?.textContent ?? ""
-  );
-}
-
-export function getUploadDate() {
-  return (
-    (
-      document.querySelector(
-        "#factoids ytd-factoid-renderer:nth-child(3) div",
-      ) as HTMLElement
-    ).textContent ?? ""
   );
 }
