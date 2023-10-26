@@ -1,5 +1,5 @@
 import React from "react";
-import { PopupPageNameEnum, StrictPolyDictionary } from "../lib/definitions";
+import { PopupPageNameEnum, IconDictionary } from "../lib/definitions";
 import { getEnumWithString } from "../lib/utils";
 
 import { MdVideoSettings } from "react-icons/md";
@@ -19,7 +19,7 @@ interface Props {
   isCurrentPage: boolean;
 }
 
-const ICONS = {
+const ICONS: IconDictionary = {
   OPTIONS: {
     active: <MdVideoSettings />,
     inactive: <MdOutlineVideoSettings />,
@@ -35,7 +35,7 @@ const ICONS = {
     inactive: <MdOutlineVisibilityOff />,
     name: local("toggleFeatures"),
   },
-} as StrictPolyDictionary;
+};
 
 export default function PageIndicator({
   page,

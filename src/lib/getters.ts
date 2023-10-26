@@ -135,10 +135,7 @@ export function getViews() {
 
 export function getUploadDate() {
   return (
-    (
-      document.querySelector(
-        "#factoids ytd-factoid-renderer:nth-child(3) div",
-      ) as HTMLElement
-    ).textContent ?? ""
+    document.querySelector("#factoids ytd-factoid-renderer:nth-child(3) div")
+      ?.textContent ?? ""
   );
 }

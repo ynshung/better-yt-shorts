@@ -1,4 +1,5 @@
 import { isVideoPlaying } from "./VideoState";
+import { BooleanDictionary } from "./definitions";
 import {
   getCurrentId,
   getOverlayElement,
@@ -6,7 +7,7 @@ import {
   getViews,
 } from "./getters";
 
-export function setInfo(features: any) {
+export function setInfo(features: BooleanDictionary) {
   const views_interval = setInterval(addInfo, 10);
 
   function addInfo() {

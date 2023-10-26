@@ -84,16 +84,16 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
             id={`extra_options_${option}`}
             type={OPTION_DICTIONARY[option]?.type ?? determineInputType(value)}
             name={`option_input_${option}`}
-            min={OPTION_DICTIONARY[option]?.min ?? null}
-            max={OPTION_DICTIONARY[option]?.max ?? null}
+            min={OPTION_DICTIONARY[option]?.min ?? undefined}
+            max={OPTION_DICTIONARY[option]?.max ?? undefined}
             value={
               OPTION_DICTIONARY[option]?.type !== "checkbox"
-                ? optionsState[option]
+                ? (optionsState[option] as number | string)
                 : undefined
             }
             checked={
               OPTION_DICTIONARY[option]?.type === "checkbox"
-                ? optionsState[option]
+                ? (optionsState[option] as boolean)
                 : undefined
             }
             onChange={(e) => handleOptionChange(e, option)}

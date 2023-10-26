@@ -3,14 +3,18 @@ import { setPlaybackRate, setTimer } from "./PlaybackRate";
 import { modifyProgressBar } from "./ProgressBar";
 import { setInfo } from "./Info";
 import { setVolumeSlider } from "./VolumeSlider";
-import { BooleanDictionary, StateObject } from "./definitions";
+import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
 import { getCurrentId, getVideo } from "./getters";
 
 export function registerInjection(state: StateObject) {
   state.injectedItems.add(getCurrentId());
 }
 
-export function injectItems(state: StateObject, settings: any, features: any) {
+export function injectItems(
+  state: StateObject,
+  settings: PolyDictionary,
+  features: BooleanDictionary,
+) {
   state.lastTime = -1;
 
   populateActionElement(state, settings, features);
@@ -25,7 +29,10 @@ export function injectionWasRegistered(state: StateObject) {
   return state.injectedItems.has(getCurrentId());
 }
 
-export function checkForInjectionSuccess(state: StateObject, features: any) {
+export function checkForInjectionSuccess(
+  state: StateObject,
+  features: BooleanDictionary,
+) {
   // If failed, retry injection during next interval
   if (!setTimer(state, features["timer"]))
     state.injectedItems.delete(getCurrentId());
@@ -35,8 +42,8 @@ export function checkForInjectionSuccess(state: StateObject, features: any) {
 
 export function handleInjectionChecks(
   state: StateObject,
-  settings: any,
-  features: any,
+  settings: PolyDictionary,
+  features: BooleanDictionary,
 ) {
   const ytShorts = getVideo();
   if (ytShorts === null) return;
