@@ -11,8 +11,7 @@ on:
       - master
 
 jobs:
-  run-linters:
-    name: Run linters
+  lint:
     runs-on: ubuntu-latest
 
     steps:
