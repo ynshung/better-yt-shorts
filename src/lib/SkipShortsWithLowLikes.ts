@@ -28,7 +28,7 @@ export function shouldSkipShort(state: StateObject, options: PolyDictionary) {
 
   if (!options.skipEnabled) return false;
   if (state.topId === 0) return false; // dont skip first short ever
-  if (currentId < state.topId) return false; // allow user to scroll back up to see skipped video
+  if (currentId < (state.topId as number)) return false; // allow user to scroll back up to see skipped video
   if (state.skippedId === currentId) return false; // prevent skip spam
   if (likeCount === null || isNaN(likeCount)) return false; // dont skip unloaded shorts
   if (likeCount >= (options.skipThreshold as number)) return false;
