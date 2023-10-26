@@ -1,13 +1,13 @@
 import local from "../background/i18n";
 import { saveSettingsToStorage } from "./SaveToStorage";
 import { skipShort } from "./VideoState";
-import { StateObject } from "./definitions";
+import { StateObject, PolyDictionary } from "./definitions";
 import { getActionElement, getCurrentId, getVideo } from "./getters";
 import { render } from "./utils";
 
 export function handleAutoplay(
   state: StateObject,
-  settings: any,
+  settings: PolyDictionary,
   enabled: boolean,
 ) {
   if (!enabled) return;
@@ -27,7 +27,10 @@ export function handleEnableAutoplay() {
   if (ytShorts === null) return false;
 }
 
-export function createAutoplaySwitch(settings: any, enabled: boolean) {
+export function createAutoplaySwitch(
+  settings: PolyDictionary,
+  enabled: boolean,
+) {
   if (!enabled) return;
 
   const actionElement = getActionElement();
@@ -54,8 +57,8 @@ export function createAutoplaySwitch(settings: any, enabled: boolean) {
 
   document
     .getElementById(`autoplay-checkbox${getCurrentId()}`)
-    ?.addEventListener("change", (e: any) => {
-      settings.autoplay = e.target.checked;
+    ?.addEventListener("change", (e: Event) => {
+      settings.autoplay = (e.target as HTMLInputElement).checked;
 
       saveSettingsToStorage(settings);
     });

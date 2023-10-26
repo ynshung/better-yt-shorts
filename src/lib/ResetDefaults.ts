@@ -5,7 +5,7 @@ import {
   DEFAULT_OPTIONS,
   storage,
 } from "./declarations";
-import { BooleanDictionary, ChangedObjectStateEnum } from "./definitions";
+import { ChangedObjectStateEnum } from "./definitions";
 
 /**
  * Resets keybinds to their factory values in local and storage as well as the live binds
@@ -45,8 +45,7 @@ export function enableAllFeatures() {
  * Features are all set to false
  */
 export function disableAllFeatures() {
-  const newState = { ...DEFAULT_FEATURES } as BooleanDictionary;
-  if (newState === null) return null;
+  const newState = { ...DEFAULT_FEATURES };
 
   Object.entries(newState).map(([feature]) => {
     newState[feature] = false;

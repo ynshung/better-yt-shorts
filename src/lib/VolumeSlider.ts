@@ -1,6 +1,6 @@
 import { saveSettingsToStorage } from "./SaveToStorage";
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
-import { StateObject } from "./definitions";
+import { PolyDictionary, StateObject } from "./definitions";
 import {
   getCurrentId,
   getVideo,
@@ -9,18 +9,22 @@ import {
 } from "./getters";
 import { render, wheel } from "./utils";
 
-export function checkVolume(settings: any, sliderEnabled: boolean) {
+export function checkVolume(settings: PolyDictionary, sliderEnabled: boolean) {
   const ytShorts = getVideo();
 
   if (ytShorts === null) return;
   if (!sliderEnabled) return;
 
-  if (settings?.volume !== null) ytShorts.volume = settings.volume;
+  if (settings?.volume !== null) ytShorts.volume = settings.volume as number;
   else settings.volume = ytShorts.volume;
 }
 
 // todo  - move this to its own lib script (probably call it volumeSlider.ts)
-export function setVolume(settings: any, newVolume: number, enabled: boolean) {
+export function setVolume(
+  settings: PolyDictionary,
+  newVolume: number,
+  enabled: boolean,
+) {
   settings.volume = newVolume;
 
   const volumeSliderController =
@@ -39,7 +43,7 @@ export function setVolume(settings: any, newVolume: number, enabled: boolean) {
 
 export function setVolumeSlider(
   state: StateObject,
-  settings: any,
+  settings: PolyDictionary,
   enabled: boolean,
 ) {
   if (!enabled) return;
@@ -66,8 +70,8 @@ export function setVolumeSlider(
   volumeContainer.appendChild(slider);
 
   // Prevent video from pausing/playing on click
-  slider.addEventListener("input", (e: any) =>
-    setVolume(settings, e.target.valueAsNumber, enabled),
+  slider.addEventListener("input", (e: Event) =>
+    setVolume(settings, (e.target as HTMLInputElement).valueAsNumber, enabled),
   );
   slider.addEventListener("click", (e) => e.stopPropagation());
 

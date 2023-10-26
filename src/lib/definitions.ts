@@ -1,29 +1,25 @@
 export type NumberDictionary = {
   [key: string]: number;
-} | null;
+};
 
 export type StringDictionary = {
-  [key: string]: string;
-} | null;
-
-export type StrictStringDictionary = {
   [key: string]: string;
 };
 
 export type PolyDictionary = {
-  [key: string]: any;
-} | null;
-
-export type BooleanDictionary = {
-  [key: string]: any;
-} | null;
-
-export type StrictPolyDictionary = {
-  [key: string]: any;
+  [key: string]: string | boolean | number;
 };
 
-export type DefaultsDictionary = {
-  [key: string]: any;
+export type BooleanDictionary = {
+  [key: string]: boolean;
+};
+
+export type IconDictionary = {
+  [key: string]: {
+    active: React.JSX.Element;
+    inactive: React.JSX.Element;
+    name: string;
+  };
 };
 
 export interface StateObject {
@@ -31,7 +27,12 @@ export interface StateObject {
 }
 
 export interface OptionsDictionary {
-  [key: string]: PolyDictionary;
+  [key: string]: {
+    desc: string;
+    type: string;
+    min?: number;
+    max?: number;
+  };
 }
 
 export enum PopupPageNameEnum {

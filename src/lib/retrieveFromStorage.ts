@@ -5,7 +5,11 @@ import {
   DEFAULT_SETTINGS,
   storage,
 } from "./declarations";
-import { PolyDictionary, StringDictionary } from "./definitions";
+import {
+  BooleanDictionary,
+  PolyDictionary,
+  StringDictionary,
+} from "./definitions";
 
 export async function retrieveOptionsFromStorage(
   setter: (options: PolyDictionary) => void,
@@ -54,7 +58,9 @@ export async function retrieveKeybindsFromStorage(
           "[BYS] :: Keybinds couldnt be loaded from storage, using defaults",
         );
 
-      for (const [option, value] of Object.entries(DEFAULT_KEYBINDS)) {
+      for (const option in DEFAULT_KEYBINDS) {
+        const value = DEFAULT_KEYBINDS[option];
+
         if (keybinds[option] !== null) continue; // * this may be an issue later on if we WANT falsy values as viable values
         keybinds[option] = value;
       }
@@ -70,7 +76,7 @@ export async function retrieveKeybindsFromStorage(
 }
 
 export async function retrieveSettingsFromStorage(
-  setter: (settings: object) => void,
+  setter: (settings: PolyDictionary) => void,
 ) {
   const localStorageSettings = JSON.parse(
     localStorage.getItem("yt-settings") as string,
@@ -101,7 +107,7 @@ export async function retrieveSettingsFromStorage(
 }
 
 export async function retrieveFeaturesFromStorage(
-  setter: (features: object) => void,
+  setter: (features: BooleanDictionary) => void,
 ) {
   const localStorageFeatures = JSON.parse(
     localStorage.getItem("yt-features") as string,

@@ -1,13 +1,14 @@
 import { createAutoplaySwitch } from "./Autoplay";
 import { setPlaybackRate } from "./PlaybackRate";
 import { CYCLABLE_PLAYBACK_RATES } from "./declarations";
+import { StateObject, BooleanDictionary, PolyDictionary } from "./definitions";
 import { getActionElement, getCurrentId, getTitle, getVideo } from "./getters";
 import { wheel } from "./utils";
 
 export function populateActionElement(
-  state: any,
-  settings: any,
-  features: any,
+  state: StateObject,
+  settings: PolyDictionary,
+  features: BooleanDictionary,
 ) {
   // ! use proper types
   const id = getCurrentId();

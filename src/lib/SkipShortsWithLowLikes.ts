@@ -4,10 +4,10 @@
 // video with 1.5M / 1,5M => https://www.youtube.com/shorts/nKZIx1bHUbQ
 
 import { isVideoPlaying, skipShort } from "./VideoState";
-import { StateObject } from "./definitions";
+import { PolyDictionary, StateObject } from "./definitions";
 import { getCurrentId, getLikeCount } from "./getters";
 
-export function shouldSkipShort(state: any, options: any) {
+export function shouldSkipShort(state: StateObject, options: PolyDictionary) {
   const currentId = getCurrentId();
   const likeCount = getLikeCount();
 
@@ -31,11 +31,14 @@ export function shouldSkipShort(state: any, options: any) {
   if (currentId < state.topId) return false; // allow user to scroll back up to see skipped video
   if (state.skippedId === currentId) return false; // prevent skip spam
   if (likeCount === null || isNaN(likeCount)) return false; // dont skip unloaded shorts
-  if (likeCount >= options.skipThreshold) return false;
+  if (likeCount >= (options.skipThreshold as number)) return false;
 
   return true;
 }
-export function handleSkipShortsWithLowLikes(state: StateObject, options: any) {
+export function handleSkipShortsWithLowLikes(
+  state: StateObject,
+  options: PolyDictionary,
+) {
   const likeCount = getLikeCount();
 
   if (shouldSkipShort(state, options)) {

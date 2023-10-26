@@ -3,6 +3,7 @@ import { setVolume } from "./VolumeSlider";
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
 import {
   BooleanDictionary,
+  StateObject,
   PolyDictionary,
   StringDictionary,
 } from "./definitions";
@@ -12,9 +13,9 @@ export function handleKeyEvent(
   e: KeyboardEvent,
   features: BooleanDictionary,
   keybinds: StringDictionary,
-  settings: any,
+  settings: PolyDictionary,
   options: PolyDictionary,
-  state: any,
+  state: StateObject,
 ) {
   if (
     [...document.querySelectorAll("input")].includes(
@@ -44,11 +45,11 @@ export function handleKeyEvent(
 
   switch (command) {
     case "seekBackward":
-      ytShorts.currentTime -= options?.seekAmount;
+      ytShorts.currentTime -= options.seekAmount as number;
       break;
 
     case "seekForward":
-      ytShorts.currentTime += options?.seekAmount;
+      ytShorts.currentTime += options.seekAmount as number;
       break;
 
     case "decreaseSpeed":

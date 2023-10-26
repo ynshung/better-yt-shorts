@@ -1,7 +1,7 @@
 import { StateObject } from "./definitions";
 import { getCurrentId, getPlaybackElement, getVideo } from "./getters";
 
-export function setPlaybackRate(state: any) {
+export function setPlaybackRate(state: StateObject) {
   const playBackElement = getPlaybackElement() as HTMLElement;
 
   if (playBackElement === null) return false;
