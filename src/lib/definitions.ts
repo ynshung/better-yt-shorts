@@ -23,7 +23,7 @@ export type IconDictionary = {
 };
 
 export interface StateObject {
-  [key: string]: any;
+  [key: string]: string | boolean | number | Set<number> | null;
 }
 
 export interface OptionsDictionary {

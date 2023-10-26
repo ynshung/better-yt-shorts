@@ -87,7 +87,8 @@ export function populateActionElement(
 
   createAutoplaySwitch(settings, features["autoplay"]);
 
-  if (features["playbackRate"]) ytShorts.playbackRate = state.playbackRate;
+  if (features["playbackRate"])
+    ytShorts.playbackRate = state.playbackRate as number;
 
   setPlaybackRate(state);
   // injectedSuccess = setTimer( currTime || 0, Math.round(ytShorts.duration || 0))

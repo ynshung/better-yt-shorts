@@ -1,6 +1,5 @@
 import React from "react";
 import { PopupPageNameEnum, IconDictionary } from "../lib/definitions";
-import { getEnumWithString } from "../lib/utils";
 
 import { MdVideoSettings } from "react-icons/md";
 import { MdOutlineVideoSettings } from "react-icons/md";
@@ -43,7 +42,7 @@ export default function PageIndicator({
   isCurrentPage,
 }: Props) {
   function handlePageIndicatorClick() {
-    setCurrentPage(getEnumWithString(PopupPageNameEnum, page, 1));
+    setCurrentPage(PopupPageNameEnum[page as keyof typeof PopupPageNameEnum]);
   }
 
   function getIndicatorIcon() {

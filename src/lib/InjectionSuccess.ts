@@ -7,7 +7,8 @@ import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
 import { getCurrentId, getVideo } from "./getters";
 
 export function registerInjection(state: StateObject) {
-  state.injectedItems.add(getCurrentId());
+  const id = getCurrentId();
+  if (id !== null) (state.injectedItems as Set<number>).add(id);
 }
 
 export function injectItems(
@@ -26,7 +27,9 @@ export function injectItems(
 }
 
 export function injectionWasRegistered(state: StateObject) {
-  return state.injectedItems.has(getCurrentId());
+  const id = getCurrentId();
+  if (id === null) return false;
+  return (state.injectedItems as Set<number>).has(id);
 }
 
 export function checkForInjectionSuccess(
@@ -34,8 +37,10 @@ export function checkForInjectionSuccess(
   features: BooleanDictionary,
 ) {
   // If failed, retry injection during next interval
-  if (!setTimer(state, features["timer"]))
-    state.injectedItems.delete(getCurrentId());
+  if (!setTimer(state, features["timer"])) {
+    const id = getCurrentId();
+    if (id !== null) (state.injectedItems as Set<number>).delete(id);
+  }
 
   state.lastTime = state.currTime;
 }
