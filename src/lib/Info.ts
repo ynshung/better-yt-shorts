@@ -12,10 +12,6 @@ export function setInfo(features: BooleanDictionary) {
 
   function addInfo() {
     const info = [];
-    if (features["viewCounter"]) {
-      const views = getViews().replace(/(\r\n|\n|\r)/gm, "");
-      if (views) info.push(views);
-    }
     if (features["uploadDate"]) {
       const uploadDate = getUploadDate().replace(/(\r\n|\n|\r)/gm, "");
       if (uploadDate) info.push(uploadDate);

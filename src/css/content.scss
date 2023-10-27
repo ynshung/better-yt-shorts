@@ -1,5 +1,13 @@
 @import url("./globals.css");
 
+#actions {
+  pointer-events: none !important;
+
+  div {
+    pointer-events: all !important;
+  }
+}
+
 .betterYT {
   font-size: 16px;
   font-weight: bold;
@@ -17,6 +25,7 @@
 .betterYT-volume-slider {
   -webkit-appearance: slider-vertical;
   position: absolute;
+  height: 100px;
   right: -40px;
   top: 40px;
   opacity: 0.4;
