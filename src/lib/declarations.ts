@@ -14,6 +14,8 @@ export const VERSION = BROWSER.runtime.getManifest().version;
 export const DEFAULT_KEYBINDS: StringDictionary = {
   seekBackward: "ArrowLeft",
   seekForward: "ArrowRight",
+  toggleFullscreen: "KeyF",
+  numPadSeek: "Numpad0|Numpad1|Numpad2|Numpad3|Numpad4|Numpad5|Numpad6|Numpad7|Numpad8|Numpad9",
   decreaseSpeed: "KeyU",
   resetSpeed: "KeyI",
   increaseSpeed: "KeyO",
@@ -30,6 +32,8 @@ export const DEFAULT_KEYBINDS: StringDictionary = {
 export const KEYBINDS_ORDER: string[] = [
   "seekBackward",
   "seekForward",
+  "toggleFullscreen",
+  "numPadSeek",
   "decreaseSpeed",
   "resetSpeed",
   "increaseSpeed",
