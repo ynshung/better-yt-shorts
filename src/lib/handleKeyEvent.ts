@@ -1,3 +1,4 @@
+import { setHideShortsOverlay } from "./HideShortsOverlay";
 import { goToNextShort, goToPreviousShort, restartShort } from "./VideoState";
 import { setVolume } from "./VolumeSlider";
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
@@ -33,10 +34,17 @@ export function handleKeyEvent(
 
   const key = e.code;
   const keyAlt = e.key.toLowerCase(); // for legacy keybinds
+  const mod = e.ctrlKey ? "Ctrl" : e.altKey ? "Alt" : "";
 
   let command;
-  for (const [cmd, keybind] of Object.entries(keybinds as object))
-    if (key === keybind || keyAlt === keybind) command = cmd;
+  for (const [cmd, keybind] of Object.entries(keybinds as object)) {
+    if (validateKeybind(keybind)) {
+      // prevent youtube's default keybinds if we have our own set
+      e.stopPropagation();
+      e.preventDefault();
+      command = cmd;
+    }
+  }
 
   if (!command) return;
 
@@ -127,4 +135,11 @@ export function handleKeyEvent(
   }
 
   state.playbackRate = ytShorts.playbackRate;
+
+  function validateKeybind(keybind: string) {
+    const _split = keybind.split(".");
+    if (mod)
+      return _split.length === 2 && _split[0] === mod && key === _split[1];
+    return key === keybind || keyAlt === keybind;
+  }
 }

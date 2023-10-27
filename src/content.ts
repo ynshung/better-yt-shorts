@@ -2,7 +2,7 @@ import BROWSER from "./background/browser";
 import { checkVolume } from "./lib/VolumeSlider";
 import { DEFAULT_STATE } from "./lib/declarations";
 import { StateObject } from "./lib/definitions";
-import { getCurrentId, getVideo } from "./lib/getters";
+import { getCurrentId, getLikeCount, getVideo } from "./lib/getters";
 import { handleKeyEvent } from "./lib/handleKeyEvent";
 import {
   retrieveFeaturesFromStorage,
@@ -10,7 +10,10 @@ import {
   retrieveOptionsFromStorage,
   retrieveSettingsFromStorage,
 } from "./lib/retrieveFromStorage";
-import { handleSkipShortsWithLowLikes } from "./lib/SkipShortsWithLowLikes";
+import {
+  handleSkipShortsWithLowLikes,
+  shouldSkipShort,
+} from "./lib/SkipShortsWithLowLikes";
 
 // need this to ensure css is loaded in the dist
 import "./css/content.css";
@@ -69,7 +72,7 @@ retrieveFeaturesFromStorage((newFeatures) => {
 });
 
 // todo  - test this on firefox
-BROWSER.runtime.onMessage.addListener((req) => {
+BROWSER.runtime.onMessage.addListener((req, sender, sendResponse) => {
   if (req?.keybinds) keybinds = req.keybinds;
   if (req?.options) options = req.options;
   if (req?.features) features = req.features;
@@ -77,8 +80,12 @@ BROWSER.runtime.onMessage.addListener((req) => {
   resetIntervals();
 });
 
-document.addEventListener("keydown", (e) =>
-  handleKeyEvent(e, features, keybinds, settings, options, state),
+document.addEventListener(
+  "keydown",
+  (e) => handleKeyEvent(e, features, keybinds, settings, options, state),
+  {
+    capture: true,
+  },
 );
 
 let main_interval = setInterval(main, 100);

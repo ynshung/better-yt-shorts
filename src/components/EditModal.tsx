@@ -154,7 +154,20 @@ export default function EditModal({
       open={isModalOpen}
       style={{ display: isModalOpen ? "flex" : "none" }}
       ref={modalRef}
-      onKeyDown={(e) => setPressedKey(e.code)}
+      // capture the event to prevent conflicts`
+      onKeyDownCapture={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setPressedKey(
+          e.code.includes("Control") || e.code.includes("Alt")
+            ? e.code
+            : e.ctrlKey
+            ? `Ctrl.${e.code}`
+            : e.altKey
+            ? `Alt.${e.code}`
+            : e.code,
+        );
+      }}
     >
       <div className="--modal-content">
         <span className="--modal-header">
