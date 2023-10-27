@@ -28,15 +28,18 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
     });
   }
 
-  function handleOptionChange(e: any, option: string) {
+  function handleOptionChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    option: string,
+  ) {
     if (optionsState === null) return;
 
     const target = e.target as HTMLInputElement;
-    let value: any = target.value;
+    let value: string | number | boolean;
 
-    // this may need changed depending on different input types
     if (target.type === "checkbox") value = target.checked;
     else if (!isNaN(target.valueAsNumber)) value = target.valueAsNumber;
+    else value = target.value;
 
     if (value === null)
       return console.warn(
@@ -68,8 +71,6 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
 
       if (OPTION_DICTIONARY === null) return <></>;
 
-      // const type = determineInputType(value);
-
       if (optionsState === null) return;
 
       return (
@@ -83,16 +84,16 @@ export default function OptionsPage({ optionsState, setOptionsState }: Props) {
             id={`extra_options_${option}`}
             type={OPTION_DICTIONARY[option]?.type ?? determineInputType(value)}
             name={`option_input_${option}`}
-            min={OPTION_DICTIONARY[option]?.min ?? null}
-            max={OPTION_DICTIONARY[option]?.max ?? null}
+            min={OPTION_DICTIONARY[option]?.min ?? undefined}
+            max={OPTION_DICTIONARY[option]?.max ?? undefined}
             value={
               OPTION_DICTIONARY[option]?.type !== "checkbox"
-                ? optionsState[option]
+                ? (optionsState[option] as number | string)
                 : undefined
             }
             checked={
               OPTION_DICTIONARY[option]?.type === "checkbox"
-                ? optionsState[option]
+                ? (optionsState[option] as boolean)
                 : undefined
             }
             onChange={(e) => handleOptionChange(e, option)}

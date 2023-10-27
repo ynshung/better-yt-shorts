@@ -14,7 +14,7 @@ interface Props {
   isModalOpen: boolean;
   setIsModalOpen: (newState: boolean) => void;
   keybindsState: StringDictionary;
-  setKeybindsState: any; // ! - use proper type
+  setKeybindsState: (keybinds: () => StringDictionary) => void;
 }
 
 export default function EditModal({
@@ -67,7 +67,7 @@ export default function EditModal({
   function handleSaveBind() {
     if (canUseKey()) {
       setKeybindsState(() => {
-        const newState = { ...keybindsState };
+        const newState: StringDictionary = { ...keybindsState };
         newState[selectedCommand] = pressedKey;
 
         saveKeybindsToStorage(newState);

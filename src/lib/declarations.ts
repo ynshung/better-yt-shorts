@@ -1,7 +1,7 @@
 import BROWSER from "../background/browser";
 import local from "../background/i18n";
 import {
-  DefaultsDictionary,
+  BooleanDictionary,
   NumberDictionary,
   OptionsDictionary,
   PolyDictionary,
@@ -11,7 +11,7 @@ import {
 
 export const VERSION = BROWSER.runtime.getManifest().version;
 
-export const DEFAULT_KEYBINDS: DefaultsDictionary = {
+export const DEFAULT_KEYBINDS: StringDictionary = {
   seekBackward: "ArrowLeft",
   seekForward: "ArrowRight",
   decreaseSpeed: "KeyU",
@@ -27,7 +27,7 @@ export const DEFAULT_KEYBINDS: DefaultsDictionary = {
   previousShort: local("disabled"),
 };
 
-export const KEYBINDS_ORDER: DefaultsDictionary = [
+export const KEYBINDS_ORDER: string[] = [
   "seekBackward",
   "seekForward",
   "decreaseSpeed",
@@ -43,7 +43,7 @@ export const KEYBINDS_ORDER: DefaultsDictionary = [
   "previousShort",
 ];
 
-export const DEFAULT_OPTIONS: DefaultsDictionary = {
+export const DEFAULT_OPTIONS: PolyDictionary = {
   // add new defaults for your option here
   skipEnabled: false,
   skipThreshold: 500,
@@ -52,7 +52,7 @@ export const DEFAULT_OPTIONS: DefaultsDictionary = {
   hideShortsOverlay: false,
 };
 
-export const OPTIONS_ORDER: DefaultsDictionary = [
+export const OPTIONS_ORDER: string[] = [
   "seekAmount",
   "automaticallyOpenComments",
   "skipEnabled",
@@ -92,8 +92,6 @@ export function setKeybind(
   command: string,
   newKey: string,
 ): StringDictionary {
-  if (previousState === null) return null;
-
   const newKeybinds = { ...previousState };
   newKeybinds[command] = newKey;
 
@@ -103,10 +101,8 @@ export function setKeybind(
 export function setOption(
   previousState: PolyDictionary,
   option: string,
-  value: string,
-): StringDictionary {
-  if (previousState === null) return null;
-
+  value: string | number | boolean,
+): PolyDictionary {
   const newOptions = { ...previousState };
   newOptions[option] = value;
 
@@ -114,12 +110,10 @@ export function setOption(
 }
 
 export function setFeature(
-  previousState: PolyDictionary,
+  previousState: BooleanDictionary,
   feature: string,
-  value: string,
-): StringDictionary {
-  if (previousState === null) return null;
-
+  value: boolean,
+): BooleanDictionary {
   const newFeatures = { ...previousState };
   newFeatures[feature] = value;
 
@@ -128,7 +122,7 @@ export function setFeature(
 
 export const storage = BROWSER.storage.local;
 
-export const DEFAULT_STATE = {
+export const DEFAULT_STATE: StateObject = {
   id: 0,
   topId: 0,
   playbackRate: 1,
@@ -141,15 +135,15 @@ export const DEFAULT_STATE = {
   skippedId: null,
 
   muted: false,
-} as StateObject;
+};
 
 // ! - add settings
-export const DEFAULT_SETTINGS = {
+export const DEFAULT_SETTINGS: PolyDictionary = {
   volume: 0.5,
   autoplay: false,
 };
 
-export const DEFAULT_FEATURES = {
+export const DEFAULT_FEATURES: BooleanDictionary = {
   autoplay: true,
   progressBar: true,
   timer: true,
@@ -159,7 +153,7 @@ export const DEFAULT_FEATURES = {
   uploadDate: true,
 };
 
-export const FEATURES_ORDER: DefaultsDictionary = [
+export const FEATURES_ORDER: string[] = [
   "autoplay",
   "progressBar",
   "timer",

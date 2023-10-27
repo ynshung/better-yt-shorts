@@ -1,14 +1,14 @@
 import { FEATURES_ORDER, setFeature } from "../lib/declarations";
-import { PolyDictionary } from "../lib/definitions";
+import { BooleanDictionary } from "../lib/definitions";
 import { disableAllFeatures, enableAllFeatures } from "../lib/ResetDefaults";
 import { saveFeaturesToStorage } from "../lib/SaveToStorage";
 import React, { useEffect, useState } from "react";
 import local from "../background/i18n";
 
 interface Props {
-  featuresState: PolyDictionary;
+  featuresState: BooleanDictionary;
   setFeaturesState: (
-    features: (previousState: PolyDictionary) => PolyDictionary,
+    features: (previousState: BooleanDictionary) => BooleanDictionary,
   ) => void;
 }
 
@@ -42,7 +42,10 @@ export default function FeaturesPage({
     });
   }
 
-  function handleFeatureChange(e: any, feature: string) {
+  function handleFeatureChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    feature: string,
+  ) {
     const value = e.target.checked;
 
     setFeaturesState(() => {

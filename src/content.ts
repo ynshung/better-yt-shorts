@@ -1,7 +1,12 @@
 import BROWSER from "./background/browser";
 import { checkVolume } from "./lib/VolumeSlider";
 import { DEFAULT_STATE } from "./lib/declarations";
-import { StateObject } from "./lib/definitions";
+import {
+  StateObject,
+  BooleanDictionary,
+  PolyDictionary,
+  StringDictionary,
+} from "./lib/definitions";
 import { getCurrentId, getVideo } from "./lib/getters";
 import { handleKeyEvent } from "./lib/handleKeyEvent";
 import {
@@ -29,7 +34,7 @@ import { handleHideShortsOverlay } from "./lib/HideShortsOverlay";
  */
 
 const state = new Proxy(DEFAULT_STATE, {
-  set(o: StateObject, prop: string, val: any) {
+  set(o: StateObject, prop: string, val: string | boolean | number | null) {
     o[prop] = val;
 
     const ytShorts = getVideo();
@@ -38,7 +43,7 @@ const state = new Proxy(DEFAULT_STATE, {
     if (ytShorts !== null) {
       switch (prop) {
         case "playbackRate":
-          ytShorts.playbackRate = val;
+          ytShorts.playbackRate = val as number;
           break;
       }
     }
@@ -47,10 +52,10 @@ const state = new Proxy(DEFAULT_STATE, {
   },
 });
 
-let keybinds = null as any;
-let options = null as any;
-let settings = null as any;
-let features = null as any;
+let keybinds: StringDictionary;
+let options: PolyDictionary;
+let settings: PolyDictionary;
+let features: BooleanDictionary;
 
 // todo  - add "settings" to localstorage (merge autoplay + player volume into one)
 // localStorage.getItem("yt-player-volume") !== null && JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]
@@ -93,7 +98,7 @@ function main() {
   if (ytShorts === null) return;
   if (currentId === null) return;
 
-  if (state.topId < currentId) state.topId = currentId;
+  if ((state.topId as number) < currentId) state.topId = currentId;
 
   // video has to have been playing to skip.
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.

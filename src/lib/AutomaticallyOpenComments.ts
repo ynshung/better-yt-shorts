@@ -1,9 +1,9 @@
-import { StateObject } from "./definitions";
+import { StateObject, PolyDictionary } from "./definitions";
 import { getCommentsButton, getCurrentId } from "./getters";
 
 export function handleAutomaticallyOpenComments(
   state: StateObject,
-  options: any,
+  options: PolyDictionary,
 ) {
   if (shouldOpenComments(state, options)) openComments();
 }
@@ -12,7 +12,7 @@ function openComments() {
   getCommentsButton()?.click();
 }
 
-function shouldOpenComments(state: StateObject, options: any) {
+function shouldOpenComments(state: StateObject, options: PolyDictionary) {
   const currentId = getCurrentId();
 
   if (options === null) return false;

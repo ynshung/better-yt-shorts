@@ -1,6 +1,5 @@
 import BROWSER from "../background/browser";
 import { ChangedObjectStateEnum } from "./definitions";
-import { getKeyFromEnum } from "./utils";
 
 /**
  * Expects an object (the keybindsState or optionsState for exmaple)
@@ -13,16 +12,16 @@ export function pingChanges(
   message: object,
 ) {
   (async () => {
-    // const [tab] = await BROWSER.tabs.query({
-    //   active: true,
-    //   lastFocusedWindow: true,
-    // });
-    const key = getKeyFromEnum(ChangedObjectStateEnum, objectEnum, null);
+    const [tab] = await BROWSER.tabs.query({
+      active: true,
+      lastFocusedWindow: true,
+    });
+    const key = ChangedObjectStateEnum[objectEnum].toLowerCase() ?? null;
 
-    const content = {} as any;
+    const content: { [key: string]: object } = {};
     content[key] = message;
 
-    // const response = await BROWSER.tabs.sendMessage(tab.id as number, content); // ! - see if this works in firefox
+    await BROWSER.tabs.sendMessage(tab.id as number, content); // ! - see if this works in firefox
 
     // do something with response here, not outside the function
     console.log(`[BYS] :: Saving Changes`);

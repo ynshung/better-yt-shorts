@@ -87,7 +87,9 @@ export function render(htmlString: string): Node {
  * returns a standard input element type depending on the given sample value
  * For example, `true` will return `"checkbox"`; `500` will return "number"
  */
-export function determineInputType(sampleValue: any): string {
+export function determineInputType(
+  sampleValue: string | number | boolean,
+): string {
   switch (typeof sampleValue) {
     case "boolean":
       return "checkbox";
@@ -101,10 +103,8 @@ export function determineInputType(sampleValue: any): string {
   }
 }
 
-export function getEnumEntries(givenEnum: any): Array<[string, any]> {
-  return Object.entries(givenEnum as object).filter(([key]) =>
-    isNaN(key as any),
-  );
+export function getEnumEntries(givenEnum: object): Array<[string, number]> {
+  return Object.entries(givenEnum).filter(([key]) => isNaN(Number(key)));
 }
 
 /**
@@ -114,26 +114,4 @@ export function getEnumEntries(givenEnum: any): Array<[string, any]> {
  */
 export function capitalise(str: string) {
   return str[0].toUpperCase() + str.slice(1).toLowerCase();
-}
-
-/**
- * Get enum value from key string, or return `default_return` if unfound
- */
-export function getEnumWithString(
-  givenEnum: any,
-  key: string,
-  default_return: any = null,
-) {
-  return Object.assign({}, givenEnum)[key] ?? default_return;
-}
-/**
- * Get enum key from enum, or return `default_return` if unfound
- * note: this will return TO LOWER CASE!!
- */
-export function getKeyFromEnum(
-  givenEnum: any,
-  value: any,
-  default_return: any = null,
-) {
-  return givenEnum[value].toLowerCase() ?? default_return;
 }

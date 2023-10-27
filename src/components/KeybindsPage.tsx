@@ -39,8 +39,6 @@ export default function KeybindsPage({
     return KEYBINDS_ORDER.map((command: string) => {
       const bind = keybindsState[command];
       const editButtonProps = {
-        keybindsState,
-        setKeybindsState,
         command,
         setSelectedCommand,
         setIsModalOpen,
