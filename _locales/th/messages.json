@@ -1,0 +1,161 @@
+{
+  "extName": {
+    "message": "Better YouTube Shorts",
+    "description": "ชื่อของส่วนขยาย"
+  },
+  "extDescription": {
+    "message": "รับความสามารถในการควบคุม YouTube Shorts ด้วย ระบบ playback, แถบปรับระดับเสียง, แถบความคืบหน้าวิดีโอ และอื่น ๆ!",
+    "description": "คำอธิบายของส่วนขยาย"
+  },
+  "announcement": {
+    "message": "ช่วยเราแปล BYS!",
+    "description": "จะอัพเดทประกาศเป็นระยะๆ"
+  },
+  "website": {
+    "message": "เว็บไซต์"
+  },
+  "keybinds": {
+    "message": "ปุ่มลัด"
+  },
+  "command": {
+    "message": "คำสั่ง"
+  },
+  "key": {
+    "message": "ปุ่ม"
+  },
+  "pressKeybinds": {
+    "message": "กดปุ่มที่ต้องการ"
+  },
+  "pressAKey": {
+    "message": "กดปุ่ม"
+  },
+  "disabled": {
+    "message": "<ปิดการใช้งาน>"
+  },
+  "notSupportKeyCombo": {
+    "message": "ไม่รองรับการกดแป้นพร้อมกัน"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" สามารถใช้ได้!"
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" ไม่สามารถใช้ได้"
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" ถูกใช้แล้ว"
+  },
+  "disableKeybind": {
+    "message": "\"$1\" ถูกปิดใช้งาน!"
+  },
+  "editBinding": {
+    "message": "ตั้งค่าปุ่มสำหรับ "
+  },
+  "keybindDisabled": {
+    "message": "การตั้งค่าปุ่มถูกปิดใช้งานในขณะนี้"
+  },
+  "currentKeybind": {
+    "message": "ปุ่มปัจจุบันคือ $1"
+  },
+  "confirm": {
+    "message": "ยืนยัน"
+  },
+  "disableBind": {
+    "message": "ปิดใช้งานการตั้งค่า"
+  },
+  "resetKB": {
+    "message": "รีเซ็ตปุ่มลัด"
+  },
+  "seekBackward": {
+    "message": "ขยับย้อนกลับ"
+  },
+  "seekForward": {
+    "message": "ขยับไปข้างหน้า"
+  },
+  "decreaseSpeed": {
+    "message": "ลดความเร็ววิดีโอ"
+  },
+  "resetSpeed": {
+    "message": "รีเซ็ตความเร็ววิดีโอ"
+  },
+  "increaseSpeed": {
+    "message": "เพิ่มความเร็ววิดีโอ"
+  },
+  "decreaseVolume": {
+    "message": "ลดเสียง"
+  },
+  "increaseVolume": {
+    "message": "เพิ่มเสียง"
+  },
+  "toggleMute": {
+    "message": "เปิด/ปิดเสียง"
+  },
+  "nextFrame": {
+    "message": "เฟรมถัดไป"
+  },
+  "previousFrame": {
+    "message": "เฟรมก่อนหน้า"
+  },
+  "restartShort": {
+    "message": "เริ่ม Short ใหม่"
+  },
+  "nextShort": {
+    "message": "Short ต่อไป"
+  },
+  "previousShort": {
+    "message": "Short ก่อนหน้า"
+  },
+  "extraOptions": {
+    "message": "การตั้งค่าเพิ่มเติม"
+  },
+  "resetOptions": {
+    "message": "รีเซ็ตการตั้งค่า"
+  },
+  "autoSkipTitle": {
+    "message": "ข้าม Shorts อัตโนมัติที่มียอดไลค์น้อย"
+  },
+  "skipThresholdTitle": {
+    "message": "ข้าม Shorts ที่มียอดไลค์น้อยกว่า"
+  },
+  "seekAmountTitle": {
+    "message": "ขยับเป็นวินาที"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "เปิดความคิดเห็น Shorts ใหม่โดยอัตโนมัติ"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "ซ่อนโอเวอร์เลย์บน Shorts (ชื่อวิดีโอ, ช่อง ฯลฯ)"
+  },
+  "toggleFeatures": {
+    "message": "เปิด/ปิดคุณสมบัติ"
+  },
+  "changesAffectNewShorts": {
+    "message": "การเปลี่ยนแปลงจะส่งผลต่อ Shorts ใหม่เท่านั้น"
+  },
+  "enableAll": {
+    "message": "เปิดใช้งานทั้งหมด"
+  },
+  "disableAll": {
+    "message": "ปิดการใช้งานทั้งหมด"
+  },
+  "autoplay": {
+    "message": "เล่นอัตโนมัติ"
+  },
+  "progressBar": {
+    "message": "แถบความคืบหน้า"
+  },
+  "timer": {
+    "message": "ตัวจับเวลา"
+  },
+  "playbackRate": {
+    "message": "อัตราการเล่น"
+  },
+  "volumeSlider": {
+    "message": "แถบควบคุมระดับเสียง"
+  },
+  "uploadDate": {
+    "message": "วันที่อัพโหลด"
+  },
+  "enable": {
+    "message": "เปิดใช้งาน $1"
+  }
+}
