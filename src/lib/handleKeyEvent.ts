@@ -64,10 +64,9 @@ export function handleKeyEvent(
 
     case "toggleFullscreen":
       const div = document.getElementById("shorts-player");
+      if (!div) return;
       if (document.fullscreenElement == div) document.exitFullscreen();
       if (div.requestFullscreen) div.requestFullscreen();
-      else if (div.webkitRequestFullscreen) div.webkitRequestFullscreen();
-      else if (div.msRequestFullScreen) div.msRequestFullScreen();
       break;
 
     case "numPadSeek":
