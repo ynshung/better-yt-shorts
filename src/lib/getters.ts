@@ -74,7 +74,7 @@ export function getTitle() {
 export function getVolumeContainer() {
   const id = getCurrentId();
   return document.querySelector(
-    `[id="${id}"]  > #player-container > div.player-controls.style-scope.ytd-reel-video-renderer > ytd-shorts-player-controls.style-scope.ytd-reel-video-renderer`,
+    `[id="${id}"] #player-container div.player-controls > ytd-shorts-player-controls.style-scope`,
   ) as HTMLElement;
 }
 
