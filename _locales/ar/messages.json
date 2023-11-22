@@ -1,0 +1,161 @@
+{
+    "extName": {
+        "message": "شورتات يوتيوب أفضل",
+        "description": "اسم الإضافة"
+    },
+    "extDescription": {
+        "message": "استعد التحكم بشورتات يوتيوب مع التشغيل والإيقاف، التحكم بالصوت، شريط التقدم .. والمزيد",
+        "description": "وصف الإضافة"
+    },
+    "website": {
+        "message": "الموقع الإلكتروني"
+    },
+    "keybinds": {
+        "message": "اختصارات المفاتيح"
+    },
+    "command": {
+        "message": "الأمر"
+    },
+    "key": {
+        "message": "الزر"
+    },
+    "pressKeybinds": {
+        "message": "اضغط الزر المطلوب"
+    },
+    "pressAKey": {
+        "message": "اضغط زراً"
+    },
+    "disabled": {
+        "message": "<معطل>"
+    },
+    "notSupportKeyCombo": {
+        "message": "تعدد المفاتيح غير مدعوم"
+    },
+    "keyCanBeUsed": {
+        "message": "\"$1\" يمكن استخدامه!"
+    },
+    "keyCannotBeUsed": {
+        "message": "\"$1\" لايمكن استخدامه"
+    },
+    "keyAlreadyInUse": {
+        "message": "\"$1\" مستخدم مسبقاً"
+    },
+    "disableKeybind": {
+        "message": "\"$1\" معطّل!"
+    },
+    "editBinding": {
+        "message": "تغيير التخصيص إلى␣"
+    },
+    "keybindDisabled": {
+        "message": "اختصارات المفاتيح معطلة حالياً"
+    },
+    "currentKeybind": {
+        "message": "مخصص حالياً ل $1"
+    },
+    "confirm": {
+        "message": "تأكيد"
+    },
+    "disableBind": {
+        "message": "تعطيل التخصيص"
+    },
+    "resetKB": {
+        "message": "إعادة ضبط تخصيص المفاتيح"
+    },
+    "seekBackward": {
+        "message": "الرجوع للخلف"
+    },
+    "seekForward": {
+        "message": "التقدم للأمام"
+    },
+    "decreaseSpeed": {
+        "message": "خفض السرعة"
+    },
+    "resetSpeed": {
+        "message": "إعادة تعيين السرعة"
+    },
+    "increaseSpeed": {
+        "message": "زيادة السرعة"
+    },
+    "decreaseVolume": {
+        "message": "خفض الصوت"
+    },
+    "increaseVolume": {
+        "message": "رفع الصوت"
+    },
+    "toggleMute": {
+        "message": "كتم الصوت"
+    },
+    "nextFrame": {
+        "message": "الإطار التالي"
+    },
+    "previousFrame": {
+        "message": "الإطار السابق"
+    },
+    "restartShort": {
+        "message": "إعادة تشغيل الشورت"
+    },
+    "nextShort": {
+        "message": "الشورت التالي"
+    },
+    "previousShort": {
+        "message": "الشورت السابق"
+    },
+    "extraOptions": {
+        "message": "خيارات إضافية"
+    },
+    "resetOptions": {
+        "message": "إعادة ضبط الخيارات"
+    },
+    "autoSkipTitle": {
+        "message": "تخطي الشورتات الحائزة على لايكات قليلة"
+    },
+    "skipThresholdTitle": {
+        "message": "تخطي الشورتات الحائزة على لايكات أقل من"
+    },
+    "seekAmountTitle": {
+        "message": "مدة التخطي بالثواني"
+    },
+    "automaticallyOpenCommentsTitle": {
+        "message": "فتح التعليقات بالشورتات الجديدة تقائياً"
+    },
+    "toggleFeatures": {
+        "message": "تشغيل الميزات وتعطيلها"
+    },
+    "changesAffectNewShorts": {
+        "message": "التغييرات ستؤثر على الشورتات الجديدة فقط"
+    },
+    "enableAll": {
+        "message": "تفعيل الكل"
+    },
+    "disableAll": {
+        "message": "تعطيل الكل"
+    },
+    "autoplay": {
+        "message": "تشغيل تلقائي"
+    },
+    "progressBar": {
+        "message": "شريط التقدم"
+    },
+    "timer": {
+        "message": "المؤقت"
+    },
+    "playbackRate": {
+        "message": "سرعة التشغيل"
+    },
+    "volumeSlider": {
+        "message": "مؤشر الصوت"
+    },
+    "enable": {
+        "message": "تفعيل $1"
+    },
+    "announcement": {
+        "message": "ساعدنا بترجمة BYS!",
+        "description": "إشعار سيتم تحديثه من وقت لآخر"
+    },
+    "hideShortsOverlayTitle": {
+        "message": "إخفاء الواجهة على الشورتات (العنوان، القناة، إلخ)"
+    },
+    "uploadDate": {
+        "message": "تاريخ رفع الشورت"
+    }
+}
