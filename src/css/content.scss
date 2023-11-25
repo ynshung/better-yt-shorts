@@ -59,6 +59,18 @@
   height: 0;
 }
 
+// tweaks padding when panel is open
+ytd-reel-player-overlay-renderer[is-watch-while-mode]div:has( .autoplay-slider )
+{
+  padding-top: 0px;
+  padding-bottom: 16px;
+}
+
+div:has( .autoplay-slider )
+{
+  padding-top: 16px;
+}
+
 .autoplay-slider {
   position: absolute;
   cursor: pointer;
@@ -66,13 +78,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #272727;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  background-color: rgba(255,255,255,0.1);
   border-radius: 27px;
 
   &:hover {
-    background-color: #3f3f3f;
+    background-color: rgba(255,255,255,0.2);
   }
 
   &:before {
@@ -90,7 +100,7 @@
 }
 
 input:checked + .autoplay-slider {
-  background-color: #3f3f3f;
+  background-color: rgba(255,255,255,0.2);
 }
 
 input:checked + .autoplay-slider:before {
@@ -106,10 +116,10 @@ input:checked + .autoplay-slider:before {
     top: 18px;
   }
   .autoplay-slider {
-    background-color: #ffffff1a;
+    background-color: rgba(255,255,255,0.2);
   }
   input:checked + .autoplay-slider {
-    background-color: #ffffff2a;
+    background-color: rgba(255,255,255,0.2);
   }
   .betterYT-auto {
     padding-bottom: 16px;
