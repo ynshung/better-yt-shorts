@@ -41,9 +41,19 @@ export function setVolume(
   saveSettingsToStorage(settings);
 }
 
+export function updateVolumeOrientation( showHorizontally: boolean )
+{
+  const slider = getVolumeSliderController();
+  if ( slider === null ) return;
+
+  slider.classList.remove(  showHorizontally ? "vertical" : "horizontal" )
+  slider.classList.add(     showHorizontally ? "horizontal" : "vertical" )
+}
+
 export function setVolumeSlider(
   state: StateObject,
   settings: PolyDictionary,
+  showHorizontally: boolean,
   enabled: boolean,
 ) {
   if (!enabled) return;
@@ -56,7 +66,7 @@ export function setVolumeSlider(
     <input
       id="volumeSliderController${id}"
       type="range"
-      class="volume-slider betterYT-volume-slider"
+      class="volume-slider betterYT-volume-slider ${ (showHorizontally) ? "horizontal" : "vertical" }"
       min="0"
       max="1"
       step="0.01"

@@ -44,6 +44,31 @@
   opacity: 1;
 }
 
+.betterYT-volume-slider
+{
+  position: absolute;
+  pointer-events: all !important;
+  accent-color: rgba(255,255,255,0.2);
+  opacity: 0.2;
+  transition: opacity .2s;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.betterYT-volume-slider.horizontal {
+  -webkit-appearance: slider-horizontal;
+  top: 17.5px;
+  right: 50px;
+}
+
+.betterYT-volume-slider.vertical {
+  -webkit-appearance: slider-vertical;
+  height: 100px;
+  right: 10px;
+  width: 33px;
+  top: 40px;
+}
+
 .autoplay-switch {
   position: relative;
   display: block;
