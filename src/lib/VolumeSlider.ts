@@ -48,6 +48,8 @@ export function updateVolumeOrientation( showHorizontally: boolean )
 
   slider.classList.remove(  showHorizontally ? "vertical" : "horizontal" )
   slider.classList.add(     showHorizontally ? "horizontal" : "vertical" )
+  
+  slider.setAttribute( "orient", ( showHorizontally ) ? "horizontal" : "vertical" )
 }
 
 export function setVolumeSlider(
@@ -70,7 +72,7 @@ export function setVolumeSlider(
       min="0"
       max="1"
       step="0.01"
-      orient="vertical"
+      orient="${ (showHorizontally) ? "horizontal" : "vertical" }"
       value="${settings.volume}"
     />
   `);

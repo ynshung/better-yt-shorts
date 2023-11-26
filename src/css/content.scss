@@ -22,17 +22,17 @@
   display: flex;
 }
 
-.betterYT-volume-slider {
-  -webkit-appearance: slider-vertical;
-  position: absolute;
-  height: 100px;
-  right: -40px;
-  top: 40px;
-  opacity: 0.4;
-  pointer-events: all !important;
-  accent-color: var(--yt-brand-color);
-  cursor: pointer;
-}
+// .betterYT-volume-slider {
+//   // -webkit-appearance: slider-vertical;
+//   position: absolute;
+//   height: 100px;
+//   right: -40px;
+//   top: 40px;
+//   opacity: 0.4;
+//   pointer-events: all !important;
+//   accent-color: var(--yt-brand-color);
+//   cursor: pointer;
+// }
 
 @supports (-moz-appearance: none) {
   .volume-slider {
@@ -136,7 +136,7 @@ input:checked + .autoplay-slider:before {
 
 @media screen and (max-width: 599px) {
   .volumeSlider {
-    -webkit-appearance: slider-horizontal;
+    // -webkit-appearance: slider-horizontal;
     right: 44px;
     top: 18px;
   }
