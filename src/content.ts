@@ -122,9 +122,8 @@ function volumeIntervalCallback() {
   if (getVideo()) checkVolume(settings, features["volumeSlider"]);
 }
 
-function lowPriorityCallback()
-{
-  updateVolumeOrientation( options[ "showVolumeHorizontally" ] as boolean )
+function lowPriorityCallback() {
+  updateVolumeOrientation(options["showVolumeHorizontally"] as boolean);
 }
 
 function resetIntervals() {

@@ -21,7 +21,12 @@ export function injectItems(
 
   populateActionElement(state, settings, features);
   modifyProgressBar(features["progressBar"]);
-  setVolumeSlider(state, settings, options["showVolumeHorizontally"] as boolean, features["volumeSlider"] );
+  setVolumeSlider(
+    state,
+    settings,
+    options["showVolumeHorizontally"] as boolean,
+    features["volumeSlider"],
+  );
   setInfo(features);
 
   registerInjection(state);
