@@ -14,13 +14,19 @@ export function registerInjection(state: StateObject) {
 export function injectItems(
   state: StateObject,
   settings: PolyDictionary,
+  options: PolyDictionary,
   features: BooleanDictionary,
 ) {
   state.lastTime = -1;
 
   populateActionElement(state, settings, features);
   modifyProgressBar(features["progressBar"]);
-  setVolumeSlider(state, settings, features["volumeSlider"]);
+  setVolumeSlider(
+    state,
+    settings,
+    options["showVolumeHorizontally"] as boolean,
+    features["volumeSlider"],
+  );
   setInfo(features);
 
   registerInjection(state);
@@ -48,6 +54,7 @@ export function checkForInjectionSuccess(
 export function handleInjectionChecks(
   state: StateObject,
   settings: PolyDictionary,
+  options: PolyDictionary,
   features: BooleanDictionary,
 ) {
   const ytShorts = getVideo();
@@ -56,7 +63,7 @@ export function handleInjectionChecks(
   state.currTime = Math.round(ytShorts.currentTime);
 
   if (!injectionWasRegistered(state))
-    return injectItems(state, settings, features);
+    return injectItems(state, settings, options, features);
 
   if (state.currTime !== state.lastTime)
     checkForInjectionSuccess(state, features);

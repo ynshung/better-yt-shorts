@@ -130,7 +130,9 @@
   "hideShortsOverlayTitle": {
     "message": "Hide the overlay on shorts (title, channel, etc)"
   },
-
+  "showVolumeHorizontally": {
+    "message": "Show volume slider horizontally instead of vertically"
+  },
   "toggleFeatures": {
     "message": "Toggle Features"
   },

@@ -50,6 +50,7 @@ export const DEFAULT_OPTIONS: PolyDictionary = {
   seekAmount: 5,
   automaticallyOpenComments: false,
   hideShortsOverlay: false,
+  showVolumeHorizontally: false,
 };
 
 export const OPTIONS_ORDER: string[] = [
@@ -58,6 +59,7 @@ export const OPTIONS_ORDER: string[] = [
   "skipEnabled",
   "skipThreshold",
   "hideShortsOverlay",
+  "showVolumeHorizontally",
 ];
 
 export const OPTION_DICTIONARY: OptionsDictionary = {
@@ -83,6 +85,10 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   },
   hideShortsOverlay: {
     desc: local("hideShortsOverlayTitle"),
+    type: "checkbox",
+  },
+  showVolumeHorizontally: {
+    desc: local("showVolumeHorizontally"),
     type: "checkbox",
   },
 };

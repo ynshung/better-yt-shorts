@@ -22,17 +22,17 @@
   display: flex;
 }
 
-.betterYT-volume-slider {
-  -webkit-appearance: slider-vertical;
-  position: absolute;
-  height: 100px;
-  right: -40px;
-  top: 40px;
-  opacity: 0.4;
-  pointer-events: all !important;
-  accent-color: var(--yt-brand-color);
-  cursor: pointer;
-}
+// .betterYT-volume-slider {
+//   // -webkit-appearance: slider-vertical;
+//   position: absolute;
+//   height: 100px;
+//   right: -40px;
+//   top: 40px;
+//   opacity: 0.4;
+//   pointer-events: all !important;
+//   accent-color: var(--yt-brand-color);
+//   cursor: pointer;
+// }
 
 @supports (-moz-appearance: none) {
   .volume-slider {
@@ -42,6 +42,31 @@
 
 .volume-slider:hover {
   opacity: 1;
+}
+
+.betterYT-volume-slider
+{
+  position: absolute;
+  pointer-events: all !important;
+  accent-color: rgba(255,255,255,0.2);
+  opacity: 0.2;
+  transition: opacity .2s;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.betterYT-volume-slider.horizontal {
+  -webkit-appearance: slider-horizontal;
+  top: 17.5px;
+  right: 50px;
+}
+
+.betterYT-volume-slider.vertical {
+  -webkit-appearance: slider-vertical;
+  height: 100px;
+  right: 10px;
+  width: 33px;
+  top: 40px;
 }
 
 .autoplay-switch {
@@ -111,7 +136,7 @@ input:checked + .autoplay-slider:before {
 
 @media screen and (max-width: 599px) {
   .volumeSlider {
-    -webkit-appearance: slider-horizontal;
+    // -webkit-appearance: slider-horizontal;
     right: 44px;
     top: 18px;
   }
