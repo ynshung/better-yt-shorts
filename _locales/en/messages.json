@@ -92,6 +92,9 @@
   "toggleMute": {
     "message": "Toggle Mute"
   },
+  "toggleFullScreen": {
+    "message": "Toggle Full Screen"
+  },
   "nextFrame": {
     "message": "Next Frame"
   },

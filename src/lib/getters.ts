@@ -90,6 +90,10 @@ export function getBackButton() {
   ) as HTMLElement;
 }
 
+export function getShortsContainer() {
+  return document.getElementById("page-manager");
+}
+
 export function getVideo(): HTMLVideoElement | null {
   return document.querySelector("#shorts-player>div>video");
 }
