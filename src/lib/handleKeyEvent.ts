@@ -109,9 +109,8 @@ export function handleKeyEvent(
 
       if (document.fullscreenElement == shortsContainer)
         document.exitFullscreen();
+      else shortsContainer.requestFullscreen();
 
-      if (shortsContainer.requestFullscreen)
-        shortsContainer.requestFullscreen();
       break;
     }
 
