@@ -7,7 +7,7 @@ import {
   PolyDictionary,
   StringDictionary,
 } from "./definitions";
-import { getVideo } from "./getters";
+import { getShortsContainer, getVideo } from "./getters";
 
 export function handleKeyEvent(
   e: KeyboardEvent,
@@ -101,6 +101,18 @@ export function handleKeyEvent(
     //     ytShorts.volume = state.volumeState
     //   }
     //   break
+
+    case "toggleFullScreen": {
+      const shortsContainer = getShortsContainer();
+
+      if (!shortsContainer) return;
+
+      if (document.fullscreenElement == shortsContainer)
+        document.exitFullscreen();
+      else shortsContainer.requestFullscreen();
+
+      break;
+    }
 
     case "previousFrame":
       if (ytShorts.paused) {
