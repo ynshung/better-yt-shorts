@@ -92,6 +92,9 @@
   "toggleMute": {
     "message": "Ativar/Desativar Som"
   },
+  "toggleFullScreen": {
+    "message": "Ativar/Desativar Tela Cheia"
+  },
   "nextFrame": {
     "message": "Próximo Frame"
   },
@@ -130,7 +133,9 @@
   "hideShortsOverlayTitle": {
     "message": "Ocultar sobreposição nos Shorts (título, canal, etc)"
   },
-
+  "showVolumeHorizontally": {
+    "message": "Mostrar barra de volume horizontalmente"
+  },
   "toggleFeatures": {
     "message": "Recursos"
   },
@@ -157,6 +162,9 @@
   },
   "volumeSlider": {
     "message": "Barra de Volume"
+  },
+  "uploadDate": {
+    "message": "Data de Upload"
   },
   "enable": {
     "message": "Habilitar $1"
