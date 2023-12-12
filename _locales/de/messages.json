@@ -1,0 +1,167 @@
+{
+  "extName": {
+    "message": "Better YouTube Shorts",
+    "description": "Name of the extension"
+  },
+  "extDescription": {
+    "message": "Übernimm die Kontrolle über YouTube Shorts mit Wiedergabe, Lautstärke, Fortschrittsbalken und mehr!",
+    "description": "Description of the extension"
+  },
+  "announcement": {
+    "message": "Helfen Sie bei der Übersetzung von BYS!",
+    "description": "Announcement which will update from time to time"
+  },
+  "website": {
+    "message": "Webseite"
+  },
+  "keybinds": {
+    "message": "Tastenkürzel"
+  },
+  "command": {
+    "message": "Befehl"
+  },
+  "key": {
+    "message": "Taste"
+  },
+  "pressKeybinds": {
+    "message": "Gewünschte Taste drücken"
+  },
+  "pressAKey": {
+    "message": "Eine Taste drücken"
+  },
+  "disabled": {
+    "message": "<deaktiviert>"
+  },
+  "notSupportKeyCombo": {
+    "message": "Keine Unterstützung von Tastenkombinationen"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" kann verwendet werden!"
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" kann nicht verwendet werden!"
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" wird bereits verwendet"
+  },
+  "disableKeybind": {
+    "message": "\"$1\" wurde deaktiviert!"
+  },
+  "editBinding": {
+    "message": "Tastenbelegung bearbeiten für "
+  },
+  "keybindDisabled": {
+    "message": "Die Tastenbelegung ist derzeit deaktiviert"
+  },
+  "currentKeybind": {
+    "message": "Aktuelle Tastenbelegung ist $1"
+  },
+  "confirm": {
+    "message": "Bestätigen"
+  },
+  "disableBind": {
+    "message": "Tastenbelegung deaktivieren"
+  },
+  "resetKB": {
+    "message": "Tastenbelegung zurücksetzen"
+  },
+  "seekBackward": {
+    "message": "Rückwärts suchen"
+  },
+  "seekForward": {
+    "message": "Vorwärts suchen"
+  },
+  "decreaseSpeed": {
+    "message": "Geschwindigkeit verringern"
+  },
+  "resetSpeed": {
+    "message": "Geschwindigkeit zurücksetzen"
+  },
+  "increaseSpeed": {
+    "message": "Geschwindigkeit erhöhen"
+  },
+  "decreaseVolume": {
+    "message": "Verringerung der Lautstärke"
+  },
+  "increaseVolume": {
+    "message": "Lautstärke erhöhen"
+  },
+  "toggleMute": {
+    "message": "Stummschaltung umschalten"
+  },
+  "toggleFullScreen": {
+    "message": "Vollbildmodus umschalten"
+  },
+  "nextFrame": {
+    "message": "Nächstes Bild"
+  },
+  "previousFrame": {
+    "message": "Vorheriges Bild"
+  },
+  "restartShort": {
+    "message": "Short neu starten"
+  },
+  "nextShort": {
+    "message": "Nächster Short"
+  },
+  "previousShort": {
+    "message": "Vorheriger Short"
+  },
+  "extraOptions": {
+    "message": "Zusätzliche Optionen"
+  },
+  "resetOptions": {
+    "message": "Optionen zurücksetzen"
+  },
+  "autoSkipTitle": {
+    "message": "Automatisches Überspringen von Short's mit weniger Likes"
+  },
+  "skipThresholdTitle": {
+    "message": "Short's mit weniger als der angegebenen Likes überspringen"
+  },
+  "seekAmountTitle": {
+    "message": "Suchdauer in Sekunden"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "Kommentare zu neuen Short's automatisch öffnen"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "Ausblenden des Overlays bei Shorts (Titel, Kanal usw.)"
+  },
+  "showVolumeHorizontally": {
+    "message": "Lautstärkeregler horizontal statt vertikal anzeigen"
+  },
+  "toggleFeatures": {
+    "message": "Funktionen umschalten"
+  },
+  "changesAffectNewShorts": {
+    "message": "Die Änderungen betreffen nur neue Shorts"
+  },
+  "enableAll": {
+    "message": "Alles aktivieren"
+  },
+  "disableAll": {
+    "message": "Alles deaktivieren"
+  },
+  "autoplay": {
+    "message": "Automatische Wiedergabe"
+  },
+  "progressBar": {
+    "message": "Fortschrittsanzeige"
+  },
+  "timer": {
+    "message": "Timer"
+  },
+  "playbackRate": {
+    "message": "Abspielgeschwindigkeit"
+  },
+  "volumeSlider": {
+    "message": "Lautstärkeregler"
+  },
+  "uploadDate": {
+    "message": "Upload-Datum"
+  },
+  "enable": {
+    "message": "Aktivieren $1"
+  }
+}
