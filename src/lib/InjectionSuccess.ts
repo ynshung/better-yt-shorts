@@ -5,6 +5,7 @@ import { setInfo } from "./Info";
 import { setVolumeSlider } from "./VolumeSlider";
 import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
 import { getCurrentId, getVideo } from "./getters";
+import { injectEventsToExistingElements } from "./Events";
 
 export function registerInjection(state: StateObject) {
   const id = getCurrentId();
@@ -19,6 +20,7 @@ export function injectItems(
 ) {
   state.lastTime = -1;
 
+  injectEventsToExistingElements();
   populateActionElement(state, settings, features);
   modifyProgressBar(features["progressBar"]);
   setVolumeSlider(

@@ -1,3 +1,4 @@
+import { tryToggleFullscreen } from "./HandleFullscreen";
 import { goToNextShort, goToPreviousShort, restartShort } from "./VideoState";
 import { setVolume } from "./VolumeSlider";
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
@@ -7,7 +8,7 @@ import {
   PolyDictionary,
   StringDictionary,
 } from "./definitions";
-import { getShortsContainer, getVideo } from "./getters";
+import { getVideo } from "./getters";
 
 export function handleKeyEvent(
   e: KeyboardEvent,
@@ -88,29 +89,8 @@ export function handleKeyEvent(
 
       break;
 
-    // case "toggleMute":
-    //   if ( !state.muted )
-    //   {
-    //     state.muted = true
-    //     ytShorts.volume = 0
-    //     settings.volume = ytShorts.volume
-    //   }
-    //   else
-    //   {
-    //     state.muted = false
-    //     ytShorts.volume = state.volumeState
-    //   }
-    //   break
-
     case "toggleFullScreen": {
-      const shortsContainer = getShortsContainer();
-
-      if (!shortsContainer) return;
-
-      if (document.fullscreenElement == shortsContainer)
-        document.exitFullscreen();
-      else shortsContainer.requestFullscreen();
-
+      tryToggleFullscreen();
       break;
     }
 
