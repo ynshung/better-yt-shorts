@@ -11,7 +11,6 @@ import {
   InjectionStateUnit,
   findInjectionStateInSet,
 } from "./InjectionState";
-import { isVideoPlaying } from "./VideoState";
 
 export function injectItems(
   state: StateObject,
@@ -22,7 +21,6 @@ export function injectItems(
   state.lastTime = -1;
   const id = getCurrentId();
   if (id === null) return;
-  if (!isVideoPlaying()) return;
 
   // eslint-disable-next-line prettier/prettier
   let injectionState = findInjectionStateInSet(id, state.injectedItems as Set<InjectionState>);
@@ -68,17 +66,26 @@ function createNewInjectionState(
         features["volumeSlider"],
       );
     }),
+  );
+}
+
+export function injectInfoElement(
+  state: StateObject,
+  features: BooleanDictionary,
+) {
+  const id = getCurrentId();
+  if (id === null) return;
+
+  const injectionState = findInjectionStateInSet(
+    id,
+    state.injectedItems as Set<InjectionState>,
+  );
+
+  if (injectionState === null) return;
+
+  injectionState.addUnit(
     new InjectionStateUnit(InjectionItemsEnum.INFO, () => {
       setInfo(features);
     }),
   );
-}
-
-export function handleInjectionChecks(
-  state: StateObject,
-  settings: PolyDictionary,
-  options: PolyDictionary,
-  features: BooleanDictionary,
-) {
-  injectItems(state, settings, options, features);
 }

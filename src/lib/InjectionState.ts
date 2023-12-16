@@ -86,6 +86,31 @@ export class InjectionState {
       }
     }
   }
+
+  /**
+   * Adds {@link InjectionStateUnit} to the list of injection candidates.
+   * This is specifically for items we know will fail if injected before the video starts,
+   * as otherwise we could just pass them into the constructor.
+   *
+   * This method will handle duplicate checks too.
+   *
+   * @param _unit The injection unit.
+   */
+  addUnit(_unit: InjectionStateUnit) {
+    if (this.hasUnit(_unit.name)) return;
+    this.units.push(_unit);
+    this.injectionSucceeded = false;
+  }
+
+  hasUnit(unitName: InjectionItemsEnum) {
+    for (const unit of this.units) {
+      if (unit.name === unitName) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 /**
