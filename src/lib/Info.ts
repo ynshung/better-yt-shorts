@@ -3,7 +3,7 @@ import { BooleanDictionary } from "./definitions";
 import { getCurrentId, getOverlayElement, getUploadDate } from "./getters";
 
 export function setInfo(features: BooleanDictionary) {
-  if (!isVideoPlaying()) throw new Error( "Video not playing" );
+  if (!isVideoPlaying()) throw new Error("Video not playing");
 
   const addInfo = () => {
     const info = [];

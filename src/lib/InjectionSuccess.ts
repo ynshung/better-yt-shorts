@@ -46,7 +46,7 @@ function createNewInjectionState(
   id: number,
   state: StateObject,
   settings: { [x: string]: string | number | boolean },
-  options: any,
+  options: PolyDictionary,
   features: BooleanDictionary,
 ) {
   // eslint-disable-next-line prettier/prettier
@@ -65,7 +65,7 @@ function createNewInjectionState(
       setVolumeSlider(
         state,
         settings,
-        options["showVolumeHorizontally"],
+        options["showVolumeHorizontally"] as boolean,
         features["volumeSlider"],
       );
     }),

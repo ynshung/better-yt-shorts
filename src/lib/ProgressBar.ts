@@ -7,8 +7,8 @@ export function modifyProgressBar(enabled: boolean) {
   const overlayElement = getOverlayElement();
   const ytShorts = getVideo();
 
-  if (!overlayElement) throw new Error( "Overlay element not found" );
-  if (ytShorts === null) throw new Error( "Video not found" );
+  if (!overlayElement) throw new Error("Overlay element not found");
+  if (ytShorts === null) throw new Error("Video not found");
 
   //[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay
   const progressBar = getProgressBarList() as HTMLElement; // ? the progressbar itself
