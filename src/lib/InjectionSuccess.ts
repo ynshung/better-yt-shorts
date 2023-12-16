@@ -27,7 +27,6 @@ export function injectItems(
   // eslint-disable-next-line prettier/prettier
   let injectionState = findInjectionStateInSet(id, state.injectedItems as Set<InjectionState>);
   let isNewState = false;
-
   if (injectionState === null) {
     // eslint-disable-next-line prettier/prettier
     injectionState = createNewInjectionState(id, state, settings, options, features);
