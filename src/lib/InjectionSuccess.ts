@@ -1,16 +1,17 @@
 import { populateActionElement } from "./ActionElement";
-import { setPlaybackRate, setTimer } from "./PlaybackRate";
 import { modifyProgressBar } from "./ProgressBar";
 import { setInfo } from "./Info";
 import { setVolumeSlider } from "./VolumeSlider";
 import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
-import { getCurrentId, getVideo } from "./getters";
+import { getCurrentId } from "./getters";
 import { injectEventsToExistingElements } from "./Events";
-
-export function registerInjection(state: StateObject) {
-  const id = getCurrentId();
-  if (id !== null) (state.injectedItems as Set<number>).add(id);
-}
+import {
+  InjectionItemsEnum,
+  InjectionState,
+  InjectionStateUnit,
+  findInjectionStateInSet,
+} from "./InjectionState";
+import { isVideoPlaying } from "./VideoState";
 
 export function injectItems(
   state: StateObject,
@@ -19,38 +20,59 @@ export function injectItems(
   features: BooleanDictionary,
 ) {
   state.lastTime = -1;
-
-  injectEventsToExistingElements();
-  populateActionElement(state, settings, features);
-  modifyProgressBar(features["progressBar"]);
-  setVolumeSlider(
-    state,
-    settings,
-    options["showVolumeHorizontally"] as boolean,
-    features["volumeSlider"],
-  );
-  setInfo(features);
-
-  registerInjection(state);
-}
-
-export function injectionWasRegistered(state: StateObject) {
   const id = getCurrentId();
-  if (id === null) return false;
-  return (state.injectedItems as Set<number>).has(id);
-}
+  if (id === null) return;
+  if (!isVideoPlaying()) return;
 
-export function checkForInjectionSuccess(
-  state: StateObject,
-  features: BooleanDictionary,
-) {
-  // If failed, retry injection during next interval
-  if (!setTimer(state, features["timer"])) {
-    const id = getCurrentId();
-    if (id !== null) (state.injectedItems as Set<number>).delete(id);
+  // eslint-disable-next-line prettier/prettier
+  let injectionState = findInjectionStateInSet(id, state.injectedItems as Set<InjectionState>);
+  let isNewState = false;
+
+  if (injectionState === null) {
+    // eslint-disable-next-line prettier/prettier
+    injectionState = createNewInjectionState(id, state, settings, options, features);
+    isNewState = true;
   }
 
-  state.lastTime = state.currTime;
+  injectionState.injectRemainingItems();
+
+  // eslint-disable-next-line prettier/prettier
+  if (isNewState) {
+    (state.injectedItems as Set<InjectionState>)?.add(injectionState);
+  }
+}
+
+function createNewInjectionState(
+  id: number,
+  state: StateObject,
+  settings: { [x: string]: string | number | boolean },
+  options: any,
+  features: BooleanDictionary,
+) {
+  // eslint-disable-next-line prettier/prettier
+  return new InjectionState(
+    id,
+    new InjectionStateUnit(InjectionItemsEnum.ACTION_ELEMENT, () => {
+      populateActionElement(state, settings, features);
+    }),
+    new InjectionStateUnit(InjectionItemsEnum.EXISTING_EVENTS, () => {
+      injectEventsToExistingElements();
+    }),
+    new InjectionStateUnit(InjectionItemsEnum.PROGRESS_BAR, () => {
+      modifyProgressBar(features["progressBar"]);
+    }),
+    new InjectionStateUnit(InjectionItemsEnum.VOLUME_SLIDER, () => {
+      setVolumeSlider(
+        state,
+        settings,
+        options["showVolumeHorizontally"],
+        features["volumeSlider"],
+      );
+    }),
+    new InjectionStateUnit(InjectionItemsEnum.INFO, () => {
+      setInfo(features);
+    }),
+  );
 }
 
 export function handleInjectionChecks(
@@ -59,16 +81,5 @@ export function handleInjectionChecks(
   options: PolyDictionary,
   features: BooleanDictionary,
 ) {
-  const ytShorts = getVideo();
-  if (ytShorts === null) return;
-
-  state.currTime = Math.round(ytShorts.currentTime);
-
-  if (!injectionWasRegistered(state))
-    return injectItems(state, settings, options, features);
-
-  if (state.currTime !== state.lastTime)
-    checkForInjectionSuccess(state, features);
-
-  setPlaybackRate(state);
+  injectItems(state, settings, options, features);
 }

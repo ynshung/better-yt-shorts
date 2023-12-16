@@ -25,6 +25,7 @@ import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay";
 import { handleAutomaticallyOpenComments } from "./lib/AutomaticallyOpenComments";
 import { handleProgressBarNotAppearing } from "./lib/ProgressBar";
 import { handleHideShortsOverlay } from "./lib/HideShortsOverlay";
+import { setTimer } from "./lib/PlaybackRate";
 
 /**
  * content.ts
@@ -104,6 +105,7 @@ function main() {
   // video has to have been playing to skip.
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
   if (isVideoPlaying()) {
+    setTimer(state, features["timer"]);
     handleSkipShortsWithLowLikes(state, options);
     handleAutomaticallyOpenComments(state, options); // dev note: the implementation of this feature is a good starting point to figure out how to format your own
   }

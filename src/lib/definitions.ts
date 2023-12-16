@@ -1,3 +1,5 @@
+import { InjectionState } from "./InjectionState";
+
 export type NumberDictionary = {
   [key: string]: number;
 };
@@ -23,7 +25,7 @@ export type IconDictionary = {
 };
 
 export interface StateObject {
-  [key: string]: string | boolean | number | Set<number> | null;
+  [key: string]: string | boolean | number | Set<InjectionState> | null;
 }
 
 export interface OptionsDictionary {

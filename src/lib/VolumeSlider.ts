@@ -19,12 +19,14 @@ export function checkVolume(settings: PolyDictionary, sliderEnabled: boolean) {
   else settings.volume = ytShorts.volume;
 }
 
-// todo  - move this to its own lib script (probably call it volumeSlider.ts)
 export function setVolume(
   settings: PolyDictionary,
   newVolume: number,
   enabled: boolean,
 ) {
+  newVolume = newVolume > 1 ? 1 : newVolume;
+  newVolume = newVolume < 0 ? 0 : newVolume;
+
   settings.volume = newVolume;
 
   const volumeSliderController =
@@ -60,6 +62,7 @@ export function setVolumeSlider(
   if (!enabled) return;
 
   const id = getCurrentId();
+  if (id === null) throw new Error("ID not found");
 
   const volumeContainer = getVolumeContainer();
   // const slider = document.createElement("input")
