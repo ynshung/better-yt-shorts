@@ -7,8 +7,8 @@ export function modifyProgressBar(enabled: boolean) {
   const overlayElement = getOverlayElement();
   const ytShorts = getVideo();
 
-  if (!overlayElement) return;
-  if (ytShorts === null) return;
+  if (!overlayElement) throw new Error("Overlay element not found");
+  if (ytShorts === null) throw new Error("Video not found");
 
   //[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay
   const progressBar = getProgressBarList() as HTMLElement; // ? the progressbar itself
@@ -52,7 +52,7 @@ function addListeners({
   tooltip,
 }: ListenerProps) {
   const ytShorts = getVideo();
-  if (ytShorts === null) return;
+  if (ytShorts === null) throw new Error();
 
   progressBar.addEventListener("mouseover", () => {
     pbBackground.classList.add("betterYT-progress-bar-hover");

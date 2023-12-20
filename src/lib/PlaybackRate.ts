@@ -22,6 +22,8 @@ export function setTimer(state: StateObject, timerEnabled: boolean) {
 
   if (!timerEnabled && timerElement) return true;
 
+  state.currTime = Math.floor(ytShorts.currentTime);
+
   timerElement.innerText = `${state.currTime}/${Math.round(
     ytShorts.duration,
   )}s`;

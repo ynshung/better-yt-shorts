@@ -15,10 +15,10 @@ export function populateActionElement(
   const actionElement = getActionElement();
   const ytShorts = getVideo();
 
-  if (!actionElement) return;
-  if (!ytShorts) return;
+  if (!actionElement) throw new Error("Action element not found");
+  if (!ytShorts) throw new Error("Video not found");
 
-  // adsu - idk how any of this works so im just going to leave it be
+  // adsu- idk how any of this works so im just going to leave it be
   const betterYTContainer = document.createElement("div");
   betterYTContainer.id = "betterYT-container";
   betterYTContainer.setAttribute(
@@ -91,7 +91,6 @@ export function populateActionElement(
     ytShorts.playbackRate = state.playbackRate as number;
 
   setPlaybackRate(state);
-  // injectedSuccess = setTimer( currTime || 0, Math.round(ytShorts.duration || 0))
 
   betterYTContainer.addEventListener("click", () => {
     const index = CYCLABLE_PLAYBACK_RATES.indexOf(ytShorts.playbackRate);
