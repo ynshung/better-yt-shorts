@@ -53,6 +53,7 @@ export const DEFAULT_OPTIONS: PolyDictionary = {
   automaticallyOpenComments: false,
   hideShortsOverlay: false,
   showVolumeHorizontally: false,
+  defaultPlaybackRate: 1,
 };
 
 export const OPTIONS_ORDER: string[] = [
@@ -62,6 +63,7 @@ export const OPTIONS_ORDER: string[] = [
   "skipThreshold",
   "hideShortsOverlay",
   "showVolumeHorizontally",
+  "defaultPlaybackRate",
 ];
 
 export const OPTION_DICTIONARY: OptionsDictionary = {
@@ -92,6 +94,12 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   showVolumeHorizontally: {
     desc: local("showVolumeHorizontally"),
     type: "checkbox",
+  },
+  defaultPlaybackRate: {
+    desc: local("defaultPlaybackRate"),
+    type: "number",
+    min: 0.25,
+    max: 16,
   },
 };
 

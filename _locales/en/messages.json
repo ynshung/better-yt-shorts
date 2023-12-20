@@ -136,6 +136,9 @@
   "showVolumeHorizontally": {
     "message": "Show volume slider horizontally instead of vertically"
   },
+  "defaultPlaybackRate": {
+    "message": "Change the default playback rate when you first open the shorts page"
+  },
   "toggleFeatures": {
     "message": "Toggle Features"
   },
