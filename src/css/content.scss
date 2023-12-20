@@ -150,6 +150,10 @@ input:checked + .autoplay-slider:before {
     padding-bottom: 16px;
   }
 }
+#shorts-player>div>video
+{
+  position: relative;
+}
 
 .betterYT-progress-bar {
   bottom: 0;

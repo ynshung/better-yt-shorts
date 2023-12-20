@@ -1,5 +1,6 @@
 import BROWSER from "../background/browser";
 import local from "../background/i18n";
+import { InjectionState } from "./InjectionState";
 import {
   BooleanDictionary,
   NumberDictionary,
@@ -145,7 +146,7 @@ export const DEFAULT_STATE: StateObject = {
   lastTime: -1, // ? this is for checking if items were injected
   openedCommentsId: -1,
 
-  injectedItems: new Set(),
+  injectedItems: new Set<InjectionState>(),
 
   actualVolume: null,
   skippedId: null,
