@@ -58,13 +58,13 @@ export const DEFAULT_OPTIONS: PolyDictionary = {
 };
 
 export const OPTIONS_ORDER: string[] = [
+  "defaultPlaybackRate",
   "seekAmount",
   "automaticallyOpenComments",
   "skipEnabled",
   "skipThreshold",
   "hideShortsOverlay",
   "showVolumeHorizontally",
-  "defaultPlaybackRate",
 ];
 
 export const OPTION_DICTIONARY: OptionsDictionary = {
