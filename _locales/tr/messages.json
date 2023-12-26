@@ -26,7 +26,7 @@
     "message": "Bir tuşa basınız"
   },
   "disabled": {
-    "message": "<engelli>"
+    "message": "<devre dışı>"
   },
   "notSupportKeyCombo": {
     "message": "Tuş kombinasyonları desteklenmiyor"
@@ -154,5 +154,14 @@
   },
   "hideShortsOverlayTitle": {
     "message": "Shortlardaki ek sayfayı gizle (başlık, kanal, vb)"
+  },
+  "uploadDate": {
+    "message": "Yükleme Tarihi"
+  },
+  "showVolumeHorizontally": {
+    "message": "Ses düzeyi ayarlayıcısını dikey yerine yatay olarak göster"
+  },
+  "toggleFullScreen": {
+    "message": "Tam Ekran Aç/Kapa"
   }
 }
