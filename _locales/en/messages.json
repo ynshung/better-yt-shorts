@@ -136,6 +136,9 @@
   "showVolumeHorizontally": {
     "message": "Show volume slider horizontally instead of vertically"
   },
+  "defaultPlaybackRate": {
+    "message": "Default playback rate"
+  },
   "toggleFeatures": {
     "message": "Toggle Features"
   },

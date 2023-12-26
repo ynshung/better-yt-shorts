@@ -1,0 +1,172 @@
+{
+  "extName": {
+    "message": "Better YouTube Shorts",
+    "description": "Name of the extension"
+  },
+  "extDescription": {
+    "message": "YouTube Shorts에서 재생, 볼륨, 진행 표시줄 등을 컨트롤할 수 있습니다.",
+    "description": "Description of the extension"
+  },
+  "announcement": {
+    "message": "BYS 번역에 도움을 주세요!",
+    "description": "Announcement which will update from time to time"
+  },
+
+  "website": {
+    "message": "웹사이트"
+  },
+
+  "keybinds": {
+    "message": "단축키 설정"
+  },
+  "command": {
+    "message": "내용"
+  },
+  "key": {
+    "message": "단축키"
+  },
+  "pressKeybinds": {
+    "message": "원하는 키를 누르세요"
+  },
+  "pressAKey": {
+    "message": "키를 누르세요"
+  },
+  "disabled": {
+    "message": "<비활성화됨>"
+  },
+  "notSupportKeyCombo": {
+    "message": "키 조합을 지원하지 않습니다"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" 사용 가능합니다"
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" 사용할 수 없습니다"
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" 이미 사용 중입니다"
+  },
+  "disableKeybind": {
+    "message": "\"$1\" 비활성화되었습니다"
+  },
+  "editBinding": {
+    "message": "다음 단축키를 수정하세요: "
+  },
+  "keybindDisabled": {
+    "message": "단축키가 현재 비활성화 상태입니다"
+  },
+  "currentKeybind": {
+    "message": "현재 단축키는 $1입니다"
+  },
+  "confirm": {
+    "message": "확인"
+  },
+  "disableBind": {
+    "message": "단축키 비활성화"
+  },
+
+  "resetKB": {
+    "message": "단축키 전체 초기화"
+  },
+  "seekBackward": {
+    "message": "뒤로 탐색"
+  },
+  "seekForward": {
+    "message": "앞으로 탐색"
+  },
+  "decreaseSpeed": {
+    "message": "배속 감소"
+  },
+  "resetSpeed": {
+    "message": "일반 배속"
+  },
+  "increaseSpeed": {
+    "message": "배속 증가"
+  },
+  "decreaseVolume": {
+    "message": "볼륨 감소"
+  },
+  "increaseVolume": {
+    "message": "볼륨 증가"
+  },
+  "toggleMute": {
+    "message": "음소거 전환"
+  },
+  "toggleFullScreen": {
+    "message": "전체 화면 전환"
+  },
+  "nextFrame": {
+    "message": "다음 프레임"
+  },
+  "previousFrame": {
+    "message": "이전 프레임"
+  },
+  "restartShort": {
+    "message": "영상 재시작"
+  },
+  "nextShort": {
+    "message": "다음 영상"
+  },
+  "previousShort": {
+    "message": "이전 영상"
+  },
+
+  "extraOptions": {
+    "message": "추가 옵션"
+  },
+  "resetOptions": {
+    "message": "옵션 초기화"
+  },
+
+  "autoSkipTitle": {
+    "message": "좋아요가 적은 영상 자동 건너뛰기"
+  },
+  "skipThresholdTitle": {
+    "message": "이보다 좋아요가 적은 영상 건너뛰기"
+  },
+  "seekAmountTitle": {
+    "message": "초 단위로 이동하는 양"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "새 영상에서 댓글 자동 열기"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "영상 정보 표시 숨기기 (제목, 채널 등)"
+  },
+  "showVolumeHorizontally": {
+    "message": "볼륨 막대를 수평으로 표시하기"
+  },
+  "toggleFeatures": {
+    "message": "기능 사용 여부"
+  },
+  "changesAffectNewShorts": {
+    "message": "변경 사항은 새 영상에만 적용됩니다"
+  },
+  "enableAll": {
+    "message": "모두 사용"
+  },
+  "disableAll": {
+    "message": "모두 비활성화"
+  },
+  "autoplay": {
+    "message": "자동 재생"
+  },
+  "progressBar": {
+    "message": "진행 표시줄"
+  },
+  "timer": {
+    "message": "타이머"
+  },
+  "playbackRate": {
+    "message": "재생 속도"
+  },
+  "volumeSlider": {
+    "message": "볼륨 막대"
+  },
+  "uploadDate": {
+    "message": "업로드 날짜"
+  },
+  "enable": {
+    "message": "$1 사용"
+  }
+}

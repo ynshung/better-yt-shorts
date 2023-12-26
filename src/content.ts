@@ -61,6 +61,10 @@ retrieveKeybindsFromStorage((newBinds) => {
 });
 retrieveOptionsFromStorage((newOpts) => {
   options = newOpts;
+
+  // set the default playback rate here
+  if (typeof options["defaultPlaybackRate"] !== "number") return;
+  state.playbackRate = options["defaultPlaybackRate"];
 });
 retrieveSettingsFromStorage((newSettings) => {
   settings = newSettings;
