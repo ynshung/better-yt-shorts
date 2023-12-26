@@ -7,15 +7,9 @@
     "message": "再生、音量、シークバーなど、YouTube Shortsのコントロールを取り戻しましょう！",
     "description": "Description of the extension"
   },
-  "announcement": {
-    "message": "拡張機能の翻訳にご協力ください!",
-    "description": "Announcement which will update from time to time"
-  },
-
   "website": {
     "message": "GitHub🔗"
   },
-
   "keybinds": {
     "message": "ショートカットキー"
   },
@@ -64,7 +58,6 @@
   "disableBind": {
     "message": "無効"
   },
-
   "resetKB": {
     "message": "リセット"
   },
@@ -107,14 +100,12 @@
   "previousShort": {
     "message": "前のショート"
   },
-
   "extraOptions": {
     "message": "高度なオプション"
   },
   "resetOptions": {
     "message": "リセット"
   },
-
   "autoSkipTitle": {
     "message": "高評価が少ないショートをスキップ"
   },
@@ -127,10 +118,6 @@
   "automaticallyOpenCommentsTitle": {
     "message": "自動的にコメントを開く"
   },
-  "hideShortsOverlayTitle": {
-    "message": "タイトルやチャンネルなどの詳細を隠す"
-  },
-
   "toggleFeatures": {
     "message": "機能"
   },
@@ -160,5 +147,21 @@
   },
   "enable": {
     "message": "$1 を有効にする"
+  },
+  "announcement": {
+    "message": "拡張機能の翻訳にご協力ください!",
+    "description": "Announcement which will update from time to time"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "タイトルやチャンネルなどの詳細を隠す"
+  },
+  "uploadDate": {
+    "message": "アップロード日"
+  },
+  "showVolumeHorizontally": {
+    "message": "音量バーを垂直から水平にする"
+  },
+  "toggleFullScreen": {
+    "message": "全画面切り替え"
   }
 }
