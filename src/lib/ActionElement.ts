@@ -87,8 +87,9 @@ export function populateActionElement(
 
   createAutoplaySwitch(settings, features["autoplay"]);
 
-  if (features["playbackRate"])
+  if (features["playbackRate"]) {
     ytShorts.playbackRate = state.playbackRate as number;
+  }
 
   setPlaybackRate(state);
 
