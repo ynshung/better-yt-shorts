@@ -1,0 +1,175 @@
+{
+  "extName": {
+    "message": "Mejores YouTube Shorts",
+    "description": "Nombre de la extensión"
+  },
+  "extDescription": {
+    "message": "Recupera el control en YouTube Shorts con ajustes de reproducción, volumen, barra de progreso y más.",
+    "description": "Descripción de la extensión"
+  },
+  "announcement": {
+    "message": "¡Ayúdanos a traducir BYS!",
+    "description": "Anuncio que se actualizará de vez en cuando"
+  },
+
+  "website": {
+    "message": "Sitio web"
+  },
+
+  "keybinds": {
+    "message": "Atajos de teclado"
+  },
+  "command": {
+    "message": "Comando"
+  },
+  "key": {
+    "message": "Tecla"
+  },
+  "pressKeybinds": {
+    "message": "Presiona la tecla deseada"
+  },
+  "pressAKey": {
+    "message": "Presiona una tecla"
+  },
+  "disabled": {
+    "message": "<deshabilitado>"
+  },
+  "notSupportKeyCombo": {
+    "message": "No admite combinaciones de teclas"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" se puede utilizar."
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" no se puede utilizar."
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" ya está en uso."
+  },
+  "disableKeybind": {
+    "message": "\"$1\" fue deshabilitado."
+  },
+  "editBinding": {
+    "message": "Editar atajo para "
+  },
+  "keybindDisabled": {
+    "message": "El atajo de teclado está actualmente deshabilitado."
+  },
+  "currentKeybind": {
+    "message": "El atajo actual es $1."
+  },
+  "confirm": {
+    "message": "Confirmar"
+  },
+  "disableBind": {
+    "message": "Desactivar Atajo"
+  },
+
+  "resetKB": {
+    "message": "Restablecer Atajos de Teclado"
+  },
+  "seekBackward": {
+    "message": "Retroceder"
+  },
+  "seekForward": {
+    "message": "Avanzar"
+  },
+  "decreaseSpeed": {
+    "message": "Reducir Velocidad"
+  },
+  "resetSpeed": {
+    "message": "Restablecer Velocidad"
+  },
+  "increaseSpeed": {
+    "message": "Aumentar Velocidad"
+  },
+  "decreaseVolume": {
+    "message": "Reducir Volumen"
+  },
+  "increaseVolume": {
+    "message": "Aumentar Volumen"
+  },
+  "toggleMute": {
+    "message": "Activar/Desactivar Silencio"
+  },
+  "toggleFullScreen": {
+    "message": "Activar/Desactivar Pantalla Completa"
+  },
+  "nextFrame": {
+    "message": "Siguiente Fotograma"
+  },
+  "previousFrame": {
+    "message": "Fotograma Anterior"
+  },
+  "restartShort": {
+    "message": "Reiniciar Short"
+  },
+  "nextShort": {
+    "message": "Siguiente Short"
+  },
+  "previousShort": {
+    "message": "Short Anterior"
+  },
+
+  "extraOptions": {
+    "message": "Opciones Adicionales"
+  },
+  "resetOptions": {
+    "message": "Restablecer Opciones"
+  },
+
+  "autoSkipTitle": {
+    "message": "Saltar automáticamente shorts con menos likes"
+  },
+  "skipThresholdTitle": {
+    "message": "Saltar shorts con menos de esta cantidad de likes"
+  },
+  "seekAmountTitle": {
+    "message": "Cantidad de búsqueda en segundos"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "Abrir automáticamente los comentarios en nuevos shorts"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "Ocultar la superposición en shorts (título, canal, etc.)"
+  },
+  "showVolumeHorizontally": {
+    "message": "Mostrar el control de volumen horizontalmente en lugar de verticalmente"
+  },
+  "defaultPlaybackRate": {
+    "message": "Velocidad de reproducción predeterminada"
+  },
+  "toggleFeatures": {
+    "message": "Alternar Funciones"
+  },
+  "changesAffectNewShorts": {
+    "message": "Los cambios solo afectarán a los nuevos Shorts"
+  },
+  "enableAll": {
+    "message": "Habilitar Todo"
+  },
+  "disableAll": {
+    "message": "Deshabilitar Todo"
+  },
+  "autoplay": {
+    "message": "Reproducción automática"
+  },
+  "progressBar": {
+    "message": "Barra de progreso"
+  },
+  "timer": {
+    "message": "Temporizador"
+  },
+  "playbackRate": {
+    "message": "Velocidad de reproducción"
+  },
+  "volumeSlider": {
+    "message": "Control de volumen"
+  },
+  "uploadDate": {
+    "message": "Fecha de subida"
+  },
+  "enable": {
+    "message": "Habilitar $1"
+  }
+}
