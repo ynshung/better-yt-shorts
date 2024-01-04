@@ -34,10 +34,11 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 Extra features:
 
 - Start short from beginning with J
+- Go to the next or previous frame of the video
+- Set default playback rate when first opening shorts
 - Auto skip short with likes below custom threshold (e.g. 500 likes)
 - Auto open comment section on each short
 - Hide overlay on shorts (title, channel, etc.)
-- Navigate to previous or next short without animation with W and S
 - Go to the next frame or previous frame with . and , while paused
 - Upload date above video title
 
@@ -57,7 +58,6 @@ Extra features:
 | Decrease Volume     | Minus      |
 | Increase Volume     | Equal      |
 | Toggle Full Screen  | KeyF       |
-| Toggle Mute         | KeyM       |
 | Restart Short       | KeyJ       |
 | Next Frame          |            |
 | Previous Frame      |            |
@@ -72,7 +72,7 @@ All type of contributions are welcome. You may contribute by reporting bugs, sug
 
 ### Translation
 
-Know multiple languages? Help translate the extension so we can have a reach worldwide! See the list of supported locales [here](https://developer.chrome.com/docs/webstore/i18n/#choosing-locales-to-support). You can translate the extension itself or the store listing description which is under the `store-desc/` directory.
+Know multiple languages? Help translate the extension so we can have a reach worldwide! See the list of supported locales [here](https://developer.chrome.com/docs/extensions/reference/api/i18n#locales). You can translate the extension itself or the store listing description which is under the `store-desc/` directory.
 
 #### For beginners
 
@@ -91,6 +91,8 @@ You can also add help translate the **store listing description** by emailing @y
 ### Issues / Suggestion
 
 If you have faced any issue with the extension or any suggestion that can help to improve the extension, you may create an issue [here](https://github.com/ynshung/better-yt-shorts/issues) or if you know how to code, fork the repo, make the necessary changes and create a pull request.
+
+Check for existing issues to avoid duplicates. For better reporting, check the Console (F12 > Console) for any related error which can be included in your report.
 
 You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfwyALfA).
 
