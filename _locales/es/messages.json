@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "Better YouTube Shorts",
+    "message": "Mejores YouTube Shorts",
     "description": "Nombre de la extensión"
   },
   "extDescription": {
@@ -102,13 +102,13 @@
     "message": "Fotograma Anterior"
   },
   "restartShort": {
-    "message": "Reiniciar Corto"
+    "message": "Reiniciar Short"
   },
   "nextShort": {
-    "message": "Siguiente Corto"
+    "message": "Siguiente Short"
   },
   "previousShort": {
-    "message": "Corto Anterior"
+    "message": "Short Anterior"
   },
 
   "extraOptions": {
@@ -167,7 +167,7 @@
     "message": "Control de volumen"
   },
   "uploadDate": {
-    "message": "Fecha de carga"
+    "message": "Fecha de subida"
   },
   "enable": {
     "message": "Habilitar $1"
