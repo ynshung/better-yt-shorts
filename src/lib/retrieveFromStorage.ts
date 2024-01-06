@@ -17,7 +17,7 @@ export async function retrieveOptionsFromStorage(
   const localStorageOptions = JSON.parse(
     localStorage.getItem("yt-extraopts") as string,
   );
-  setter(localStorageOptions);
+  if (localStorageOptions) setter(localStorageOptions);
 
   storage
     .get(["extraopts"])
