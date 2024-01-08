@@ -55,10 +55,12 @@ export const DEFAULT_OPTIONS: PolyDictionary = {
   hideShortsOverlay: false,
   showVolumeHorizontally: false,
   defaultPlaybackRate: 1,
+  fullScreenDoubleClick: true,
 };
 
 export const OPTIONS_ORDER: string[] = [
   "defaultPlaybackRate",
+  "fullScreenDoubleClick",
   "seekAmount",
   "automaticallyOpenComments",
   "skipEnabled",
@@ -101,6 +103,10 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
     type: "number",
     min: 0.25,
     max: 16,
+  },
+  fullScreenDoubleClick: {
+    desc: local("fullScreenDoubleClick"),
+    type: "checkbox",
   },
 };
 

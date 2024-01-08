@@ -53,7 +53,7 @@ function createNewInjectionState(
       populateActionElement(state, settings, features);
     }),
     new InjectionStateUnit(InjectionItemsEnum.EXISTING_EVENTS, () => {
-      injectEventsToExistingElements();
+      injectEventsToExistingElements(options);
     }),
     new InjectionStateUnit(InjectionItemsEnum.PROGRESS_BAR, () => {
       modifyProgressBar(features["progressBar"]);
