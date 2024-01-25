@@ -134,7 +134,8 @@ export function getOverlay() {
 
 export function getUploadDate() {
   return (
-    document.querySelector("#factoids ytd-factoid-renderer:nth-child(2) div")
-      ?.textContent ?? ""
+    document
+      .querySelector("#factoids ytd-factoid-renderer:nth-child(2) div")
+      ?.getAttribute("aria-label") ?? ""
   );
 }
