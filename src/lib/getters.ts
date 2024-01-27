@@ -60,8 +60,9 @@ export const getActionElement = () =>
   ) as HTMLElement;
 
 export function getOverlayElement() {
+  // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > div > #overlay`,
   return document.querySelector(
-    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay`,
+    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > div > #overlay`,
   ) as HTMLElement;
 }
 
