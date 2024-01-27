@@ -83,7 +83,7 @@ export function populateActionElement(
   ytdButtonRenderer.appendChild(ytButtonShape);
   betterYTContainer.appendChild(ytdButtonRenderer);
 
-  actionElement.insertBefore(betterYTContainer, actionElement.children[1]);
+  actionElement.insertBefore(betterYTContainer, actionElement.children[0]);
 
   createAutoplaySwitch(settings, features["autoplay"]);
 
