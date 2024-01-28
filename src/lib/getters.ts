@@ -55,15 +55,15 @@ export const getCommentCount = (id: number | null) => {
 };
 
 export const getActionElement = () =>
-  // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #actions`,
+  // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer #actions`,
   document.querySelector(
-    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > div > #actions`,
+    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer #actions`,
   ) as HTMLElement;
 
 export function getOverlayElement() {
-  // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > div > #overlay`,
+  // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #overlay`,
   return document.querySelector(
-    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > div > #overlay`,
+    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #overlay`,
   ) as HTMLElement;
 }
 
