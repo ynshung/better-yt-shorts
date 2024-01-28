@@ -13,14 +13,14 @@ export function setInfo(features: BooleanDictionary) {
     }
 
     const overlayElement = getOverlayElement();
-    const h3 = document.createElement("h3");
-    h3.id = `ytViews${getCurrentId()}`;
-    h3.innerText = info.join(" | ");
+    const h5 = document.createElement("h5");
+    h5.id = `ytViews${getCurrentId()}`;
+    h5.innerText = info.join(" | ");
     overlayElement
-      .querySelector("ytd-reel-player-header-renderer a")
-      ?.prepend(h3);
+      .querySelector("ytd-reel-player-header-renderer h2")
+      ?.prepend(h5);
     clearInterval(views_interval);
   };
 
-  const views_interval = setInterval(addInfo, 10);
+  const views_interval = setInterval(addInfo, 100);
 }
