@@ -53,7 +53,7 @@ export function createAutoplaySwitch(
     </div>
   `);
 
-  actionElement.insertBefore(autoplaySwitch, actionElement.children[1]);
+  actionElement.insertBefore(autoplaySwitch, actionElement.children[0]);
 
   document
     .getElementById(`autoplay-checkbox${getCurrentId()}`)
