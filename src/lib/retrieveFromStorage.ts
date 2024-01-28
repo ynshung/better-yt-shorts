@@ -28,7 +28,7 @@ export async function retrieveOptionsFromStorage(
         );
 
       for (const [option, value] of Object.entries(DEFAULT_OPTIONS)) {
-        if (extraopts[option]) continue; // * this may be an issue later on if we WANT falsy values as viable values
+        if (extraopts[option] !== null) continue;
         extraopts[option] = value;
       }
 

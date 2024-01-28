@@ -171,5 +171,8 @@
   },
   "enable": {
     "message": "Enable $1"
+  },
+  "fullScreenDoubleClick": {
+    "message": "Double click to toggle full screen"
   }
 }
