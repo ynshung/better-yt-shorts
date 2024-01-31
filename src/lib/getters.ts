@@ -111,9 +111,7 @@ export function getVolumeSliderController() {
 }
 
 export function getProgressBarList() {
-  return document.querySelector(
-    `[id="${getCurrentId()}"] > div.short-video-container > #player-container > #progress-bar > ytd-progress-bar-line > #progress-bar-line`,
-  );
+  return document.querySelector(`[id="${getCurrentId()}"] #progress-bar-line`);
 }
 
 export function getMuteButton() {
