@@ -69,7 +69,7 @@ export function getOverlayElement() {
 
 export function getTitle() {
   return document.querySelector(
-    `[id="${getCurrentId()}"] h2.title`,
+    `[id="${getCurrentId()}"] h2.title > yt-formatted-string`,
   ) as HTMLElement;
 }
 
