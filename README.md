@@ -8,7 +8,7 @@
 [![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/pehohlhkhbcfdneocgnfbnilppmfncdg?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg)
 [![Firefox Add-on users](https://img.shields.io/amo/users/better-youtube-shorts?label=firefox)](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts)
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pehohlhkhbcfdneocgnfbnilppmfncdg)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![GitHub License](https://img.shields.io/github/license/ynshung/better-yt-shorts)
 
 </div>
 
@@ -18,6 +18,7 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 
 - Chrome Extension: https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg
 - Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
+- Edge Add-ons: https://microsoftedge.microsoft.com/addons/detail/better-youtube-shorts/encogpagbgkndaicddjpgogepdmfnokl
 
 ## Features
 
