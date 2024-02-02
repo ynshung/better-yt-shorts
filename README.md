@@ -10,8 +10,7 @@
 [![MS Edge Add-ons users](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fencogpagbgkndaicddjpgogepdmfnokl&query=activeInstallCount&logo=microsoftedge&label=edge&style=for-the-badge)](https://microsoftedge.microsoft.com/addons/detail/better-youtube-shorts/encogpagbgkndaicddjpgogepdmfnokl)
 <br/>
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pehohlhkhbcfdneocgnfbnilppmfncdg?style=for-the-badge)](https://chromewebstore.google.com/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg/reviews)
-[![GitHub repo file or directory count (in path)](https://img.shields.io/github/directory-file-count/ynshung/better-yt-shorts/_locales?type=dir&style=for-the-badge&label=language)
-](https://github.com/ynshung/better-yt-shorts?tab=readme-ov-file#translation)
+[![GitHub repo file or directory count (in path)](https://img.shields.io/github/directory-file-count/ynshung/better-yt-shorts/_locales?type=dir&style=for-the-badge&label=language)](https://github.com/ynshung/better-yt-shorts?tab=readme-ov-file#translation)
 [![GitHub License](https://img.shields.io/github/license/ynshung/better-yt-shorts?style=for-the-badge)](https://github.com/ynshung/better-yt-shorts/blob/master/LICENSE)
 
 </div>
