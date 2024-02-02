@@ -4,11 +4,15 @@
 
 # Better YouTube Shorts
 
-![Current Version](https://img.shields.io/amo/v/better-youtube-shorts?label=version)
-[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/pehohlhkhbcfdneocgnfbnilppmfncdg?label=chrome)](https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg)
-[![Firefox Add-on users](https://img.shields.io/amo/users/better-youtube-shorts?label=firefox)](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts)
-![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pehohlhkhbcfdneocgnfbnilppmfncdg)
-![GitHub License](https://img.shields.io/github/license/ynshung/better-yt-shorts)
+[![Current Version](https://img.shields.io/amo/v/better-youtube-shorts?label=version&style=for-the-badge)](https://github.com/ynshung/better-yt-shorts/releases)
+[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/pehohlhkhbcfdneocgnfbnilppmfncdg?label=chrome&logo=googlechrome&logoColor=fff&style=for-the-badge)](https://chrome.google.com/webstore/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg)
+[![Firefox Add-on users](https://img.shields.io/amo/users/better-youtube-shorts?label=firefox&logo=firefox&logoColor=fff&style=for-the-badge)](https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts)
+[![MS Edge Add-ons users](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fencogpagbgkndaicddjpgogepdmfnokl&query=activeInstallCount&logo=microsoftedge&label=edge&style=for-the-badge)](https://microsoftedge.microsoft.com/addons/detail/better-youtube-shorts/encogpagbgkndaicddjpgogepdmfnokl)
+<br/>
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/pehohlhkhbcfdneocgnfbnilppmfncdg?style=for-the-badge)](https://chromewebstore.google.com/detail/better-youtube-shorts/pehohlhkhbcfdneocgnfbnilppmfncdg/reviews)
+[![GitHub repo file or directory count (in path)](https://img.shields.io/github/directory-file-count/ynshung/better-yt-shorts/_locales?type=dir&style=for-the-badge&label=language)
+](https://github.com/ynshung/better-yt-shorts?tab=readme-ov-file#translation)
+[![GitHub License](https://img.shields.io/github/license/ynshung/better-yt-shorts?style=for-the-badge)](https://github.com/ynshung/better-yt-shorts/blob/master/LICENSE)
 
 </div>
 
@@ -31,6 +35,7 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 - Toggle to auto skip short when current one ends
 - Control volume with the **volume slider** or with - and =, mute audio with M
 - **Customizable** keybinds
+- 🌐 Supports more than 10 languages!
 
 Extra features:
 
