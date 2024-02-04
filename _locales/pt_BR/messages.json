@@ -136,6 +136,9 @@
   "showVolumeHorizontally": {
     "message": "Mostrar barra de volume horizontalmente"
   },
+  "defaultPlaybackRate": {
+    "message": "Velocidade de Reprodução padrão"
+  },
   "toggleFeatures": {
     "message": "Recursos"
   },
@@ -168,5 +171,8 @@
   },
   "enable": {
     "message": "Habilitar $1"
+  },
+  "fullScreenDoubleClick": {
+    "message": "Clique duplo para tela cheia"
   }
 }
