@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "Daha İyi YouTube Shorts'ları",
+    "message": "Daha İyi YouTube Shorts",
     "description": "Uzantının ismi"
   },
   "extDescription": {
@@ -11,7 +11,7 @@
     "message": "Site"
   },
   "keybinds": {
-    "message": "Tuş Bağları"
+    "message": "Klavye Kısayolları"
   },
   "command": {
     "message": "Komut"
@@ -20,10 +20,10 @@
     "message": "Tuş"
   },
   "pressKeybinds": {
-    "message": "İstediğiniz tuşa basınız"
+    "message": "Atamak istediğiniz tuşa basın"
   },
   "pressAKey": {
-    "message": "Bir tuşa basınız"
+    "message": "Bir tuşa basın"
   },
   "disabled": {
     "message": "<devre dışı>"
@@ -38,28 +38,28 @@
     "message": "\"$1\" kullanılamaz"
   },
   "keyAlreadyInUse": {
-    "message": "\"$1\" kullanılmış"
+    "message": "\"$1\" zaten kullanılmış"
   },
   "disableKeybind": {
     "message": "\"$1\" devre dışı!"
   },
   "editBinding": {
-    "message": "Şu tuş için bağı düzenle "
+    "message": "Şu komut için kısayolu düzenle "
   },
   "keybindDisabled": {
-    "message": "Tuş bağı şu an devre dışı"
+    "message": "Kısayol şu an devre dışı"
   },
   "currentKeybind": {
-    "message": "Mevcut bağlantı $1"
+    "message": "Mevcut kısayol $1"
   },
   "confirm": {
     "message": "Onayla"
   },
   "disableBind": {
-    "message": "Bağı kopar"
+    "message": "Kısayolu kaldır"
   },
   "resetKB": {
-    "message": "Bağı sıfırla"
+    "message": "Kısayolları sıfırla"
   },
   "seekBackward": {
     "message": "Geri Sar"
@@ -77,13 +77,13 @@
     "message": "Hızı Artır"
   },
   "decreaseVolume": {
-    "message": "Sesi Azalt"
+    "message": "Sesi Alçalt"
   },
   "increaseVolume": {
-    "message": "Sesi Artır"
+    "message": "Sesi Yükselt"
   },
   "toggleMute": {
-    "message": "Ses Aç/Kapa"
+    "message": "Sesi Aç/Kapat"
   },
   "nextFrame": {
     "message": "Sonraki Kare"
@@ -107,28 +107,31 @@
     "message": "Ayarları Sıfırla"
   },
   "autoSkipTitle": {
-    "message": "Düşük beğenili shortları otomatik atla"
+    "message": "Düşük beğenili Shortları otomatik atla"
   },
   "skipThresholdTitle": {
-    "message": "Bu sayıdan daha az beğeni alan shortları atla"
+    "message": "Şu sayıdan daha az beğeni alan Shortları atla"
   },
   "seekAmountTitle": {
     "message": "Şu kadar saniye atla"
   },
   "automaticallyOpenCommentsTitle": {
-    "message": "Yeni shortlarda yorumları otomatik aç"
+    "message": "Yeni Shortlarda yorumları otomatik aç"
+  },
+  "defaultPlaybackRate": {
+    "message": "Varsayılan oynatma hızı"
   },
   "toggleFeatures": {
-    "message": "Özellikleri Aç/Kapa"
+    "message": "Özellikleri Aç/Kapat"
   },
   "changesAffectNewShorts": {
-    "message": "Değişiklikler yalnızca yeni Shorts'u etkileyecek"
+    "message": "Değişiklikler yalnızca yeni Shortları etkileyecek"
   },
   "enableAll": {
-    "message": "Hepsini aç"
+    "message": "Hepsini Aç"
   },
   "disableAll": {
-    "message": "Hepsini Kapa"
+    "message": "Hepsini Kapat"
   },
   "autoplay": {
     "message": "Otomatik Oynat"
@@ -137,13 +140,13 @@
     "message": "İlerleme Çubuğu"
   },
   "timer": {
-    "message": "Zamanlayıcı"
+    "message": "Oynatma Çubuğu"
   },
   "playbackRate": {
     "message": "Oynatma Hızı"
   },
   "volumeSlider": {
-    "message": "Ses Düzey Ayarı"
+    "message": "Ses Düzeyi Ayarlayıcısı"
   },
   "enable": {
     "message": "$1'i Aktif Et"
@@ -153,7 +156,7 @@
     "description": "Zaman zaman güncellenecek duyuru"
   },
   "hideShortsOverlayTitle": {
-    "message": "Shortlardaki ek sayfayı gizle (başlık, kanal, vb)"
+    "message": "Shortlardaki ek bilgileri gizle (başlık, kanal, vb)"
   },
   "uploadDate": {
     "message": "Yükleme Tarihi"
@@ -162,6 +165,9 @@
     "message": "Ses düzeyi ayarlayıcısını dikey yerine yatay olarak göster"
   },
   "toggleFullScreen": {
-    "message": "Tam Ekran Aç/Kapa"
+    "message": "Tam Ekranı Aç/Kapat"
+  },
+  "fullScreenDoubleClick": {
+    "message": "Tam ekrana geçmek için çift tıkla"
   }
 }
