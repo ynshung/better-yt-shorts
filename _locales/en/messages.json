@@ -166,6 +166,9 @@
   "volumeSlider": {
     "message": "Volume Slider"
   },
+  "viewCounter": {
+    "message": "View Counter"
+  },
   "uploadDate": {
     "message": "Upload Date"
   },

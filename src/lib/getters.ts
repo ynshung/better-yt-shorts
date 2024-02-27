@@ -132,10 +132,20 @@ export function getOverlay() {
   ) as HTMLElement;
 }
 
+export function getViews() {
+  return (
+    document
+      .querySelector(
+        "#factoids > view-count-factoid-renderer > factoid-renderer > div",
+      )
+      ?.getAttribute("aria-label") ?? ""
+  );
+}
+
 export function getUploadDate() {
   return (
     document
-      .querySelector("#factoids ytd-factoid-renderer:nth-child(2) div")
+      .querySelector("#factoids > factoid-renderer:nth-child(3) > div")
       ?.getAttribute("aria-label") ?? ""
   );
 }

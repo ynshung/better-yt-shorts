@@ -45,7 +45,7 @@ Extra features:
 - Auto open comment section on each short
 - Hide overlay on shorts (title, channel, etc.)
 - Go to the next frame or previous frame with . and , while paused
-- Upload date above video title
+- View counter and upload date above video title
 
 ### Screenshots
 

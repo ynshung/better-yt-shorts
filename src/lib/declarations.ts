@@ -173,6 +173,7 @@ export const DEFAULT_FEATURES: BooleanDictionary = {
   playbackRate: true,
   volumeSlider: true,
   keybinds: true,
+  viewCounter: true,
   uploadDate: true,
 };
 
@@ -183,6 +184,7 @@ export const FEATURES_ORDER: string[] = [
   "playbackRate",
   "volumeSlider",
   "keybinds",
+  "viewCounter",
   "uploadDate",
 ];
 
