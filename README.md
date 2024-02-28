@@ -49,7 +49,7 @@ Extra features:
 
 ### Screenshots
 
-![image](https://github.com/ynshung/better-yt-shorts/assets/61302840/448f4050-cc7f-4676-b072-8bf2771d4b59)
+![Better YouTube Shorts Screenshot](https://github.com/ynshung/better-yt-shorts/assets/61302840/089d602a-c594-49ab-bfe8-dfc00b8b1e34)
 
 ### Default Keybinds
 
