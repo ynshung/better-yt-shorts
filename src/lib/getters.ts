@@ -143,9 +143,16 @@ export function getViews() {
 }
 
 export function getUploadDate() {
+  const selector1 = document.querySelector(
+    "#factoids > factoid-renderer:nth-child(3) > div",
+  );
+  // Video that are recently uploaded have a different selector
+  const selector2 = document.querySelector(
+    "#factoids > upload-time-factoid-renderer > factoid-renderer > div",
+  );
   return (
-    document
-      .querySelector("#factoids > factoid-renderer:nth-child(3) > div")
-      ?.getAttribute("aria-label") ?? ""
+    selector1?.getAttribute("aria-label") ??
+    selector2?.getAttribute("aria-label") ??
+    null
   );
 }
