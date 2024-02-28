@@ -153,6 +153,6 @@ export function getUploadDate() {
   return (
     selector1?.getAttribute("aria-label") ??
     selector2?.getAttribute("aria-label") ??
-    null
+    ""
   );
 }
