@@ -50,11 +50,6 @@ function injectIfNotPresent(
   features: BooleanDictionary,
 ) {
   switch (item) {
-    case InjectionItemsEnum.EXISTING_EVENTS:
-      if (!checkForInjectionMarker(getActionElement()))
-        populateActionElement(state, settings, features);
-      break;
-
     case InjectionItemsEnum.ACTION_ELEMENT:
       if (!checkForInjectionMarker(getActionElement()))
         populateActionElement(state, settings, features);

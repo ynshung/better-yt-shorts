@@ -50,7 +50,6 @@ export enum ChangedObjectStateEnum {
 }
 
 export enum InjectionItemsEnum {
-  EXISTING_EVENTS = "Events",
   ACTION_ELEMENT = "Action Elements",
   PROGRESS_BAR = "Progress Bar",
   VOLUME_SLIDER = "Volume Slider",
