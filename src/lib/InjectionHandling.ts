@@ -1,6 +1,6 @@
 import { populateActionElement } from "./ActionElement";
 import { setInfo } from "./Info";
-import { InjectionItemsEnum } from "./InjectionState";
+import { InjectionItemsEnum } from "./definitions";
 import { modifyProgressBar } from "./ProgressBar";
 import { setVolumeSlider } from "./VolumeSlider";
 import { INJECTION_MARKER } from "./declarations";

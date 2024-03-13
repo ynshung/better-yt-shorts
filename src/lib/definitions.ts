@@ -1,5 +1,3 @@
-import { InjectionState } from "./InjectionState";
-
 export type NumberDictionary = {
   [key: string]: number;
 };
@@ -25,7 +23,7 @@ export type IconDictionary = {
 };
 
 export interface StateObject {
-  [key: string]: string | boolean | number | Set<InjectionState> | null;
+  [key: string]: string | boolean | number | null;
 }
 
 export interface OptionsDictionary {
@@ -49,4 +47,12 @@ export enum ChangedObjectStateEnum {
   OPTIONS,
   SETTINGS,
   FEATURES,
+}
+
+export enum InjectionItemsEnum {
+  EXISTING_EVENTS = "Events",
+  ACTION_ELEMENT = "Action Elements",
+  PROGRESS_BAR = "Progress Bar",
+  VOLUME_SLIDER = "Volume Slider",
+  INFO = "Info",
 }

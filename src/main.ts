@@ -4,7 +4,7 @@ import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay";
 import { injectEvents } from "./lib/Events";
 import { handleHideShortsOverlay } from "./lib/HideShortsOverlay";
 import { updateInfo } from "./lib/Info";
-import { injectItems } from "./lib/InjectionSuccess";
+import { injectItems } from "./lib/InjectionHandling";
 import { setTimer } from "./lib/PlaybackRate";
 import { handleProgressBarNotAppearing } from "./lib/ProgressBar";
 import { handleSkipShortsWithLowLikes } from "./lib/SkipShortsWithLowLikes";
