@@ -299,3 +299,5 @@ export const DISABLED_BIND_STRING = local("disabled");
 export const VOLUME_INCREMENT_AMOUNT = 0.025;
 
 export const CYCLABLE_PLAYBACK_RATES = [0.5, 1, 1.5, 2];
+
+export const INJECTION_MARKER = "bys-injection-marker";

@@ -1,3 +1,4 @@
+import { INJECTION_MARKER } from "./declarations";
 import { getOverlayElement, getProgressBarList, getVideo } from "./getters";
 import { render } from "./utils";
 
@@ -7,13 +8,15 @@ export function modifyProgressBar(enabled: boolean) {
   const overlayElement = getOverlayElement();
   const ytShorts = getVideo();
 
-  if (!overlayElement) throw new Error("Overlay element not found");
-  if (ytShorts === null) throw new Error("Video not found");
+  if (!overlayElement) return; // throw new Error("Overlay element not found");
+  if (ytShorts === null) return; // throw new Error("Video not found");
 
   //[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay
   const progressBar = getProgressBarList() as HTMLElement; // ? the progressbar itself
   const pbBackground = progressBar.children[0] as HTMLElement; // ? the grey background of the bar
   const pbForeground = progressBar.children[1] as HTMLElement; // ? The red part of the progress bar
+
+  progressBar.setAttribute(INJECTION_MARKER, ""); // ? for injection checks
 
   const subBox = overlayElement.children[1] as HTMLElement;
   const tooltip = render(
@@ -52,7 +55,7 @@ function addListeners({
   tooltip,
 }: ListenerProps) {
   const ytShorts = getVideo();
-  if (ytShorts === null) throw new Error();
+  if (ytShorts === null) return; // throw new Error();
 
   progressBar.addEventListener("mouseover", () => {
     pbBackground.classList.add("betterYT-progress-bar-hover");

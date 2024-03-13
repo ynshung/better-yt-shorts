@@ -1,16 +1,17 @@
 import { populateActionElement } from "./ActionElement";
-import { modifyProgressBar } from "./ProgressBar";
 import { setInfo } from "./Info";
+import { InjectionItemsEnum } from "./InjectionState";
+import { modifyProgressBar } from "./ProgressBar";
 import { setVolumeSlider } from "./VolumeSlider";
+import { INJECTION_MARKER } from "./declarations";
 import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
-import { getCurrentId } from "./getters";
-import { injectEventsToExistingElements } from "./Events";
 import {
-  InjectionItemsEnum,
-  InjectionState,
-  InjectionStateUnit,
-  findInjectionStateInSet,
-} from "./InjectionState";
+  getActionElement,
+  getCurrentId,
+  getInfoElement,
+  getProgressBarList,
+  getVolumeContainer,
+} from "./getters";
 
 export function injectItems(
   state: StateObject,
@@ -22,70 +23,60 @@ export function injectItems(
   const id = getCurrentId();
   if (id === null) return;
 
-  // eslint-disable-next-line prettier/prettier
-  let injectionState = findInjectionStateInSet(id, state.injectedItems as Set<InjectionState>);
-  let isNewState = false;
-  if (injectionState === null) {
-    // eslint-disable-next-line prettier/prettier
-    injectionState = createNewInjectionState(id, state, settings, options, features);
-    isNewState = true;
-  }
+  const items = Object.values(InjectionItemsEnum);
 
-  injectionState.injectRemainingItems();
-
-  // eslint-disable-next-line prettier/prettier
-  if (isNewState) {
-    (state.injectedItems as Set<InjectionState>)?.add(injectionState);
-  }
+  items.map((item) =>
+    injectIfNotPresent(item, state, settings, options, features),
+  );
 }
 
-function createNewInjectionState(
-  id: number,
+/**
+ * Returns true if the element has an injection marker (this should mean the item was injected)
+ * @param element The element that has the marker, generally on something with a getter function (like, say, getVideo())
+ */
+export function checkForInjectionMarker(element: Element | HTMLElement | null) {
+  return element !== null && element.hasAttribute(INJECTION_MARKER);
+}
+
+/**
+ * Switch case, checks if the given item was injected or not
+ * @param item
+ */
+function injectIfNotPresent(
+  item: string,
   state: StateObject,
-  settings: { [x: string]: string | number | boolean },
+  settings: PolyDictionary,
   options: PolyDictionary,
   features: BooleanDictionary,
 ) {
-  // eslint-disable-next-line prettier/prettier
-  return new InjectionState(
-    id,
-    new InjectionStateUnit(InjectionItemsEnum.ACTION_ELEMENT, () => {
-      populateActionElement(state, settings, features);
-    }),
-    new InjectionStateUnit(InjectionItemsEnum.EXISTING_EVENTS, () => {
-      injectEventsToExistingElements(options);
-    }),
-    new InjectionStateUnit(InjectionItemsEnum.PROGRESS_BAR, () => {
-      modifyProgressBar(features["progressBar"]);
-    }),
-    new InjectionStateUnit(InjectionItemsEnum.VOLUME_SLIDER, () => {
-      setVolumeSlider(
-        state,
-        settings,
-        options["showVolumeHorizontally"] as boolean,
-        features["volumeSlider"],
-      );
-    }),
-  );
-}
+  switch (item) {
+    case InjectionItemsEnum.EXISTING_EVENTS:
+      if (!checkForInjectionMarker(getActionElement()))
+        populateActionElement(state, settings, features);
+      break;
 
-export function injectInfoElement(
-  state: StateObject,
-  features: BooleanDictionary,
-) {
-  const id = getCurrentId();
-  if (id === null) return;
+    case InjectionItemsEnum.ACTION_ELEMENT:
+      if (!checkForInjectionMarker(getActionElement()))
+        populateActionElement(state, settings, features);
+      break;
 
-  const injectionState = findInjectionStateInSet(
-    id,
-    state.injectedItems as Set<InjectionState>,
-  );
+    case InjectionItemsEnum.PROGRESS_BAR:
+      if (!checkForInjectionMarker(getProgressBarList()))
+        modifyProgressBar(features["progressBar"]);
+      break;
 
-  if (injectionState === null) return;
+    case InjectionItemsEnum.VOLUME_SLIDER:
+      if (!checkForInjectionMarker(getVolumeContainer()))
+        setVolumeSlider(
+          state,
+          settings,
+          features["showVolumeHorizontally"],
+          features["volumeSlider"],
+        );
+      break;
 
-  injectionState.addUnit(
-    new InjectionStateUnit(InjectionItemsEnum.INFO, () => {
-      setInfo(features);
-    }),
-  );
+    case InjectionItemsEnum.INFO:
+      if (!checkForInjectionMarker(getInfoElement())) setInfo(features);
+      break;
+  }
 }
