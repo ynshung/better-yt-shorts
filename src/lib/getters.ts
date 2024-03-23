@@ -92,6 +92,10 @@ export function getBackButton() {
   ) as HTMLElement;
 }
 
+export function getInfoElement() {
+  return document.getElementById(`bys-ytViews${getCurrentId()}`) as HTMLElement;
+}
+
 export function getShortsContainer() {
   return document.getElementById("page-manager");
 }

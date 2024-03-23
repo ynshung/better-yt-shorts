@@ -1,13 +1,15 @@
-import { getCurrentId, getVideo } from "./lib/getters";
-import { handleSkipShortsWithLowLikes } from "./lib/SkipShortsWithLowLikes";
-import { injectInfoElement, injectItems } from "./lib/InjectionSuccess";
-import { hasVideoEnded, isVideoPlaying } from "./lib/VideoState";
-import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay";
+import { features, options, settings, state } from "./content";
 import { handleAutomaticallyOpenComments } from "./lib/AutomaticallyOpenComments";
-import { handleProgressBarNotAppearing } from "./lib/ProgressBar";
+import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay";
+import { injectEvents } from "./lib/Events";
 import { handleHideShortsOverlay } from "./lib/HideShortsOverlay";
+import { updateInfo } from "./lib/Info";
+import { injectItems } from "./lib/InjectionHandling";
 import { setTimer } from "./lib/PlaybackRate";
-import { state, features, options, settings } from "./content";
+import { handleProgressBarNotAppearing } from "./lib/ProgressBar";
+import { handleSkipShortsWithLowLikes } from "./lib/SkipShortsWithLowLikes";
+import { hasVideoEnded, isVideoPlaying } from "./lib/VideoState";
+import { getCurrentId, getVideo } from "./lib/getters";
 
 export function main() {
   if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return;
@@ -25,7 +27,7 @@ export function main() {
   if (isVideoPlaying()) {
     handleSkipShortsWithLowLikes(state, options);
     handleAutomaticallyOpenComments(state, options); // dev note: the implementation of this feature is a good starting point to figure out how to format your own
-    injectInfoElement(state, features);
+    updateInfo(features);
   }
   if (hasVideoEnded()) {
     handleAutoplay(state, settings, features["autoplay"]);
@@ -33,6 +35,7 @@ export function main() {
 
   setTimer(state, features["timer"]);
   injectItems(state, settings, options, features);
+  injectEvents(options);
   handleProgressBarNotAppearing();
   handleEnableAutoplay();
   handleHideShortsOverlay(options);

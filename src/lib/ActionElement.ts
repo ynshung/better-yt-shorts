@@ -1,7 +1,7 @@
 import { createAutoplaySwitch } from "./Autoplay";
 import { setPlaybackRate } from "./PlaybackRate";
-import { CYCLABLE_PLAYBACK_RATES } from "./declarations";
-import { StateObject, BooleanDictionary, PolyDictionary } from "./definitions";
+import { CYCLABLE_PLAYBACK_RATES, INJECTION_MARKER } from "./declarations";
+import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
 import { getActionElement, getCurrentId, getTitle, getVideo } from "./getters";
 import { wheel } from "./utils";
 
@@ -15,8 +15,10 @@ export function populateActionElement(
   const actionElement = getActionElement();
   const ytShorts = getVideo();
 
-  if (!actionElement) throw new Error("Action element not found");
-  if (!ytShorts) throw new Error("Video not found");
+  if (!actionElement) return; // throw new Error("Action element not found");
+  if (!ytShorts) return; // throw new Error("Video not found");
+
+  actionElement.setAttribute(INJECTION_MARKER, ""); // ? set marker for injection checks
 
   // adsu- idk how any of this works so im just going to leave it be
   const betterYTContainer = document.createElement("div");

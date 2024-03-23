@@ -1,5 +1,5 @@
 import { saveSettingsToStorage } from "./SaveToStorage";
-import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
+import { INJECTION_MARKER, VOLUME_INCREMENT_AMOUNT } from "./declarations";
 import { PolyDictionary, StateObject } from "./definitions";
 import {
   getCurrentId,
@@ -62,9 +62,10 @@ export function setVolumeSlider(
   if (!enabled) return;
 
   const id = getCurrentId();
-  if (id === null) throw new Error("ID not found");
+  if (id === null) return; // throw new Error("ID not found");
 
   const volumeContainer = getVolumeContainer();
+  volumeContainer.setAttribute(INJECTION_MARKER, ""); // ? for injections
   // const slider = document.createElement("input")
   const slider = render(`
     <input
