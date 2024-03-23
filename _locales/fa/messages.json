@@ -1,0 +1,176 @@
+{
+  "extName": {
+    "message": "شورت های بهتر یوتوب",
+    "description": "Name of the extension"
+  },
+  "extDescription": {
+    "message": "کنترل شورت های یوتوب را به دست بگیرید با کنترل پخش، صدا، نوارپیشرفت و بیشتر!",
+    "description": "Description of the extension"
+  },
+  "announcement": {
+    "message": "به ما کمک کنید BYS را ترجمه کنیم!",
+    "description": "Announcement which will update from time to time"
+  },
+  "website": {
+    "message": "وبسایت"
+  },
+  "keybinds": {
+    "message": "کلیدهای میانبر"
+  },
+  "command": {
+    "message": "دستور"
+  },
+  "key": {
+    "message": "کلید"
+  },
+  "pressKeybinds": {
+    "message": "کلید مورد نظر را فشار دهید"
+  },
+  "pressAKey": {
+    "message": "یک کلید را فشار دهعید"
+  },
+  "disabled": {
+    "message": "<غیرفعال>"
+  },
+  "notSupportKeyCombo": {
+    "message": "این ترکیب کلیدها پشتیبانی نمیشود"
+  },
+  "keyCanBeUsed": {
+    "message": "\"$1\" میتواند استفاده شود!"
+  },
+  "keyCannotBeUsed": {
+    "message": "\"$1\" نمیتواند استفاده شود"
+  },
+  "keyAlreadyInUse": {
+    "message": "\"$1\" از پیش استفاده شده است"
+  },
+  "disableKeybind": {
+    "message": "\"$1\" غیرفعال است"
+  },
+  "editBinding": {
+    "message": "ویرایش کلید برای "
+  },
+  "keybindDisabled": {
+    "message": "کلید میانبر درحال حاضرغیرفعال است"
+  },
+  "currentKeybind": {
+    "message": "کلید فعلی $1 است"
+  },
+  "confirm": {
+    "message": "تایید"
+  },
+  "disableBind": {
+    "message": "غیرفعال کردن کلید"
+  },
+  "resetKB": {
+    "message": "بازنشانی کلیدهای میانبر"
+  },
+  "seekBackward": {
+    "message": "پیمایش به عقب"
+  },
+  "seekForward": {
+    "message": "پیمایش به جلو"
+  },
+  "decreaseSpeed": {
+    "message": "کاهش سرعت پخش"
+  },
+  "resetSpeed": {
+    "message": "بازنشانی سرعت پخش"
+  },
+  "increaseSpeed": {
+    "message": "افزایش سرعت پخش"
+  },
+  "decreaseVolume": {
+    "message": "کاهش صدا"
+  },
+  "increaseVolume": {
+    "message": "افزایش صدا"
+  },
+  "toggleMute": {
+    "message": "روشن/خاموش کردن صدا"
+  },
+  "toggleFullScreen": {
+    "message": "تغییر حالت به تمام صفحه"
+  },
+  "nextFrame": {
+    "message": "فریم بعدی"
+  },
+  "previousFrame": {
+    "message": "فریم قبلی"
+  },
+  "restartShort": {
+    "message": "شروع مجدد شورت"
+  },
+  "nextShort": {
+    "message": "شورت بعدی"
+  },
+  "previousShort": {
+    "message": "شورت قبلی"
+  },
+  "extraOptions": {
+    "message": "تنظیمات بیشتر"
+  },
+  "resetOptions": {
+    "message": "بازنشانی تنظیمات"
+  },
+  "autoSkipTitle": {
+    "message": "پرش خودکار از شورت های با لایک کمتر"
+  },
+  "skipThresholdTitle": {
+    "message": "پرش از شورت های با لایک کمتر از این"
+  },
+  "seekAmountTitle": {
+    "message": "مقدار پیمایش به ثانیه"
+  },
+  "automaticallyOpenCommentsTitle": {
+    "message": "نمایش کامنت های شورت های جدید به صورت خودکار"
+  },
+  "hideShortsOverlayTitle": {
+    "message": "پنهان سازی اطلاعات در شورت ها (عنوان، کانال و غیره)"
+  },
+  "showVolumeHorizontally": {
+    "message": "نمایش اسلایدر صدا به صورت افقی به جای عمودی"
+  },
+  "defaultPlaybackRate": {
+    "message": "سرعت پخش پیشفرض"
+  },
+  "toggleFeatures": {
+    "message": "فعال/غیرفعال کردن امکانات"
+  },
+  "changesAffectNewShorts": {
+    "message": "تغییرات تنها بر روی شورت های جدید اعمال خواهد شد."
+  },
+  "enableAll": {
+    "message": "فعال کردن همه"
+  },
+  "disableAll": {
+    "message": "غیرفعال کردن همه"
+  },
+  "autoplay": {
+    "message": "پخش خودکار"
+  },
+  "progressBar": {
+    "message": "نوار پیشرفت"
+  },
+  "timer": {
+    "message": "تایمر"
+  },
+  "playbackRate": {
+    "message": " سرعت پخش"
+  },
+  "volumeSlider": {
+    "message": "اسلایدر صدا"
+  },
+  "viewCounter": {
+    "message": "شمارنده بازدید"
+  },
+  "uploadDate": {
+    "message": "تاریخ بارگذاری"
+  },
+  "enable": {
+    "message": "فعال سازی $1"
+  },
+  "fullScreenDoubleClick": {
+    "message": "دوبار کلیک برای تغییر حالت تمام صفحه"
+  }
+}
