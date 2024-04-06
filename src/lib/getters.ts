@@ -132,7 +132,7 @@ export function getCommentsButton() {
 
 export function getOverlay() {
   return document.querySelector(
-    `[id="${getCurrentId()}"] #overlay ytd-reel-player-header-renderer`,
+    `[id="${getCurrentId()}"] #overlay reel-player-header-renderer`,
   ) as HTMLElement;
 }
 
