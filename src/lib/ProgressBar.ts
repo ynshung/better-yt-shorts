@@ -13,6 +13,9 @@ export function modifyProgressBar(enabled: boolean) {
 
   //[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer > #overlay
   const progressBar = getProgressBarList() as HTMLElement; // ? the progressbar itself
+
+  // Some accounts already have YouTube's progress bar, no need to add our own
+  if (!progressBar) return;
   const pbBackground = progressBar.children[0] as HTMLElement; // ? the grey background of the bar
   const pbForeground = progressBar.children[1] as HTMLElement; // ? The red part of the progress bar
 
