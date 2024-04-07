@@ -27,7 +27,6 @@ export function main() {
   if (isVideoPlaying()) {
     handleSkipShortsWithLowLikes(state, options);
     handleAutomaticallyOpenComments(state, options); // dev note: the implementation of this feature is a good starting point to figure out how to format your own
-    updateInfo(features);
   }
   if (hasVideoEnded()) {
     handleAutoplay(state, settings, features["autoplay"]);
