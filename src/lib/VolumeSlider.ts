@@ -65,6 +65,7 @@ export function setVolumeSlider(
   if (id === null) return; // throw new Error("ID not found");
 
   const volumeContainer = getVolumeContainer();
+  if (!volumeContainer) return;
   volumeContainer.setAttribute(INJECTION_MARKER, ""); // ? for injections
   // const slider = document.createElement("input")
   const slider = render(`
