@@ -74,6 +74,9 @@
   "seekForward": {
     "message": "Seek Forward"
   },
+  "toggleFullscreen": {
+    "message": "Toggle Fullscreen"
+  },
   "decreaseSpeed": {
     "message": "Decrease Speed"
   },

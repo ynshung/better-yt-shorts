@@ -37,28 +37,32 @@ export default function KeybindsPage({
     if (keybindsState === null) return <></>;
 
     return KEYBINDS_ORDER.map((command: string) => {
-      const bind = keybindsState[command];
-      const editButtonProps = {
-        command,
-        setSelectedCommand,
-        setIsModalOpen,
-      };
 
-      return (
-        <tr key={crypto.randomUUID()}>
-          <td>{local(command)}</td>
-          <td>
-            <div className="keybind-wrapper">
-              <span id={`${command}-span`} className="keybind-span">
-                {bind}
-              </span>
-            </div>
-          </td>
-          <td>
-            <EditButton {...editButtonProps} />
-          </td>
-        </tr>
-      );
+      if (command != "numPadSeek") {
+
+        const bind = keybindsState[command];
+        const editButtonProps = {
+          command,
+          setSelectedCommand,
+          setIsModalOpen,
+        };
+
+        return (
+          <tr key={crypto.randomUUID()}>
+            <td>{local(command)}</td>
+            <td>
+              <div className="keybind-wrapper">
+                <span id={`${command}-span`} className="keybind-span">
+                  {bind}
+                </span>
+              </div>
+            </td>
+            <td>
+              <EditButton {...editButtonProps} />
+            </td>
+          </tr>
+        );
+      }
     });
   }
 
