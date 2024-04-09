@@ -46,11 +46,13 @@ export function handleKeyEvent(
 
   switch (command) {
     case "seekBackward":
-      ytShorts.currentTime -= options.seekAmount as number;
+      if (e.shiftKey) ytShorts.currentTime -= 1;
+      else ytShorts.currentTime -= options.seekAmount as number;
       break;
 
     case "seekForward":
-      ytShorts.currentTime += options.seekAmount as number;
+      if (e.shiftKey) ytShorts.currentTime += 1;
+      else ytShorts.currentTime += options.seekAmount as number;
       break;
 
     case "decreaseSpeed":
