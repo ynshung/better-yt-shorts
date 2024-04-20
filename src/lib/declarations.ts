@@ -290,6 +290,16 @@ export const EXCLUDED_KEY_BINDS = [
   "AltRight",
 ];
 
+/**
+ * The set of modifers that will be checked to determine if a given key should
+ * be ignored when handling key events.
+ *
+ * Note that these correspond to `KeyboardEvent.key` values since `KeyboardEvent.getModifierState`
+ * does not accept `KeyboardEvent.code` values.
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState}
+ */
+export const EXCLUDED_KEY_MODIFIERS = ["Alt", "Control", "Meta", "Shift"];
+
 export const DEFAULT_PRESSED_KEY = local("pressAKey");
 export const DISABLED_BIND_STRING = local("disabled");
 

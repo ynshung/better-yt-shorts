@@ -1,7 +1,10 @@
 import { tryToggleFullscreen } from "./HandleFullscreen";
 import { goToNextShort, goToPreviousShort, restartShort } from "./VideoState";
 import { setVolume } from "./VolumeSlider";
-import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
+import {
+  EXCLUDED_KEY_MODIFIERS,
+  VOLUME_INCREMENT_AMOUNT,
+} from "./declarations";
 import {
   BooleanDictionary,
   StateObject,
@@ -32,6 +35,11 @@ export function handleKeyEvent(
 
   const ytShorts = getVideo();
   if (!ytShorts) return;
+
+  const modifierPressed = EXCLUDED_KEY_MODIFIERS.some((modifier) =>
+    e.getModifierState(modifier),
+  );
+  if (modifierPressed) return;
 
   const key = e.code;
   const keyAlt = e.key.toLowerCase(); // for legacy keybinds
