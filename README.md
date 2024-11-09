@@ -1,3 +1,7 @@
+# Notice: This extension is currently unmaintained
+You may uninstall this extension as it is currently not maintained. If you are interested in maintaining this repository, please create an issue, submit changes via PR or contact me@ynshung.com.
+
+
 <div align="center">
 
 ![BYS Icon](./src/assets/icons/bys-128.png)
