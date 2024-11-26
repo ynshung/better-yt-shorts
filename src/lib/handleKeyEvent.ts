@@ -38,7 +38,17 @@ export function handleKeyEvent(
 
   let command;
   for (const [cmd, keybind] of Object.entries(keybinds as object))
+  {
+    if (keybind.includes("|")) {
+      for (var kb of keybind.split("|")) {
+        if (key === kb || keyAlt === kb) {
+          command = cmd;
+        }
+      }
+    }
+    else 
     if (key === keybind || keyAlt === keybind) command = cmd;
+  }
 
   if (!command) return;
 
@@ -52,6 +62,19 @@ export function handleKeyEvent(
     case "seekForward":
       ytShorts.currentTime += options.seekAmount as number;
       break;
+
+    case "toggleFullscreen":
+      const div = document.getElementById("shorts-player");
+      if (!div) return;
+      if (document.fullscreenElement == div) document.exitFullscreen();
+      if (div.requestFullscreen) div.requestFullscreen();
+      break;
+
+    case "numPadSeek":
+        const num = key.replace("Numpad", "") as number;
+        const seekTo = (ytShorts.duration / 10) * num;
+        ytShorts.currentTime = seekTo;
+        break;
 
     case "decreaseSpeed":
       if (ytShorts.playbackRate > 0.25) ytShorts.playbackRate -= 0.25;
