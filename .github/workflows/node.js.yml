@@ -14,6 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10
       - name: Use Node.js 24.x
         uses: actions/setup-node@v7
         with:
@@ -21,7 +25,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build Chrome extension
         run: pnpm build
