@@ -18,7 +18,7 @@ export function convertLocaleNumber(string: string): number | null {
   // 1 - number with point (now 1)
   // 4 - multiplier (eg: m, b, k) (now 2)
 
-  let numericPart = matches[1];
+  let numericPart;
   const multiplier = matches[2]?.toLowerCase();
 
   if (multiplier) {
