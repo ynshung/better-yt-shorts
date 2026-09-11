@@ -11,11 +11,9 @@
     "message": "Ajude-nos a traduzir BYS!",
     "description": "Announcement which will update from time to time"
   },
-
   "website": {
     "message": "Website"
   },
-
   "keybinds": {
     "message": "Atalhos de Teclado"
   },
@@ -64,7 +62,6 @@
   "disableBind": {
     "message": "Desabilitar"
   },
-
   "resetKB": {
     "message": "Resetar Atalhos"
   },
@@ -110,14 +107,12 @@
   "previousShort": {
     "message": "Short Anterior"
   },
-
   "extraOptions": {
     "message": "Opções Extras"
   },
   "resetOptions": {
     "message": "Resetar Opções"
   },
-
   "autoSkipTitle": {
     "message": "Pule Shorts com menos curtidas automaticamente"
   },
@@ -132,9 +127,6 @@
   },
   "hideShortsOverlayTitle": {
     "message": "Ocultar sobreposição nos Shorts (título, canal, etc)"
-  },
-  "showVolumeHorizontally": {
-    "message": "Mostrar barra de volume horizontalmente"
   },
   "defaultPlaybackRate": {
     "message": "Velocidade de Reprodução padrão"
@@ -154,17 +146,11 @@
   "autoplay": {
     "message": "Autoplay"
   },
-  "progressBar": {
-    "message": "Barra de Progresso"
-  },
   "timer": {
     "message": "Timer"
   },
   "playbackRate": {
     "message": "Velocidade de Reprodução"
-  },
-  "volumeSlider": {
-    "message": "Barra de Volume"
   },
   "uploadDate": {
     "message": "Data de Upload"

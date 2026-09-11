@@ -128,9 +128,6 @@
   "hideShortsOverlayTitle": {
     "message": "پنهان سازی اطلاعات در شورت ها (عنوان، کانال و غیره)"
   },
-  "showVolumeHorizontally": {
-    "message": "نمایش اسلایدر صدا به صورت افقی به جای عمودی"
-  },
   "defaultPlaybackRate": {
     "message": "سرعت پخش پیشفرض"
   },
@@ -149,17 +146,11 @@
   "autoplay": {
     "message": "پخش خودکار"
   },
-  "progressBar": {
-    "message": "نوار پیشرفت"
-  },
   "timer": {
     "message": "تایمر"
   },
   "playbackRate": {
     "message": " سرعت پخش"
-  },
-  "volumeSlider": {
-    "message": "اسلایدر صدا"
   },
   "viewCounter": {
     "message": "شمارنده بازدید"

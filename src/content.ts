@@ -1,5 +1,4 @@
 import BROWSER from "./background/browser";
-import { checkVolume, updateVolumeOrientation } from "./lib/VolumeSlider";
 import { DEFAULT_STATE } from "./lib/declarations";
 import {
   StateObject,
@@ -86,26 +85,9 @@ document.addEventListener("keydown", (e) =>
   handleKeyEvent(e, features, keybinds, settings, options, state),
 );
 
-let low_priority_interval = setInterval(lowPriorityCallback, 1000);
 let main_interval = setInterval(main, 100);
-let volume_interval = setInterval(volumeIntervalCallback, 10);
-
-function volumeIntervalCallback() {
-  if (window.location.toString().indexOf("youtube.com/shorts/") < 0) return;
-  if (getVideo()) checkVolume(settings, features["volumeSlider"]);
-}
-
-function lowPriorityCallback() {
-  updateVolumeOrientation(options["showVolumeHorizontally"] as boolean);
-}
 
 function resetIntervals() {
-  clearInterval(volume_interval);
-  volume_interval = setInterval(volumeIntervalCallback, 10);
-
   clearInterval(main_interval);
   main_interval = setInterval(main, 100);
-
-  clearInterval(low_priority_interval);
-  low_priority_interval = setInterval(lowPriorityCallback, 1000);
 }

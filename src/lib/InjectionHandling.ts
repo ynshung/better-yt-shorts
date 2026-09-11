@@ -1,17 +1,9 @@
 import { populateActionElement } from "./ActionElement";
 import { setInfo } from "./Info";
 import { InjectionItemsEnum } from "./definitions";
-import { modifyProgressBar } from "./ProgressBar";
-import { setVolumeSlider } from "./VolumeSlider";
 import { INJECTION_MARKER } from "./declarations";
 import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
-import {
-  getActionElement,
-  getCurrentId,
-  getInfoElement,
-  getProgressBarList,
-  getVolumeContainer,
-} from "./getters";
+import { getActionElement, getCurrentId, getInfoElement } from "./getters";
 
 export function injectItems(
   state: StateObject,
@@ -49,29 +41,10 @@ function injectIfNotPresent(
   options: PolyDictionary,
   features: BooleanDictionary,
 ) {
-  switch (item) {
-    case InjectionItemsEnum.ACTION_ELEMENT:
-      if (!checkForInjectionMarker(getActionElement()))
-        populateActionElement(state, settings, features);
-      break;
-
-    case InjectionItemsEnum.PROGRESS_BAR:
-      if (!checkForInjectionMarker(getProgressBarList()))
-        modifyProgressBar(features["progressBar"]);
-      break;
-
-    case InjectionItemsEnum.VOLUME_SLIDER:
-      if (!checkForInjectionMarker(getVolumeContainer()))
-        setVolumeSlider(
-          state,
-          settings,
-          features["showVolumeHorizontally"],
-          features["volumeSlider"],
-        );
-      break;
-
-    case InjectionItemsEnum.INFO:
-      if (!checkForInjectionMarker(getInfoElement())) setInfo(features);
-      break;
+  if (item === InjectionItemsEnum.ACTION_ELEMENT) {
+    if (!checkForInjectionMarker(getActionElement()))
+      populateActionElement(state, settings, features);
+  } else if (item === InjectionItemsEnum.INFO) {
+    if (!checkForInjectionMarker(getInfoElement())) setInfo(features);
   }
 }

@@ -1,6 +1,5 @@
 import { tryToggleFullscreen } from "./HandleFullscreen";
 import { goToNextShort, goToPreviousShort, restartShort } from "./VideoState";
-import { setVolume } from "./VolumeSlider";
 import { VOLUME_INCREMENT_AMOUNT } from "./declarations";
 import {
   BooleanDictionary,
@@ -42,8 +41,6 @@ export function handleKeyEvent(
 
   if (!command) return;
 
-  const volumeSliderEnabled = features !== null && features["volumeSlider"];
-
   switch (command) {
     case "seekBackward":
       ytShorts.currentTime -= options.seekAmount as number;
@@ -67,25 +64,19 @@ export function handleKeyEvent(
 
     case "increaseVolume":
       if (ytShorts.volume < 1)
-        setVolume(
-          settings,
+        ytShorts.volume = Math.min(
           ytShorts.volume + VOLUME_INCREMENT_AMOUNT,
-          volumeSliderEnabled,
+          1,
         );
-
-      if (ytShorts.volume > 1) ytShorts.volume = 1;
 
       break;
 
     case "decreaseVolume":
       if (ytShorts.volume > 0)
-        setVolume(
-          settings,
+        ytShorts.volume = Math.max(
           ytShorts.volume - VOLUME_INCREMENT_AMOUNT,
-          volumeSliderEnabled,
+          0,
         );
-
-      if (ytShorts.volume < 0) ytShorts.volume = 0;
 
       break;
 

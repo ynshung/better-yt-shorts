@@ -73,13 +73,6 @@ export function getTitle() {
   ) as HTMLElement;
 }
 
-export function getVolumeContainer() {
-  const id = getCurrentId();
-  return document.querySelector(
-    `[id="${id}"] #player-container div.player-controls > ytd-shorts-player-controls.style-scope`,
-  ) as HTMLElement;
-}
-
 export function getNextButton() {
   return document.querySelector(
     "#navigation-button-down > ytd-button-renderer > yt-button-shape",
@@ -107,15 +100,6 @@ export function getVideo(): HTMLVideoElement | null {
 export function getPlaybackElement() {
   const id = getCurrentId();
   return document.getElementById(`ytPlayback${id}`);
-}
-
-export function getVolumeSliderController() {
-  const id = getCurrentId();
-  return document.getElementById(`volumeSliderController${id}`);
-}
-
-export function getProgressBarList() {
-  return document.querySelector(`[id="${getCurrentId()}"] #progress-bar-line`);
 }
 
 export function getMuteButton() {

@@ -136,17 +136,11 @@
   "autoplay": {
     "message": "Otomatik Oynat"
   },
-  "progressBar": {
-    "message": "İlerleme Çubuğu"
-  },
   "timer": {
     "message": "Oynatma Çubuğu"
   },
   "playbackRate": {
     "message": "Oynatma Hızı"
-  },
-  "volumeSlider": {
-    "message": "Ses Düzeyi Ayarlayıcısı"
   },
   "enable": {
     "message": "$1'i Aktif Et"
@@ -160,9 +154,6 @@
   },
   "uploadDate": {
     "message": "Yükleme Tarihi"
-  },
-  "showVolumeHorizontally": {
-    "message": "Ses düzeyi ayarlayıcısını dikey yerine yatay olarak göster"
   },
   "toggleFullScreen": {
     "message": "Tam Ekranı Aç/Kapat"

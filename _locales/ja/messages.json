@@ -133,17 +133,11 @@
   "autoplay": {
     "message": "自動再生"
   },
-  "progressBar": {
-    "message": "シークバー"
-  },
   "timer": {
     "message": "時間表示"
   },
   "playbackRate": {
     "message": "再生速度"
-  },
-  "volumeSlider": {
-    "message": "音量バー"
   },
   "enable": {
     "message": "$1 を有効にする"
@@ -157,9 +151,6 @@
   },
   "uploadDate": {
     "message": "アップロード日"
-  },
-  "showVolumeHorizontally": {
-    "message": "音量バーを垂直から水平にする"
   },
   "toggleFullScreen": {
     "message": "全画面切り替え"

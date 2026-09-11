@@ -140,17 +140,11 @@
   "autoplay": {
     "message": "Lecture automatique"
   },
-  "progressBar": {
-    "message": "Barre de progression"
-  },
   "timer": {
     "message": "Minuteur"
   },
   "playbackRate": {
     "message": "Vitesse de lecture"
-  },
-  "volumeSlider": {
-    "message": "Curseur de volume"
   },
   "enable": {
     "message": "Activer $1"

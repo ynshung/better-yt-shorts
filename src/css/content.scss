@@ -20,18 +20,6 @@
   display: flex;
 }
 
-// .betterYT-volume-slider {
-//   // -webkit-appearance: slider-vertical;
-//   position: absolute;
-//   height: 100px;
-//   right: -40px;
-//   top: 40px;
-//   opacity: 0.4;
-//   pointer-events: all !important;
-//   accent-color: var(--yt-brand-color);
-//   cursor: pointer;
-// }
-
 @supports (-moz-appearance: none) {
   .volume-slider {
     right: 16px;
@@ -40,31 +28,6 @@
 
 .volume-slider:hover {
   opacity: 1;
-}
-
-.betterYT-volume-slider
-{
-  position: absolute;
-  pointer-events: all !important;
-  accent-color: rgba(255,255,255,0.2);
-  opacity: 0.2;
-  transition: opacity .2s;
-  cursor: pointer;
-  height: fit-content;
-}
-
-.betterYT-volume-slider.horizontal {
-  -webkit-appearance: slider-horizontal;
-  top: 17.5px;
-  right: 50px;
-}
-
-.betterYT-volume-slider.vertical {
-  -webkit-appearance: slider-vertical;
-  height: 100px;
-  right: 10px;
-  width: 33px;
-  top: 40px;
 }
 
 .autoplay-switch {
@@ -133,11 +96,6 @@ input:checked + .autoplay-slider:before {
 }
 
 @media screen and (max-width: 599px) {
-  .volumeSlider {
-    // -webkit-appearance: slider-horizontal;
-    right: 44px;
-    top: 18px;
-  }
   .autoplay-slider {
     background-color: rgba(255,255,255,0.2);
   }
@@ -151,27 +109,6 @@ input:checked + .autoplay-slider:before {
 #shorts-player>div>video
 {
   position: relative;
-}
-
-.betterYT-progress-bar {
-  bottom: 0;
-  pointer-events: auto !important;
-}
-
-.betterYT-progress-bar-hover {
-  height: 10px !important;
-  cursor: pointer;
-}
-
-.betterYT-timestamp-tooltip {
-  position: absolute;
-  display: none;
-  background-color: #272727c4;
-  border-radius: 5px;
-  padding: 4px;
-  font-size: 11px;
-  color: white;
-  z-index: 50;
 }
 
 .betterYT-hidden {

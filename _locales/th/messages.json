@@ -140,17 +140,11 @@
   "autoplay": {
     "message": "เล่นอัตโนมัติ"
   },
-  "progressBar": {
-    "message": "แถบความคืบหน้า"
-  },
   "timer": {
     "message": "ตัวจับเวลา"
   },
   "playbackRate": {
     "message": "อัตราการเล่น"
-  },
-  "volumeSlider": {
-    "message": "แถบควบคุมระดับเสียง"
   },
   "uploadDate": {
     "message": "วันที่อัพโหลด"

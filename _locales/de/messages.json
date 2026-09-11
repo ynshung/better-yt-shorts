@@ -128,9 +128,6 @@
   "hideShortsOverlayTitle": {
     "message": "Ausblenden des Overlays bei Shorts (Titel, Kanal usw.)"
   },
-  "showVolumeHorizontally": {
-    "message": "Lautstärkeregler horizontal statt vertikal anzeigen"
-  },
   "toggleFeatures": {
     "message": "Funktionen umschalten"
   },
@@ -146,17 +143,11 @@
   "autoplay": {
     "message": "Automatische Wiedergabe"
   },
-  "progressBar": {
-    "message": "Fortschrittsanzeige"
-  },
   "timer": {
     "message": "Timer"
   },
   "playbackRate": {
     "message": "Abspielgeschwindigkeit"
-  },
-  "volumeSlider": {
-    "message": "Lautstärkeregler"
   },
   "uploadDate": {
     "message": "Upload-Datum"

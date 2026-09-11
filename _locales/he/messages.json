@@ -7,11 +7,9 @@
     "message": "לקבל בחזרה את השליטה ב-YouTube Shorts עם השמעה, עוצמת קול, סרגל התקדמות ועוד!",
     "description": "Description of the extension"
   },
-
   "website": {
     "message": "אתר"
   },
-
   "keybinds": {
     "message": "קיצורי דרך במקלדת"
   },
@@ -60,7 +58,6 @@
   "disableBind": {
     "message": "השבת קיצור"
   },
-
   "resetKB": {
     "message": "איפוס קיצורי מקשים"
   },
@@ -103,14 +100,12 @@
   "previousShort": {
     "message": "Short קודם"
   },
-
   "extraOptions": {
     "message": "אפשרויות נוספות"
   },
   "resetOptions": {
     "message": "איפוס אפשרויות"
   },
-
   "autoSkipTitle": {
     "message": "דלג אוטומטית על Shorts עם פחות לייקים"
   },
@@ -123,7 +118,6 @@
   "automaticallyOpenCommentsTitle": {
     "message": "פתח תגובות עבור Shorts חדשים באופן אוטומטי"
   },
-
   "toggleFeatures": {
     "message": "הפעל/כיבוי פיצ'רים"
   },
@@ -139,17 +133,11 @@
   "autoplay": {
     "message": "ניגון אוטומטי"
   },
-  "progressBar": {
-    "message": "סרגל התקדמות"
-  },
   "timer": {
     "message": "שעון עצר"
   },
   "playbackRate": {
     "message": "קצב השמעה"
-  },
-  "volumeSlider": {
-    "message": "מחוון עוצמת שמע"
   },
   "enable": {
     "message": "הפעל $1"

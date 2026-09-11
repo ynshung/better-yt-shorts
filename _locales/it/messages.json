@@ -133,17 +133,11 @@
   "autoplay": {
     "message": "Autoplay"
   },
-  "progressBar": {
-    "message": "Barra di progresso"
-  },
   "timer": {
     "message": "Timer"
   },
   "playbackRate": {
     "message": "Velocità di riproduzione"
-  },
-  "volumeSlider": {
-    "message": "Volume"
   },
   "enable": {
     "message": "Abilita $1"

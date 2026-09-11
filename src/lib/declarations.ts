@@ -52,7 +52,6 @@ export const DEFAULT_OPTIONS: PolyDictionary = {
   seekAmount: 5,
   automaticallyOpenComments: false,
   hideShortsOverlay: false,
-  showVolumeHorizontally: false,
   defaultPlaybackRate: 1,
   fullScreenDoubleClick: true,
 };
@@ -65,7 +64,6 @@ export const OPTIONS_ORDER: string[] = [
   "skipEnabled",
   "skipThreshold",
   "hideShortsOverlay",
-  "showVolumeHorizontally",
 ];
 
 export const OPTION_DICTIONARY: OptionsDictionary = {
@@ -91,10 +89,6 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   },
   hideShortsOverlay: {
     desc: local("hideShortsOverlayTitle"),
-    type: "checkbox",
-  },
-  showVolumeHorizontally: {
-    desc: local("showVolumeHorizontally"),
     type: "checkbox",
   },
   defaultPlaybackRate: {
@@ -159,16 +153,13 @@ export const DEFAULT_STATE: StateObject = {
 
 // ! - add settings
 export const DEFAULT_SETTINGS: PolyDictionary = {
-  volume: 0.5,
   autoplay: false,
 };
 
 export const DEFAULT_FEATURES: BooleanDictionary = {
   autoplay: true,
-  progressBar: true,
   timer: true,
   playbackRate: true,
-  volumeSlider: true,
   keybinds: true,
   viewCounter: true,
   uploadDate: true,
@@ -176,10 +167,8 @@ export const DEFAULT_FEATURES: BooleanDictionary = {
 
 export const FEATURES_ORDER: string[] = [
   "autoplay",
-  "progressBar",
   "timer",
   "playbackRate",
-  "volumeSlider",
   "keybinds",
   "viewCounter",
   "uploadDate",

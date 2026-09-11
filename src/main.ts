@@ -5,7 +5,6 @@ import { injectEvents } from "./lib/Events";
 import { handleHideShortsOverlay } from "./lib/HideShortsOverlay";
 import { injectItems } from "./lib/InjectionHandling";
 import { setTimer } from "./lib/PlaybackRate";
-import { handleProgressBarNotAppearing } from "./lib/ProgressBar";
 import { handleSkipShortsWithLowLikes } from "./lib/SkipShortsWithLowLikes";
 import { hasVideoEnded, isVideoPlaying } from "./lib/VideoState";
 import { getCurrentId, getVideo } from "./lib/getters";
@@ -34,7 +33,6 @@ export function main() {
   setTimer(state, features["timer"]);
   injectItems(state, settings, options, features);
   injectEvents(options);
-  handleProgressBarNotAppearing();
   handleEnableAutoplay();
   handleHideShortsOverlay(options);
 }

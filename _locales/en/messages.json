@@ -11,11 +11,9 @@
     "message": "Help us translate BYS!",
     "description": "Announcement which will update from time to time"
   },
-
   "website": {
     "message": "Website"
   },
-
   "keybinds": {
     "message": "Keybinds"
   },
@@ -64,7 +62,6 @@
   "disableBind": {
     "message": "Disable Bind"
   },
-
   "resetKB": {
     "message": "Reset Keybinds"
   },
@@ -110,14 +107,12 @@
   "previousShort": {
     "message": "Previous Short"
   },
-
   "extraOptions": {
     "message": "Extra Options"
   },
   "resetOptions": {
     "message": "Reset Options"
   },
-
   "autoSkipTitle": {
     "message": "Automatically skip shorts with fewer likes"
   },
@@ -132,9 +127,6 @@
   },
   "hideShortsOverlayTitle": {
     "message": "Hide the overlay on shorts (title, channel, etc)"
-  },
-  "showVolumeHorizontally": {
-    "message": "Show volume slider horizontally instead of vertically"
   },
   "defaultPlaybackRate": {
     "message": "Default playback rate"
@@ -154,17 +146,11 @@
   "autoplay": {
     "message": "Autoplay"
   },
-  "progressBar": {
-    "message": "Progress Bar"
-  },
   "timer": {
     "message": "Timer"
   },
   "playbackRate": {
     "message": "Playback Rate"
-  },
-  "volumeSlider": {
-    "message": "Volume Slider"
   },
   "viewCounter": {
     "message": "View Counter"
