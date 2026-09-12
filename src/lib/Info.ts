@@ -1,6 +1,5 @@
 import { isVideoPlaying } from "./VideoState";
 import { INJECTION_MARKER } from "./declarations";
-import { BooleanDictionary } from "./definitions";
 import {
   getCurrentId,
   getInfoElement,
@@ -9,7 +8,7 @@ import {
   getViews,
 } from "./getters";
 
-export function setInfo(features: BooleanDictionary) {
+export function setInfo() {
   if (!isVideoPlaying()) return; // throw new Error("Video not playing");
 
   const overlayElement = getOverlayElement();
@@ -19,23 +18,20 @@ export function setInfo(features: BooleanDictionary) {
   h5.setAttribute(INJECTION_MARKER, ""); // ? for injection checks
   overlayElement.querySelector("reel-player-header-renderer h2")?.prepend(h5);
 
-  updateInfo(features);
+  updateInfo();
 }
 
-export function updateInfo(features: BooleanDictionary) {
+export function updateInfo() {
   const element = getInfoElement();
   if (element === null) return;
 
   const info = [];
 
-  if (features["viewCounter"]) {
-    const views = getViews().replace(/(\r\n|\n|\r)/gm, "");
-    if (views) info.push(views);
-  }
-  if (features["uploadDate"]) {
-    const uploadDate = getUploadDate().replace(/(\r\n|\n|\r)/gm, "");
-    if (uploadDate) info.push(uploadDate);
-  }
+  const views = getViews().replace(/(\r\n|\n|\r)/gm, "");
+  if (views) info.push(views);
+
+  const uploadDate = getUploadDate().replace(/(\r\n|\n|\r)/gm, "");
+  if (uploadDate) info.push(uploadDate);
 
   element.innerText = info.join(" | ");
 }

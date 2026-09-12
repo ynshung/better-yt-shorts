@@ -46,6 +46,6 @@ function injectIfNotPresent(
       populateActionElement(state, settings, features);
     else syncButtonVariants();
   } else if (item === InjectionItemsEnum.INFO) {
-    if (!checkForInjectionMarker(getInfoElement())) setInfo(features);
+    if (!checkForInjectionMarker(getInfoElement())) setInfo();
   }
 }
