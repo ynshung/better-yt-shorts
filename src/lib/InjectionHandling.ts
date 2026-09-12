@@ -1,4 +1,4 @@
-import { populateActionElement } from "./ActionElement";
+import { populateActionElement, syncButtonVariants } from "./ActionElement";
 import { setInfo } from "./Info";
 import { InjectionItemsEnum } from "./definitions";
 import { INJECTION_MARKER } from "./declarations";
@@ -44,6 +44,7 @@ function injectIfNotPresent(
   if (item === InjectionItemsEnum.ACTION_ELEMENT) {
     if (!checkForInjectionMarker(getActionElement()))
       populateActionElement(state, settings, features);
+    else syncButtonVariants();
   } else if (item === InjectionItemsEnum.INFO) {
     if (!checkForInjectionMarker(getInfoElement())) setInfo(features);
   }

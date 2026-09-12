@@ -7,9 +7,15 @@
 }
 
 .betterYT {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   text-align: center;
+  height: 24px;
+  line-height: 24px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .betterYT-renderer {
@@ -64,11 +70,15 @@ div:has( .autoplay-slider )
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255,255,255,0.1);
+  /* .ytSpecButtonShapeNextTonal supplies the theme-correct background; fallback for when it doesn't */
+  &:not(.ytSpecButtonShapeNextTonal) {
+    background-color: rgba(255,255,255,0.25);
+  }
+  padding: 0;
   border-radius: 27px;
 
   &:hover {
-    background-color: rgba(255,255,255,0.2);
+    filter: brightness(1.15);
   }
 
   &:before {
@@ -78,15 +88,11 @@ div:has( .autoplay-slider )
     width: 20px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
+    background-color: var(--yt-spec-outline, white);
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
   }
-}
-
-input:checked + .autoplay-slider {
-  background-color: rgba(255,255,255,0.2);
 }
 
 input:checked + .autoplay-slider:before {
@@ -96,12 +102,6 @@ input:checked + .autoplay-slider:before {
 }
 
 @media screen and (max-width: 599px) {
-  .autoplay-slider {
-    background-color: rgba(255,255,255,0.2);
-  }
-  input:checked + .autoplay-slider {
-    background-color: rgba(255,255,255,0.2);
-  }
   .betterYT-auto {
     padding-bottom: 16px;
   }
@@ -113,4 +113,11 @@ input:checked + .autoplay-slider:before {
 
 .betterYT-hidden {
   visibility: hidden !important;
+}
+
+.betterYT-auto {
+  display: block;
+  text-align: center;
+  padding-top: 4px;
+  color: var(--yt-spec-text-primary);
 }

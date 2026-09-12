@@ -27,9 +27,7 @@ export function getLikeCount(): number | null {
 
 export const getActionElement = () =>
   // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer #actions`,
-  document.querySelector(
-    `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer #actions`,
-  ) as HTMLElement;
+  document.querySelector("reel-action-bar-view-model") as HTMLElement;
 
 export function getOverlayElement() {
   // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #overlay`,

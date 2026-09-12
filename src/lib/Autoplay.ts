@@ -37,17 +37,18 @@ export function createAutoplaySwitch(
 
   // Autoplay Switch
   const autoplaySwitch = render(`
-    <div>
+    <div class="ytwReelActionBarViewModelHostDesktopActionButton">
       <label class="autoplay-switch">
         <input type="checkbox" id="autoplay-checkbox${getCurrentId()}" ${
           settings.autoplay ? "checked" : ""
         }/>
-        <span class="autoplay-slider"></span>
+        <span class="autoplay-slider ytSpecButtonShapeNextMono ytSpecButtonShapeNextTonal"></span>
       </label>
-      <div class="yt-spec-button-shape-with-label__label">
-        <span 
+      <div class="ytSpecButtonShapeWithLabelLabel">
+        <span
           role="text"
-          class="betterYT-auto yt-core-attributed-string yt-core-attributed-string--white-space-pre-wrap yt-core-attributed-string--text-alignment-center"
+          class="betterYT-auto ytAttributedStringHost ytAttributedStringWhiteSpacePreWrap ytAttributedStringTextAlignmentCenter ytAttributedStringWordWrapping"
+          style="color: "var(--yt-spec-text-primary)""
         > ${local("autoplay")} </span>
       </div>
     </div>
