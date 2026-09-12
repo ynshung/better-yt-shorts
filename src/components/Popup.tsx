@@ -24,7 +24,6 @@ import {
   DEFAULT_OPTIONS,
 } from "../lib/declarations";
 import FeaturesPage from "./FeaturesPage";
-import local from "../background/i18n";
 import Announcement from "./Announcement";
 
 // todo  - split this into its component parts
@@ -74,31 +73,6 @@ function Popup() {
         <Separator />
 
         {getCurrentPageContent()}
-
-        <div id="edit-modal" className="modal">
-          <div className="modal-content">
-            <div className="modal-header">
-              <div>
-                Edit keybind:{" "}
-                <span className="modal-title" id="modal-title-span" />
-              </div>
-              <span className="close-btn">×</span>
-            </div>
-            <div className="separation-line" style={{ opacity: "0.5" }} />
-            <div className="input-wrapper">
-              <label htmlFor="keybind-input" className="prevent-selection">
-                {local("pressKeybinds")}
-              </label>
-              <input type="text" id="keybind-input" />
-              <div
-                className="prevent-selection"
-                style={{ opacity: "0.8", fontSize: 10 }}
-              >
-                {local("notSupportKeyCombo")}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div id="page-indicator">
