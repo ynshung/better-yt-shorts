@@ -58,11 +58,6 @@ ytd-reel-player-overlay-renderer[is-watch-while-mode]div:has( .autoplay-slider )
   padding-bottom: 16px;
 }
 
-div:has( .autoplay-slider )
-{
-  padding-top: 16px;
-}
-
 .autoplay-slider {
   position: absolute;
   cursor: pointer;
