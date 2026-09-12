@@ -25,25 +25,6 @@ export function getLikeCount(): number | null {
   return convertLocaleNumber(numberOfLikes);
 }
 
-// Checking comment count aswell, as sometimes popular videos bug out and show 0 likes, but there"s 1000+ comments.
-export const getCommentCount = (id: number | null) => {
-  const commentsElement = document.querySelector(
-    `[id="${id}"] > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #comments-button`,
-  ) as HTMLElement;
-
-  // Use optional chaining and nullish coalescing to handle null values
-  const numberOfComments =
-    (<HTMLElement>commentsElement?.firstElementChild)?.innerText
-      .split(/\r?\n/)[0]
-      ?.replace(/ /g, "") ?? "0";
-
-  // Convert the number of comments to the appropriate format
-  const commentCount = convertLocaleNumber(numberOfComments);
-
-  // If commentCount is anything other than a number, it"ll return 0. Meaning it"ll handle every language.
-  return !isNaN(commentCount as number) ? commentCount : 0;
-};
-
 export const getActionElement = () =>
   // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer #actions`,
   document.querySelector(
