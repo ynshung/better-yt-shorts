@@ -2,37 +2,27 @@
 
 import { convertLocaleNumber } from "./utils";
 
+// TODO: may not need to be used anymore, since the other youtube video won't pre-render the UI
 export function getCurrentId() {
-  const video = document.querySelector(
+  const video: HTMLVideoElement | null = document.querySelector(
     "#shorts-player > div.html5-video-container > video",
-  ) as HTMLVideoElement;
+  );
   if (video === null) return null;
 
-  const closest = video.closest("ytd-reel-video-renderer") as HTMLElement;
+  const closest: HTMLElement | null = video.closest(".reel-video-in-sequence-new");
   if (closest === null) return null;
 
   return +closest.id;
 }
 
-export function getLikeCount(): number {
-  const likesElement = document.querySelector(
-    `[id="${getCurrentId()}"] > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #like-button`,
-  ) as HTMLElement;
+export function getLikeCount(): number | null {
+  const likesElement: HTMLElement | null = document.querySelector("like-button-view-model");
+  if (!likesElement) return null;
 
-  // Use optional chaining and nullish coalescing to handle null values
-  const numberOfLikes =
-    (<HTMLElement>likesElement?.firstElementChild)?.innerText
-      .split(/\r?\n/)[0]
-      ?.trim()
-      .replace(/\s/g, "")
-      .replace(/\.$/, "")
-      .toLowerCase() ?? "0";
+  const numberOfLikes = likesElement.textContent;
 
   // Convert the number of likes to the appropriate format
-  const likeCount = convertLocaleNumber(numberOfLikes) as number;
-
-  // If likeCount is anything other than a number, it"ll return 0. Meaning it"ll translate every language.
-  return !isNaN(likeCount) ? (likeCount as number) : 0;
+  return convertLocaleNumber(numberOfLikes);
 }
 
 // Checking comment count aswell, as sometimes popular videos bug out and show 0 likes, but there"s 1000+ comments.

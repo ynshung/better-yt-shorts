@@ -13,6 +13,7 @@ export function setInfo(features: BooleanDictionary) {
   if (!isVideoPlaying()) return; // throw new Error("Video not playing");
 
   const overlayElement = getOverlayElement();
+  if (overlayElement === null) return;
   const h5 = document.createElement("h5");
   h5.id = `bys-ytViews${getCurrentId()}`;
   h5.setAttribute(INJECTION_MARKER, ""); // ? for injection checks

@@ -8,19 +8,18 @@ import { PolyDictionary, StateObject } from "./definitions";
 import { getCurrentId, getLikeCount } from "./getters";
 
 export function shouldSkipShort(state: StateObject, options: PolyDictionary) {
-  const currentId = getCurrentId();
+  const currentId = getCurrentId() ?? -Infinity;
   const likeCount = getLikeCount();
-
-  if (currentId === null) return;
 
   // console.dir({
   //   "options are null": options === null,
-  //   "is the video playing": isVideoPlaying(),
-  //   "option isnt enabled": !options.skipEnabled,
-  //   "current id below top id": currentId < state.topId,
+  //   "is the video NOT playing": !isVideoPlaying(),
+  //   "option NOT enabled": !options.skipEnabled,
+  //   "is first video": state.topId === 0,
+  //   "current id below top id": currentId < (state.topId as number),
   //   "current id is the skipped id": state.skippedId === currentId,
   //   "likecount is null or undefined": likeCount === null || isNaN( likeCount ),
-  //   "likecount is above threshold": likeCount >= options.skipThreshold
+  //   "likecount is above threshold": likeCount !== null && likeCount >= (options.skipThreshold as number)
   // })
 
   if (options === null) return false;
