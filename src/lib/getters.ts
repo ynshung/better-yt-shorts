@@ -75,18 +75,6 @@ export function getMuteButton() {
   );
 }
 
-export function getCommentsButton() {
-  return document.querySelector(
-    `[ id="${getCurrentId()}" ] #comments-button .yt-spec-touch-feedback-shape__fill`,
-  ) as HTMLElement;
-}
-
-export function getOverlay() {
-  return document.querySelector(
-    `[id="${getCurrentId()}"] #overlay reel-player-header-renderer`,
-  ) as HTMLElement;
-}
-
 export function getViews() {
   return (
     document

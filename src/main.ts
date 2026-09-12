@@ -1,8 +1,6 @@
 import { features, options, settings, state } from "./content";
-import { handleAutomaticallyOpenComments } from "./lib/AutomaticallyOpenComments";
 import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay";
 import { injectEvents } from "./lib/Events";
-import { handleHideShortsOverlay } from "./lib/HideShortsOverlay";
 import { injectItems } from "./lib/InjectionHandling";
 import { setTimer } from "./lib/PlaybackRate";
 import { handleSkipShortsWithLowLikes } from "./lib/SkipShortsWithLowLikes";
@@ -24,7 +22,6 @@ export function main() {
   // I'm undecided whether to use 0.5 or 1 for currentTime, as 1 isn't quite fast enough, but sometimes with 0.5, it skips a video above the minimum like count.
   if (isVideoPlaying()) {
     handleSkipShortsWithLowLikes(state, options);
-    handleAutomaticallyOpenComments(state, options); // dev note: the implementation of this feature is a good starting point to figure out how to format your own
   }
   if (hasVideoEnded()) {
     handleAutoplay(state, settings, features["autoplay"]);
@@ -34,5 +31,4 @@ export function main() {
   injectItems(state, settings, options, features);
   injectEvents(options);
   handleEnableAutoplay();
-  handleHideShortsOverlay(options);
 }

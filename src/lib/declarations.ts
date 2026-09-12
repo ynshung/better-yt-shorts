@@ -50,8 +50,6 @@ export const DEFAULT_OPTIONS: PolyDictionary = {
   skipEnabled: false,
   skipThreshold: 500,
   seekAmount: 5,
-  automaticallyOpenComments: false,
-  hideShortsOverlay: false,
   defaultPlaybackRate: 1,
   fullScreenDoubleClick: true,
 };
@@ -60,10 +58,8 @@ export const OPTIONS_ORDER: string[] = [
   "defaultPlaybackRate",
   "fullScreenDoubleClick",
   "seekAmount",
-  "automaticallyOpenComments",
   "skipEnabled",
   "skipThreshold",
-  "hideShortsOverlay",
 ];
 
 export const OPTION_DICTIONARY: OptionsDictionary = {
@@ -82,14 +78,6 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
     type: "number",
     min: 0,
     max: 60,
-  },
-  automaticallyOpenComments: {
-    desc: local("automaticallyOpenCommentsTitle"),
-    type: "checkbox",
-  },
-  hideShortsOverlay: {
-    desc: local("hideShortsOverlayTitle"),
-    type: "checkbox",
   },
   defaultPlaybackRate: {
     desc: local("defaultPlaybackRate"),
@@ -143,7 +131,6 @@ export const DEFAULT_STATE: StateObject = {
   topId: 0,
   playbackRate: 1,
   lastTime: -1, // ? this is for checking if items were injected
-  openedCommentsId: -1,
 
   actualVolume: null,
   skippedId: null,
@@ -161,8 +148,6 @@ export const DEFAULT_FEATURES: BooleanDictionary = {
   timer: true,
   playbackRate: true,
   keybinds: true,
-  viewCounter: true,
-  uploadDate: true,
 };
 
 export const FEATURES_ORDER: string[] = [
@@ -170,8 +155,6 @@ export const FEATURES_ORDER: string[] = [
   "timer",
   "playbackRate",
   "keybinds",
-  "viewCounter",
-  "uploadDate",
 ];
 
 // todo  - add formats from other langs (note: dont include duplicate keys)#
