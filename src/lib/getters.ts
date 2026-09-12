@@ -9,14 +9,18 @@ export function getCurrentId() {
   );
   if (video === null) return null;
 
-  const closest: HTMLElement | null = video.closest(".reel-video-in-sequence-new");
+  const closest: HTMLElement | null = video.closest(
+    ".reel-video-in-sequence-new",
+  );
   if (closest === null) return null;
 
   return +closest.id;
 }
 
 export function getLikeCount(): number | null {
-  const likesElement: HTMLElement | null = document.querySelector("like-button-view-model");
+  const likesElement: HTMLElement | null = document.querySelector(
+    "like-button-view-model",
+  );
   if (!likesElement) return null;
 
   const numberOfLikes = likesElement.textContent;
@@ -33,12 +37,6 @@ export function getOverlayElement() {
   // `[id="0"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #overlay`,
   return document.querySelector(
     `[id="${getCurrentId()}"]  > div.overlay.style-scope.ytd-reel-video-renderer > ytd-reel-player-overlay-renderer #overlay`,
-  ) as HTMLElement;
-}
-
-export function getTitle() {
-  return document.querySelector(
-    `[id="${getCurrentId()}"] h2.title > yt-formatted-string`,
   ) as HTMLElement;
 }
 

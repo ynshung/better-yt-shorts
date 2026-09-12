@@ -3,7 +3,7 @@ import { setPlaybackRate } from "./PlaybackRate";
 import { CYCLABLE_PLAYBACK_RATES, INJECTION_MARKER } from "./declarations";
 import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
 import { checkForInjectionMarker } from "./InjectionHandling";
-import { getActionElement, getCurrentId, getTitle, getVideo } from "./getters";
+import { getActionElement, getCurrentId, getVideo } from "./getters";
 import { wheel } from "./utils";
 
 export function populateActionElement(
@@ -23,18 +23,6 @@ export function populateActionElement(
   const para0 = document.createElement("p");
   para0.classList.add("betterYT");
   para0.id = `ytPlayback${id}`;
-
-  // Video title links to the main YT watch page
-  const videoId = document.location.pathname?.match(/\/shorts\/(.+)$/);
-  const ytTitle = videoId ? getTitle() : null;
-  if (videoId && ytTitle) {
-    const ytTitleLink = document.createElement("a");
-    ytTitleLink.href = `https://youtube.com/watch?v=${videoId[1]}`;
-    ytTitleLink.style.color = "inherit";
-    ytTitleLink.style.textDecoration = "none";
-    ytTitle.parentNode?.insertBefore(ytTitleLink, ytTitle);
-    ytTitleLink.appendChild(ytTitle);
-  }
 
   // Attempt to clone a native action-bar button so styling always matches YT's current look
   const nativeButton =
