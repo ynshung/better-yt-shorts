@@ -28,7 +28,8 @@ export async function retrieveOptionsFromStorage(
         );
 
       for (const [option, value] of Object.entries(DEFAULT_OPTIONS)) {
-        if (extraopts[option] !== null) continue;
+        // * fill in defaults for new options missing from storage
+        if (extraopts[option] != null) continue;
         extraopts[option] = value;
       }
 
@@ -124,7 +125,8 @@ export async function retrieveFeaturesFromStorage(
         );
 
       for (const [feature, value] of Object.entries(DEFAULT_FEATURES)) {
-        if (features[feature] !== null) continue;
+        // * fill in defaults for new features missing from storage
+        if (features[feature] != null) continue;
         features[feature] = value;
       }
 
