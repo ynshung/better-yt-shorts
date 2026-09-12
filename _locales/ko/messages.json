@@ -23,9 +23,6 @@
   "key": {
     "message": "단축키"
   },
-  "pressKeybinds": {
-    "message": "원하는 키를 누르세요"
-  },
   "pressAKey": {
     "message": "키를 누르세요"
   },
@@ -122,12 +119,6 @@
   "seekAmountTitle": {
     "message": "초 단위로 이동하는 양"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "새 영상에서 댓글 자동 열기"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "영상 정보 표시 숨기기 (제목, 채널 등)"
-  },
   "toggleFeatures": {
     "message": "기능 사용 여부"
   },
@@ -148,9 +139,6 @@
   },
   "playbackRate": {
     "message": "재생 속도"
-  },
-  "uploadDate": {
-    "message": "업로드 날짜"
   },
   "enable": {
     "message": "$1 사용"

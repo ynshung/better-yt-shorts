@@ -23,9 +23,6 @@
   "key": {
     "message": "کلید"
   },
-  "pressKeybinds": {
-    "message": "کلید مورد نظر را فشار دهید"
-  },
   "pressAKey": {
     "message": "یک کلید را فشار دهعید"
   },
@@ -122,12 +119,6 @@
   "seekAmountTitle": {
     "message": "مقدار پیمایش به ثانیه"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "نمایش کامنت های شورت های جدید به صورت خودکار"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "پنهان سازی اطلاعات در شورت ها (عنوان، کانال و غیره)"
-  },
   "defaultPlaybackRate": {
     "message": "سرعت پخش پیشفرض"
   },
@@ -151,12 +142,6 @@
   },
   "playbackRate": {
     "message": " سرعت پخش"
-  },
-  "viewCounter": {
-    "message": "شمارنده بازدید"
-  },
-  "uploadDate": {
-    "message": "تاریخ بارگذاری"
   },
   "enable": {
     "message": "فعال سازی $1"

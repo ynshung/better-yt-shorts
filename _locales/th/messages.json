@@ -23,9 +23,6 @@
   "key": {
     "message": "ปุ่ม"
   },
-  "pressKeybinds": {
-    "message": "กดปุ่มที่ต้องการ"
-  },
   "pressAKey": {
     "message": "กดปุ่ม"
   },
@@ -119,12 +116,6 @@
   "seekAmountTitle": {
     "message": "ขยับเป็นวินาที"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "เปิดความคิดเห็น Shorts ใหม่โดยอัตโนมัติ"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "ซ่อนโอเวอร์เลย์บน Shorts (ชื่อวิดีโอ, ช่อง ฯลฯ)"
-  },
   "toggleFeatures": {
     "message": "เปิด/ปิดคุณสมบัติ"
   },
@@ -145,9 +136,6 @@
   },
   "playbackRate": {
     "message": "อัตราการเล่น"
-  },
-  "uploadDate": {
-    "message": "วันที่อัพโหลด"
   },
   "enable": {
     "message": "เปิดใช้งาน $1"

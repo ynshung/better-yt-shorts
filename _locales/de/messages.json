@@ -23,9 +23,6 @@
   "key": {
     "message": "Taste"
   },
-  "pressKeybinds": {
-    "message": "Gewünschte Taste drücken"
-  },
   "pressAKey": {
     "message": "Eine Taste drücken"
   },
@@ -122,12 +119,6 @@
   "seekAmountTitle": {
     "message": "Suchdauer in Sekunden"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "Kommentare zu neuen Short's automatisch öffnen"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "Ausblenden des Overlays bei Shorts (Titel, Kanal usw.)"
-  },
   "toggleFeatures": {
     "message": "Funktionen umschalten"
   },
@@ -148,9 +139,6 @@
   },
   "playbackRate": {
     "message": "Abspielgeschwindigkeit"
-  },
-  "uploadDate": {
-    "message": "Upload-Datum"
   },
   "enable": {
     "message": "Aktivieren $1"

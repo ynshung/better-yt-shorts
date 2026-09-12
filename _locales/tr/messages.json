@@ -19,9 +19,6 @@
   "key": {
     "message": "Tuş"
   },
-  "pressKeybinds": {
-    "message": "Atamak istediğiniz tuşa basın"
-  },
   "pressAKey": {
     "message": "Bir tuşa basın"
   },
@@ -115,9 +112,6 @@
   "seekAmountTitle": {
     "message": "Şu kadar saniye atla"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "Yeni Shortlarda yorumları otomatik aç"
-  },
   "defaultPlaybackRate": {
     "message": "Varsayılan oynatma hızı"
   },
@@ -148,12 +142,6 @@
   "announcement": {
     "message": "BYS'yi Çevirmemize Yardım Et!",
     "description": "Zaman zaman güncellenecek duyuru"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "Shortlardaki ek bilgileri gizle (başlık, kanal, vb)"
-  },
-  "uploadDate": {
-    "message": "Yükleme Tarihi"
   },
   "toggleFullScreen": {
     "message": "Tam Ekranı Aç/Kapat"

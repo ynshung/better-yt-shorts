@@ -23,9 +23,6 @@
   "key": {
     "message": "Touche"
   },
-  "pressKeybinds": {
-    "message": "Appuyez sur la touche désirée"
-  },
   "pressAKey": {
     "message": "Appuyez sur une touche"
   },
@@ -118,12 +115,6 @@
   },
   "seekAmountTitle": {
     "message": "Nombre de secondes pour avancer/reculer la lecture"
-  },
-  "automaticallyOpenCommentsTitle": {
-    "message": "Ouvrir automatiquement les commentaires sur les nouveaux shorts"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "Masquer l'interface superposée sur les shorts (titre, chaîne, etc.)"
   },
   "toggleFeatures": {
     "message": "Activer/Désactiver les fonctionnalités"

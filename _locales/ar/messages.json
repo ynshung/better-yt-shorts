@@ -19,9 +19,6 @@
   "key": {
     "message": "الزر"
   },
-  "pressKeybinds": {
-    "message": "اضغط الزر المطلوب"
-  },
   "pressAKey": {
     "message": "اضغط زراً"
   },
@@ -115,9 +112,6 @@
   "seekAmountTitle": {
     "message": "مدة التخطي بالثواني"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "فتح التعليقات بالشورتات الجديدة تقائياً"
-  },
   "toggleFeatures": {
     "message": "تشغيل الميزات وتعطيلها"
   },
@@ -145,11 +139,5 @@
   "announcement": {
     "message": "ساعدنا بترجمة BYS!",
     "description": "إشعار سيتم تحديثه من وقت لآخر"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "إخفاء الواجهة على الشورتات (العنوان، القناة، إلخ)"
-  },
-  "uploadDate": {
-    "message": "تاريخ رفع الشورت"
   }
 }

@@ -23,9 +23,6 @@
   "key": {
     "message": "Key"
   },
-  "pressKeybinds": {
-    "message": "Press desired key"
-  },
   "pressAKey": {
     "message": "Press a key"
   },
@@ -125,12 +122,6 @@
   "seekAmountTitle": {
     "message": "Seek amount in seconds"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "Open comments on new shorts automatically"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "Hide the overlay on shorts (title, channel, etc)"
-  },
   "defaultPlaybackRate": {
     "message": "Default playback rate"
   },
@@ -154,12 +145,6 @@
   },
   "playbackRate": {
     "message": "Playback Rate"
-  },
-  "viewCounter": {
-    "message": "View Counter"
-  },
-  "uploadDate": {
-    "message": "Upload Date"
   },
   "enable": {
     "message": "Enable $1"

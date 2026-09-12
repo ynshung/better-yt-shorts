@@ -19,9 +19,6 @@
   "key": {
     "message": "מקש"
   },
-  "pressKeybinds": {
-    "message": "לחץ על המקש הרצוי"
-  },
   "pressAKey": {
     "message": "לחץ על מקש"
   },
@@ -114,9 +111,6 @@
   },
   "seekAmountTitle": {
     "message": "זמן הרצה בשניות"
-  },
-  "automaticallyOpenCommentsTitle": {
-    "message": "פתח תגובות עבור Shorts חדשים באופן אוטומטי"
   },
   "toggleFeatures": {
     "message": "הפעל/כיבוי פיצ'רים"

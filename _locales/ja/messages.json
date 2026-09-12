@@ -19,9 +19,6 @@
   "key": {
     "message": "キー"
   },
-  "pressKeybinds": {
-    "message": "希望のキーを押下"
-  },
   "pressAKey": {
     "message": "キーを入力..."
   },
@@ -115,9 +112,6 @@
   "seekAmountTitle": {
     "message": "巻き戻し、先送りの秒数"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "自動的にコメントを開く"
-  },
   "toggleFeatures": {
     "message": "機能"
   },
@@ -145,12 +139,6 @@
   "announcement": {
     "message": "拡張機能の翻訳にご協力ください!",
     "description": "Announcement which will update from time to time"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "タイトルやチャンネルなどの詳細を隠す"
-  },
-  "uploadDate": {
-    "message": "アップロード日"
   },
   "toggleFullScreen": {
     "message": "全画面切り替え"

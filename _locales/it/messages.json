@@ -19,9 +19,6 @@
   "key": {
     "message": "Tasto"
   },
-  "pressKeybinds": {
-    "message": "Premi il tasto desiderato"
-  },
   "pressAKey": {
     "message": "Premi un tasto"
   },
@@ -115,9 +112,6 @@
   "seekAmountTitle": {
     "message": "Movimento in secondi"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "Apri automaticamente i commenti nei nuovi short"
-  },
   "toggleFeatures": {
     "message": "Attiva Funzioni"
   },
@@ -145,8 +139,5 @@
   "announcement": {
     "message": "Aiutaci a tradurre BYS!",
     "description": "Annunci che saranno aggiornati di tanto in tanto"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "Disabilita sovraimpressione degli short (titolo, canale, ecc)"
   }
 }

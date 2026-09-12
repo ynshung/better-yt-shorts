@@ -23,9 +23,6 @@
   "key": {
     "message": "Tecla"
   },
-  "pressKeybinds": {
-    "message": "Pressione a tecla desejada"
-  },
   "pressAKey": {
     "message": "Pressione uma tecla"
   },
@@ -122,12 +119,6 @@
   "seekAmountTitle": {
     "message": "Segundos de retrocesso/avanço"
   },
-  "automaticallyOpenCommentsTitle": {
-    "message": "Abra comentários automaticamente"
-  },
-  "hideShortsOverlayTitle": {
-    "message": "Ocultar sobreposição nos Shorts (título, canal, etc)"
-  },
   "defaultPlaybackRate": {
     "message": "Velocidade de Reprodução padrão"
   },
@@ -151,9 +142,6 @@
   },
   "playbackRate": {
     "message": "Velocidade de Reprodução"
-  },
-  "uploadDate": {
-    "message": "Data de Upload"
   },
   "enable": {
     "message": "Habilitar $1"
