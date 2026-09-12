@@ -86,6 +86,9 @@
   "increaseVolume": {
     "message": "Increase Volume"
   },
+  "toggleCaptions": {
+    "message": "Toggle Captions"
+  },
   "toggleMute": {
     "message": "Toggle Mute"
   },

@@ -64,6 +64,10 @@ export function getVideo(): HTMLVideoElement | null {
   return document.querySelector("#shorts-player>div>video");
 }
 
+export function getCaptionsButton(): HTMLButtonElement | null {
+  return document.querySelector("ytm-closed-captioning-button > button");
+}
+
 export function getPlaybackElement() {
   const id = getCurrentId();
   return document.getElementById(`ytPlayback${id}`);

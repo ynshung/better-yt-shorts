@@ -7,7 +7,7 @@ import {
   PolyDictionary,
   StringDictionary,
 } from "./definitions";
-import { getVideo } from "./getters";
+import { getCaptionsButton, getVideo } from "./getters";
 import { getVolume, setVolume } from "./Volume";
 
 export function handleKeyEvent(
@@ -72,6 +72,11 @@ export function handleKeyEvent(
     case "decreaseVolume": {
       const current = getVolume() ?? ytShorts.volume * 100;
       setVolume(current - VOLUME_INCREMENT_AMOUNT * 100);
+      break;
+    }
+
+    case "toggleCaptions": {
+      getCaptionsButton()?.click();
       break;
     }
 

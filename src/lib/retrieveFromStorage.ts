@@ -61,7 +61,8 @@ export async function retrieveKeybindsFromStorage(
       for (const option in DEFAULT_KEYBINDS) {
         const value = DEFAULT_KEYBINDS[option];
 
-        if (keybinds[option] !== null) continue; // * this may be an issue later on if we WANT falsy values as viable values
+        // * fill in defaults for new keybinds missing from storage
+        if (keybinds[option] != null) continue;
         keybinds[option] = value;
       }
 
