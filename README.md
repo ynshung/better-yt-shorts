@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> The project is being revived with the [release of v4.0.0](https://github.com/ynshung/better-yt-shorts/releases/tag/v4.0.0)! It may take a few days before the add-on store updates to the latest version. Please report any issues or give any feature suggestion in the [Issues](https://github.com/ynshung/better-yt-shorts/issues/new/choose) page, thank you!
+
 <div align="center">
 
 ![BYS Icon](./src/assets/icons/bys-128.png)
