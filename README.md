@@ -26,6 +26,18 @@ Control your YouTube shorts just like a normal YouTube video! Features include s
 - Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/better-youtube-shorts
 - Edge Add-ons: https://microsoftedge.microsoft.com/addons/detail/better-youtube-shorts/encogpagbgkndaicddjpgogepdmfnokl
 
+### Manual Installation
+1. Grab the latest release from the [releases page](https://github.com/ynshung/better-yt-shorts/releases/latest)
+2. Unzip the file and take note of the directory location
+3. For **Google Chrome:**
+   1. Open Chrome and navigate to `chrome://extensions`
+   2. Toggle `Developer Mode` with the switch at the top-right of that page
+   3. Drag and drop the directory into that page to load the unpacked extension
+   4. **OR** click load unpacked and select the directory
+4. For **Mozilla Firefox**:
+   1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
+   2. Click `Load Temporary Add-on...` and select the `manifest.json` inside the directory
+
 ## Features
 
 - **Seeking** 5 seconds backward and forward with arrow keys (adjustable time)
@@ -111,12 +123,12 @@ You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfw
    2. Open Chrome and navigate to `chrome://extensions`
    3. Toggle `Developer Mode` with the switch at the top-right of that page
    4. Drag and drop the `dist` directory into that page to load the unpacked extension
-   5. **OR** click load unpacked and select the `manifest.json` file in the directory
+   5. **OR** click load unpacked and select the directory
    6. Changing a file should automatically update and refresh the extension
 6. For **Firefox development**
    1. Run `pnpm dev:firefox` to start development
    2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
-   3. Click `Load Temporary Add-on...` and select the `package.json` in the `dist` directory
+   3. Click `Load Temporary Add-on...` and select the `manifest.json` in the `dist` directory
    4. Everytime a file is changed, make sure to reload the extension after the message of `Firefox manifest created successfully.` is shown.
 
 ## License
