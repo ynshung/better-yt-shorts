@@ -52,9 +52,6 @@ export let options: PolyDictionary;
 export let settings: PolyDictionary;
 export let features: BooleanDictionary;
 
-// todo  - add "settings" to localstorage (merge autoplay + player volume into one)
-// localStorage.getItem("yt-player-volume") !== null && JSON.parse(localStorage.getItem("yt-player-volume"))["data"]["volume"]
-
 retrieveKeybindsFromStorage((newBinds) => {
   keybinds = newBinds;
 });

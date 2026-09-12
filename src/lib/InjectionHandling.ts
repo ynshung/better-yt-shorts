@@ -1,9 +1,7 @@
 import { populateActionElement, syncButtonVariants } from "./ActionElement";
-import { setInfo } from "./Info";
-import { InjectionItemsEnum } from "./definitions";
 import { INJECTION_MARKER } from "./declarations";
 import { BooleanDictionary, PolyDictionary, StateObject } from "./definitions";
-import { getActionElement, getCurrentId, getInfoElement } from "./getters";
+import { getActionElement, getCurrentId } from "./getters";
 
 export function injectItems(
   state: StateObject,
@@ -15,11 +13,9 @@ export function injectItems(
   const id = getCurrentId();
   if (id === null) return;
 
-  const items = Object.values(InjectionItemsEnum);
-
-  items.map((item) =>
-    injectIfNotPresent(item, state, settings, options, features),
-  );
+  if (!checkForInjectionMarker(getActionElement()))
+    populateActionElement(state, settings, features);
+  else syncButtonVariants();
 }
 
 /**
@@ -28,24 +24,4 @@ export function injectItems(
  */
 export function checkForInjectionMarker(element: Element | HTMLElement | null) {
   return element !== null && element.hasAttribute(INJECTION_MARKER);
-}
-
-/**
- * Switch case, checks if the given item was injected or not
- * @param item
- */
-function injectIfNotPresent(
-  item: string,
-  state: StateObject,
-  settings: PolyDictionary,
-  options: PolyDictionary,
-  features: BooleanDictionary,
-) {
-  if (item === InjectionItemsEnum.ACTION_ELEMENT) {
-    if (!checkForInjectionMarker(getActionElement()))
-      populateActionElement(state, settings, features);
-    else syncButtonVariants();
-  } else if (item === InjectionItemsEnum.INFO) {
-    if (!checkForInjectionMarker(getInfoElement())) setInfo();
-  }
 }

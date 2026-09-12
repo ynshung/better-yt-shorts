@@ -2,7 +2,7 @@ import local from "../background/i18n";
 import { saveSettingsToStorage } from "./SaveToStorage";
 import { skipShort } from "./VideoState";
 import { StateObject, PolyDictionary } from "./definitions";
-import { getActionElement, getCurrentId, getVideo } from "./getters";
+import { getActionElement, getCurrentId } from "./getters";
 import { render } from "./utils";
 
 export function handleAutoplay(
@@ -20,11 +20,6 @@ export function handleAutoplay(
 
   state.skippedId = currentId;
   skipShort();
-}
-
-export function handleEnableAutoplay() {
-  const ytShorts = getVideo();
-  if (ytShorts === null) return false;
 }
 
 export function createAutoplaySwitch(

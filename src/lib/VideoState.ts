@@ -1,9 +1,4 @@
-import {
-  getBackButton,
-  getMuteButton,
-  getNextButton,
-  getVideo,
-} from "./getters";
+import { getBackButton, getNextButton, getVideo } from "./getters";
 
 export function isVideoPlaying() {
   const ytShorts = getVideo();
@@ -35,9 +30,4 @@ export function restartShort() {
   if (ytShorts === null) return false;
 
   ytShorts.currentTime = 0;
-}
-
-export function mute() {
-  const muteButton = getMuteButton();
-  if (muteButton === null) return;
 }

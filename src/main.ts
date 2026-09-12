@@ -1,5 +1,5 @@
 import { features, options, settings, state } from "./content";
-import { handleAutoplay, handleEnableAutoplay } from "./lib/Autoplay";
+import { handleAutoplay } from "./lib/Autoplay";
 import { injectEvents } from "./lib/Events";
 import { injectItems } from "./lib/InjectionHandling";
 import { setTimer } from "./lib/PlaybackRate";
@@ -30,5 +30,4 @@ export function main() {
   setTimer(state, features["timer"]);
   injectItems(state, settings, options, features);
   injectEvents(options);
-  handleEnableAutoplay();
 }

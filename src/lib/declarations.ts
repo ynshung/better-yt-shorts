@@ -93,17 +93,6 @@ export const OPTION_DICTIONARY: OptionsDictionary = {
   },
 };
 
-export function setKeybind(
-  previousState: StringDictionary,
-  command: string,
-  newKey: string,
-): StringDictionary {
-  const newKeybinds = { ...previousState };
-  newKeybinds[command] = newKey;
-
-  return newKeybinds;
-}
-
 export function setOption(
   previousState: PolyDictionary,
   option: string,
@@ -129,18 +118,12 @@ export function setFeature(
 export const storage = BROWSER.storage.local;
 
 export const DEFAULT_STATE: StateObject = {
-  id: 0,
   topId: 0,
   playbackRate: 1,
-  lastTime: -1, // ? this is for checking if items were injected
-
-  actualVolume: null,
+  lastTime: -1,
   skippedId: null,
-
-  muted: false,
 };
 
-// ! - add settings
 export const DEFAULT_SETTINGS: PolyDictionary = {
   autoplay: false,
 };

@@ -43,7 +43,6 @@ export function convertLocaleNumber(string: string): number | null {
   }
 }
 
-// todo  - fix types on this
 export function wheel(
   element: HTMLElement,
   codeA: () => void,
@@ -105,13 +104,4 @@ export function determineInputType(
 
 export function getEnumEntries(givenEnum: object): Array<[string, number]> {
   return Object.entries(givenEnum).filter(([key]) => isNaN(Number(key)));
-}
-
-/**
- * Assumes one word
- * @param str
- * @returns
- */
-export function capitalise(str: string) {
-  return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }

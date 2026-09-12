@@ -32,8 +32,3 @@ export function setTimer(state: StateObject, timerEnabled: boolean) {
 
   return true;
 }
-
-// export function createPlaybackElement(state: StateObject, enabled: boolean) {
-// enabled is handled differently here because this element is used to test injection
-// style="display: ${enabled ? "block" : "none"};"
-// }
