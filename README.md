@@ -19,7 +19,7 @@ You may uninstall this extension as it is currently not maintained. If you are i
 
 </div>
 
-Control your YouTube shorts just like a normal YouTube video! Features include progress bar, seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
+Control your YouTube shorts just like a normal YouTube video! Features include seeking, playback speed, auto skip and more. You can also customize the keybinds to your liking!
 
 ## Installation
 
@@ -29,27 +29,23 @@ Control your YouTube shorts just like a normal YouTube video! Features include p
 
 ## Features
 
-- **Progress bar** at the bottom with time and duration
 - **Seeking** 5 seconds backward and forward with arrow keys (adjustable time)
 - Mini **timestamp** and speed above the like button (can be scrolled on!)
-- **Fullscreen** support with F key and double click
+- **Fullscreen** support with double click (native: F key)
 - Decrease and increase **playback speed** with keys U and O
 - Click the speed button to revert to normal speed or toggle between different speeds
-- Toggle to auto skip short when current one ends
-- Control volume with the **volume slider** or with - and =, mute audio with M
+- Toggle to **auto play** the next short when the current one ends
+- Control volume with - and =, via YouTube's native volume slider
+- **Toggle captions** with C
 - **Customizable** keybinds
 - 🌐 Supports more than 10 languages!
 
 Extra features:
 
 - Start short from beginning with J
-- Go to the next or previous frame of the video
+- Go to the next or previous frame with . and , while paused
 - Set default playback rate when first opening shorts
-- Auto skip short with likes below custom threshold (e.g. 500 likes)
-- Auto open comment section on each short
-- Hide overlay on shorts (title, channel, etc.)
-- Go to the next frame or previous frame with . and , while paused
-- View counter and upload date above video title
+- Auto skip shorts with likes below a custom threshold (e.g. 500 likes)
 
 ### Screenshots
 
@@ -66,7 +62,7 @@ Extra features:
 | Increase Speed      | KeyO       |
 | Decrease Volume     | Minus      |
 | Increase Volume     | Equal      |
-| Toggle Full Screen  | KeyF       |
+| Toggle Captions     | KeyC       |
 | Restart Short       | KeyJ       |
 | Next Frame          |            |
 | Previous Frame      |            |
@@ -81,7 +77,7 @@ All type of contributions are welcome. You may contribute by reporting bugs, sug
 
 ### Translation
 
-Know multiple languages? Help translate the extension so we can have a reach worldwide! See the list of supported locales [here](https://developer.chrome.com/docs/extensions/reference/api/i18n#locales). You can translate the extension itself or the store listing description which is under the `store-desc/` directory.
+Know multiple languages? Help translate the extension so we can have a reach worldwide! See the list of supported locales [here](https://developer.chrome.com/docs/extensions/reference/api/i18n#locales).
 
 #### For beginners
 
@@ -110,16 +106,16 @@ You may leave your feedback in this [Google Form](https://forms.gle/pvSiMwDeQVfw
 1. Fork the project on Github
 2. Clone your fork in your local machine
 3. Open the working directory in the terminal
-4. Run `npm i` to install all dependencies (ensure that [node and npm are installed](https://nodejs.org/en))
+4. Run `pnpm i` to install all dependencies (ensure that [node and pnpm are installed](https://nodejs.org/en))
 5. For **Chrome development**
-   1. Run `npm run dev` to start development
+   1. Run `pnpm dev` to start development
    2. Open Chrome and navigate to `chrome://extensions`
    3. Toggle `Developer Mode` with the switch at the top-right of that page
    4. Drag and drop the `dist` directory into that page to load the unpacked extension
    5. **OR** click load unpacked and select the `manifest.json` file in the directory
    6. Changing a file should automatically update and refresh the extension
 6. For **Firefox development**
-   1. Run `npm run dev:firefox` to start development
+   1. Run `pnpm dev:firefox` to start development
    2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
    3. Click `Load Temporary Add-on...` and select the `package.json` in the `dist` directory
    4. Everytime a file is changed, make sure to reload the extension after the message of `Firefox manifest created successfully.` is shown.
