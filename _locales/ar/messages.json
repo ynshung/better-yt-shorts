@@ -136,8 +136,7 @@
   "enable": {
     "message": "تفعيل $1"
   },
-  "announcement": {
-    "message": "ساعدنا بترجمة BYS!",
-    "description": "إشعار سيتم تحديثه من وقت لآخر"
+  "announcement1": {
+    "message": "ساعدنا بترجمة BYS!"
   }
 }

@@ -7,9 +7,8 @@
     "message": "Übernimm die Kontrolle über YouTube Shorts mit Wiedergabe, Lautstärke, Fortschrittsbalken und mehr!",
     "description": "Description of the extension"
   },
-  "announcement": {
-    "message": "Helfen Sie bei der Übersetzung von BYS!",
-    "description": "Announcement which will update from time to time"
+  "announcement1": {
+    "message": "Helfen Sie bei der Übersetzung von BYS!"
   },
   "website": {
     "message": "Webseite"

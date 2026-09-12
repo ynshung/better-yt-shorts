@@ -136,8 +136,7 @@
   "enable": {
     "message": "Abilita $1"
   },
-  "announcement": {
-    "message": "Aiutaci a tradurre BYS!",
-    "description": "Annunci che saranno aggiornati di tanto in tanto"
+  "announcement1": {
+    "message": "Aiutaci a tradurre BYS!"
   }
 }

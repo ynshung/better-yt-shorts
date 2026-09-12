@@ -7,9 +7,8 @@
     "message": "Recupera el control en YouTube Shorts con ajustes de reproducción, volumen, barra de progreso y más.",
     "description": "Descripción de la extensión"
   },
-  "announcement": {
-    "message": "¡Ayúdanos a traducir BYS!",
-    "description": "Anuncio que se actualizará de vez en cuando"
+  "announcement1": {
+    "message": "¡Ayúdanos a traducir BYS!"
   },
   "website": {
     "message": "Sitio web"

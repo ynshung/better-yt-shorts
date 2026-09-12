@@ -4,12 +4,12 @@
     "description": "Name of the extension"
   },
   "extDescription": {
-    "message": "Take back the controls on YouTube Shorts with playback, volume, progress bar and more!",
+    "message": "Take back the controls on YouTube Shorts with seeking, speed, volume and more!",
     "description": "Description of the extension"
   },
-  "announcement": {
+  "announcement1": {
     "message": "Help us translate BYS!",
-    "description": "Announcement which will update from time to time"
+    "description": "Call for translation announcement"
   },
   "website": {
     "message": "Website"

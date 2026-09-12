@@ -28,7 +28,7 @@ export default function Announcement() {
         target="_blank"
         rel="noreferrer"
       >
-        {local("announcement")}
+        {local("announcement1")}
       </a>
       <a
         href="#"

@@ -7,9 +7,8 @@
     "message": "รับความสามารถในการควบคุม YouTube Shorts ด้วย ระบบ playback, แถบปรับระดับเสียง, แถบความคืบหน้าวิดีโอ และอื่น ๆ!",
     "description": "คำอธิบายของส่วนขยาย"
   },
-  "announcement": {
-    "message": "ช่วยเราแปล BYS!",
-    "description": "จะอัพเดทประกาศเป็นระยะๆ"
+  "announcement1": {
+    "message": "ช่วยเราแปล BYS!"
   },
   "website": {
     "message": "เว็บไซต์"

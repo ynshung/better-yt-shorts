@@ -7,9 +7,8 @@
     "message": "Reprenez le contrôle sur YouTube Shorts avec la lecture, le contrôle du volume, une barre de progression et plus encore !",
     "description": "Description of the extension"
   },
-  "announcement": {
-    "message": "Aidez-nous à traduire BYS !",
-    "description": "Announcement which will update from time to time"
+  "announcement1": {
+    "message": "Aidez-nous à traduire BYS !"
   },
   "website": {
     "message": "Site Web"

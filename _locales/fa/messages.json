@@ -7,9 +7,8 @@
     "message": "کنترل شورت های یوتوب را به دست بگیرید با کنترل پخش، صدا، نوارپیشرفت و بیشتر!",
     "description": "Description of the extension"
   },
-  "announcement": {
-    "message": "به ما کمک کنید BYS را ترجمه کنیم!",
-    "description": "Announcement which will update from time to time"
+  "announcement1": {
+    "message": "به ما کمک کنید BYS را ترجمه کنیم!"
   },
   "website": {
     "message": "وبسایت"
