@@ -8,6 +8,7 @@ import {
   StringDictionary,
 } from "./definitions";
 import { getVideo } from "./getters";
+import { getVolume, setVolume } from "./Volume";
 
 export function handleKeyEvent(
   e: KeyboardEvent,
@@ -62,23 +63,17 @@ export function handleKeyEvent(
       if (ytShorts.playbackRate < 16) ytShorts.playbackRate += 0.25;
       break;
 
-    case "increaseVolume":
-      if (ytShorts.volume < 1)
-        ytShorts.volume = Math.min(
-          ytShorts.volume + VOLUME_INCREMENT_AMOUNT,
-          1,
-        );
-
+    case "increaseVolume": {
+      const current = getVolume() ?? ytShorts.volume * 100;
+      setVolume(current + VOLUME_INCREMENT_AMOUNT * 100);
       break;
+    }
 
-    case "decreaseVolume":
-      if (ytShorts.volume > 0)
-        ytShorts.volume = Math.max(
-          ytShorts.volume - VOLUME_INCREMENT_AMOUNT,
-          0,
-        );
-
+    case "decreaseVolume": {
+      const current = getVolume() ?? ytShorts.volume * 100;
+      setVolume(current - VOLUME_INCREMENT_AMOUNT * 100);
       break;
+    }
 
     case "toggleFullScreen": {
       tryToggleFullscreen();
