@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { DEFAULT_KEYBINDS, KEYBINDS_ORDER } from "../lib/declarations";
 import EditButton from "./EditButton";
+import InfoButton from "./InfoButton";
 import { resetKeybinds } from "../lib/ResetDefaults";
 import { StringDictionary } from "../lib/definitions";
 import EditModal from "./EditModal";
 import local from "../background/i18n";
+
+const NATIVE_COMMANDS = ["toggleFullScreen"];
 
 interface Props {
   setKeybindsState: (keybinds: () => StringDictionary) => void;
@@ -55,7 +58,11 @@ export default function KeybindsPage({
             </div>
           </td>
           <td>
-            <EditButton {...editButtonProps} />
+            {NATIVE_COMMANDS.includes(command) ? (
+              <InfoButton />
+            ) : (
+              <EditButton {...editButtonProps} />
+            )}
           </td>
         </tr>
       );
